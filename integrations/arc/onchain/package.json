@@ -1,0 +1,9 @@
+{
+  "name": "chonks-conditional-pot-contracts",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@openzeppelin/contracts": "5.6.1"
+  }
+}

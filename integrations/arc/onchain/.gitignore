@@ -1,0 +1,7 @@
+node_modules/
+lib/
+contracts/out/
+contracts/cache/
+broadcast/
+.env*
+.arc-studio/
