@@ -1,9 +1,14 @@
 {
-  "name": "funcaster-console",
+  "name": "funcaster",
   "version": "0.2.0",
   "private": true,
   "description": "Walk-up motion-controlled party games for one to four phones.",
   "license": "MIT",
+  "author": "Patrick Sun",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hatif03/web3-multiplayer-games.git"
+  },
   "type": "commonjs",
   "main": "server.js",
   "scripts": {
@@ -19,9 +24,9 @@
     "test:kart-fallback": "node games/mario-kart/public-review.mjs --fallback",
     "test:party": "node --test tests/party/*.test.cjs",
     "share": "node scripts/share.cjs",
-    "check": "npm run catalog:check && npm run validate:games && npm run test:unit && npm run test:party && npm run test:os",
+    "check": "npm run catalog:check && npm run validate:games && npm run test:unit && npm run test:party && npm run test:os && npm run web3:test",
     "validate:games": "node scripts/validate-games.mjs",
-    "format:check": "prettier --check core/catalog.js core/state.js server/party.cjs server/records.cjs public/party/host.js public/party/phone.js \"public/os/**/*.{js,mjs,css,html,json}\" \"tests/os/*.mjs\" public/party/phone-page.js public/party/phone-page.css public/controller.webmanifest tests/party/phone-remote.test.cjs public/party/remote.js public/party/remote.test.mjs public/party/remote.css public/party/remote-skins.css public/controller.html server/shell-input.cjs server/shell-routes.cjs server/public-assets.cjs tests/party/pointer.test.cjs tests/party/shell-routes.test.cjs games/mario-kart/race-menu.js games/mario-kart/race-menu.test.mjs games/mario-kart/multiview.test.mjs public/party/phone-capabilities.js public/party/phone-pointer.js core/pixel-budget.js core/pixel-budget.test.mjs scripts/os-assets/initial-files.mjs tests/party/phone-text.test.cjs tests/party/results-hold.test.cjs scripts/launch-kiosk.cjs public/party/phone-audio.js tests/party/end-room.test.cjs tests/party/restore-player.test.cjs server/arcade.cjs core/render-scale.js core/render-scale.test.mjs",
+    "format:check": "prettier --check core/catalog.js core/state.js server/party.cjs server/records.cjs public/party/host.js public/party/phone.js \"public/os/**/*.{js,mjs,css,html,json}\" \"tests/os/*.mjs\" public/party/phone-page.js public/party/phone-page.css public/controller.webmanifest tests/party/phone-remote.test.cjs public/party/remote.js public/party/remote.test.mjs public/party/remote.css public/party/remote-skins.css public/controller.html server/shell-input.cjs server/shell-routes.cjs server/public-assets.cjs tests/party/pointer.test.cjs tests/party/shell-routes.test.cjs games/mario-kart/race-menu.js games/mario-kart/race-menu.test.mjs games/mario-kart/multiview.test.mjs public/party/phone-capabilities.js public/party/phone-pointer.js core/pixel-budget.js core/pixel-budget.test.mjs scripts/os-assets/initial-files.mjs tests/party/phone-text.test.cjs tests/party/results-hold.test.cjs scripts/launch-kiosk.cjs public/party/phone-audio.js tests/party/end-room.test.cjs tests/party/restore-player.test.cjs server/arcade.cjs core/render-scale.js core/render-scale.test.mjs \"server/web3/*.cjs\" \"integrations/shared/*.mjs\" \"integrations/ens/*.{mjs,json}\" \"scripts/web3-*.mjs\" \"tests/web3/*.{cjs,mjs}\" \"tests/party/web3-*.test.cjs\" public/web3/phone-identity.js \"integrations/arc/*.mjs\" \"scripts/spikes/arc-worker*.mjs\" tests/web3/fixtures/arc-chain.mjs",
     "game:create": "node scripts/create-game.mjs",
     "game:validate": "node scripts/validate-games.mjs",
     "replay:check": "node scripts/replay-check.cjs",
@@ -33,20 +38,31 @@
     "lab:lockstep": "node scripts/lockstep-lab.cjs",
     "game:registry": "node scripts/registry.mjs",
     "test:os": "node --test \"tests/os/*.test.mjs\" \"public/os/**/*.test.mjs\" public/party/remote.test.mjs",
-    "kiosk": "node scripts/launch-kiosk.cjs"
+    "kiosk": "node scripts/launch-kiosk.cjs",
+    "web3:preflight": "node scripts/web3-preflight.mjs",
+    "web3:preflight:ens": "node scripts/web3-ens-preflight.mjs",
+    "web3:preflight:arc": "node scripts/web3-arc-preflight.mjs",
+    "web3:install-ens": "npm ci --ignore-scripts --prefix integrations/ens",
+    "web3:test": "node --test tests/web3/*.test.mjs",
+    "start:web3": "node --env-file=.env.relay server.js",
+    "start:basic": "node scripts/web3-basic-demo.mjs",
+    "web3:worker": "node --env-file=.env.worker scripts/web3-worker.mjs",
+    "web3:build-signer": "node scripts/web3-build-signer.mjs"
   },
   "dependencies": {
     "compression": "^1.8.2",
     "express": "^4.21.2",
+    "proxy-addr": "^2.0.7",
     "qrcode": "^1.5.4",
     "socket.io": "^4.8.1",
     "three": "^0.185.1",
-    "proxy-addr": "^2.0.7"
+    "viem": "2.57.14"
   },
   "engines": {
     "node": ">=22.12"
   },
   "devDependencies": {
+    "esbuild": "0.28.2",
     "playwright": "^1.63.0",
     "prettier": "^3.9.9",
     "socket.io-client": "^4.8.4"
