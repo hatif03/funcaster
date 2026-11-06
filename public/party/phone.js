@@ -6,6 +6,7 @@ import {
   sensorErrorMessage,
   createWakeKeeper,
   createOrientationControl,
+  installSafariFill,
 } from "./phone-capabilities.js";
 import { PhonePointer } from "./phone-pointer.js";
 import { playPhoneCue } from "./phone-audio.js";
@@ -33,6 +34,7 @@ import { buildId } from "/build.js";
 import { MotionSettings, MOTION_PROFILES } from "/core/motion-settings.js";
 import { RacingMotion } from "/core/racing-motion.js";
 import { DriveControls } from "/core/drive-controls.js";
+import { GYRO_GAMES, axisTargets, mountPad, padSpec, toolAim } from "./pads.js";
 import { PartyMotion } from "/core/party-motion.js";
 import { gameById, remember, recalled } from "./catalog.js";
 const pairingScreen = new URLSearchParams(location.search).get("screen");
@@ -57,6 +59,46 @@ let code =
   sensorTimeout = null,
   gravity = null,
   latency = null;
+let pendingWeb3Challenge = null,
+  web3Phone = null,
+  web3Loading = null;
+let stakesPhone = null,
+  pendingStakeRequest = null;
+socket.on("web3.request", (request) => {
+  pendingStakeRequest = request;
+  stakesPhone?.receive(request);
+});
+socket.on("web3.challenge", (challenge) => {
+  pendingWeb3Challenge = challenge;
+  if (state?.web3 && web3Phone) void web3Phone.challenge(challenge);
+});
+socket.on("disconnect", () => {
+  pendingWeb3Challenge = null;
+});
+function syncWeb3Identity() {
+  if (!state?.web3 || !identity || identity.queued || web3Phone || web3Loading)
+    return;
+  web3Loading = import("../web3/phone-identity.js")
+    .then(async ({ createPhoneIdentity }) => {
+      web3Phone = createPhoneIdentity(socket, () =>
+        state?.web3 && identity && !identity.queued
+          ? { room: code, slot: identity.slot, token: identity.token }
+          : null,
+      );
+      if (pendingWeb3Challenge) void web3Phone.challenge(pendingWeb3Challenge);
+      const { mountPhoneStakes } = await import("./phone-stakes.js");
+      stakesPhone = mountPhoneStakes(
+        socket,
+        () => state,
+        () => identity,
+      );
+      if (pendingStakeRequest) stakesPhone.receive(pendingStakeRequest);
+    })
+    .catch(() => {})
+    .finally(() => {
+      web3Loading = null;
+    });
+}
 let preferenceStorage;
 try {
   preferenceStorage = localStorage;
@@ -67,10 +109,25 @@ const wheelMotion = new RacingMotion({
   sensitivity: motionSettings.get("racing"),
 });
 const pedals = new DriveControls();
+const holds = new Set();
+let padKey = "";
+let releasePad = () => {};
+let drawLock = null;
+let stickAxes = null;
+let axes = { x: 0, y: 0 };
+let easeAt = 0;
 const pacer = new InputPacer();
 const pointerStream = new PhonePointer();
 const wakeKeeper = createWakeKeeper(navigator);
 const orientationControl = createOrientationControl(screen.orientation);
+function holdPosture(force = false) {
+  if (!started || removed) {
+    orientationControl.release();
+    return;
+  }
+  // Landscape for the whole round. Portrait only while waiting in the lobby.
+  orientationControl.set(playingNow() ? "landscape" : "portrait", force);
+}
 let gateGeneration = 0;
 let gateTask = null,
   pendingDevice = null,
@@ -123,6 +180,14 @@ function releasePedals() {
   if (shotStarted)
     socket.emit("action", { action: "cancel", seq: shotSequence });
   shotStarted = 0;
+  releasePad();
+  holds.clear();
+  drawLock = null;
+  if (stickAxes) stickAxes = { x: 0, y: 0 };
+  axes = { x: 0, y: 0 };
+  easeAt = 0;
+  lastPulse = false;
+  if (padKey) latest = { x: 0, y: 0 };
   pedals.release();
   for (const id of ["gas", "brake", "boost"]) $(id).classList.remove("pressed");
   if (identity && socket.connected)
@@ -219,7 +284,7 @@ function keepAwake() {
 function join() {
   if (!code || removed || joinPending || identity || !socket.connected) return;
   joinPending = true;
-  const saved = recalled(`funcaster.player.${code}`);
+  const saved = recalled(`chonks.player.${code}`);
   socket.emit(
     "join",
     {
@@ -255,7 +320,10 @@ function acceptIdentity(answer) {
       `/controller?room=${encodeURIComponent(code)}`,
     );
   identity = answer;
-  remember(`funcaster.player.${code}`, answer);
+  remember(`chonks.player.${code}`, answer);
+  // Queue promotion can deliver its challenge before the promoted acknowledgement.
+  if (!answer.queued && web3Phone && pendingWeb3Challenge)
+    void web3Phone.challenge(pendingWeb3Challenge);
   $("waiting-view").hidden = !answer.queued;
   if (answer.queued) {
     releasePedals();
@@ -271,7 +339,7 @@ function acceptIdentity(answer) {
   $("join-view").hidden = started;
   $("play-view").hidden = !started;
   paintSeatLamps($("seat-lamp"), SEATS, answer);
-  remember(`funcaster.player.${code}`, answer);
+  remember(`chonks.player.${code}`, answer);
   document.documentElement.style.setProperty("--player", answer.color);
   $("player-identity").textContent =
     `You’re ${answer.name} · Player ${answer.slot + 1}`;
@@ -319,6 +387,16 @@ $("code-form").onsubmit = (event) => {
   removed = false;
   join();
 };
+if (!code)
+  fetch("/api/web3/health", { signal: AbortSignal.timeout(5000) })
+    .then((response) => (response.ok ? response.json() : null))
+    .then(async (health) => {
+      if (health?.tableNames) {
+        const { mountPhoneNames } = await import("../web3/phone-names.js");
+        mountPhoneNames($("code-form"), $("code-input"));
+      }
+    })
+    .catch(() => {});
 socket.on("connect", () => {
   socket.io.engine?.on("drain", flushPointer);
   identity = null;
@@ -362,7 +440,7 @@ socket.on("removed", () => {
   removed = true;
   started = false;
   identity = null;
-  remember(`funcaster.player.${code}`, null);
+  remember(`chonks.player.${code}`, null);
   $("play-view").hidden = true;
   $("join-view").hidden = false;
   message(
@@ -405,8 +483,218 @@ function sensorProblem(text) {
   $("retry-sensors").onclick = () => beginTouch();
   setReady(false);
 }
+function playingNow() {
+  return (
+    started &&
+    !!state &&
+    !!identity &&
+    !identity.queued &&
+    state.pointerMode !== true &&
+    ["classic", "practice", "countdown", "playing"].includes(state.phase)
+  );
+}
+function needsGyro() {
+  return GYRO_GAMES.has(state?.game);
+}
+function buttonPadOn() {
+  return playingNow() && !needsGyro() && padKey !== "";
+}
+function canAct() {
+  return (
+    ready &&
+    !!state?.active?.includes(identity?.slot) &&
+    !state?.paused &&
+    !!state?.hostConnected &&
+    (state.phase !== "classic" || !!state.screenConnected)
+  );
+}
+function followStick(time) {
+  const dt = Math.min(0.05, easeAt ? (time - easeAt) / 1000 : 0.016);
+  easeAt = time;
+  const target = axisTargets(holds);
+  const k = 1 - Math.exp(-14 * dt);
+  axes = {
+    x: axes.x + (target.x - axes.x) * k,
+    y: axes.y + (target.y - axes.y) * k,
+  };
+  if (Math.abs(axes.x) < 0.02 && target.x === 0) axes.x = 0;
+  if (Math.abs(axes.y) < 0.02 && target.y === 0) axes.y = 0;
+  return axes;
+}
+const padHandlers = {
+  onStick(partial) {
+    if (!stickAxes) stickAxes = { x: 0, y: 0 };
+    if (partial.x !== undefined) stickAxes.x = partial.x;
+    if (partial.y !== undefined) stickAxes.y = partial.y;
+  },
+  onHold(name, down, pointerId) {
+    if (down) holds.add(name);
+    else holds.delete(name);
+    if (!["gas", "brake", "boost"].includes(name)) return;
+    if (down) pedals.down(name, pointerId, performance.now());
+    else pedals.up(pointerId);
+  },
+  onTap(name) {
+    if (name === "pause") {
+      openPartyMenu();
+      return;
+    }
+    if (name === "motion") {
+      startPlaying();
+      return;
+    }
+    if (!canAct()) return;
+    if (name === "pulse") {
+      lastPulse = true;
+      buzz(12);
+      return;
+    }
+    const action =
+      name === "item" ? "right" : name === "primary" ? "primary" : name;
+    if (name === "item" && raceStatus?.stage !== "racing") return;
+    socket.emit("action", {
+      action,
+      sampledAt: Date.now() + (sampleOffset ?? offset),
+    });
+    buzz(12);
+  },
+  onSwing(down, event, inside = true) {
+    if (state?.game !== "golf" || !canAct()) return;
+    if (down) {
+      event.preventDefault();
+      shotStarted = performance.now();
+      shotAim = axes.x;
+      socket.emit("action", {
+        action: "address",
+        aim: shotAim,
+        seq: ++shotSequence,
+      });
+      return;
+    }
+    if (!shotStarted) return;
+    if (!inside) {
+      socket.emit("action", { action: "cancel", seq: shotSequence });
+      shotStarted = 0;
+      return;
+    }
+    const power = Math.min(
+      1,
+      Math.max(0.12, (performance.now() - shotStarted) / 1600),
+    );
+    shotStarted = 0;
+    socket.emit("action", { action: "release", power, seq: shotSequence });
+    buzz(18);
+  },
+  onDraw(point, down, pointerId) {
+    if (!down || !point) {
+      drawLock = null;
+      pedals.up(pointerId);
+      return;
+    }
+    drawLock = point;
+    latest = { x: point.x, y: point.y, ready: true, progress: 1 };
+    pedals.down("gas", pointerId, performance.now());
+  },
+  onTool(kind, index = 0) {
+    const point = toolAim(kind, index);
+    drawLock = point;
+    latest = { x: point.x, y: point.y, ready: true, progress: 1 };
+    pedals.down("gas", "tool", performance.now());
+    setTimeout(() => {
+      pedals.up("tool");
+      if (drawLock === point) drawLock = null;
+    }, 180);
+  },
+};
+function syncPad() {
+  const guessing =
+    state?.game === "drawing" &&
+    !$("guess-panel").hidden &&
+    !$("guess-form").hidden;
+  const spec = playingNow()
+    ? padSpec(state.game, {
+        setup:
+          state.game === "mario-kart" &&
+          (!raceStatus || raceStatus.stage === "ready"),
+        guessing,
+        drawing: state?.sketch?.drawer === identity?.slot,
+        reveal: !!state?.sketch?.reveal,
+        motion: mode === "motion" && ready,
+      })
+    : null;
+  const key = spec?.key || "";
+  document.body.classList.toggle("game-pad", !!spec);
+  $("game-pad").hidden = !spec;
+  if (!spec) {
+    if (padKey) releasePedals();
+    releasePad = () => {};
+    padKey = "";
+    holds.clear();
+    drawLock = null;
+    stickAxes = null;
+    axes = { x: 0, y: 0 };
+    return;
+  }
+  if (key !== padKey) {
+    if (padKey) releasePedals();
+    padKey = key;
+    holds.clear();
+    drawLock = null;
+    stickAxes = spec.cells?.some((item) => item.stick) ? { x: 0, y: 0 } : null;
+    axes = { x: 0, y: 0 };
+    releasePad = mountPad($("game-pad"), spec, padHandlers);
+  }
+  const paused = !!state?.paused || !canAct();
+  for (const node of $("game-pad").querySelectorAll("button")) {
+    if (node.dataset.tap === "pause" || node.dataset.tap === "motion") continue;
+    if (node.dataset.hold === "boost")
+      node.disabled = paused || $("boost").disabled;
+    else if (node.dataset.hold === "gas")
+      node.disabled = paused || $("gas").disabled;
+    else if (node.dataset.hold === "brake")
+      node.disabled = paused || $("brake").disabled;
+    else node.disabled = paused;
+  }
+  for (const node of $("game-pad").querySelectorAll(".stick, .paper"))
+    node.classList.toggle("locked", paused);
+  const note = $("game-pad").querySelector("#pad-note");
+  if (note && state?.game === "drawing")
+    note.textContent = sketchStatus?.word || "Draw with a finger";
+  const status = $("game-pad").querySelector("#pad-status");
+  if (status) {
+    const text = padNotice();
+    status.hidden = !text;
+    status.textContent = text;
+  }
+}
+function padNotice() {
+  if (!state?.hostConnected) return "The big screen is reconnecting.";
+  if (state.phase === "classic" && !state.screenConnected)
+    return "The game screen is still connecting.";
+  if (state.paused) return "Paused on the big screen.";
+  if (!state.active?.includes(identity?.slot)) return "You’re up next.";
+  if (!ready) return needsGyro() ? "Allow motion to aim." : "";
+  if (
+    state.game === "mario-kart" &&
+    (!raceStatus || raceStatus.stage === "ready")
+  )
+    return raceStatus?.confirmed
+      ? "Waiting for the other phones to tap Ready."
+      : "Tap Ready. Every phone has to.";
+  return "";
+}
 function sensor(sample) {
   if (gateTask) return;
+  if (buttonPadOn()) {
+    lastSample = performance.now();
+    if (!ready) {
+      latest = { x: 0, y: 0 };
+      setReady(true);
+      $("calibration-track").hidden = true;
+      clearTimeout(sensorTimeout);
+    }
+    return;
+  }
   if (!started || mode !== "motion" || document.hidden) return;
   lastSample = performance.now();
   const result = (isWheel() ? wheelMotion : motion).update(sample, lastSample);
@@ -492,28 +780,24 @@ function unlockInteraction() {
     }
   } catch {}
   keepAwake();
-  // Fullscreen/orientation are best effort and cannot delay choosing a playable tier.
+  // Fullscreen is best effort. iPhone Safari has no page fullscreen, so the
+  // Safari-bar fill runs as well and must not delay a playable control.
   try {
-    const entering = document.fullscreenEnabled
-      ? document.documentElement.requestFullscreen({ navigationUI: "hide" })
-      : Promise.resolve();
-    Promise.resolve(entering)
-      .then(() => {
-        if (removed || document.hidden) orientationControl.release();
-        else
-          orientationControl.set(
-            racingRemote({
-              game: state?.game,
-              phase: state?.phase,
-              pointerMode: state?.pointerMode,
-            })
-              ? "landscape"
-              : "portrait",
-            true,
-          );
-      })
-      .catch(() => {});
-  } catch {}
+    const root = document.documentElement;
+    const request =
+      root.requestFullscreen ||
+      root.webkitRequestFullscreen ||
+      root.webkitRequestFullScreen;
+    const entering = request
+      ? request.call(root, { navigationUI: "hide" })
+      : Promise.reject();
+    Promise.resolve(entering).then(
+      () => holdPosture(true),
+      () => holdPosture(true),
+    );
+  } catch {
+    holdPosture(true);
+  }
 }
 function activateDevice(device) {
   if (removed) return;
@@ -591,7 +875,7 @@ function startPlaying() {
     });
   return gateTask;
 }
-$("enable").onclick = startPlaying;
+$("enable").onclick = () => (needsGyro() ? startPlaying() : beginTouch());
 function beginTouch() {
   gateGeneration++;
   gateTask = null;
@@ -707,6 +991,7 @@ function faceElements(racing) {
   };
 }
 function syncRemoteFace() {
+  document.body.classList.toggle("shell-pointer", pointerOn());
   const context = {
     game: state?.game,
     phase: state?.phase,
@@ -714,9 +999,7 @@ function syncRemoteFace() {
     landscape: landscape(),
   };
   const racing = started && racingRemote(context);
-  orientationControl.set(
-    started && !document.hidden ? (racing ? "landscape" : "portrait") : null,
-  );
+  holdPosture();
   const posture = remotePosture(context);
   $("remote").dataset.inputMode = mode;
   $("remote").dataset.mirrored = String($("left-handed").checked);
@@ -788,7 +1071,8 @@ function render() {
         pointerMode: state.pointerMode === true,
       }),
     rotate = false;
-  $("motion-pad").hidden = wheel;
+  $("motion-pad").hidden =
+    !pointerOn() && (wheel || !(needsGyro() && playingNow()));
   $("wheel-controls").hidden = !wheel || rotate;
   $("rotate-phone").hidden = !rotate;
   $("touch-steer-wrap").hidden = mode !== "touch";
@@ -897,7 +1181,7 @@ function render() {
       $("phone-title").textContent = "Ready for more?";
       $("phone-hint").textContent = "Tap Recenter to join the next game.";
     } else {
-      $("phone-title").innerHTML = "You’re ready. <br>Look up!";
+      $("phone-title").textContent = "You’re ready.";
       $("phone-hint").textContent =
         "Waiting for your crew. We’ll start together.";
     }
@@ -921,7 +1205,7 @@ function render() {
       ? "Use the arrows. Your driver is on the big screen."
       : "Hold Accelerate. Tilt left or right. Tap Boost for a burst.";
   } else if (state.phase === "classic" && active) {
-    $("phone-title").textContent = mode === "touch" ? "Drag to move." : g.verb;
+    $("phone-title").textContent = g.verb;
     $("phone-hint").textContent = g.detail;
   } else if (state.phase === "results") {
     const scored = state.players.filter((p) => state.active.includes(p.slot));
@@ -931,12 +1215,7 @@ function render() {
     $("phone-hint").textContent =
       "Another round is on the way. Keep your phone ready.";
   } else {
-    $("phone-title").textContent =
-      mode === "touch"
-        ? g.mode === "side"
-          ? "Slide to move."
-          : "Drag to pop."
-        : g.verb;
+    $("phone-title").textContent = g.verb;
     $("phone-hint").textContent =
       state.phase === "practice"
         ? "Try it now. Find your color on the big screen."
@@ -989,6 +1268,7 @@ function render() {
       $(id).disabled = true;
   }
   syncRemoteFace();
+  syncPad();
 }
 let previousScore = 0;
 socket.on("state", (next) => {
@@ -997,6 +1277,8 @@ socket.on("state", (next) => {
     oldRound = state?.roundId,
     oldActive = state?.active.includes(identity?.slot);
   state = next;
+  stakesPhone?.update();
+  syncWeb3Identity();
   if (remoteInputInterrupted(previous, next, identity?.slot)) releasePedals();
   if (oldGame !== next.game) syncSettings();
   if (
@@ -1011,7 +1293,14 @@ socket.on("state", (next) => {
       latest = { x: 0, y: 0 };
       $("touch-steer").value = "0";
     }
-    if (started && mode === "motion" && oldGame !== next.game) calibrate();
+    if (started && oldGame !== next.game && needsGyro() && mode === "motion")
+      calibrate();
+    else if (started && oldGame !== next.game && !needsGyro()) {
+      latest = latest || { x: 0, y: 0 };
+      if (!ready) setReady(true);
+      $("calibration-track").hidden = true;
+      clearTimeout(sensorTimeout);
+    }
   }
   offset = state.serverTime - Date.now();
   if (identity) {
@@ -1026,9 +1315,21 @@ socket.on("state", (next) => {
 function frame(time) {
   requestAnimationFrame(frame);
   if (!started) return;
+  if (buttonPadOn()) {
+    const aim = drawLock || stickAxes || followStick(time);
+    latest = { x: aim.x, y: aim.y, ready: true, progress: 1 };
+    if (!ready) {
+      setReady(true);
+      $("calibration-track").hidden = true;
+      clearTimeout(sensorTimeout);
+      syncPad();
+    }
+  }
   const shotPower = shotStarted
     ? Math.round(Math.min(1, (time - shotStarted) / 1600) * 100)
     : 0;
+  const swing = $("game-pad")?.querySelector("[data-swing]");
+  if (swing) swing.textContent = shotStarted ? `Swing ${shotPower}%` : "Swing";
   $("golf-power-meter").value = shotPower;
   $("golf-power-value").textContent = `${shotPower}%`;
   if (shotStarted) $("btn-a").dataset.caption = `Release · ${shotPower}%`;
@@ -1116,18 +1417,22 @@ document.addEventListener("visibilitychange", () => {
     setReady(false);
     socket.emit("input", { x: 0, y: 0 });
     wakeKeeper.release();
-    orientationControl.release();
   } else if (started) {
     keepAwake();
+    holdPosture(true);
     if (mode === "motion") calibrate();
     else setReady(true);
   }
 });
 matchMedia("(orientation: landscape)").addEventListener("change", () => {
   if (!started) return;
+  holdPosture(true);
   releasePedals();
   if (mode === "motion") calibrate();
   else render();
+});
+document.addEventListener("fullscreenchange", () => {
+  if (started) holdPosture(true);
 });
 window.addEventListener("orientationchange", () => {
   if (started && mode === "motion") setTimeout(calibrate, 150);
@@ -1144,11 +1449,12 @@ function openPartyMenu() {
   $("remote-help-copy").textContent = $("phone-hint").textContent;
   const unavailable = GAME_REMOTE[state?.game]?.unavailable || [];
   $("remote-unavailable").textContent = unavailable.length
-    ? `Not available in this version: ${unavailable.join("; ")}. Dim buttons have no action. Hold 1 to recenter; Home opens this menu.`
-    : "Dim buttons have no action. Hold 1 to recenter; Home opens this menu. Host controls, when assigned, are below.";
+    ? `Not available in this version: ${unavailable.join("; ")}. Pause opens this menu. Recenter is here too.`
+    : "Pause opens this menu. Recenter is here too.";
   if (!$("settings").open) $("settings").showModal();
 }
 $("tune").onclick = openPartyMenu;
+installSafariFill({ window, document });
 installPhonePageGuards({
   window,
   document,
@@ -1191,7 +1497,7 @@ $("leave").onclick = () => {
   gateGeneration++;
   gateTask = null;
   socket.emit("leave");
-  remember(`funcaster.player.${code}`, null);
+  remember(`chonks.player.${code}`, null);
   identity = null;
   started = false;
   generic?.stop();
@@ -1331,21 +1637,21 @@ socket.on("feedback", (data) => {
 for (const id of ["left-handed", "phone-haptics", "phone-sound"]) {
   try {
     $(id).checked =
-      JSON.parse(localStorage.getItem("funcaster." + id)) ??
+      JSON.parse(localStorage.getItem("chonks." + id)) ??
       id === "phone-haptics";
   } catch {}
   $(id).onchange = () => {
-    localStorage.setItem("funcaster." + id, JSON.stringify($(id).checked));
+    localStorage.setItem("chonks." + id, JSON.stringify($(id).checked));
     document.body.classList.toggle("left-handed", $("left-handed").checked);
   };
 }
 document.body.classList.toggle("left-handed", $("left-handed").checked);
 try {
-  $("profile-name").value = localStorage.getItem("funcaster.nickname") || "";
+  $("profile-name").value = localStorage.getItem("chonks.nickname") || "";
 } catch {}
 $("profile-name").onchange = () =>
   localStorage.setItem(
-    "funcaster.nickname",
+    "chonks.nickname",
     $("profile-name").value.trim().slice(0, 20),
   );
 socket.on("match.finish", (result) => {
@@ -1353,7 +1659,7 @@ socket.on("match.finish", (result) => {
   const score = result.scores.find((s) => s.slot === identity?.slot);
   if (!score) return;
   const game = gameById(state.game),
-    key = "funcaster.best." + game.gameId;
+    key = "chonks.best." + game.gameId;
   try {
     const old = Number(localStorage.getItem(key)),
       best =
@@ -1542,7 +1848,7 @@ $("leave").textContent = "Hold to leave the party";
 $("recenter").textContent = "Hold to recenter";
 for (const id of ["remote-skin", "large-targets", "calm-phone"]) {
   try {
-    const value = localStorage.getItem(`funcaster.${id}`);
+    const value = localStorage.getItem(`chonks.${id}`);
     if (id === "remote-skin") $(id).value = normalizeRemoteSkin(value);
     else $(id).checked = value === "true";
   } catch {}
@@ -1557,7 +1863,7 @@ for (const id of ["remote-skin", "large-targets", "calm-phone"]) {
     } else document.body.classList.toggle(id, $(id).checked);
     try {
       localStorage.setItem(
-        `funcaster.${id}`,
+        `chonks.${id}`,
         id === "remote-skin" ? $(id).value : String($(id).checked),
       );
     } catch {}

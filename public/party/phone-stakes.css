@@ -1,0 +1,108 @@
+.phone-stakes {
+  box-sizing: border-box;
+  width: min(92vw, 430px);
+  max-height: 85dvh;
+  overflow: auto;
+  padding: 22px;
+  border: 2px solid #2554a4;
+  border-radius: 16px;
+  color: #172b4d;
+  background: #f4f7ff;
+  box-shadow: 0 16px 60px #0008;
+  font:
+    16px/1.5 system-ui,
+    sans-serif;
+}
+.phone-stakes::backdrop {
+  background: #0b1832bb;
+}
+.phone-stakes h2 {
+  font-size: 24px;
+  line-height: 1.2;
+  margin: 14px 0;
+}
+.phone-stakes p {
+  overflow-wrap: anywhere;
+  margin: 12px 0;
+}
+.stake-ribbon {
+  display: block;
+  color: #284b95;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+}
+.stake-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+.phone-stakes button {
+  flex: 1 1 130px;
+  min-height: 48px;
+  padding: 10px 14px;
+  border: 1px solid #94a8cd;
+  border-radius: 10px;
+  font: inherit;
+  color: #172b4d;
+  background: #fff;
+}
+.phone-stakes #terms-accept {
+  background: #245dd4;
+  color: white;
+}
+.phone-stakes button[hidden] {
+  display: none;
+}
+.phone-stakes-status {
+  position: fixed;
+  z-index: 30;
+  bottom: max(6px, env(safe-area-inset-bottom));
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 90vw;
+  padding: 6px 12px;
+  border: 1px solid #84a2d1;
+  border-radius: 20px;
+  color: #fff;
+  background: #163a75;
+  font:
+    12px/1.3 system-ui,
+    sans-serif;
+}
+.phone-stakes-status[hidden] {
+  display: none;
+}
+a.phone-stakes-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  text-align: center;
+  text-decoration: none;
+}
+@media (max-width: 360px) and (max-height: 650px) {
+  .phone-stakes {
+    padding: 16px;
+    font-size: 15px;
+  }
+  .phone-stakes h2 {
+    font-size: 22px;
+    margin: 10px 0;
+  }
+  .phone-stakes p {
+    margin: 10px 0;
+  }
+}
+@media (max-height: 480px) {
+  .phone-stakes {
+    max-height: 92dvh;
+    padding: 14px;
+  }
+  .phone-stakes h2 {
+    font-size: 20px;
+  }
+  .phone-stakes p {
+    margin: 8px 0;
+  }
+}

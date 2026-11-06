@@ -33,7 +33,7 @@ $("#save").onclick = () => {
   a.href = URL.createObjectURL(
     new Blob([JSON.stringify(result)], { type: "application/json" }),
   );
-  a.download = "funcaster-kart-" + result.mode + ".json";
+  a.download = "chonks-kart-" + result.mode + ".json";
   a.click();
   setTimeout(() => URL.revokeObjectURL(a.href), 1000);
 };

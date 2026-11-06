@@ -91,18 +91,18 @@ async function pairingFor(code) {
   }
 }
 socket.on("connect", () => {
-  const saved = recalled("funcaster.host");
+  const saved = recalled("chonks.host");
   socket.emit("host", { ...(saved || {}), buildId, arcade: true }, (answer) => {
     if (answer.error) {
-      remember("funcaster.host", null);
+      remember("chonks.host", null);
       socket.emit("host", { buildId, arcade: true }, (retry) => {
         if (retry.error) return toast(retry.error);
-        remember("funcaster.host", retry);
+        remember("chonks.host", retry);
         setDisplayInvite(retry);
         pairingFor(retry.code);
       });
     } else {
-      remember("funcaster.host", answer);
+      remember("chonks.host", answer);
       setDisplayInvite(answer);
       pairingFor(answer.code);
     }
@@ -114,7 +114,7 @@ socket.on("disconnect", () => {
   toast("Connection paused. Keeping your party together…");
 });
 socket.on("ended", () => {
-  remember("funcaster.host", null);
+  remember("chonks.host", null);
   toast("This party has ended. Reload to start a new one.");
 });
 socket.on("frame", (frame) => renderer.setFrame(frame));
@@ -195,7 +195,7 @@ function results() {
 }
 socket.on("state", (next) => {
   state = next;
-  const recordsKey = `funcaster.records.${state.code}`;
+  const recordsKey = `chonks.records.${state.code}`;
   const records = recalled(recordsKey) || [];
   if (
     state.result?.status === "completed" &&
@@ -530,9 +530,9 @@ window.addEventListener("message", (event) => {
     )
   )
     return;
-  if (event.data?.type === "funcaster:home") socket.emit("lobby");
-  if (event.data?.type === "funcaster:loaded") $("classic-loading").hidden = true;
-  if (event.data?.type === "funcaster:error") {
+  if (event.data?.type === "chonks:home") socket.emit("lobby");
+  if (event.data?.type === "chonks:loaded") $("classic-loading").hidden = true;
+  if (event.data?.type === "chonks:error") {
     toast(String(event.data.message));
     socket.emit("lobby");
   }
@@ -540,9 +540,9 @@ window.addEventListener("message", (event) => {
 
 $("pause-game").onclick = () => socket.emit("pause");
 const playlists = {
-  quick: ["star-catch", "bubble-burst", "fruit-ninja"],
-  sports: ["golf", "table-tennis", "swordplay"],
-  race: ["mario-kart", "neon-drift", "kart"],
+  quick: ["star-catch", "bubble-burst", "table-tennis"],
+  sports: ["table-tennis", "star-catch", "bubble-burst"],
+  race: ["mario-kart", "neon-drift", "alien-attack"],
 };
 $("party-playlist").onchange = () => {
   const playlist = playlists[$("party-playlist").value] || [];
@@ -559,7 +559,7 @@ function downloadRecord(matchId) {
     );
     const a = document.createElement("a");
     a.href = url;
-    a.download = `funcaster-${matchId}.json`;
+    a.download = `chonks-${matchId}.json`;
     a.click();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   });
@@ -569,12 +569,12 @@ $("save-history").onclick = () => downloadRecord($("record-history").value);
 for (const id of ["party-volume", "reduced-effects"]) {
   try {
     $(id)[id === "party-volume" ? "value" : "checked"] =
-      JSON.parse(localStorage.getItem("funcaster." + id)) ??
+      JSON.parse(localStorage.getItem("chonks." + id)) ??
       (id === "party-volume" ? 70 : false);
   } catch {}
   $(id).onchange = () => {
     const value = id === "party-volume" ? Number($(id).value) : $(id).checked;
-    localStorage.setItem("funcaster." + id, JSON.stringify(value));
+    localStorage.setItem("chonks." + id, JSON.stringify(value));
     document.documentElement.classList.toggle(
       "gentle-effects",
       $("reduced-effects").checked,

@@ -6,10 +6,10 @@ const $ = (id) => document.getElementById(id),
   code = params.get("room"),
   key = params.get("key");
 if (key) {
-  sessionStorage.setItem("funcaster.display." + code, key);
+  sessionStorage.setItem("chonks.display." + code, key);
   history.replaceState(null, "", `/screen?room=${encodeURIComponent(code)}`);
 }
-const token = sessionStorage.getItem("funcaster.display." + code),
+const token = sessionStorage.getItem("chonks.display." + code),
   socket = io("/party");
 let state,
   frameKey,
@@ -59,13 +59,13 @@ socket.on("connect", () =>
       code,
       token,
       buildId,
-      resumeKey: sessionStorage.getItem("funcaster.screen." + code),
+      resumeKey: sessionStorage.getItem("chonks.screen." + code),
     },
     (r) => {
       if (r.error) $("display-title").textContent = r.error;
       else if (r.ref) {
         screenRef = r.ref;
-        sessionStorage.setItem("funcaster.screen." + code, r.resumeKey);
+        sessionStorage.setItem("chonks.screen." + code, r.resumeKey);
         if (state) draw(state);
       }
     },
@@ -104,7 +104,7 @@ function draw(next) {
   if (playingView !== null) {
     playingView = null;
     offer = null;
-    sessionStorage.removeItem("funcaster.view." + code);
+    sessionStorage.removeItem("chonks.view." + code);
   }
 
   for (const option of $("display-seats").options)
@@ -205,7 +205,7 @@ $("view-play").onclick = () => {
       $("screen-offer").textContent = r.error;
       return;
     }
-    sessionStorage.setItem("funcaster.view." + code, chosen.token);
+    sessionStorage.setItem("chonks.view." + code, chosen.token);
     playingView = chosen.view;
     offer = null;
     $("screen-pairing").hidden = true;
@@ -226,7 +226,7 @@ $("view-decline").onclick = () => {
 socket.on("view-revoked", () => {
   offer = null;
   playingView = null;
-  sessionStorage.removeItem("funcaster.view." + code);
+  sessionStorage.removeItem("chonks.view." + code);
   frameKey = null;
   $("display-stage").replaceChildren();
   $("screen-pairing").hidden = true;
@@ -251,7 +251,7 @@ window.addEventListener("message", (event) => {
     (f) => f.contentWindow === event.source,
   );
   if (!frame) return;
-  if (event.data?.type === "funcaster:view-ready") {
+  if (event.data?.type === "chonks:view-ready") {
     frame.style.visibility = "";
     frame.dataset.ready = "true";
     if (
@@ -261,7 +261,7 @@ window.addEventListener("message", (event) => {
     )
       $("display-loading")?.remove();
   }
-  if (event.data?.type === "funcaster:error") {
+  if (event.data?.type === "chonks:error") {
     const note = $("display-loading");
     if (note) note.textContent = event.data.message;
   }

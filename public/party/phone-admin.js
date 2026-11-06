@@ -15,6 +15,7 @@ export function mountPhoneAdmin(socket, getState) {
   close.onclick = () => dialog.close();
   const title = node("h2", "Your party."),
     message = node("p", null, "admin-message"),
+    authority = node("p", null, "admin-message"),
     pinForm = node("form"),
     pinLabel = node("label", "Staff PIN"),
     pin = node("input"),
@@ -54,7 +55,9 @@ export function mountPhoneAdmin(socket, getState) {
     statsText,
     staffLock,
   );
-  dialog.append(close, title, message, pinForm, body);
+  authority.setAttribute("aria-live", "polite");
+  authority.hidden = true;
+  dialog.append(close, title, authority, message, pinForm, body);
   document.body.append(dialog);
   let rights = { host: false, staff: false },
     seq = Date.now(),
@@ -136,6 +139,8 @@ export function mountPhoneAdmin(socket, getState) {
         ? "You’re the host."
         : "Staff access.";
     if (!s) return;
+    authority.hidden = !s.web3?.host?.message;
+    authority.textContent = s.web3?.host?.message || "";
     const waiting = ["lobby", "results"].includes(s.phase);
     start.disabled = !waiting || s.startReason !== "Ready to play";
     start.textContent = start.disabled
@@ -278,6 +283,7 @@ export function mountPhoneAdmin(socket, getState) {
     ack({ ok: true });
   });
   socket.on("admin.state", (next) => {
+    if (rights.host && !next.host && !next.staff && dialog.open) dialog.close();
     rights = next;
     seq = Math.max(seq, next.seq || 0);
     render();

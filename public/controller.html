@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1, viewport-fit=cover"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"
     />
     <meta name="theme-color" content="#0a58d6" />
     <meta
@@ -12,6 +12,8 @@
       content="black-translucent"
     />
     <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Funcaster" />
     <title>Your moves — Funcaster</title>
     <link rel="stylesheet" href="/party/party.css" />
     <link rel="stylesheet" href="/party/remote.css" />
@@ -22,11 +24,15 @@
     <link rel="manifest" href="/controller.webmanifest" />
     <meta property="og:image" content="/og-default.png" />
     <meta property="og:title" content="Funcaster · Scan. Tilt. Play." />
+    <link rel="stylesheet" href="/assets/os/fonts/fonts.css" />
     <link rel="stylesheet" href="/party/layout.css" />
     <link rel="stylesheet" href="/party/phone-page.css" />
     <link rel="stylesheet" href="/party/remote-skins.css" />
+    <link rel="stylesheet" href="/party/phone-stakes.css" />
+    <link rel="stylesheet" href="/party/pads.css" />
   </head>
   <body class="phone-page" data-skin="luna" data-posture="pointer">
+    <div id="game-pad" hidden></div>
     <div id="stage">
       <div id="remote" class="remote asleep" data-posture="pointer">
         <header id="row-top">
@@ -152,6 +158,7 @@
             <div
               id="motion-pad"
               class="motion-pad"
+              hidden
               aria-label="Touch control pad: drag to move"
               role="application"
               tabindex="0"
@@ -376,7 +383,7 @@
       </p>
       <section class="remote-help" aria-label="Current controls">
         <h3 id="remote-help-title">Your remote</h3>
-        <p id="remote-help-copy">Hold 1 to recenter. Home opens this menu.</p>
+        <p id="remote-help-copy">Pause opens this menu. Recenter is here too.</p>
         <p id="remote-unavailable"></p>
         <p id="capability-note"></p>
         <p id="sensor-diagnostics" class="settings-note"></p>

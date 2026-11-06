@@ -14,7 +14,7 @@ document.getElementById("preview").onclick = () => {
 function sendInput() {
   frame.contentWindow.postMessage(
     {
-      type: "funcaster:input",
+      type: "chonks:input",
       x: Number(document.getElementById("preview-x").value),
       y: Number(document.getElementById("preview-y").value),
     },

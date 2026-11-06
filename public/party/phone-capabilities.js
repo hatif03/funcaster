@@ -230,24 +230,70 @@ export function createWakeKeeper(navigator) {
   };
 }
 
-/** Best effort only: reconcile later games even if an older lock resolves late. */
-export function createOrientationControl(orientation) {
+/**
+ * Class that keeps the controller in `desired` when the OS will not.
+ * `portrait` is the device's current orientation, not the layout we want.
+ */
+export function orientationFallback(desired, portrait) {
+  if (desired === "landscape" && portrait) return "lock-landscape";
+  if (desired === "portrait" && !portrait) return "lock-portrait";
+  return "";
+}
+
+/**
+ * Native lock where the browser allows it (Chrome, once fullscreen).
+ * Everywhere else, including iOS Safari, a CSS rotation keeps the same posture.
+ */
+export function createOrientationControl(orientation, env = {}) {
+  const root = env.root || globalThis.document?.documentElement;
+  const portrait =
+    env.portrait ||
+    (() =>
+      globalThis.matchMedia?.("(orientation: portrait)")?.matches ?? false);
   let desired = null;
+  const paint = () => {
+    if (!root?.classList) return;
+    const name = orientationFallback(desired, !!portrait());
+    root.classList.toggle("lock-landscape", name === "lock-landscape");
+    root.classList.toggle("lock-portrait", name === "lock-portrait");
+  };
   const unlock = () => {
     try {
       orientation?.unlock?.();
     } catch {}
   };
   const apply = (posture) => {
-    if (posture === null) return unlock();
+    if (posture == null) {
+      unlock();
+      paint();
+      return;
+    }
+    let pending;
     try {
-      Promise.resolve(orientation?.lock?.(posture))
-        .then(() => {
-          if (desired !== posture) apply(desired);
-        })
-        .catch(() => {});
-    } catch {}
+      pending = orientation?.lock?.(posture);
+    } catch {
+      paint();
+      return;
+    }
+    if (!pending || typeof pending.then !== "function") {
+      paint();
+      return;
+    }
+    pending
+      .then(() => {
+        if (desired !== posture) apply(desired);
+        else root?.classList?.remove("lock-landscape", "lock-portrait");
+      })
+      .catch(() => {
+        if (desired === posture) paint();
+      });
   };
+  globalThis.matchMedia?.("(orientation: portrait)")?.addEventListener?.(
+    "change",
+    () => {
+      if (desired) apply(desired);
+    },
+  );
   return {
     set(posture, force = false) {
       if (posture !== null && !["portrait", "landscape"].includes(posture))
@@ -258,7 +304,100 @@ export function createOrientationControl(orientation) {
     },
     release() {
       desired = null;
-      unlock();
+      apply(null);
     },
+  };
+}
+
+/** iPhone Safari has no page fullscreen. A home-screen app already has it. */
+export function iphoneBrowser(ua, { touch = false, standalone = false } = {}) {
+  if (standalone) return false;
+  const text = String(ua || "");
+  if (/iPhone|iPod/.test(text)) return true;
+  return !!(touch && /Macintosh/.test(text));
+}
+
+/**
+ * Safari's bars are still up when the visible height is shorter than the
+ * screen edge it is measured against. Upright, that edge is the long side.
+ * Sideways, it is the short side. `chrome` is the strip that stays.
+ */
+export function safariBarsOpen({
+  viewportHeight = 0,
+  offsetTop = 0,
+  screenWidth = 0,
+  screenHeight = 0,
+  screenShort = 0,
+  chrome = 20,
+} = {}) {
+  const width = screenWidth || screenShort;
+  const height = screenHeight || screenShort;
+  if (!viewportHeight || !width || !height) return false;
+  const along =
+    viewportHeight > Math.min(width, height)
+      ? Math.max(width, height)
+      : Math.min(width, height);
+  return viewportHeight + offsetTop < along - chrome;
+}
+
+/**
+ * Make the phone page tall enough to scroll Safari's bars away, then lock
+ * that scroll once they are gone. A tap scrolls for the player; if Safari
+ * ignores it, the page can still be slid.
+ */
+export function installSafariFill({ window, document }) {
+  const nav = window.navigator || {};
+  const standalone =
+    nav.standalone === true ||
+    window.matchMedia?.("(display-mode: standalone)")?.matches === true;
+  if (
+    !iphoneBrowser(nav.userAgent, {
+      touch: (nav.maxTouchPoints || 0) > 1,
+      standalone,
+    })
+  )
+    return () => {};
+  const root = document.documentElement;
+  let scrolled = 0;
+  const metrics = () => {
+    const viewport = window.visualViewport;
+    const screen = window.screen || {};
+    return {
+      viewportHeight: viewport?.height || window.innerHeight || 0,
+      offsetTop: viewport?.offsetTop || 0,
+      screenWidth: screen.width || 0,
+      screenHeight: screen.height || 0,
+    };
+  };
+  const measure = () => {
+    const open = safariBarsOpen(metrics());
+    root.classList.toggle("ios-bars", open);
+    if (!open && scrolled) {
+      scrolled = 0;
+      window.scrollTo?.(0, 0);
+    }
+  };
+  const kick = () => {
+    if (!root.classList.contains("ios-bars")) return;
+    const y = window.scrollY || 0;
+    scrolled = y + 64;
+    window.scrollTo?.(0, scrolled);
+  };
+  const listen = (target, type, fn) => {
+    target?.addEventListener?.(type, fn);
+    return () => target?.removeEventListener?.(type, fn);
+  };
+  const stop = [
+    listen(window, "resize", measure),
+    listen(window, "orientationchange", measure),
+    listen(window, "scroll", measure),
+    listen(window.visualViewport, "resize", measure),
+    listen(window.visualViewport, "scroll", measure),
+    listen(document, "touchstart", kick),
+  ];
+  measure();
+  return () => {
+    for (const fn of stop) fn();
+    root.classList.remove("ios-bars");
   };
 }
