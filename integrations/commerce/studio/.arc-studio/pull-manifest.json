@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "entries": {
+    "foundry.toml": {
+      "hash": "d4487433e6302f64723a9498dbecef26761dfbe156a4599a04ff2f93cf4813bf",
+      "pulledAt": "2026-11-06T17:25:21.289Z"
+    },
+    "remappings.txt": {
+      "hash": "7db29ab99ec9f13cfd2dc2c9c746f77e57f85c17c6186a15204e1dfdcfadd29c",
+      "pulledAt": "2026-11-06T17:25:21.289Z"
+    },
+    "contracts/RevenueRouter.sol": {
+      "hash": "527ea3af2d1482183255fa173f6f97a55560bb7b929ff1de9b1bab16ceb5c949",
+      "pulledAt": "2026-11-06T17:25:21.290Z"
+    },
+    "contracts/test/RevenueRouter.Base.t.sol": {
+      "hash": "700977087c662f67e7edda9716202fc492d8f23087236dbef27570b6f8f6a247",
+      "pulledAt": "2026-11-06T17:26:22.461Z"
+    },
+    "contracts/test/RevenueRouter.Claim.t.sol": {
+      "hash": "714b2f10ccae2c29ae6ed7116fe791097e7647dea8cc7c69fcafa6e606c60137",
+      "pulledAt": "2026-11-06T17:26:22.462Z"
+    },
+    "contracts/test/RevenueRouter.Pay.t.sol": {
+      "hash": "d844800e6eb316e04e4ad97aa1f618e4dfcb1df5d27a73dc74aa0ff0d2cc90ce",
+      "pulledAt": "2026-11-06T17:25:21.290Z"
+    },
+    "contracts/test/RevenueRouter.invariant.t.sol": {
+      "hash": "279cf0fd5537bbe99ac23415102bd05ddb7090fc4f91e1ea8d425ea0efe7f304",
+      "pulledAt": "2026-11-06T17:25:21.290Z"
+    },
+    "contracts/test/RevenueRouter.t.sol": {
+      "hash": "428fe71dd2ead8f9a0617fb9e2f7571c6b3b7de62daf1af127b0015690f39335",
+      "pulledAt": "2026-11-06T17:26:22.463Z"
+    },
+    "contracts/test/mocks/MockEIP3009USDC.sol": {
+      "hash": "2de64445232269713c8db5fcb83afa06640f2b547096ce95f4b7a1ae9405f76a",
+      "pulledAt": "2026-11-06T17:26:22.464Z"
+    }
+  }
+}

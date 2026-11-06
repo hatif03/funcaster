@@ -1,0 +1,2 @@
+forge-std/=../../arc/onchain/lib/forge-std/src/
+@openzeppelin/contracts/=../../arc/onchain/node_modules/@openzeppelin/contracts/
