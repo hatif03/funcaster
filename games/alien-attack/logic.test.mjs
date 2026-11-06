@@ -12,7 +12,7 @@ import {
 // World: x east, y north, z up. The player sits SOUTH; the phone lies flat,
 // leaned a few degrees toward the face. Rolls happen about the north–south
 // axis; the player's right is east, and east-end-down reads +t
-// (DEVICE-PINNED).
+// (DEVICE-PINNED 2026-08-24).
 
 const rot = (v, n, a) => {
   const c = Math.cos(a);

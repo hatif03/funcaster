@@ -66,6 +66,28 @@ const channel = createChannel({
   },
   // A is a toggle: one press puts the pen on the paper, the next lifts it —
   // no holding a button through a whole stroke.
+  onSample: (sample, _dt, now, slot = 0) => {
+    if (!channel.link.party || !sample?.party) return;
+    const pen = penFor(slot);
+    const drawing =
+      !sketchTurn || (sketchTurn.drawer === slot && !sketchTurn.reveal);
+    const down = drawing && sample.party.active && sample.party.gas;
+    const flag = penStates.get(slot);
+    if (!down) {
+      if (flag === true) pen.penUp();
+      penStates.set(slot, false);
+      return;
+    }
+    if (flag === "tool") return;
+    const point = channel.poll(now, slot);
+    if (!point) return;
+    if (flag === true) {
+      pen.penMove(point.x, point.y);
+      return;
+    }
+    const result = pen.penDown(point.x, point.y);
+    penStates.set(slot, result.tool ? "tool" : true);
+  },
   onA: (slot = 0) => {
     if (channel.link.party) {
       if (sketchTurn && (sketchTurn.drawer !== slot || sketchTurn.reveal))
@@ -77,7 +99,7 @@ const channel = createChannel({
         pen.penUp();
         penStates.set(slot, false);
       } else {
-        const result = pen.penDown(Math.max(0.065, point.x), point.y);
+        const result = pen.penDown(point.x, point.y);
         penStates.set(slot, !result.tool);
       }
       channel.feedback({
@@ -184,7 +206,11 @@ function drawToolbar(now) {
       ctx.font = `${Math.round(h * 0.5)}px -apple-system, sans-serif`;
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
-      ctx.fillText(e.kind === "eraser" ? "🧽" : "🗑", cx, cy + 1);
+      ctx.fillText(
+        e.kind === "eraser" ? "🧽" : e.kind === "undo" ? "↩" : "🗑",
+        cx,
+        cy + 1,
+      );
     }
   }
   void now;
@@ -233,7 +259,7 @@ function frame(now) {
         pen.penUp();
         penStates.set(seat.slot, false);
       } else if (point && penStates.get(seat.slot))
-        pen.penMove(Math.max(0.065, point.x), point.y);
+        pen.penMove(point.x, point.y);
     }
   const p = channel.poll(now);
   if (p) aim = p;

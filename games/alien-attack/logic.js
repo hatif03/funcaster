@@ -51,8 +51,8 @@ export function mulberry32(seed) {
  * The capture decides which end of the long axis is under the right hand
  * from the screen's slight lean toward the face; the player's right is 90°
  * clockwise from the player→phone line — the textbook v×up, DEVICE-PINNED
- * after two earlier builds accidentally play-tested only their fallbacks
- * and briefly pinned a mirror of reality.
+ * (2026-08-24) after two earlier builds accidentally play-tested only
+ * their fallbacks and briefly pinned a mirror of reality.
  */
 export function captureTray(axes, prevRight = null) {
   const vx = -axes.z.x;                 // player→phone viewing direction,

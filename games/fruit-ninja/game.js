@@ -1,6 +1,6 @@
 import { dprFor, viewPixelBudget } from "../../core/pixel-budget.js";
 import { scopedStorage } from "../../sdk/index.js";
-const gameStorage = scopedStorage("funcaster.fruit-ninja");
+const gameStorage = scopedStorage("chonks.fruit-ninja");
 import { Trail } from "../../sdk/index.js";
 import * as THREE from "/vendor/three/three.module.js";
 import { consumeLaunchSplash, goHome } from "../../sdk/index.js";

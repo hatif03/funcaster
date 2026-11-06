@@ -40,6 +40,8 @@ export const TOOLBAR = (() => {
   entries.push({ kind: 'eraser', value: null, rect: { x, y, w, h } });
   y += 0.056;
   entries.push({ kind: 'clear', value: null, rect: { x, y, w, h } });
+  y += 0.056;
+  entries.push({ kind: 'undo', value: null, rect: { x, y, w, h } });
   return entries;
 })();
 
@@ -117,6 +119,7 @@ export class Sketch {
     else if (tool.kind === 'size') this.sizeIndex = tool.value;
     else if (tool.kind === 'eraser') this.eraser = true;
     else if (tool.kind === 'clear') this.clear();
+    else if (tool.kind === 'undo') this.undo();
     this.onEvent({ type: 'tool', tool });
   }
 
@@ -124,5 +127,11 @@ export class Sketch {
     this.strokes = [];
     this.current = null;
     this.onEvent({ type: 'clear' });
+  }
+
+  undo() {
+    this.strokes.pop();
+    this.current = null;
+    this.onEvent({ type: 'undo' });
   }
 }
