@@ -48,7 +48,7 @@ def prepare(source: Path, output: Path):
 
     def credit(file, **extra):
         return dict(file=file, author='CraftPix.net', sourceUrl='https://craftpix.net/file-licenses/',
-                    licence='CraftPix free-asset licence; owner confirmed free use, 6 November 2026',
+                    licence='CraftPix free-asset licence; owner confirmed free use, 21 October 2026',
                     attributionRequired=True, modified=False, dateAdded='2026-11-06', **extra)
 
     def sheet(pack, entry, file, cell, source_animation):

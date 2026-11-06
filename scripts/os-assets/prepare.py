@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the supplied Funcaster OS subset. Run with Python, Pillow, fonttools/brotli and ffmpeg.
+"""Build the supplied Funcaster subset. Run with Python, Pillow, fonttools/brotli and ffmpeg.
 
 Sources are read-only. All generated media stays under assets/os; credits are upserted.
 Animations/audio are lazy assets, not part of the shell's initial-transfer budget.
@@ -43,7 +43,7 @@ def credit(path, modified=True, wallpaper=False):
     CREDITS.append(dict(file=path.relative_to(ROOT).as_posix(),
                         author='Supplied by the owner' if wallpaper else 'NullTale pack; underlying artwork, sounds and fonts © Microsoft Corporation',
                         sourceUrl='' if wallpaper else 'https://nulltale.itch.io/',
-                        licence='Owner supplied' if wallpaper else 'Used as supplied; owner confirmed free use, 6 November 2026',
+                        licence='Owner supplied' if wallpaper else 'Used as supplied; owner confirmed free use, 21 October 2026',
                         attributionRequired=True, modified=modified, dateAdded=DATE))
 
 
@@ -139,7 +139,8 @@ def legacy_glove():
     path = OUT/'cursors/glove.png'
     image.resize((128,128), Image.Resampling.LANCZOS).save(path,optimize=True)
     CREDITS.append(dict(file=path.relative_to(ROOT).as_posix(),
-                        author='Existing Funcaster Console artwork',
+                        author='Existing Funcaster artwork',
+                        sourceUrl='https://github.com/hatif03/web3-multiplayer-games/blob/main/public/assets/hand-p1.png',
                         source=source.relative_to(ROOT).as_posix(),
                         sourceSha256=hashlib.sha256(source.read_bytes()).hexdigest(),
                         licence='Retained repository artwork, reused per owner build specification',

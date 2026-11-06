@@ -1,26 +1,26 @@
-# Funcaster OS assets (AS1–AS4)
+# Funcaster assets (AS1–AS4)
 
 The asset pipeline and generated subset are implemented. Sources remain unchanged in `assets/source/`; the optional glove is derived from the unchanged `public/assets/hand-p1.png`. Output is resolved relative to the script and written to `assets/os/`, with provenance upserted in `assets/CREDITS.json`. No Node dependency or lockfile changes are needed. The owner authorized PR delivery and merge on 6 November after verification.
 
 Run these commands from the repository root (or use an absolute script path):
 
 ```sh
-python3 -m venv --system-site-packages /tmp/funcaster-os-assets
-/tmp/funcaster-os-assets/bin/python -m pip install Pillow fonttools brotli
-/tmp/funcaster-os-assets/bin/python scripts/os-assets/prepare.py
+python3 -m venv --system-site-packages /tmp/chonks-os-assets
+/tmp/chonks-os-assets/bin/python -m pip install Pillow fonttools brotli
+/tmp/chonks-os-assets/bin/python scripts/os-assets/prepare.py
 ```
 
 FFmpeg must have `libvorbis` and `libmp3lame`. The installed macOS Homebrew build on 6 November lacks `libvorbis`. A local alternative is:
 
 ```sh
-/tmp/funcaster-os-assets/bin/python -m pip install imageio-ffmpeg
-FFMPEG=$(/tmp/funcaster-os-assets/bin/python -c 'import imageio_ffmpeg; print(imageio_ffmpeg.get_ffmpeg_exe())') /tmp/funcaster-os-assets/bin/python scripts/os-assets/prepare.py
+/tmp/chonks-os-assets/bin/python -m pip install imageio-ffmpeg
+FFMPEG=$(/tmp/chonks-os-assets/bin/python -c 'import imageio_ffmpeg; print(imageio_ffmpeg.get_ffmpeg_exe())') /tmp/chonks-os-assets/bin/python scripts/os-assets/prepare.py
 ```
 
 After shell source changes, refresh the report without regenerating media:
 
 ```sh
-/tmp/funcaster-os-assets/bin/python scripts/os-assets/prepare.py --report-only
+/tmp/chonks-os-assets/bin/python scripts/os-assets/prepare.py --report-only
 npm run test:os
 ```
 
