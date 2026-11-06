@@ -1,0 +1,10 @@
+{
+  "name": "@chonks/ens",
+  "private": true,
+  "type": "module",
+  "description": "Pinned ENS runtime; install explicitly for live ENS checks, never loaded by partner-off play.",
+  "dependencies": {
+    "@ensdomains/ensjs": "5.2.7",
+    "viem": "2.57.14"
+  }
+}
