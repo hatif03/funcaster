@@ -1,7 +1,7 @@
 export const BRAND = Object.freeze({
   name: "Funcaster",
-  os: "Funcaster OS",
-  mascot: "Caster",
+  os: "Funcaster",
+  mascot: "Funcaster",
   wordmark: "funcaster",
   tagline: "Scan. Tilt. Play.",
 });

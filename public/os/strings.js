@@ -1,5 +1,5 @@
 export const STRINGS = Object.freeze({
-  welcome: "Welcome to Funcaster OS",
+  welcome: "Welcome to Funcaster",
   intro: "Your next game night starts here.",
   subtitle: "One screen. Four phones. Everyone’s invited.",
   preview: "Desktop preview",
@@ -52,7 +52,7 @@ export const WINDOW_STRINGS = Object.freeze({
 });
 
 export const SHELL_STRINGS = Object.freeze({
-  openDesktop: "Open Funcaster desktop",
+  openDesktop: "Open Funcaster",
   openWindows: "Open windows",
   currentTime: "Current time",
   taskbar: "Taskbar",
@@ -73,9 +73,9 @@ export const SHELL_STRINGS = Object.freeze({
   fullscreenUnavailable:
     "Your browser could not enter full screen. You can continue in this window.",
   aboutDemo:
-    "This is a preview of Funcaster OS. Demo rooms do not connect to phones or start live games.",
+    "This is a preview of Funcaster. Demo rooms do not connect to phones or start live games.",
   aboutSession:
-    "Funcaster OS connects this screen to your crew’s phone controllers. Choose a game, set its options and play together.",
+    "Funcaster connects this screen to your crew’s phone controllers. Choose a game, set its options and play together.",
   clientError:
     "The console could not connect. Check your connection and reload this page.",
   connectionPaused: "Connection paused. Keeping your party together…",
@@ -359,6 +359,9 @@ export const WINDOW_CONTENT_STRINGS = Object.freeze({
   lock: "Lock new joins",
   next: "Next player",
   hostExplain: "The host phone can choose games and manage this party.",
+  nameSaving: "Saving name…",
+  nameLocal: "Name is local for now",
+  nameReady: "Name saved",
   inviteIntro: "Scan. Pick up your phone. Play.",
   qrAlt: "Scan this QR code to join the party",
   qrLoading: "Getting your QR code…",
@@ -418,7 +421,7 @@ export const WINDOW_CONTENT_STRINGS = Object.freeze({
   skin: "Skin",
   luna: "Luna blue",
   classic: "Classic grey",
-  mascot: "Show Caster",
+  mascot: "Show Chonk",
   pets: "Street pets",
   avatars: "Player avatars",
   taxi: "Taxi yellow",
@@ -537,4 +540,60 @@ export const BOOT_STRINGS = Object.freeze({
   refresh: "Refresh event counters",
   staffStatus: (mode, locked) =>
     `${mode === "kiosk" ? "Kiosk" : "Party"} mode · ${locked ? "Room locked" : "Room open"}`,
+});
+
+export const ENS_STRINGS = Object.freeze({
+  joinLabel: "Party code or table name",
+  joinPlaceholder: "ABC123 or your table name",
+  checking: "Finding your table…",
+  unavailable:
+    "We couldn’t check that table. Scan the QR or enter its party code.",
+  tableName: "Table name",
+  historyTitle: "Table history",
+  historyLoad: "Read chain history",
+  historyMore: "Earlier matches",
+  historyLoading: "Reading match receipts…",
+  historyEmpty:
+    "No matches in this block range. Check earlier matches if available.",
+  historySource:
+    "Read from ENS logs. Independent receipt verification is pending.",
+  historyError:
+    "Chain history is unavailable. Your local records are still here.",
+  transaction: "Transaction",
+  block: (number) => `Block ${number}`,
+});
+export const WEB3_STRINGS = Object.freeze({
+  playMoney: "PLAY MONEY · no cash value",
+  rules: {
+    winner: "Winner takes all.",
+    top2: "Top two split 70/30.",
+    equal: "Split among the best.",
+  },
+  claiming: "Collecting payouts…",
+  stakes: "Stakes",
+  amount: "Amount per player",
+  payout: "Payout",
+  apply: "Ask players to accept",
+  cancel: "Play without stakes",
+  off: "Off",
+  unavailable:
+    "Stakes need enabled chain services and at least two ready, named humans in a replay-verifiable game.",
+  ready: "Optional play money. Each player accepts on their own phone.",
+  cancelTitle: "Cancel these stakes?",
+  cancelHelp:
+    "Funding already sent stays in the pot until its refund deadline. You can play without stakes now.",
+  keep: "Keep stakes",
+  pot: "Open pot and refund details",
+  states: {
+    off: "Off",
+    terms: "Confirm on phones",
+    funding: "Funding",
+    locked: "Ready to play",
+    playing: "Playing",
+    settling: "Settling",
+    settled: "Settled",
+    refunded: "Refunded",
+    contested: "Disputed",
+    "refund-pending": "Refund pending",
+  },
 });

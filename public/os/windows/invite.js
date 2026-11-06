@@ -3,6 +3,7 @@ import { safeWebUrl, screenUrl, canEdit, playerRows } from "../window-data.js";
 import { WINDOW_CONTENT_STRINGS as S } from "../strings.js";
 import { utility, button, checkbox, note, section } from "./utility.js";
 import { choiceList } from "./game-properties.js";
+import { ENS_STRINGS as ES } from "../strings.js";
 export function open(ctx) {
   const page = utility(ctx, S.inviteIntro),
     qr = h("img", { class: "os-invite-qr", alt: S.qrAlt, hidden: true }),
@@ -19,6 +20,19 @@ export function open(ctx) {
     "aria-label": S.link,
     dataset: { nav: "", id: "invite-link" },
   });
+  const tableName = h("input", {
+    type: "text",
+    readOnly: true,
+    "aria-label": ES.tableName,
+    dataset: { nav: "", id: "table-name" },
+  });
+  const named = h(
+    "label",
+    { hidden: true, style: "display:block;min-width:0" },
+    ES.tableName,
+    tableName,
+  );
+  tableName.style.width = "100%";
   const copy = button("copy-invite", S.copy, async () => {
     try {
       await navigator.clipboard.writeText(join.value);
@@ -99,6 +113,7 @@ export function open(ctx) {
       code,
     ),
     h("div", { class: "os-invite-link" }, join, copy),
+    named,
     second,
     note(S.screenIntro),
     remote,
@@ -118,6 +133,9 @@ export function open(ctx) {
     const room = state.room,
       live = state.connection === "connected" && !ctx.demo;
     code.textContent = room?.code || "—";
+    const party = room?.web3?.party;
+    named.hidden = !party?.name;
+    tableName.value = party?.name || "";
     if (currentCode !== room?.code) {
       currentCode = room?.code;
       typed.value = room?.code || "";

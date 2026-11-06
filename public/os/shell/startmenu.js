@@ -71,6 +71,7 @@ export function mountStartMenu(
     ["invite", S.invite, "invite.network"],
     ["playlists", S.playlists, "playlists.media"],
     ["records", S.records, "records.history"],
+    ["live", "Funcaster Live", "invite.network"],
     ["settings", S.settings, "settings"],
     ["help", S.help, "help"],
   ])
@@ -184,6 +185,7 @@ export function mountStartMenu(
     isOpen: () => open,
     update(state) {
       const room = state.room;
+      right.querySelector('[data-id="menu-live"]').hidden = !room?.web3;
       heading.textContent = S.room(room?.code);
       crew.textContent = S.crew(
         room?.players?.filter((p) => p.connected).length || 0,

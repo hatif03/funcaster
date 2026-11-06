@@ -4,12 +4,13 @@ import {
   optionSchema,
   matchSetup,
 } from "../../core/catalog.js";
-import { PROPERTIES_STRINGS as S } from "./strings.js";
+import { PROPERTIES_STRINGS as S, WEB3_STRINGS as W } from "./strings.js";
 
 const autoOrInt = (value) =>
   value === "auto" || value == null ? null : Number(value);
 const windBool = (value) => value === true || value === "on";
 export const OPTION_UI = Object.freeze({
+  stakes: { tab: "rules", order: 90, kind: "stakes", label: W.stakes },
   mode: {
     tab: "play",
     order: 10,
@@ -138,9 +139,9 @@ export function optionFields(
 ) {
   id = gameById(id).id;
   const fields = [...schema];
-  for (const key of ["pair", "customWords"])
+  for (const key of ["pair", "customWords", "stakes"])
     if (
-      OPTION_UI[key].only.includes(id) &&
+      (!OPTION_UI[key].only || OPTION_UI[key].only.includes(id)) &&
       !fields.some((field) => field.key === key)
     )
       fields.push({ key, label: OPTION_UI[key].label, choices: [] });

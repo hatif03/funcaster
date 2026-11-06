@@ -1,7 +1,7 @@
 import { gameById } from "../../../core/catalog.js";
 import { SEATS } from "../../../core/seats.js";
 import { artwork } from "../../party/art.js";
-import { PROPERTIES_STRINGS as S } from "../strings.js";
+import { PROPERTIES_STRINGS as S, WEB3_STRINGS as W } from "../strings.js";
 import { h } from "../util/h.js";
 import { visibleFocusable } from "../wm.js";
 import {
@@ -257,6 +257,119 @@ function fieldControl(field, game, model, ctx, reportError) {
         next.label;
     };
     el.append(button);
+  } else if (field.kind === "stakes") {
+    el.style.display = "grid";
+    el.style.gap = "6px";
+    let amount = "0.50",
+      rule = "winner",
+      busy = false;
+    const amounts = choiceList({
+      id: "gp-stakes-amount",
+      label: W.amount,
+      choices: [
+        ["0.50", "0.50 play-USDC"],
+        ["1.00", "1.00 play-USDC"],
+        ["2.00", "2.00 play-USDC"],
+      ],
+      change: (value) => {
+        amount = value;
+        amounts.update(amount);
+      },
+    });
+    const rules = choiceList({
+      id: "gp-stakes-rule",
+      label: W.payout,
+      choices: Object.entries(W.rules),
+      change: (value) => {
+        rule = value;
+        rules.update(rule);
+      },
+    });
+    const note = h("p", { class: "gp-field-help", role: "status" });
+    const apply = h("button", {
+      type: "button",
+      class: "xp-button",
+      text: W.apply,
+      dataset: { nav: "", id: "gp-stakes" },
+      async onclick() {
+        if (busy) return;
+        busy = true;
+        apply.disabled = true;
+        try {
+          await model.flush();
+          const answer = await ctx
+            .getSession()
+            .stakes({ rung: 1, amount, rule });
+          if (answer?.error) reportError(answer.error);
+        } finally {
+          busy = false;
+          updater(null, model.snapshot().room);
+        }
+      },
+    });
+    const cancel = h("button", {
+      type: "button",
+      class: "xp-button",
+      text: W.cancel,
+      dataset: { nav: "", id: "gp-stakes-cancel" },
+      async onclick() {
+        const action = await ctx.wm.modal({
+          title: W.cancelTitle,
+          text: W.cancelHelp,
+          buttons: [
+            { id: "cancel-stakes", label: W.cancel },
+            { id: "keep", label: W.keep },
+          ],
+          cancelButton: "keep",
+        });
+        if (action !== "cancel-stakes") return;
+        const answer = await ctx.getSession().stakes({ cancel: true });
+        if (answer?.error) reportError(answer.error);
+      },
+    });
+    const pot = h("a", {
+      class: "xp-button",
+      text: W.pot,
+      target: "_blank",
+      rel: "noopener",
+      dataset: { nav: "", id: "gp-stakes-pot" },
+    });
+    el.append(
+      h("p", { class: "gp-field-help", text: W.playMoney }),
+      amounts.el,
+      rules.el,
+      apply,
+      cancel,
+      pot,
+      note,
+    );
+    updater = (_next, room) => {
+      const v = room?.web3?.stakes,
+        on = v && v.mode !== "off",
+        active = v && v.status !== "off",
+        editable =
+          on &&
+          ["lobby", "results"].includes(room.phase) &&
+          (!active || ["settled", "refunded"].includes(v.status));
+      amounts.update(amount, editable && !busy);
+      rules.update(rule, editable && !busy);
+      apply.disabled = !editable || busy;
+      cancel.hidden = !active;
+      cancel.disabled =
+        !["lobby", "results"].includes(room?.phase) ||
+        ["settling", "contested"].includes(v?.status);
+      pot.hidden = !v?.explorer;
+      if (v?.explorer) pot.href = v.explorer;
+      note.textContent = !on
+        ? W.unavailable
+        : active
+          ? `${v.mock ? "MOCK · " : ""}${W.states[v.status] || v.status} · ${(v.funded || []).filter(Boolean).length} funded. ${v.notice || ""}`
+          : W.ready;
+    };
+    destroy = () => {
+      amounts.destroy();
+      rules.destroy();
+    };
   } else if (field.kind === "select") {
     const select = choiceList({
       id,
@@ -570,7 +683,7 @@ export function open(ctx, props = {}) {
           );
           const link = h("a", {
             href: url,
-            download: `funcaster-${matchId}.json`,
+            download: `chonks-${matchId}.json`,
           });
           link.click();
           setTimeout(() => URL.revokeObjectURL(url), 1000);

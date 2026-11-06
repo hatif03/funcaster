@@ -608,7 +608,7 @@ test("mascot uses room transitions for join, disconnect, errors and a unique res
   assert.equal(env.loaded.filter((file) => file === "/cool").length, count);
 });
 
-test("retained phone movement follows the desktop at 4Hz and phone buttons wake Caster without cutting wakeup short", async (t) => {
+test("retained phone movement follows the desktop at 4Hz and phone buttons wake Chonk without cutting wakeup short", async (t) => {
   const env = mascotSurface(t),
     time = clock();
   t.mock.method(globalThis.performance, "now", time.now);

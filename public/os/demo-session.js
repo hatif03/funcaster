@@ -21,6 +21,12 @@ export function createDemoSession(store, { now = Date.now } = {}) {
       signal("state", room);
     };
   const api = {
+    async stakes() {
+      return {
+        error:
+          "Stakes are unavailable in the wallpaper demo. Use a local MOCK room to try them.",
+      };
+    },
     store,
     get: store.get,
     on(name, fn) {

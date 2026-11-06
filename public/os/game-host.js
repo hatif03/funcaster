@@ -37,7 +37,7 @@ export function trustedGameMessage(event, origin, frames) {
   return (
     event.origin === origin &&
     frames.some((frame) => frame.contentWindow === event.source) &&
-    ["funcaster:loaded", "funcaster:home", "funcaster:error"].includes(event.data?.type)
+    ["chonks:loaded", "chonks:home", "chonks:error"].includes(event.data?.type)
   );
 }
 

@@ -69,7 +69,7 @@ try {
     nav,
     menuScope = null,
     contextScope = null;
-  const sortedGames = [...games].sort((a, b) => a.order - b.order);
+  const sortedGames = games.filter((game) => !game.hidden);
   const balloons = mountBalloons(root, {
     onShow: (message) => context.audio?.cue(message.sound || "balloon"),
   });
@@ -305,6 +305,13 @@ try {
       menuScope = scope;
       if (scope) context.audio.cue("menu");
     },
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape" || event.repeat || event.defaultPrevented) return;
+    if (root.dataset.gameOpen !== "true") return;
+    if (wm.top()?.model.kind !== "game") return;
+    event.preventDefault();
+    context.gameHost?.openPause();
   });
   const relayout = () => wm.relayout();
   document.documentElement.addEventListener("os:resize", relayout);

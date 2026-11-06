@@ -5,7 +5,10 @@ import { utility, button, checkbox, note } from "./utility.js";
 export function open(ctx) {
   const page = utility(ctx, S.playersIntro),
     list = h("ul", { class: "os-player-list" }),
-    queue = note("");
+    queue = note(""),
+    authority = note("");
+  authority.hidden = true;
+  authority.setAttribute("aria-live", "polite");
   const rows = playerRows(null).map((seat) => {
     const shape = h("span", {
       class: "os-seat-shape",
@@ -20,7 +23,9 @@ export function open(ctx) {
     });
     const name = h("strong"),
       status = h("span", { class: "os-status-chip" }),
-      device = h("span", { class: "os-utility-note" });
+      device = h("span", { class: "os-utility-note" }),
+      savedName = h("span", { class: "os-utility-note", hidden: true });
+    savedName.style.overflowWrap = "anywhere";
     const host = button(`host-${seat.slot}`, S.makeHost, () =>
       page.run(host, () =>
         ctx
@@ -43,11 +48,22 @@ export function open(ctx) {
         h("div", { class: "os-player-name" }, shape, name),
         status,
         device,
+        savedName,
       ),
       h("div", { class: "os-row-actions" }, host, remove),
     );
     list.append(el);
-    return { ...seat, el, avatar, name, status, device, host, remove };
+    return {
+      ...seat,
+      el,
+      avatar,
+      name,
+      status,
+      device,
+      savedName,
+      host,
+      remove,
+    };
   });
   const lock = checkbox("lock-joins", S.lock, (locked) =>
     page.run(lock.input, () => ctx.getSession().cmd("lock", { locked })),
@@ -55,7 +71,7 @@ export function open(ctx) {
   const next = button("next-player", S.next, () =>
     page.run(next, () => ctx.getSession().nextPlayer()),
   );
-  page.content.append(list, queue, lock.el, note(S.hostExplain));
+  page.content.append(authority, list, queue, lock.el, note(S.hostExplain));
   page.footer.append(
     button("players-recycle", S.recycle, () => ctx.openWindow("recycle-bin")),
     next,
@@ -79,6 +95,13 @@ export function open(ctx) {
           : `${data.player.mode === "motion" ? S.motion : S.touch} · ${S.noDevice}`
         : data.name;
       row.el.dataset.status = data.status;
+      const saved = room?.web3?.seats?.find((p) => p.slot === data.slot);
+      row.savedName.hidden = !room?.web3 || !data.player;
+      row.savedName.textContent = saved?.named
+        ? `${S.nameReady} · ${saved.name}`
+        : saved?.status === "pending"
+          ? S.nameSaving
+          : S.nameLocal;
       row.host.textContent = data.host
         ? S.revokeHost
         : data.pending
@@ -95,6 +118,8 @@ export function open(ctx) {
       page.enabled(row.remove, live && !!data.player);
     }
     queue.textContent = S.queue(room?.queueCount || 0);
+    authority.hidden = !room?.web3?.host?.message;
+    authority.textContent = room?.web3?.host?.message || "";
     lock.input.checked = !!room?.locked;
     page.enabled(lock.input, live && !!room?.arcade);
     page.enabled(next, live && canNextPlayer(state));

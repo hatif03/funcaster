@@ -3,10 +3,10 @@ import { SEATS } from "../../core/seats.js";
 import { WINDOW_CONTENT_STRINGS as S } from "./strings.js";
 const known = new Set(games.map((g) => g.id));
 export const PLAYLISTS = Object.freeze({
-  quick: ["star-catch", "bubble-burst", "fruit-ninja"],
-  sports: ["golf", "table-tennis", "swordplay"],
-  race: ["mario-kart", "neon-drift", "kart"],
-  kiosk: ["star-catch", "fruit-ninja", "bubble-burst", "neon-drift"],
+  quick: ["star-catch", "bubble-burst", "table-tennis"],
+  sports: ["table-tennis", "star-catch", "bubble-burst"],
+  race: ["mario-kart", "neon-drift", "alien-attack"],
+  kiosk: ["star-catch", "bubble-burst", "neon-drift"],
 });
 export const canEdit = (state) =>
   state?.connection === "connected" &&

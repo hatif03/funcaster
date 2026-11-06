@@ -1,4 +1,4 @@
-import { GAME_STRINGS as S } from "../strings.js";
+import { GAME_STRINGS as S, WEB3_STRINGS as W } from "../strings.js";
 import { resultPresentation } from "../result-data.js";
 import { h } from "../util/h.js";
 export function open(ctx) {
@@ -76,12 +76,25 @@ export function open(ctx) {
             type: "application/json",
           }),
         );
-        h("a", { href: url, download: `funcaster-${matchId}.json` }).click();
+        h("a", { href: url, download: `chonks-${matchId}.json` }).click();
         setTimeout(() => URL.revokeObjectURL(url), 1000);
         return { ok: true };
       }),
   });
   const reason = h("p", { class: "os-result-start-reason" });
+  const stakesStatus = h("p", {
+    role: "status",
+    class: "os-result-verification",
+    hidden: true,
+  });
+  const potLink = h("a", {
+    class: "xp-button",
+    text: W.pot,
+    target: "_blank",
+    rel: "noopener",
+    hidden: true,
+    dataset: { nav: "", id: "results-open-pot" },
+  });
   const scroll = h(
     "div",
     { class: "os-results-scroll" },
@@ -90,6 +103,8 @@ export function open(ctx) {
     rankings,
     standings,
     verification,
+    stakesStatus,
+    potLink,
     countdown,
   );
   const el = h(
@@ -111,6 +126,8 @@ export function open(ctx) {
       current.players.map((p) => [p.slot, p.name]),
       current.game,
       current.match,
+      current.web3?.stakes,
+      current.web3?.receipts?.[current.result?.matchId],
     ]);
     if (key !== signature) {
       signature = key;
@@ -121,6 +138,15 @@ export function open(ctx) {
       standings.hidden = !data.standings;
       verification.textContent = data.verification;
       verification.hidden = !data.verification;
+      const stakes = current.web3?.stakes;
+      const staked =
+        stakes?.matchId === current.result?.matchId && !!stakes?.potId;
+      stakesStatus.hidden = !staked;
+      stakesStatus.textContent = staked
+        ? `${W.playMoney} · ${stakes.mock ? "MOCK · " : ""}${W.states[stakes.status] || stakes.status}${stakes.status === "settled" && !stakes.claimsComplete ? ` · ${W.claiming}` : ""}`
+        : "";
+      potLink.hidden = !staked || !stakes.explorer;
+      if (staked && stakes.explorer) potLink.href = stakes.explorer;
       rankings.replaceChildren(
         ...data.ranked.map((player) => {
           const badge = h("span", {

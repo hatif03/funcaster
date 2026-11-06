@@ -1,4 +1,5 @@
 import { games } from "../../../core/catalog.js";
+const listed = () => games.filter((game) => !game.hidden);
 import { h } from "../util/h.js";
 import { gameIcon } from "../icon-crop.js";
 import { DESKTOP_STRINGS as S } from "../strings.js";
@@ -26,7 +27,7 @@ export function open(ctx) {
       text: S.random,
       dataset: { nav: "", id: "random-game" },
       onclick: () =>
-        ctx.openGame(games[Math.floor(Math.random() * games.length)].id),
+        ctx.openGame(listed()[Math.floor(Math.random() * listed().length)].id),
     }),
   );
   const board = h("ol", { class: "os-explorer-board" });
@@ -36,7 +37,7 @@ export function open(ctx) {
     dataset: { navGrid: "my-games" },
   });
   const scoreLabels = new Map();
-  for (const game of [...games].sort((a, b) => a.order - b.order)) {
+  for (const game of listed()) {
     const score = h("span", { class: "os-last-score" });
     scoreLabels.set(game.id, score);
     grid.append(

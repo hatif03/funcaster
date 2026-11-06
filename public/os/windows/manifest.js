@@ -8,6 +8,7 @@ export function windowManifest(theme) {
     ["invite", S.invite, "invite.network", 520, 560],
     ["playlists", S.playlists, "playlists.media", 480, 380],
     ["records", S.records, "records.history", 520, 400],
+    ["live", "Funcaster Live", "invite.network", 700, 560],
     ["settings", S.settings, "settings", 560, 440],
     ["help", S.help, "help", 640, 480],
     ["diagnostics", S.diagnostics, "diagnostics", 560, 420],

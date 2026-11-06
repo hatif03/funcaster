@@ -2,13 +2,16 @@ import { h } from "../util/h.js";
 import { recentRecords, verificationText } from "../window-data.js";
 import { WINDOW_CONTENT_STRINGS as S } from "../strings.js";
 import { utility, button, note, saveRecord } from "./utility.js";
+import { mountHistory } from "./ens-history.js";
 export function open(ctx) {
   const page = utility(ctx, S.recordsIntro),
     list = h("ul", { class: "os-record-list" });
   let signature = "",
     controls = [];
-  page.content.append(list, note(S.recordExpired));
+  const history = mountHistory();
+  page.content.append(history.el, list, note(S.recordExpired));
   function update(state) {
+    history.update(state);
     const records = recentRecords(
         ctx.storage,
         state.room?.code || state.identity?.code || "",
@@ -52,5 +55,12 @@ export function open(ctx) {
   }
   page.refresh = () => update(ctx.store.get());
   page.refresh();
-  return { el: page.el, update, destroy: page.destroy };
+  return {
+    el: page.el,
+    update,
+    destroy() {
+      history.destroy();
+      page.destroy();
+    },
+  };
 }

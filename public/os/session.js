@@ -1,7 +1,7 @@
 import { createStore } from "./util/store.js";
 import { SESSION_STRINGS as S } from "./strings.js";
 
-export const HOST_KEY = "funcaster.host";
+export const HOST_KEY = "chonks.host";
 const editing = (room) => !!room && ["lobby", "results"].includes(room.phase);
 export const isLobby = editing;
 export const isClassic = (room) => room?.phase === "classic";
@@ -285,6 +285,9 @@ export function createSession({
       : { cancelled: true };
   }
   const api = {
+    stakes: (payload) => request("stakes", payload),
+    predictions: (payload) => request("predictions", payload),
+    commerce: (payload) => request("commerce", payload),
     socket,
     store,
     get: store.get,

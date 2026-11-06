@@ -187,6 +187,13 @@ export async function open(ctx) {
       }
       let keyTarget = null;
       const reservedKey = (event) => {
+        if (event.key === "Escape") {
+          if (event.repeat) return;
+          event.preventDefault();
+          event.stopImmediatePropagation();
+          host.openPause();
+          return;
+        }
         if (!["Home", "F10"].includes(event.key)) return;
         event.preventDefault();
         event.stopImmediatePropagation();
@@ -308,7 +315,7 @@ export async function open(ctx) {
       !trustedGameMessage(event, location.origin, frames)
     )
       return;
-    if (event.data.type === "funcaster:loaded") {
+    if (event.data.type === "chonks:loaded") {
       ready.add(event.source);
       if (ready.size === frames.length) host.setLoading(null);
       else
@@ -317,7 +324,7 @@ export async function open(ctx) {
           ready: ready.size,
           total: frames.length,
         });
-    } else if (event.data.type === "funcaster:home") void host.openPause();
+    } else if (event.data.type === "chonks:home") void host.openPause();
     else void host.error(event.data.message, currentKey);
   };
   window.addEventListener("message", message);

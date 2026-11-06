@@ -56,7 +56,7 @@ export function mountBoot({
   root.append(overlay);
   let remembered;
   try {
-    remembered = sessionStorage.getItem("funcaster.os.booted");
+    remembered = sessionStorage.getItem("chonks.os.booted");
   } catch {}
   wm.register({
     id: "who",
@@ -88,7 +88,7 @@ export function mountBoot({
   function record() {
     try {
       sessionStorage.setItem(
-        "funcaster.os.booted",
+        "chonks.os.booted",
         store.get().room?.code || "demo",
       );
     } catch {}

@@ -8,7 +8,7 @@ export function open(ctx) {
   for (const [key, action] of S.remoteMap)
     map.append(h("dt", { text: key }), h("dd", { text: action }));
   const rules = h("div", { class: "os-help-games" });
-  for (const game of [...games].sort((a, b) => a.order - b.order))
+  for (const game of games.filter((game) => !game.hidden))
     rules.append(
       h(
         "article",

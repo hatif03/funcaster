@@ -116,7 +116,7 @@ export async function saveRecord(ctx, matchId) {
   );
   const link = h("a", {
     href: url,
-    download: `funcaster-${matchId.replace(/[^a-zA-Z0-9_-]/g, "-").slice(0, 100)}.json`,
+    download: `chonks-${matchId.replace(/[^a-zA-Z0-9_-]/g, "-").slice(0, 100)}.json`,
   });
   link.click();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
