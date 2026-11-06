@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#1454bf" />
+    <title>Creator Studio · Funcaster</title>
+    <link rel="stylesheet" href="/commerce/style.css" />
+  </head>
+  <body>
+    <main>
+      <header>
+        <a href="/?shell=os">← Funcaster OS</a
+        ><span id="mode" class="badge">Loading</span>
+        <h1>Creator Studio</h1>
+        <p>Your game. Your audience. A clear split.</p>
+      </header>
+      <div id="notice" role="status" aria-live="polite">
+        Connecting to the local creator shelf…
+      </div>
+      <nav aria-label="Creator Studio">
+        <button data-tab="shelf" class="active">Game shelf</button
+        ><button data-tab="publish">Publish a game</button
+        ><button data-tab="earnings">My earnings</button>
+      </nav>
+      <section id="shelf">
+        <h2>Made for a room full of friends</h2>
+        <p>
+          One pass unlocks the room for 24 hours. Try a free two-minute demo
+          first.
+        </p>
+        <label
+          >Room code<input
+            id="room"
+            maxlength="24"
+            value="DEMO01"
+            autocomplete="off"
+        /></label>
+        <div id="games" class="grid"></div>
+      </section>
+      <section id="publish" hidden>
+        <h2>Publish your first-party demo</h2>
+        <p>
+          Use a built-in game to try publishing and revenue splits. External
+          creator submissions still go through the existing review and sandbox.
+        </p>
+        <form id="publish-form">
+          <label
+            >Game<select name="gameId" id="game-select" required></select
+          ></label>
+          <div class="row">
+            <label
+              >Version<input
+                name="version"
+                value="1.0.0"
+                pattern="[0-9]+\.[0-9]+\.[0-9]+"
+                required /></label
+            ><label
+              >Pass price · test USDC<input
+                name="price"
+                type="number"
+                min="0.000001"
+                max="100"
+                step="0.000001"
+                value="1"
+                required
+            /></label>
+          </div>
+          <details>
+            <summary>Add a collaborator or referral</summary>
+            <label
+              >Collaborator address (optional)<input
+                name="collaborator"
+                placeholder="0x…"
+                spellcheck="false" /></label
+            ><label
+              >Collaborator share of creator earnings (%)<input
+                name="collaboratorPercent"
+                type="number"
+                min="1"
+                max="99"
+                value="20" /></label
+            ><label
+              >Referral recipient address (optional)<input
+                name="referralAddress"
+                placeholder="0x…"
+                spellcheck="false" /></label
+            ><label
+              >Referral share (%)<input
+                name="referralPercent"
+                type="number"
+                min="5"
+                max="20"
+                value="10"
+            /></label>
+          </details>
+          <aside>
+            Frozen when published: 0% platform fee on a creator’s first 1,000
+            test USDC; then 5% from creator links or 10% from the shelf. Maximum
+            platform fee: 15%. Rounding stays with the creator.
+          </aside>
+          <button class="primary" type="submit">
+            Publish with frozen split
+          </button>
+        </form>
+      </section>
+      <section id="earnings" hidden>
+        <h2>Your earnings</h2>
+        <p id="identity" class="mono"></p>
+        <div class="balance">
+          <small>Available to claim</small><strong id="balance">0.00</strong
+          ><span>test USDC</span>
+        </div>
+        <button id="claim" class="primary">Claim my earnings</button>
+        <p>
+          Each recipient claims independently. A failed payout never holds up
+          another recipient.
+        </p>
+        <h3>Activity</h3>
+        <div id="activity"></div>
+      </section>
+      <footer>
+        Commerce payments only. Creators never receive a share of pots or
+        predictions. Test tokens have no cash value.
+      </footer>
+    </main>
+    <script type="module" src="/commerce/app.js"></script>
+  </body>
+</html>

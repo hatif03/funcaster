@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#145ac4" />
+    <title>Funcaster · Records & Ledger</title>
+    <link rel="stylesheet" href="/records/records.css" />
+    <script type="module" src="/records/records.js"></script>
+  </head>
+  <body>
+    <main class="window">
+      <header class="titlebar">
+        <a href="/?shell=os" aria-label="Back to Funcaster OS">▦ Funcaster OS</a
+        ><span>Records & Ledger</span>
+      </header>
+      <section class="intro">
+        <div>
+          <p class="eyebrow">THE GOOD ROUNDS DESERVE A REPLAY</p>
+          <h1>Your Hall of Fame</h1>
+          <p>
+            Saved scores, replay downloads and a clear trail for testnet
+            transactions.
+          </p>
+        </div>
+        <span class="cat" aria-hidden="true">🐈</span>
+      </section>
+      <nav class="tabs" aria-label="Records sections">
+        <a href="#rounds" data-tab="rounds">Saved rounds</a
+        ><a href="#leaderboard" data-tab="leaderboard">High scores</a
+        ><a href="#ledger" data-tab="ledger">Transaction ledger</a>
+      </nav>
+      <section class="toolbar">
+        <label for="search"
+          >Find a game or transaction<input
+            id="search"
+            type="search"
+            placeholder="Game, transaction hash, ENS name…" /></label
+        ><button id="refresh" type="button">Refresh</button>
+      </section>
+      <p class="notice" id="notice" role="status">Loading saved records…</p>
+      <section id="rounds" aria-label="Saved rounds">
+        <div class="section-heading">
+          <h2>Played. Saved. Yours.</h2>
+          <span class="badge local">LOCAL STORAGE</span>
+        </div>
+        <p class="help">
+          Downloads contain the original result and input replay. A game's own
+          verification report is separate from a transaction receipt.
+        </p>
+        <div class="cards" id="round-list"></div>
+      </section>
+      <section id="leaderboard" aria-label="High scores" hidden>
+        <div class="section-heading">
+          <h2>Best rounds on this console</h2>
+          <span class="badge local">LOCAL HIGH SCORES</span>
+        </div>
+        <p class="help">
+          Grouped by game, build and rules. Only completed rounds reported as
+          replay-verified qualify. Player numbers belong to that round; they are
+          not shared identities.
+        </p>
+        <div id="score-list" class="cards"></div>
+      </section>
+      <section id="ledger" aria-label="Transaction ledger" hidden>
+        <div class="section-heading">
+          <h2>A clear transaction trail</h2>
+          <a class="download" href="/api/records/ledger/export"
+            >Export journal ↓</a
+          >
+        </div>
+        <p class="help">
+          PLAY MONEY · Arc testnet and Sepolia only. A confirmed receipt means
+          two RPC hosts agreed on that transaction at the displayed check time.
+          It does not prove a game outcome or every detail in the worker's
+          description.
+        </p>
+        <p id="coverage" class="coverage"></p>
+        <div class="cards" id="receipt-list"></div>
+      </section>
+      <footer>
+        <span id="count">Local records</span
+        ><span
+          >No Arkiv or Swarm publishing. Export and back up the relay's data
+          directory.</span
+        >
+      </footer>
+    </main>
+  </body>
+</html>

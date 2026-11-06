@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#1755bc" />
+    <title>Funcaster Live</title>
+    <link rel="stylesheet" href="/live/live.css" />
+  </head>
+  <body>
+    <header>
+      <a href="/?shell=os">↖ Funcaster OS</a
+      ><span class="pill" id="mode">Connecting…</span>
+    </header>
+    <main>
+      <section class="hero">
+        <p class="eyebrow">THE ARCADE, TOGETHER</p>
+        <h1>Funcaster Live<span>Play. Cheer. Come back for the rematch.</span></h1>
+        <p>Jump into a table, follow the scores, or publish your first game.</p>
+      </section>
+      <nav class="cards" aria-label="Funcaster Live">
+        <a class="card blue" href="/predict"
+          ><span class="icon">⚑</span>
+          <h2>Watch & predict</h2>
+          <p>Pick a winner. Cheer the whole table.</p>
+          <span>Find a match →</span></a
+        >
+        <a class="card yellow" href="/records/"
+          ><span class="icon">★</span>
+          <h2>Hall & records</h2>
+          <p>Scores, replay downloads and receipt checks.</p>
+          <span>Open the Hall →</span></a
+        >
+        <a class="card pink" href="/commerce/"
+          ><span class="icon">✦</span>
+          <h2>Creator Studio</h2>
+          <p>Publish a game, try a demo and see earnings.</p>
+          <span>Meet the makers →</span></a
+        >
+      </nav>
+      <section class="window">
+        <div class="titlebar">Open Challenge Board</div>
+        <div class="inside">
+          <p>
+            Already at a table? Post a free challenge from this phone. A
+            challenger gets the private join link when they accept.
+          </p>
+          <button id="offer">Challenge someone</button
+          ><button id="refresh">Refresh board</button>
+          <div id="offers" class="rows" aria-live="polite"></div>
+        </div>
+      </section>
+      <div class="columns">
+        <section class="window">
+          <div class="titlebar">My games</div>
+          <div class="inside">
+            <p id="profile">Finish a verified match to keep a local handle.</p>
+            <button id="connect">Connect this phone</button
+            ><button id="backup" hidden>Save my recovery key</button>
+            <form id="handle-form" hidden>
+              <label for="handle">Your handle</label
+              ><input
+                id="handle"
+                placeholder="your-handle"
+                minlength="3"
+                maxlength="20"
+                pattern="[a-z][a-z0-9-]{2,19}"
+                required
+              /><button>Save handle</button>
+            </form>
+            <p class="fine">
+              Handles stay local until an enabled Champion claim is issued.
+              Pending requests are not ENS names. Keep your recovery key
+              private; it controls your phone identity and any issued name.
+            </p>
+          </div>
+        </section>
+        <section class="window">
+          <div class="titlebar">Name Gallery</div>
+          <div class="inside">
+            <p>Table and seat names connect your phone to its party.</p>
+            <ul id="names"></ul>
+            <p class="fine">
+              Table names expire when the party ends. Persistent earned names
+              will be shown here once issued.
+            </p>
+          </div>
+        </section>
+      </div>
+      <p id="status" role="status"></p>
+      <footer>
+        Arc + ENS · Local records and exports · Testnet play money only
+      </footer>
+    </main>
+    <script type="module" src="/live/live.js"></script>
+  </body>
+</html>

@@ -1,0 +1,275 @@
+:root {
+  font-family: Tahoma, Arial, sans-serif;
+  color: #18335c;
+  background: #c4d9f4;
+  font-size: 16px;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: linear-gradient(145deg, #427bd0, #b5d9f8 65%, #e5efcb);
+  min-height: 100vh;
+}
+main {
+  max-width: 1020px;
+  margin: 24px auto;
+  padding: 0 22px 24px;
+  background: #f7f5e9;
+  border: 3px solid #1454bf;
+  border-radius: 10px;
+  box-shadow: 0 15px 45px #18335c44;
+}
+header {
+  margin: 0 -20px;
+  padding: 20px;
+  background: linear-gradient(#2877e5, #1351b3);
+  color: white;
+  border-radius: 5px 5px 0 0;
+}
+header a {
+  color: white;
+}
+h1 {
+  font-size: clamp(29px, 6vw, 42px);
+  margin: 18px 0 6px;
+}
+h2 {
+  font-size: 25px;
+  line-height: 1.25;
+}
+h3 {
+  margin: 8px 0;
+}
+p {
+  line-height: 1.6;
+}
+.badge {
+  float: right;
+  border: 1px solid #ffffff80;
+  border-radius: 6px;
+  padding: 6px;
+  font-size: 12px;
+}
+nav {
+  display: flex;
+  gap: 6px;
+  margin: 22px 0;
+  border-bottom: 1px solid #b0b8c5;
+  padding-bottom: 12px;
+}
+button,
+a,
+input,
+select {
+  font: inherit;
+}
+button {
+  min-height: 46px;
+  border: 1px solid #788daa;
+  border-radius: 5px;
+  padding: 10px 16px;
+  color: #18335c;
+  background: linear-gradient(white, #e8edf5);
+  font-weight: bold;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+button:hover {
+  border-color: #155abe;
+  filter: brightness(0.98);
+}
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+a:focus-visible {
+  outline: 3px solid #edab16;
+  outline-offset: 3px;
+}
+.primary,
+nav .active {
+  background: linear-gradient(#3185ee, #1658bd);
+  border-color: #134c98;
+  color: white;
+}
+button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  font-size: 14px;
+  margin: 14px 0;
+  min-width: 0;
+}
+input,
+select {
+  width: 100%;
+  min-height: 45px;
+  background: white;
+  border: 1px solid #899bb5;
+  border-radius: 4px;
+  padding: 10px;
+  color: #153053;
+}
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr));
+  gap: 16px;
+}
+.card {
+  border: 1px solid #a4b8ce;
+  background: #fffef8;
+  border-radius: 8px;
+  padding: 18px;
+  min-width: 0;
+  box-shadow: 0 4px 0 #e4e8eb;
+}
+.card p {
+  font-size: 14px;
+}
+.card .icon {
+  font-size: 34px;
+  display: block;
+  margin-bottom: 12px;
+}
+.card button,
+.card a.play {
+  width: 100%;
+  margin-top: 9px;
+}
+.card .price {
+  font-weight: bold;
+  font-size: 20px;
+}
+.muted,
+small {
+  color: #526982;
+}
+header p {
+  color: #e5efff;
+}
+aside,
+#notice {
+  background: #edf4ff;
+  border: 1px solid #a1bde6;
+  border-radius: 5px;
+  padding: 13px;
+  line-height: 1.6;
+  margin: 16px 0;
+  font-size: 14px;
+}
+#notice.error {
+  background: #fff0dc;
+  border-color: #db9c33;
+}
+.mono {
+  font: 12px/1.6 monospace;
+  overflow-wrap: anywhere;
+}
+.balance {
+  background: #eaf4db;
+  border: 1px solid #b4ce94;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 12px;
+}
+.balance small {
+  width: 100%;
+}
+.balance strong {
+  font-size: 40px;
+  color: #346519;
+}
+.activity {
+  padding: 13px 0;
+  border-bottom: 1px solid #d6dfeb;
+  overflow-wrap: anywhere;
+}
+.receipt-link {
+  display: block;
+  min-height: 44px;
+  padding-top: 8px;
+}
+footer {
+  margin-top: 40px;
+  padding-top: 18px;
+  border-top: 1px solid #c6d2e0;
+  color: #526982;
+  font-size: 12px;
+  line-height: 1.6;
+}
+details {
+  border: 1px solid #bdcadd;
+  padding: 12px;
+  border-radius: 6px;
+}
+summary {
+  cursor: pointer;
+  min-height: 25px;
+}
+a {
+  color: #1358bb;
+  overflow-wrap: anywhere;
+}
+a.play {
+  display: block;
+  text-align: center;
+  padding: 12px;
+  border: 1px solid #398a32;
+  background: #e8f5da;
+  border-radius: 5px;
+}
+#room {
+  max-width: 240px;
+}
+section[hidden] {
+  display: none;
+}
+@media (max-width: 600px) {
+  main {
+    margin: 8px;
+    padding: 0 14px 18px;
+  }
+  header {
+    margin: 0 -12px;
+    padding: 16px;
+  }
+  .badge {
+    float: none;
+    display: inline-block;
+    margin-left: 12px;
+  }
+  nav {
+    gap: 4px;
+  }
+  nav button {
+    flex: 1;
+    padding: 8px 5px;
+    font-size: 13px;
+  }
+  .row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  h2 {
+    font-size: 22px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+  }
+}
