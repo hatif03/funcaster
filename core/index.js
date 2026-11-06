@@ -1,5 +1,5 @@
 /**
- * Funcaster Console core — the motion engine shared by every channel.
+ * Funcaster core — the motion engine shared by every channel.
  *
  * Renderer-agnostic and game-agnostic by design: nothing in here knows what a
  * game object is. Games import what they need and bring their own

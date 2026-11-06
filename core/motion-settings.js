@@ -1,8 +1,8 @@
 import { clamp } from "./orientation.js";
 
 export const MOTION_PROFILES = {
-  party: { key: "funcaster.sensitivity", default: 1.25, min: 0.6, max: 2.4 },
-  racing: { key: "funcaster.racingSensitivity", default: 1, min: 0.7, max: 1.3 },
+  party: { key: "chonks.sensitivity", default: 1.25, min: 0.6, max: 2.4 },
+  racing: { key: "chonks.racingSensitivity", default: 1, min: 0.7, max: 1.3 },
 };
 
 // Racing gets its own preference, so an old high aiming sensitivity cannot

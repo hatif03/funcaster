@@ -1,7 +1,7 @@
 /** Only phone identities survive tabs. Room owner/display credentials stay tab-scoped. */
 export function deviceStore(session, local, now = Date.now) {
   const memory = new Map();
-  const player = (key) => key.startsWith("funcaster.player.");
+  const player = (key) => key.startsWith("chonks.player.");
   return {
     remember(key, value) {
       if (value == null) memory.delete(key);

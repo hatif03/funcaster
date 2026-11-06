@@ -108,13 +108,13 @@ export class GameLink {
           !e.altKey
         ) {
           e.preventDefault();
-          window.parent.postMessage({ type: "funcaster:home" }, location.origin);
+          window.parent.postMessage({ type: "chonks:home" }, location.origin);
         }
       });
     this.gentleEffects = matchMedia("(prefers-reduced-motion: reduce)").matches;
     try {
       this.gentleEffects ||=
-        JSON.parse(localStorage.getItem("funcaster.reduced-effects")) === true;
+        JSON.parse(localStorage.getItem("chonks.reduced-effects")) === true;
     } catch {}
     document.documentElement.classList.toggle(
       "gentle-effects",
@@ -160,7 +160,7 @@ export class GameLink {
       if (!this.party) return this.socket.emit("register", "game");
       let saved;
       try {
-        saved = JSON.parse(sessionStorage.getItem("funcaster.host"));
+        saved = JSON.parse(sessionStorage.getItem("chonks.host"));
       } catch {}
       this.socket.emit(
         params.has("display") ? "watch-game" : "screen",
@@ -169,14 +169,14 @@ export class GameLink {
           code: params.get("party"),
           fresh: !this.registeredOnce,
           viewToken: params.has("play")
-            ? sessionStorage.getItem("funcaster.view." + params.get("party"))
+            ? sessionStorage.getItem("chonks.view." + params.get("party"))
             : undefined,
           resumeKey: sessionStorage.getItem(
-            "funcaster.screen." + params.get("party"),
+            "chonks.screen." + params.get("party"),
           ),
           token: !params.has("display")
             ? saved?.token
-            : sessionStorage.getItem("funcaster.display." + params.get("party")),
+            : sessionStorage.getItem("chonks.display." + params.get("party")),
           game: location.pathname.split("/")[2],
           roundId: Number(params.get("round")),
           view: Number(params.get("view") || 0),
@@ -184,7 +184,7 @@ export class GameLink {
         (answer) => {
           if (answer?.error)
             window.parent.postMessage(
-              { type: "funcaster:error", message: answer.error },
+              { type: "chonks:error", message: answer.error },
               location.origin,
             );
           else {
@@ -194,7 +194,7 @@ export class GameLink {
             this.previousGhost = answer.previousGhost;
             if (answer.snapshot) this.pendingState = answer.snapshot;
             window.parent.postMessage(
-              { type: "funcaster:loaded" },
+              { type: "chonks:loaded" },
               location.origin,
             );
           }
@@ -430,7 +430,7 @@ export class GameLink {
       this.lastClock = performance.now();
       this.afterState?.();
     }
-    window.parent.postMessage({ type: "funcaster:view-ready" }, location.origin);
+    window.parent.postMessage({ type: "chonks:view-ready" }, location.origin);
   }
   report(scores) {
     if (this.party && this.authority && !this.finished)

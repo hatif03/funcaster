@@ -6,7 +6,7 @@ import path from "node:path";
 import { inspectBundle } from "../scripts/bundle.mjs";
 import { games } from "./catalog.js";
 function bundle(t) {
-  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "funcaster-bundle-"));
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "chonks-bundle-"));
   t.after(() => fs.rmSync(dir, { recursive: true, force: true }));
   fs.writeFileSync(path.join(dir, "game.json"), JSON.stringify(games[0]));
   fs.writeFileSync(

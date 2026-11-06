@@ -11,13 +11,13 @@ function storage(values = {}) {
 }
 
 test("existing high aiming preferences cannot override the gentler racing default", () => {
-  const saved = storage({ "funcaster.sensitivity": "2.4" });
+  const saved = storage({ "chonks.sensitivity": "2.4" });
   const preferences = new MotionSettings(saved);
   assert.equal(preferences.get("party"), 2.4);
   assert.equal(preferences.get("racing"), 1);
 });
 test("racing and aiming settings persist independently across refresh, game switches and reset", () => {
-  const saved = storage({ "funcaster.sensitivity": "1.8" });
+  const saved = storage({ "chonks.sensitivity": "1.8" });
   let preferences = new MotionSettings(saved);
   preferences.set("racing", 0.8);
   preferences.set("party", 2.1);
@@ -32,12 +32,12 @@ test("racing and aiming settings persist independently across refresh, game swit
 test("invalid saved sensitivity falls back safely; valid values stay inside the racing range", () => {
   for (const value of ["", "0", "-1", "NaN", "Infinity", "broken", null]) {
     const preferences = new MotionSettings(
-      storage({ "funcaster.racingSensitivity": value }),
+      storage({ "chonks.racingSensitivity": value }),
     );
     assert.equal(preferences.get("racing"), 1);
   }
   const preferences = new MotionSettings(
-    storage({ "funcaster.racingSensitivity": "2.4" }),
+    storage({ "chonks.racingSensitivity": "2.4" }),
   );
   assert.equal(preferences.get("racing"), 1.3);
   assert.equal(preferences.set("racing", 0.2), 0.7);

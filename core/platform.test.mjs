@@ -151,11 +151,11 @@ test("two-human racing stays deterministic across different render schedules", (
 
 test("catalog aliases preserve view routing before and after match setup", async () => {
   const { gameById, independentViews } = await import("./catalog.js");
-  assert.equal(gameById("funcaster.mario-kart").gameId, "funcaster.kart-rush");
+  assert.equal(gameById("chonks.mario-kart").gameId, "chonks.kart-rush");
   assert.equal(independentViews("fruit-ninja", null), false);
   assert.equal(
-    independentViews("funcaster.slice-dojo", { variant: "race" }),
+    independentViews("chonks.slice-dojo", { variant: "race" }),
     true,
   );
-  assert.equal(independentViews("funcaster.time-trial"), true);
+  assert.equal(independentViews("chonks.time-trial"), true);
 });

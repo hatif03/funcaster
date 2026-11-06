@@ -17,7 +17,7 @@
  */
 export function goHome(audio) {
   if (window.parent !== window && new URLSearchParams(location.search).has('party')) {
-    window.parent.postMessage({ type: 'funcaster:home' }, location.origin);
+    window.parent.postMessage({ type: 'chonks:home' }, location.origin);
     return;
   }
   if (goHome.leaving) return;

@@ -33,7 +33,7 @@ export class AudioEngine {
     this.synths = new Map();
     this.overrides = new Map(); // cue → AudioBuffer | null (null = checked, absent)
     try {
-      volume = Number(localStorage.getItem("funcaster.party-volume") ?? 70) / 100;
+      volume = Number(localStorage.getItem("chonks.party-volume") ?? 70) / 100;
     } catch {}
     this.volume = volume;
     this.music = null;
