@@ -121,7 +121,7 @@ export function buildPaddock(
     c.fillStyle = "#23394f";
     c.font = "italic 900 76px Arial";
     c.textBaseline = "middle";
-    c.fillText("FUNCASTER", 25, 65);
+    c.fillText("CHONKS", 25, 65);
     c.font = "italic 900 46px Arial";
     c.fillText("KART RUSH STADIUM", 300, 64);
     c.fillStyle = "#d3af35";

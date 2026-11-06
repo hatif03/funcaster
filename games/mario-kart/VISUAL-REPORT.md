@@ -2,7 +2,7 @@
 
 This is the historical iteration-2 record. The active overnight fidelity target, subsequent rejected/accepted changes and current evidence are in [OVERNIGHT-LOOP.md](OVERNIGHT-LOOP.md). Passing the checks below does not mean the emulator-like visual target has been reached.
 
-This pass improves the existing **Mario Kart Stadium** implementation on `main`. It responds to the screen recording and MK8 reference. Sound and phone-input mappings were left alone. Changes are uncommitted for review.
+This pass improves the existing **Mario Kart Stadium** implementation on `main`. It responds to Patrick's screen recording and MK8 reference. Sound and phone-input mappings were left alone. Changes are uncommitted for review.
 
 ## What changed on screen
 

@@ -1,7 +1,7 @@
 {
   "source": "Nintendo Mario Kart 8 source TV animation frames; local ignored pack, not original OpenWii artwork or MIT software assets",
   "sourceCourseProvenance": "stadium-source.provenance.json",
-  "convertedAt": "2026-11-06",
+  "convertedAt": "2026-09-11T12:20:23.996000+00:00",
   "inputs": {
     "mktv.0.png": "4b87246a0afbfd2fc70e5992e2b7d5c4ac0f876c1b4d5ffc1fff75d0a0392a96",
     "mktv.1.png": "5b7ac239af6226bbb2927d9f514edbffc2d6a32c62a454afa4a512f1d7170ecd",

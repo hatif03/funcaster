@@ -3,7 +3,7 @@
     "page": "https://models.spriters-resource.com/wii_u/mariokart8/asset/292063/",
     "download": "https://models.spriters-resource.com/media/assets/289/292063.zip?updated=1755498313",
     "sha256": "f9845fc7a0aefe434dfcce0080864012036b2e379d92eddb0f1b4565d4b0c220",
-    "retrievedAt": "2026-11-06",
+    "retrievedAt": "2026-09-11T11:41:24.176174+00:00",
     "credits": [
       "Nintendo",
       "Mystie"
@@ -19,7 +19,7 @@
     "RayK (Standard Kart submission)",
     "BillyGaming964 (tire submission)"
   ],
-  "convertedAt": "2026-11-06",
+  "convertedAt": "2026-09-11T16:55:03.824Z",
   "sha256": "37ac4b9b9e322c6dcee6a39dc2827b5dc1e5d6840889a31fb3e42edfed3c3eac",
   "converters": {
     "source-rivals.js": "e0be36abce64de99236f619829651f970159e4386d469a1098e53b80e8aa5c72",

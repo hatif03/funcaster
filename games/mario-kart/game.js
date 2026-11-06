@@ -1,6 +1,6 @@
 import { dprFor } from "../../core/pixel-budget.js";
 import { scopedStorage } from "../../sdk/index.js";
-const gameStorage = scopedStorage("funcaster.kart-rush");
+const gameStorage = scopedStorage("chonks.kart-rush");
 import { encodeState, restoreState } from "../../sdk/index.js";
 import { RaceViews } from "./multiview.js";
 import { installRaceMenu, raceMenuLaps } from "./race-menu.js";
@@ -288,6 +288,7 @@ let captureUntil = performance.now() + 3000,
   phoneHadGas = false,
   lastRemoteItem = false,
   itemPulse = false;
+const itemTap = new Set();
 const karts = [];
 const raceViews = new RaceViews(renderer);
 let partyPlayers = [],
@@ -443,6 +444,14 @@ const link = new GameLink({
     const now = performance.now();
     wheelFor(slot).command(cmd, now);
     if (
+      cmd.type === "button" &&
+      cmd.button === "right" &&
+      cmd.pressed !== false &&
+      race?.state === "racing" &&
+      !paused
+    )
+      itemTap.add(slot);
+    if (
       multiParty() &&
       cmd.type === "button" &&
       cmd.pressed !== false &&
@@ -469,7 +478,7 @@ const link = new GameLink({
     if (slot !== 0) return;
     if (cmd.type === "home") {
       if (link.party)
-        window.parent.postMessage({ type: "funcaster:home" }, location.origin);
+        window.parent.postMessage({ type: "chonks:home" }, location.origin);
       else
         audio
           .ui("cancel")
@@ -565,8 +574,8 @@ const profileTimer = setInterval(sendProfile, 250);
 if (link.party) {
   $("keyboard-hint").textContent = "C clean view · Esc pause";
   document.querySelector(".controls").innerHTML =
-    "<b>YOUR PHONE IS THE WHEEL</b><br>Hold Accelerate · tilt gently · tap Boost<br>Pickups play automatically. Eyes on the track.";
-  document.querySelector("#item-frame .keycap").textContent = "AUTO USE";
+    "<b>YOUR PHONE STEERS</b><br>Hold Accelerate · L and R turn · tap Boost and Item";
+  document.querySelector("#item-frame .keycap").textContent = "ITEM";
   $("wheel-ready").innerHTML =
     "Hold your phone sideways, in a comfortable grip<br><small>Your phone will tell you when it’s ready</small>";
 }
@@ -849,7 +858,7 @@ document.addEventListener("click", (e) => {
   ) {
     e.preventDefault();
     if (link.party)
-      window.parent.postMessage({ type: "funcaster:home" }, location.origin);
+      window.parent.postMessage({ type: "chonks:home" }, location.origin);
     else
       audio
         .ui("cancel")
@@ -1895,8 +1904,8 @@ function frame(now) {
         : remote.steer,
       item:
         itemPulse ||
-        (remote.item && !lastRemoteItem) ||
-        (link.party && !!race.player.item),
+        itemTap.has(0) ||
+        (!link.party && remote.item && !lastRemoteItem),
       nitro: remote.nitro,
     };
     lastRemoteItem = remote.item;
@@ -1913,7 +1922,7 @@ function frame(now) {
               gas: w.gas && race.state === "racing",
               brake: w.brake,
               nitro: w.nitro,
-              item: !!r.item,
+              item: itemTap.has(r.seat),
               autopilot: race.state === "racing" && (!p?.occupied || !w.live),
             },
           ];
@@ -1922,6 +1931,7 @@ function frame(now) {
       link.advance(dt, (_, step) => race.stepPlayers(step, inputs));
     } else if (!(usingPhone && race.state === "countdown" && !wheel.armed))
       link.advance(dt, (_, step) => race.step(step, input));
+    itemTap.clear();
     audio.update(race);
     $("wheel-status").textContent = usingPhone
       ? remote.status + (wheel.invert ? " · inverted" : "")

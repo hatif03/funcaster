@@ -42,8 +42,16 @@ export class WheelInput {
       this.lastAt = now;
       this.value = clamp(p.x, -1, 1);
       this.armed = true;
-      this.status = "Tilt to steer · hold Accelerate · tap Boost";
-      this.setButtons({ "2": p.gas, "1": p.brake, nitro: p.boost }, now);
+      this.status = "L and R steer · hold Accelerate · tap Boost";
+      this.setButtons(
+        {
+          "2": p.gas,
+          "1": p.brake,
+          nitro: p.boost,
+          A: Math.abs(p.x) > 0.45 && !!p.gas,
+        },
+        now,
+      );
       return true;
     }
     const vals = sample.quat || [sample.alpha, sample.beta, sample.gamma];

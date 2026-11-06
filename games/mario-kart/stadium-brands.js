@@ -3,11 +3,11 @@ export const STADIUM_BRANDS = [
   "COMET WORKS",
   "ORBIT ENERGY",
   "NOVA POWER",
-  "FUNCASTER",
+  "CHONKS",
   "PIP'S PITSTOP",
   "AURORA CIRCUIT",
   "CLOUD CLUB",
-  "FUNCASTER CUP",
+  "CHONKS CUP",
 ];
 const cache = new Map();
 export function stadiumBrand(name, canvasTexture) {

@@ -22,7 +22,7 @@ export function buildServiceCompound(
     dark = standard("#222b30", { roughness: 0.76 }),
     glass = standard("#173441", { metalness: 0.6, roughness: 0.24 });
   const label = new THREE.MeshStandardMaterial({
-    map: stadiumBrand("FUNCASTER", canvasTexture),
+    map: stadiumBrand("CHONKS", canvasTexture),
     emissive: "#b8cdcf",
     emissiveIntensity: 0.2,
     roughness: 0.65,

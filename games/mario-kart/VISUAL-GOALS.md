@@ -2,7 +2,7 @@
 
 This is the historical iteration-2 record. The active overnight fidelity target, subsequent rejected/accepted changes and current evidence are in [OVERNIGHT-LOOP.md](OVERNIGHT-LOOP.md). Passing the checks below does not mean the emulator-like visual target has been reached.
 
-Scope: recorded play and the MK8 Stadium screenshot. Improve the capture people will see in a phone-controlled demo. Sound is deferred. Existing phone input and race rules are the baseline; no new track or handling rewrite in this pass.
+Scope: Patrick's recorded play and MK8 Stadium screenshot. Improve the capture people will see in a phone-controlled demo. Sound is deferred. Existing phone input and race rules are the baseline; no new track or handling rewrite in this pass.
 
 ## Diagnosis and track decision
 

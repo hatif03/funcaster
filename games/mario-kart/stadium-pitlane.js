@@ -65,7 +65,7 @@ export function buildPitlane(
     }
     return g;
   }
-  const sponsors = ["FUNCASTER", "FUNCASTER CUP"].map((name, i) =>
+  const sponsors = ["CHONKS", "CHONKS CUP"].map((name, i) =>
     signTexture(
       name,
       i ? "#272263" : "#f2f1db",
@@ -226,7 +226,7 @@ export function buildPitlane(
         1.45,
         [x, 3.1 + i * 1.85, 1.57],
         signTexture(
-          ["FUNCASTER", "FUNCASTER CUP", "COMET WORKS", "GOLDEN WHEEL", "Pip’s"][i],
+          ["CHONKS", "CHONKS CUP", "COMET WORKS", "GOLDEN WHEEL", "Pip’s"][i],
           i % 2 ? "#f2eacb" : "#253566",
           i % 2 ? "#253544" : "#fff",
           "",

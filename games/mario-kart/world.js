@@ -66,7 +66,7 @@ export function signTexture(
   text,
   bg = "#1252a0",
   fg = "#fff",
-  sub = "FUNCASTER CUP",
+  sub = "CHONKS CUP",
 ) {
   return canvasTexture(1024, 256, (c, w, h) => {
     c.fillStyle = bg;

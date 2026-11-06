@@ -23,7 +23,7 @@ Reuse `captureTray`, `trayRead`, `SteerFilter` and `STEER_FULL` directly from Al
 
 ## Visual iteration 2
 
-Revisited Stadium, SNES Rainbow Road, Mario Circuit 3, Excitebike Arena and Moo Moo Meadows against the recorded play and MK8 reference. The [comparison](VISUAL-GOALS.md) retains Stadium for the shared camera/material/asset upgrade; SNES Rainbow Road is the recommended alternate, subject to actual phone review.
+Revisited Stadium, SNES Rainbow Road, Mario Circuit 3, Excitebike Arena and Moo Moo Meadows against Patrick's own recording and MK8 reference. The [comparison](VISUAL-GOALS.md) retains Stadium for the shared camera/material/asset upgrade; SNES Rainbow Road is the recommended alternate, subject to actual phone review.
 
 Applied physically distinct clear-coated paint, metal, rubber and cloth following [Three.js MeshPhysicalMaterial documentation](https://threejs.org/docs/pages/MeshPhysicalMaterial.html). Baked self-occlusion from the local Blender sculpture into vertex colors, preserved by the optional GLB loader. New procedural pavement provides diffuse, normal and roughness maps; source images are not sampled into game assets.
 

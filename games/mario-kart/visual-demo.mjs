@@ -22,7 +22,7 @@ const loadedFiles = [];
 const report = {
   reviewRoute:driveWide?'Outer boost lanes, with real keyboard steering':'Center route, with real keyboard steering',
   method:
-    "Real-time keyboard-only geometric driver. Phone filming is still the acceptance test.",
+    "Real-time keyboard-only geometric driver. Phone filming is still Patrick’s acceptance test.",
   viewport: [1440, 900],
   recording: record,
   sourceCourse,

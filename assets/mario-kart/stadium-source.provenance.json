@@ -5,7 +5,7 @@
     "Nintendo",
     "RayK (course submission)"
   ],
-  "convertedAt": "2026-11-06",
+  "convertedAt": "2026-09-11T10:55:20.290Z",
   "sha256": "b4bfefbc8bc6e143971e5b6564be4bafcbb0a3b1db10c2960b097e6236ce64cb",
   "routeSha256": "0767485d7125aace521e1b6548a3c2d4f6853ed5c6c302d6a65bd537908f0232",
   "sourceFiles": {
@@ -246,7 +246,7 @@
   },
   "selectedForGameplay": false,
   "routeRevision": {
-    "updatedAt": "2026-11-06",
+    "updatedAt": "2026-09-11T11:33:32.208261+00:00",
     "previousRouteSha256": "1756c1eea58097f765373edf0eba70565c8a6f29c407c391baf804945ccaf5e9",
     "reason": "Add verified fc_shiba turf triangles to physical ground support; GLB unchanged.",
     "converter": "games/mario-kart/pipeline/source-surface.py",

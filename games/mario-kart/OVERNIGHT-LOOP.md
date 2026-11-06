@@ -1,6 +1,6 @@
 # Overnight visual review loop
 
-CURRENT SCOPE: [DEMO-ITERATION.md](DEMO-ITERATION.md) supersedes the original open-ended target. Tackle only item use/throw animations, obvious boosts, disappearing CPUs, the small pre-finish ramp jump, and faithful HUD text/animation. Stop after those five are visually verified. Earlier pass notes below are historical. Work remains uncommitted on main; sound and unrelated polish are deferred.
+CURRENT SCOPE: [DEMO-ITERATION.md](DEMO-ITERATION.md) supersedes the original open-ended target. Tackle only item use/throw animations, obvious boosts, disappearing CPUs, the small pre-finish ramp jump, and faithful HUD text/animation. Stop after those five are visually verified for Patrick’s review. Earlier pass notes below are historical. Work remains uncommitted on main; sound and unrelated polish are deferred.
 
 [Open the review page](evidence/overnight/review.html) for the latest playable recording, staged before/after comparisons and source-verification links.
 
@@ -15,7 +15,7 @@ CURRENT SCOPE: [DEMO-ITERATION.md](DEMO-ITERATION.md) supersedes the original op
 
 ## Reference
 
-[NintendoCentral: Mario Kart 8 Deluxe — Full Game (Switch 4K)](https://www.youtube.com/watch?v=4DBL1iUeFyA), watched through YouTube with sampled frames around 00:35–00:55 and 01:10. This reference uses a different kart/glider; use the supplied Standard Kart screenshot for that silhouette. Local reference captures are under `evidence/overnight/reference/`.
+[NintendoCentral: Mario Kart 8 Deluxe — Full Game (Switch 4K)](https://www.youtube.com/watch?v=4DBL1iUeFyA), watched through YouTube with sampled frames around 00:35–00:55 and 01:10. This reference uses a different kart/glider; use Patrick's supplied Standard Kart screenshot for that silhouette. Local reference captures are under `evidence/overnight/reference/`.
 
 Visible reference cues: three illuminated spectator levels enclosing the road; continuous waist-high advertising; blue padded barriers, checkerboard lane markings and warm path lamps; dark rough asphalt; near-field building mass beside the climb; a substantial rear engine with dark/gold exhausts; visibly rounded tires and a fully sculpted cap/hair silhouette. The existing draft is much emptier and flatter.
 
@@ -158,7 +158,7 @@ The generated review page was checked in headless Chrome: all local links/media 
 
 The preceding goal turn made progress through preserved, recorded passes 12–16. The continuation revalidated the current files and the live HTTP server before editing.
 
-The old fixed-size wheel glow was partially buried in the tire. Hub faces and rim lights now follow bounds computed from the actual loaded or procedural wheel geometry. Four subtle road pools follow the model's measured wheel centers while remaining aligned to the track rather than the rotated wheels. They switch off on normal pavement and in flight. This pass compares against the supplied Standard Kart screenshot; the earlier live-reference tab was no longer present, so no new live-video viewing is claimed for this pass.
+The old fixed-size wheel glow was partially buried in the tire. Hub faces and rim lights now follow bounds computed from the actual loaded or procedural wheel geometry. Four subtle road pools follow the model's measured wheel centers while remaining aligned to the track rather than the rotated wheels. They switch off on normal pavement and in flight. This pass compares against Patrick's supplied Standard Kart screenshot; the earlier live-reference tab was no longer present, so no new live-video viewing is claimed for this pass.
 
 [First staged experiment](evidence/overnight/17-hover/climb.png) made the full hub face too luminous and flat. Reduced the center emission and road-pool opacity in the [revised stage](evidence/overnight/17b-hover/climb.png), retaining bright cyan rims with dark centers. All 12 staged poses pass, including explicit hover visibility checks on the bank, ordinary road and flight. The [full race](evidence/overnight/17b-hover/keyboard-demo.webm) ran 114.97 seconds at 59.972 renderer fps, with 30 matching loaded files, 23 nonempty scene checks and eight finishers. All 159 regression tests pass. The [half-second bank-to-flight sequence](evidence/overnight/17b-hover/motion-22/sequence.png) was inspected: rims and ground glow remain readable through the bank, and ordinary wheels return at launch. Retain the revised treatment; final fidelity remains open.
 
@@ -310,7 +310,7 @@ Pass 33 separates Mario/Luigi fabric from skin and paint, using an original tile
 
 The first woven-material staging passes, but code review catches a degenerate projection on top-facing triangles: one dominant-axis case could map both UV coordinates from Z. Correct it to X/Z for all top faces before the accepted recording. The revised [33b grid view](evidence/overnight/33b-fabric-projection/grid.png) shows restrained weave on the cap and overalls, while bodywork retains its smooth highlights. All 14 staged poses and 165 tests pass. Full motion verification is pending.
 
-Fresh native reference playback from the opening turn through the bank, followed by the [driver underpass frame](evidence/overnight/reference/retro-driver-underpass.png), provides a clearer cap/overalls silhouette. This video shows Mario riding a Yoshi-shaped bike; use it for the driver and environment, and the supplied image for the Standard Kart.
+Fresh native reference playback from the opening turn through the bank, followed by the [driver underpass frame](evidence/overnight/reference/retro-driver-underpass.png), provides a clearer cap/overalls silhouette. This video shows Mario riding a Yoshi-shaped bike; use it for the driver and environment, and Patrick’s supplied image for the Standard Kart.
 
 Further material review finds an older classification defect to fix next: the broad metal-name regex matches “brim” because it contains “rim”. Fabric roughness now reduces that highlight, but the brim should also have zero metalness. Correct the classification and verify the affected close views before the next accepted pass.
 
@@ -420,7 +420,7 @@ Use the source emission mask for cyan rim/sidewall highlights; shade the colored
 The first [high-bank capture](evidence/overnight/38-source-wheels/bank-high.png) shows actual hub contours and tire details instead of featureless black circles. All 14 source-course poses and 169 regression tests pass. The dedicated [wheel review](evidence/overnight/38-source-wheels/wheel-review.json) verifies four actual source meshes, diffuse/emission maps, absent flat overlays, and world-space axle orientation on the ground, on the bank, and after returning to ground. Two harness errors were caught and preserved: assuming identical GLB node names for all wheels, and measuring a staged pose before the next rendered frame. Correct the lookup and explicitly await rendered frames; do not loosen the axle alignment thresholds. The complete keyboard race is recording.
 
 
-The accepted [38 full keyboard race](evidence/overnight/38-source-wheels/keyboard-demo.webm) runs 98.21 seconds at 59.951 renderer fps, with eight finishers, all 50 loaded files matching the preserved source and 20 nonempty samples. The final 14 staged captures pass. Inspected the [half-second 16–32 second sequence](evidence/overnight/38-source-wheels/motion-16/sequence.png), high-bank close view and source-wheel ground/hover/returned views, and loaded the unaltered video for native playback. Tire details remain visible through the bank and return to the original colors after landing. Fresh native RetroArchive bank playback reinforces that the original game has stronger road specular detail and a brighter stadium. That reference uses a bike; The supplied Standard Kart image remains the vehicle-shape reference.
+The accepted [38 full keyboard race](evidence/overnight/38-source-wheels/keyboard-demo.webm) runs 98.21 seconds at 59.951 renderer fps, with eight finishers, all 50 loaded files matching the preserved source and 20 nonempty samples. The final 14 staged captures pass. Inspected the [half-second 16–32 second sequence](evidence/overnight/38-source-wheels/motion-16/sequence.png), high-bank close view and source-wheel ground/hover/returned views, and loaded the unaltered video for native playback. Tire details remain visible through the bank and return to the original colors after landing. Fresh native RetroArchive bank playback reinforces that the original game has stronger road specular detail and a brighter stadium. That reference uses a bike; Patrick's supplied Standard Kart image remains the vehicle-shape reference.
 
 ### Independent cross-section measurement changes the next priority
 
@@ -801,14 +801,14 @@ Next concrete mismatch: native4:02 shows horizontal cyan anti-gravity wheels dur
 
 The user superseded the broad loop with five priorities and requested quota conservation. Parked pass61 wheel changes outside active runtime. Fixed actual close-CPU culling; added supported held/use/release/impact item animation; coordinated boost streaks and camera feedback; implemented a physical jump off measured source ramp lips; replaced race lettering, item art and lap display with closer native-style presentation. See DEMO-ITERATION.md and evidence/overnight/65a-demo-iteration/review-notes.md for exact evidence and approximations.
 
-Used targeted captures62a/b,63a/b,64a/b followed by ONE combined full race65a.204 tests passed,76 loaded files matched,8 finishers,59.623fps,3 finish-ramp launches/landings. Dense frame review and browser video playback accepted. Status: stop for review. No commits or pushes. The app’s older broad goal was already paused and has no exposed edit API; repository scope is authoritative for this iteration. Do not silently resume deferred broad work.
+Used targeted captures62a/b,63a/b,64a/b followed by ONE combined full race65a.204 tests passed,76 loaded files matched,8 finishers,59.623fps,3 finish-ramp launches/landings. Dense frame review and browser video playback accepted. Status: stop for Patrick review. No commits or pushes. The app’s older broad goal was already paused and has no exposed edit API; repository scope is authoritative for this iteration. Do not silently resume deferred broad work.
 
 
-## November 6 — second feedback round, pass67
+## 6 November — second feedback round, pass67
 
-Implemented the new six-item scope: box shatter and larger scrolling inventory, native-inspired direct-start menu, night lighting contrast, exhaust/tire effects, chase framing, and contact momentum. Reference observations and limitations are in [pass67 notes](evidence/overnight/67-feedback-race/review-notes.md); [review page](evidence/overnight/67-feedback-race/review.html) includes focused and full recordings. 208 tests, 59.68 fps final race, eight finishers, 80 matching loaded files. Stop here for feedback. No commit or push performed.
+Implemented the new six-item scope: box shatter and larger scrolling inventory, native-inspired direct-start menu, night lighting contrast, exhaust/tire effects, chase framing, and contact momentum. Reference observations and limitations are in [pass67 notes](evidence/overnight/67-feedback-race/review-notes.md); [review page](evidence/overnight/67-feedback-race/review.html) includes focused and full recordings. 208 tests, 59.68 fps final race, eight finishers, 80 matching loaded files. Stop here for Patrick’s feedback. No commit or push performed.
 
 
-## November 6 — pass68 sound and effects (stop for review)
+## 6 November — pass68 sound and effects (stop for review)
 
 Integrated 97 available original cues and refined box glass and drift sparks. [Audiovisual review](evidence/overnight/68-sound-box-drift/review.html) contains focused and complete-race recordings, measurements, source links and limitations. 208 tests and 11 focused browser checks pass; final race 60.00 FPS, eight finishers, 179 matching loaded files. Original isolated item cues remain replaceable placeholders; no upload is required to review this pass. Stop here. No commit, push or resumed broad goal.

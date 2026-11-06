@@ -2,12 +2,12 @@
 
 The runtime uses the original game's Latin letter shapes, counters and character portraits from the included runtime pack. The prepared assets are included in `assets/mario-kart/ui/`; missing files use the fallback portraits and system font. Rebuilding them from source sheets is optional.
 
-Sources inspected November 6, 2026:
+Sources 6 November 2026:
 
 - [Fonts, uploaded by Random Talking Bush](https://www.spriters-resource.com/wii_u/mariokart8/asset/69863/): `turbo_MessageFontOutline_50_US_62x77.png` and `turbo_DigitalNum_51x75.png`.
 - [Character menu icons, uploaded by Random Talking Bush](https://www.spriters-resource.com/wii_u/mariokart8/asset/68237/).
 - [GameXplain native menu tour](https://www.youtube.com/watch?v=4wlwytZVknM&t=45s): blue character panel, rectangular yellow selection frame, character preview, restrained white labels. OpenWii retains its single race flow.
-- November 6 gameplay screenshot: item circle, lower-left coin/lap counters, right-middle minimap and lower-right position proportions.
+- Patrick's 6 November gameplay screenshot: item circle, lower-left coin/lap counters, right-middle minimap and lower-right position proportions.
 
 Download the font archive and run:
 

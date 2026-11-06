@@ -152,7 +152,7 @@ export function buildArchitecture(
         10,
         2,
         [side * 3.55, 2.8, 0],
-        ["COMET WORKS", "FUNCASTER", "FUNCASTER CUP"][i % 3],
+        ["COMET WORKS", "CHONKS", "CHONKS CUP"][i % 3],
         ["#aa2235", "#183f63", "#347541"][i % 3],
         "RACING TEAM",
         (side * Math.PI) / 2,
@@ -188,7 +188,7 @@ export function buildArchitecture(
   const screenTex = canvasTexture(1024, 768, (c, w, h) => {
     c.fillStyle = "#f1eedb";
     c.fillRect(0, 0, w, h);
-    c.drawImage(stadiumBrand("FUNCASTER", canvasTexture).image, 0, 240, w, 256);
+    c.drawImage(stadiumBrand("CHONKS", canvasTexture).image, 0, 240, w, 256);
     c.strokeStyle = "#252c31";
     c.lineWidth = 15;
     c.lineJoin = "round";
@@ -223,7 +223,7 @@ export function buildArchitecture(
     c.font = "700 78px Arial";
     c.textAlign = "center";
     c.textBaseline = "middle";
-    c.fillText("FUNCASTER CUP", 0, 0, 935);
+    c.fillText("CHONKS CUP", 0, 0, 935);
   });
   const purple = standard("#30256a", { metalness: 0.25, roughness: 0.48 }),
     capRed = standard("#a42b3b", { metalness: 0.35, roughness: 0.42 }),

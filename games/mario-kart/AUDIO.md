@@ -29,4 +29,4 @@ The source includes original synth cues and an original short stadium groove. No
 
 The engine loop should be a steady, seamlessly looped idle/rev sample. The game changes its playback rate. Without it, a filtered oscillator follows actual speed. Music and engine levels fade out on the results screen. The sound toggle controls the complete mix, including when toggled before the first gesture. Hiding/pausing the game suspends audio.
 
-Verification: headless tests verify every event has a synth; the browser harness checks the actual oscillator frequency, mute-before-unlock behavior, and an in-memory WAV fixture through the real file override fetch/decode path. Subjective sound balance has not been evaluated by listening.
+Verification: headless tests verify every event has a synth; the browser harness checks the actual oscillator frequency, mute-before-unlock behavior, and an in-memory WAV fixture through the real file override fetch/decode path. Subjective sound balance has not been evaluated by listening on Patrick's speakers.
