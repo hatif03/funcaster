@@ -4,7 +4,7 @@
 
 ## Implementation update — 6 November 2026
 
-The launch implementation is on `codex/arcade-launch-plan`. Nothing is merged or deployed. The [dated implementation ledger](docs/IMPLEMENTATION.md) and [release evidence](docs/RELEASE-2026-11-06.md) are the current source of truth.
+The launch implementation is in this tree. Nothing is deployed. The [dated implementation ledger](docs/IMPLEMENTATION.md) and [release evidence](docs/RELEASE-2026-11-06.md) are the current source of truth.
 
 - [x] Shared catalog/IDs, controller calibration and pacing, four-seat lifecycle, queues, grace and explicit round outcomes.
 - [x] Approved revocable host-phone controls, PIN-protected kiosk mode, room/network safeguards and persistent event records.
@@ -20,7 +20,7 @@ The older sections below are retained as historical planning/audit material. The
 
 ## Implementation status — 6 November 2026
 
-This is the current release checklist; the detailed design/scenario book below remains a record of the larger roadmap, not a claim that every exploratory variant has passed acceptance. Work is on `codex/hackathon-party-experience`, delivered through draft PR #1. Backend changes are not merged.
+This is the current release checklist; the detailed design/scenario book below remains a record of the larger roadmap, not a claim that every exploratory variant has passed acceptance. The checklist describes the code in this tree. It was not delivered through a pull request, and it is not deployed.
 
 - [x] Walk-up QR joining over Wi-Fi/mobile data, calibrated motion and touch fallback, reconnect identity, gentler landscape racing, Brake left / Boost center / Accelerate right, three boosts and eight-second cooldown.
 - [x] All **13 games** in one shared catalog with validated mode/setup/scoring contracts, fixed match setup, two-human Multiplayer start gates and common results.

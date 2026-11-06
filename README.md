@@ -82,4 +82,4 @@ The historical standalone launcher and remote remain at `/classic.html` and `/cl
 
 ## License and provenance
 
-Software is [MIT licensed](LICENSE). The upstream copyright notice is retained. [PRE_EXISTING.md](PRE_EXISTING.md) distinguishes the inherited game code and fixtures from this implementation.
+`package.json` declares the MIT license. This tree has no `LICENSE` file and no copyright notice. [PRE_EXISTING.md](PRE_EXISTING.md) distinguishes the inherited game code and fixtures from the party implementation.

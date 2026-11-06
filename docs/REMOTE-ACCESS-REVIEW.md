@@ -1,6 +1,6 @@
 # Remote screen access review
 
-The user explicitly approved this scoped access on 6 November 2026. It is implemented on `codex/arcade-launch-plan` and draft PR #2, default-off and without a merge or deployment.
+The user explicitly approved this scoped access on 6 November 2026. It is in this tree, default-off, and without a deployment.
 
 ## Exact access scope
 
@@ -17,4 +17,4 @@ The user explicitly approved this scoped access on 6 November 2026. It is implem
 
 An invited participant can falsify inputs or client-attested scores for their own seat. A leaked invitation permits watching that room; a leaked view token permits that one active view while valid. Tokens stay off public state, URLs, QRs and persistent event records. Tests will cover forged views, wrong room/round/build, revocation, token exposure, duplicate chunks, reconnect without restart, loading gates and final score merge. Browser tests will cover host plus invited display plus paired phone.
 
-Delivery is feature-branch code and an update to draft PR #2 only. This does not authorize deployment, public exposure of a running server, a main-branch push or any merge.
+Delivery is the code in this tree. This does not authorize deployment or public exposure of a running server.

@@ -1,16 +1,16 @@
 # Pre-existing work and this implementation
 
-The comparison base for this feature branch is commit `71b9b26d8157dea6ade012d998fc5e6c2fb3a8fe`. This record describes code provenance, not an assertion that all historical assets share one license.
+This record describes which parts of the tree were already assembled and which were added around them. It does not assert that every asset shares one license, and it does not name a commit outside this repository.
 
 ## Already present at that base
 
 The Node/Socket.IO relay, standalone console menu and phone remote, motion/pointer engine, ten original game folders, Three.js rendering and game-rule tests. The kart prototype included extracted character/course/UI/audio fixtures and an asset pipeline. Those files and their history are inherited work.
 
-## Added on `codex/hackathon-party-experience`
+## Added in this tree
 
 The walk-up QR party, any-network temporary HTTPS workflow, calibrated minimal phone controls, gentler landscape racing, three new party games, reconnecting rooms, shared catalog and mode contracts, multiplayer adapters and views, turn-based golf and seeded computer golfers, shared and independent slicing modes, human duels, Drawing’s private prompts and guesses, group rotation, playlists, results/replay records, original kart drivers/models/icons/branding/synthesized audio, display snapshots, diagnostics, SDK/template/isolated preview, validation, CI and deployment preparation.
 
-The latest continuation expands the party branch after commit `8bd3e44`, which had already introduced gentler saved racing sensitivity. Implementation is delivered through draft PR #1, without merging the backend.
+The party work in this tree includes gentler saved racing sensitivity. There is no pull request for it in this repository.
 
 ## Public asset boundary
 

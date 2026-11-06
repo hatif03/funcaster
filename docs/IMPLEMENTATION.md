@@ -1,6 +1,6 @@
 # Arcade launch implementation — 6 November 2026
 
-Branch: `codex/arcade-launch-plan`, based on main `086d9b2`. No merge or deployment is authorized. This dated ledger supersedes the old audits and approval-blocked notes in the historical plan.
+This ledger describes the code in this tree. No deployment is authorized. It supersedes the old audits and approval-blocked notes in the historical plan.
 
 ## Implemented
 

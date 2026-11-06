@@ -1,6 +1,6 @@
 # Approved server changes
 
-The user explicitly approved this scope on 6 November 2026 after the original automatic review requested confirmation. The implementation is now on `codex/arcade-launch-plan` and draft PR #2. No merge or deployment has occurred.
+The user explicitly approved this scope on 6 November 2026 after the original automatic review requested confirmation. The implementation is in this tree. No deployment has occurred.
 
 ## Concrete next implementation
 

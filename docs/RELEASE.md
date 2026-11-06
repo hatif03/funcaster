@@ -1,6 +1,6 @@
 # Release evidence — 6 November 2026
 
-Branch: `codex/hackathon-party-experience`. Delivery: draft PR #1, no merge. Runtime: Node 22.12+; a single server instance holds rooms in memory.
+The release notes describe the code in this tree. There is no pull request for it. Runtime: Node 22.12+; a single server instance holds rooms in memory.
 
 ## Automated checks
 
@@ -23,7 +23,7 @@ The lobby’s recent-round picker keeps completed exports available after rematc
 
 ## Open acceptance gates
 
-Stable hosting/account/domain is deferred at the user’s request. Approved host-phone and scoped remote-screen controls are implemented on PR #2. The TV remains required. Online Kart/Tennis/Fencing are implemented with server-owned simulation; peer lockstep is optional research. Creator publication stays gated on an outside trial, with the registry/review/gallery workflow already implemented.
+Stable hosting/account/domain is deferred at the user’s request. Approved host-phone and scoped remote-screen controls are in this tree. The TV remains required. Online Kart/Tennis/Fencing are implemented with server-owned simulation; peer lockstep is optional research. Creator publication stays gated on an outside trial, with the registry/review/gallery workflow already implemented.
 
 Physical iOS/Android permission prompts, actual sensor feel, QR readability at venue distance, mixed-network latency, sustained four-player frame rate and a one-hour thermal/soak session have not been established by desktop simulation. The container recipe is prepared; deployment to a hosting provider has not been performed. Do not label this release hardware-accepted or create a final launch tag yet.
 
