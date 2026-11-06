@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Funcaster · G0 records probe</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font:
+          16px/1.5 system-ui,
+          sans-serif;
+        background: #16429c;
+        color: #17294b;
+        padding: clamp(12px, 3vw, 40px);
+      }
+      main {
+        max-width: 960px;
+        margin: auto;
+        background: #edf4ff;
+        border: 3px solid #0756c7;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 18px 60px #071b5266;
+      }
+      header {
+        background: #0756c7;
+        color: white;
+        padding: 16px 20px;
+      }
+      header p {
+        color: #e0ecff;
+      }
+      h1 {
+        font-size: clamp(23px, 4vw, 34px);
+        margin: 0;
+      }
+      p {
+        margin: 8px 0;
+      }
+      .body {
+        padding: clamp(14px, 3vw, 28px);
+      }
+      .status {
+        padding: 12px 16px;
+        background: #fff;
+        border: 1px solid #a8bddb;
+        border-radius: 8px;
+        overflow-wrap: anywhere;
+      }
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+        gap: 10px;
+        margin: 18px 0;
+      }
+      .stat {
+        background: white;
+        padding: 12px;
+        border: 1px solid #b3c6e5;
+        border-radius: 8px;
+      }
+      .stat b {
+        display: block;
+        font-size: 28px;
+      }
+      button {
+        font: inherit;
+        font-weight: 700;
+        min-height: 48px;
+        background: #0756c7;
+        color: white;
+        border: 2px solid #03428f;
+        border-radius: 7px;
+        padding: 10px 20px;
+        cursor: pointer;
+        margin: 12px 0;
+      }
+      button:focus-visible {
+        outline: 3px solid #b15a00;
+        outline-offset: 3px;
+      }
+      ol {
+        list-style: none;
+        padding: 0;
+      }
+      li {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        background: white;
+        margin: 8px 0;
+        padding: 12px 16px;
+        border-radius: 7px;
+        border: 1px solid #c0cde1;
+      }
+      li span {
+        min-width: 0;
+        overflow-wrap: anywhere;
+      }
+      li strong {
+        flex: none;
+      }
+      small {
+        display: block;
+        color: #4c5f7f;
+      }
+      footer {
+        border-top: 1px solid #bbcae0;
+        padding-top: 14px;
+        font-size: 14px;
+        color: #425471;
+      }
+      a {
+        color: #064aad;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>Funcaster records</h1>
+        <p>G0 test console · synthetic scores only</p>
+      </header>
+      <div class="body">
+        <p id="status" class="status" role="status" aria-live="polite">
+          Ready to read public records.
+        </p>
+        <button id="refresh" type="button">Read public records</button>
+        <div class="stats" aria-label="Record validation">
+          <div class="stat"><b id="trusted">0</b>Trusted fixtures</div>
+          <div class="stat"><b id="unverified">0</b>Unknown creator</div>
+          <div class="stat"><b id="invalid">0</b>Invalid payload</div>
+        </div>
+        <h2>Highest valid scores</h2>
+        <p id="empty">Choose a completed G0 run to load its test records.</p>
+        <ol id="scores" aria-label="Top twenty validated scores"></ol>
+        <footer>
+          Reads Rabdi directly. A copied namespace does not prove who wrote a
+          record. Only allowlisted creators with immutable, validated payloads
+          appear here. This is the compatibility probe; the product Hall is a
+          later task.
+        </footer>
+      </div>
+    </main>
+    <script src="/hall.js"></script>
+  </body>
+</html>

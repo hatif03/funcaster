@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "@arkiv-network/sdk": "1.0.1",
+    "@ensdomains/ensjs": "5.2.7",
+    "viem": "2.57.14"
+  },
+  "name": "chonks-rabdi-k0",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test *.test.mjs",
+    "check": "node check.mjs"
+  }
+}
