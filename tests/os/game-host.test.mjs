@@ -79,21 +79,21 @@ test("iframe messages need same origin, a current frame source, and a known mess
     foreign = {},
     origin = "https://console.test",
     frames = [{ contentWindow: source }];
-  for (const type of ["funcaster:loaded", "funcaster:home", "funcaster:error"])
+  for (const type of ["chonks:loaded", "chonks:home", "chonks:error"])
     assert.equal(
       trustedGameMessage({ source, origin, data: { type } }, origin, frames),
       true,
     );
   for (const event of [
-    { source: foreign, origin, data: { type: "funcaster:home" } },
-    { source, origin: "https://other.test", data: { type: "funcaster:home" } },
+    { source: foreign, origin, data: { type: "chonks:home" } },
+    { source, origin: "https://other.test", data: { type: "chonks:home" } },
     { source, origin, data: { type: "host.cmd" } },
     { source, origin, data: null },
   ])
     assert.equal(trustedGameMessage(event, origin, frames), false);
   assert.equal(
     trustedGameMessage(
-      { source, origin, data: { type: "funcaster:loaded" } },
+      { source, origin, data: { type: "chonks:loaded" } },
       origin,
       [],
     ),

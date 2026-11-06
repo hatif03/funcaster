@@ -56,7 +56,7 @@ test("a complete shooting round with hits round-trips from two independent board
     boards.push({ view, calls, score: r.score });
   }
   const replay = {
-    gameId: "funcaster.shooting-range",
+    gameId: "chonks.shooting-range",
     seed: 43,
     setup: {},
     slots: [1, 3],

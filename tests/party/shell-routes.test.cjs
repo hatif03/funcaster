@@ -9,10 +9,10 @@ const { attachShellRoutes } = require("../../server/shell-routes.cjs");
 const { blockPrivateAssets } = require("../../server/public-assets.cjs");
 
 async function server(t, shell) {
-  const root = await fs.mkdtemp(path.join(os.tmpdir(), "funcaster-shell-routes-"));
+  const root = await fs.mkdtemp(path.join(os.tmpdir(), "chonks-shell-routes-"));
   const files = {
     "public/index.html": "classic-dashboard",
-    "public/os/index.html": "funcaster-os",
+    "public/os/index.html": "chonks-os",
     "assets/os/wallpaper.svg": "public-subset",
     "assets/source/secret.txt": "source-secret",
     "assets/mario-kart/secret.txt": "legacy-secret",
@@ -63,16 +63,16 @@ test("shell routes keep classic by default and apply only explicit os/classic ov
   for (const env of ["classic", "os", "invalid"]) {
     const get = await server(t, env);
     for (const [url, expected] of [
-      ["/", env === "os" ? "funcaster-os" : "classic-dashboard"],
-      ["/?shell=os&demo=1", "funcaster-os"],
+      ["/", env === "os" ? "chonks-os" : "classic-dashboard"],
+      ["/?shell=os&demo=1", "chonks-os"],
       ["/?shell=classic", "classic-dashboard"],
-      ["/?shell=invalid", env === "os" ? "funcaster-os" : "classic-dashboard"],
+      ["/?shell=invalid", env === "os" ? "chonks-os" : "classic-dashboard"],
       [
         "/?shell=os&shell=classic",
-        env === "os" ? "funcaster-os" : "classic-dashboard",
+        env === "os" ? "chonks-os" : "classic-dashboard",
       ],
-      ["/os", "funcaster-os"],
-      ["/os/", "funcaster-os"],
+      ["/os", "chonks-os"],
+      ["/os/", "chonks-os"],
       ["/classic-dashboard", "classic-dashboard"],
     ]) {
       const response = await get(url);

@@ -21,12 +21,14 @@ class Surface extends EventTarget {
     super.addEventListener(type, fn, options);
   }
 }
-function touch(document, { scroll = false, control = false } = {}) {
+function touch(document, { scroll = false, control = false, pad = false } = {}) {
   const event = new Event("touchmove", { cancelable: true });
   Object.defineProperty(event, "target", {
     value: {
       closest(selector) {
-        return selector === "[data-scroll]" ? scroll : control;
+        if (selector === "[data-scroll]") return scroll;
+        if (selector === "#game-pad") return pad;
+        return control;
       },
     },
   });
@@ -69,6 +71,16 @@ test("phone page guard blocks accidental gestures while sheets retain scrolling"
   assert.equal(touch(fixture.document), true);
   assert.equal(touch(fixture.document, { scroll: true }), false);
   assert.equal(touch(fixture.document, { scroll: true, control: true }), true);
+  assert.equal(touch(fixture.document, { pad: true }), false);
+  const pinch = new Event("gesturestart", { cancelable: true });
+  fixture.document.dispatchEvent(pinch);
+  assert.equal(pinch.defaultPrevented, true);
+  const first = new Event("touchend", { cancelable: true });
+  const second = new Event("touchend", { cancelable: true });
+  fixture.document.dispatchEvent(first);
+  fixture.document.dispatchEvent(second);
+  assert.equal(first.defaultPrevented, false);
+  assert.equal(second.defaultPrevented, true);
   const context = new Event("contextmenu", { cancelable: true });
   fixture.document.dispatchEvent(context);
   assert.equal(context.defaultPrevented, true);

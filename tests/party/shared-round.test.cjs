@@ -3,9 +3,9 @@ const test = require("node:test"),
 const { SharedRound, verifyShared } = require("../../server/shared-round.cjs");
 const { fixture, emit, FakePhone, wait } = require("./harness.cjs");
 const ids = {
-  "mario-kart": "funcaster.kart-rush",
-  "table-tennis": "funcaster.table-tennis",
-  swordplay: "funcaster.foam-fencers",
+  "mario-kart": "chonks.kart-rush",
+  "table-tennis": "chonks.table-tennis",
+  swordplay: "chonks.foam-fencers",
 };
 test("shared rounds reproduce scores and reject malformed journals", () => {
   for (const id of Object.keys(ids)) {

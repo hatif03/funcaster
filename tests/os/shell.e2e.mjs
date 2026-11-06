@@ -53,7 +53,7 @@ try {
   );
   mark("Two independent game frames register for the current round");
   await page.evaluate(() =>
-    window.postMessage({ type: "funcaster:home" }, location.origin),
+    window.postMessage({ type: "chonks:home" }, location.origin),
   );
   await sleep(150);
   assert.equal(room.state.paused, false);

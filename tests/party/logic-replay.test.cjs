@@ -31,7 +31,7 @@ test("Kart replay follows the fixed-step race and rejects tampered input", () =>
     r.humans.map((p) => r.position(p)),
   );
   const replay = {
-    gameId: "funcaster.kart-rush",
+    gameId: "chonks.kart-rush",
     seed: 18,
     setup,
     slots: [1, 3],

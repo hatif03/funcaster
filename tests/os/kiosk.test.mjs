@@ -30,7 +30,7 @@ test("kiosk URL and executable validation never interprets a shell command", () 
   assert.throws(() => kioskUrl("https://user:secret@example.test/"));
   assert.throws(() =>
     launchSpec({
-      env: { FUNCASTER_BROWSER: "chrome;echo bad" },
+      env: { CHONKS_BROWSER: "chrome;echo bad" },
       exists: () => true,
     }),
   );

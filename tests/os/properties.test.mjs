@@ -112,10 +112,10 @@ test("dependencies distinguish shared helpers, golf skill and the optional ready
   }
 });
 
-test("empty tabs and preset rows are omitted while Advanced remains for records", () => {
+test("the non-schema Stakes field keeps Rules available; Advanced remains for records", () => {
   assert.deepEqual(
     optionGroups("kart").map((g) => g.id),
-    ["play", "advanced"],
+    ["play", "rules", "advanced"],
   );
   assert.deepEqual(
     optionGroups("star-catch").map((g) => g.id),
@@ -123,7 +123,7 @@ test("empty tabs and preset rows are omitted while Advanced remains for records"
   );
   assert.deepEqual(
     optionGroups("swordplay").map((g) => g.id),
-    ["play", "players", "advanced"],
+    ["play", "rules", "players", "advanced"],
   );
   assert.deepEqual(
     optionGroups("golf").map((g) => g.id),

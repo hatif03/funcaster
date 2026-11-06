@@ -5,7 +5,7 @@ const test = require("node:test"),
   os = require("node:os");
 const { createEventStore } = require("../../server/event-store.cjs");
 test("event counters and filtered leaderboards persist without identities or raw inputs", (t) => {
-  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "funcaster-events-")),
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "chonks-events-")),
     file = path.join(dir, "stats.json");
   t.after(() => fs.rmSync(dir, { recursive: true, force: true }));
   const s = createEventStore(file);
@@ -14,7 +14,7 @@ test("event counters and filtered leaderboards persist without identities or raw
     type: "round",
     result: {
       matchId: "one",
-      gameId: "funcaster.kart-rush",
+      gameId: "chonks.kart-rush",
       status: "completed",
       verification: "attested",
       endedAt: 100,

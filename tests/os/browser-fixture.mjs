@@ -27,7 +27,7 @@ export async function browserFixture(name) {
   await new Promise((r) => probe.listen(0, "127.0.0.1", r));
   const port = probe.address().port;
   await new Promise((r) => probe.close(r));
-  const temp = await mkdtemp(resolve(tmpdir(), "funcaster-os-e2e-")),
+  const temp = await mkdtemp(resolve(tmpdir(), "chonks-os-e2e-")),
     output = resolve(
       process.env.OS_EVIDENCE_DIR || resolve(repo, ".local/os-evidence"),
       `${name}-${new Date().toISOString().replace(/[:.]/g, "-")}`,
@@ -40,7 +40,7 @@ export async function browserFixture(name) {
       HTTP: "1",
       PORT: String(port),
       NO_OPEN: "1",
-      FUNCASTER_SHELL: "os",
+      CHONKS_SHELL: "os",
       EVENT_STORE: resolve(temp, "events.json"),
       CREATOR_STORE: resolve(temp, "creator"),
     },
@@ -155,7 +155,7 @@ export async function browserFixture(name) {
         window.addEventListener("message", (event) => {
           if (
             event.origin === location.origin &&
-            ["funcaster:loaded", "funcaster:error"].includes(event.data?.type)
+            ["chonks:loaded", "chonks:error"].includes(event.data?.type)
           )
             window.__osMessages.push({
               type: event.data.type,
@@ -164,9 +164,9 @@ export async function browserFixture(name) {
         });
       });
       await page.goto(`${base}/?shell=os`, { waitUntil: "domcontentloaded" });
-      await page.waitForFunction(() => !!sessionStorage.getItem("funcaster.host"));
+      await page.waitForFunction(() => !!sessionStorage.getItem("chonks.host"));
       const identity = await page.evaluate(() =>
-        JSON.parse(sessionStorage.getItem("funcaster.host")),
+        JSON.parse(sessionStorage.getItem("chonks.host")),
       );
       const observer = await connect();
       let state = null;
@@ -275,7 +275,7 @@ export async function browserFixture(name) {
             () =>
               document.querySelectorAll("[data-game-frame]").length > 0 &&
               window.__osMessages.filter(
-                (event) => event.type === "funcaster:loaded",
+                (event) => event.type === "chonks:loaded",
               ).length >= document.querySelectorAll("[data-game-frame]").length,
             null,
             { timeout: 30000 },

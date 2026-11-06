@@ -44,7 +44,7 @@ test("creator versions are immutable, owned, hash pinned and require complete re
   assert.throws(() => r.submit(f.source, "Another owner"), /owner/);
   const s = r.submit(f.source, "Test owner");
   assert.throws(() => r.submit(f.source, "Test owner"), /immutable/);
-  assert.throws(() => r.namespace("funcaster", "Imposter"), /unreserved/);
+  assert.throws(() => r.namespace("chonks", "Imposter"), /unreserved/);
   assert.throws(
     () => r.review(s.id, { ...approval, checks: {} }),
     /separately/,
