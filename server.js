@@ -1,7 +1,7 @@
 "use strict";
 
 /**
- * Funcaster Console — LAN relay server.
+ * Funcaster — LAN relay server.
  *
  * Serves the clients and pipes messages between them:
  *   /                     → game launcher
@@ -33,6 +33,27 @@ const app = express();
 app.set("trust proxy", "loopback");
 app.disable("x-powered-by");
 app.use(compression());
+// Partners off does not import or instantiate the integration module.
+const web3 =
+  process.env.PARTNERS && process.env.PARTNERS !== "off"
+    ? require("./server/web3/index.cjs").createWeb3()
+    : null;
+if (web3) {
+  app.use("/api/web3", web3.router);
+  app.use("/pot", web3.potRouter);
+  app.use("/api/records", web3.recordsRouter);
+  app.use("/api/commerce", web3.commerceRouter);
+  process.once("exit", () => web3.close());
+  let stoppingWeb3 = false;
+  for (const signal of ["SIGTERM", "SIGINT"])
+    process.once(signal, async () => {
+      if (stoppingWeb3) return;
+      stoppingWeb3 = true;
+      await web3.close();
+      process.exit(0);
+    });
+}
+
 app.use((_req, res, next) => {
   res.set("Referrer-Policy", "same-origin");
   res.set("X-Content-Type-Options", "nosniff");
@@ -51,6 +72,14 @@ app.get("/api/health", (_req, res) =>
     version: require("./package.json").version,
   }),
 );
+app.get("/api/ready", async (_req,res)=> {
+  try {
+    const db=require("./integrations/storage/runtime.mjs").storageFor(process.env.WEB3_DATA_DIR || ".local/web3");
+    if(process.env.RENDER && !db) return res.status(503).json({ok:false});
+    if(db) await db.store.health();
+    res.json({ok:true,storage:db?"postgres":"local",buildId:BUILD_ID});
+  } catch {res.status(503).json({ok:false});}
+});
 // Source packs and extracted game artwork are never part of the public subset.
 app.use(require("./server/public-assets.cjs").blockPrivateAssets);
 app.get("/vendor/three/three.module.js", (_req, res) =>
@@ -240,11 +269,13 @@ const eventStore = createEventStore(
   process.env.EVENT_STORE || path.join(__dirname, ".local", "event-stats.json"),
 );
 process.once("exit", () => eventStore.close());
+web3?.namespace?.(io);
 const party = attachParty(io, {
+  web3,
   buildId: BUILD_ID,
   persist: (event) => eventStore.record(event),
   eventStats: () => eventStore.snapshot(),
-  remoteViews: process.env.FUNCASTER_REMOTE_VIEWS === "1",
+  remoteViews: process.env.CHONKS_REMOTE_VIEWS === "1",
 });
 app.get("/api/party/pairing/:code", async (req, res) => {
   if (!party.rooms.has(req.params.code))
@@ -397,7 +428,7 @@ io.on("connection", (socket) => {
 server.listen(PORT, "0.0.0.0", () => {
   const line = "─".repeat(52);
   console.log(`\n${line}`);
-  console.log("  🕹  Funcaster Console — your phone is the controller");
+  console.log("  🕹  Funcaster — your phone is the controller");
   console.log(line);
   console.log(`  Launcher      ${scheme}://localhost:${PORT}/`);
   console.log("  Party remote  Scan the QR on the launcher");
