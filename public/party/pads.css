@@ -1,0 +1,400 @@
+#game-pad {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: grid;
+  gap: 8px;
+  box-sizing: border-box;
+  padding: max(10px, env(safe-area-inset-top))
+    max(12px, env(safe-area-inset-right)) max(10px, env(safe-area-inset-bottom))
+    max(12px, env(safe-area-inset-left));
+  background: #ece9d8;
+  color: #111111;
+  font-family: "Tahoma XP", "Tahoma XP Fallback", Tahoma, Verdana, sans-serif;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+#game-pad[hidden] {
+  display: none;
+}
+
+body.game-pad #remote {
+  visibility: hidden;
+}
+
+#game-pad button,
+#game-pad .quiet,
+#game-pad .paper {
+  border: 1px solid #003c74;
+  border-radius: 4px;
+  background: linear-gradient(#ffffff, #f0eee3 85%, #dad7c7);
+  box-shadow: inset 0 0 0 1px #ffffff;
+  color: #111111;
+  font:
+    700 22px/1.15 "Tahoma XP",
+    "Tahoma XP Fallback",
+    Tahoma,
+    Verdana,
+    sans-serif;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  touch-action: none;
+}
+
+#game-pad .quiet {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 16px;
+}
+
+#game-pad button.primary {
+  background: linear-gradient(#4198ff, #0370ff 12%, #0058e8 40%, #0043cf);
+  color: #ffffff;
+  text-shadow: 1px 1px 0 #0a1f6b;
+  box-shadow: inset 0 0 0 1px #9ecbff;
+}
+
+#game-pad button.pressed,
+#game-pad button:active:not(:disabled) {
+  background: #dedbcf;
+  color: #111111;
+  text-shadow: none;
+  transform: none;
+}
+
+#game-pad button.primary.pressed,
+#game-pad button.primary:active:not(:disabled) {
+  background: #003eb8;
+  color: #ffffff;
+  text-shadow: 1px 1px 0 #0a1f6b;
+}
+
+#game-pad button.item.pressed,
+#game-pad button.item:active:not(:disabled) {
+  transform: translateX(-50%);
+}
+
+#game-pad .pad-status {
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  align-self: end;
+  justify-self: center;
+  z-index: 3;
+  margin: 0 12px 8px;
+  padding: 6px 12px;
+  border-radius: 3px;
+  border: 1px solid #000000;
+  background: #ffffe1;
+  color: #111111;
+  pointer-events: none;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: none;
+  text-align: center;
+}
+
+#game-pad button:disabled {
+  opacity: 0.35;
+}
+
+#game-pad .pause {
+  position: absolute;
+  top: max(14px, env(safe-area-inset-top));
+  left: max(14px, env(safe-area-inset-left));
+  z-index: 2;
+  width: 46px;
+  height: 46px;
+  min-height: 0;
+  padding: 0;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  letter-spacing: 0;
+}
+
+#game-pad .pause i {
+  width: 3px;
+  height: 14px;
+  background: #111111;
+  border-radius: 1px;
+  display: block;
+}
+
+#game-pad .item {
+  position: absolute;
+  top: max(16px, env(safe-area-inset-top));
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  height: 40px;
+  padding: 0 14px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+#game-pad.draw {
+  gap: 8px;
+}
+
+#game-pad .pad-tools {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 52px;
+  padding-left: 56px;
+}
+
+#game-pad .pad-tools button {
+  height: 44px;
+  min-width: 44px;
+  padding: 0 10px;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+#game-pad .swatch {
+  width: 36px;
+  min-width: 36px;
+  padding: 0;
+  font-size: 0;
+}
+
+#game-pad .paper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+}
+
+#game-pad #pad-note {
+  margin: 0;
+  color: #4a4a58;
+  pointer-events: none;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+}
+
+/* The Wii remote stays in the page so its existing actions keep working.
+   Players only see the Windows window and the game pads. */
+body.phone-page #stage {
+  padding: 0;
+  background: #ece9d8;
+}
+body.phone-page #remote {
+  width: 100%;
+  height: 100%;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  border: 0;
+  border-radius: 0;
+  background: #ece9d8;
+  box-shadow: none;
+  color: #111111;
+}
+body.phone-page
+  #remote
+  :is(#dpad, #btn-a, #btn-b, #row-mid, #speaker, #ones, #race-pedals) {
+  display: none;
+}
+body.phone-page.shell-pointer #remote {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto minmax(0, 1fr) 48px 48px;
+  gap: 6px;
+  padding-bottom: max(8px, env(safe-area-inset-bottom));
+}
+body.phone-page.shell-pointer #remote #screen {
+  grid-row: 2;
+}
+body.phone-page.shell-pointer #remote :is(#btn-a, #btn-b) {
+  display: flex;
+  grid-row: 3;
+  width: calc(100% - 16px);
+  height: 48px;
+  min-height: 48px;
+  border: 1px solid #003c74;
+  border-radius: 4px;
+  background: linear-gradient(#ffffff, #f0eee3 85%, #dad7c7);
+  color: #111111;
+  font-size: 0;
+}
+body.phone-page.shell-pointer #remote #btn-a {
+  grid-column: 1;
+}
+body.phone-page.shell-pointer #remote #btn-b {
+  grid-column: 2;
+}
+body.phone-page.shell-pointer #remote :is(#btn-a, #btn-b)::after {
+  font:
+    700 16px/1.2 "Tahoma XP",
+    Tahoma,
+    sans-serif;
+}
+body.phone-page.shell-pointer #remote #row-mid {
+  display: flex;
+  grid-row: 4;
+}
+body.phone-page #remote #row-top {
+  flex: none;
+  min-height: 36px;
+  margin: 0;
+  padding: 0 8px;
+  padding-top: env(safe-area-inset-top);
+  background: linear-gradient(#4198ff, #0370ff 12%, #0058e8 45%, #0043cf);
+  color: #ffffff;
+}
+body.phone-page #remote #brand {
+  font:
+    18px/1 "Tahoma XP",
+    "Tahoma XP Fallback",
+    Tahoma,
+    Verdana,
+    sans-serif;
+  font-style: normal;
+  color: #ffffff;
+  text-shadow: 1px 1px 0 #0a1f6b;
+}
+body.phone-page #remote #power {
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  min-height: 28px;
+  border: 1px solid #003c74;
+  border-radius: 3px;
+  background: #ece9d8;
+  color: #111111;
+  box-shadow: inset 0 0 0 1px #ffffff;
+}
+body.phone-page #remote #screen {
+  flex: 1;
+  border: 0;
+  border-radius: 0;
+  background: #ece9d8;
+  color: #111111;
+  box-shadow: none;
+}
+body.phone-page #remote #screen :is(.phone-status, h1, p, label) {
+  color: #111111;
+}
+body.phone-page #remote #screen :is(.eyebrow, .phone-status) {
+  color: #0046d5;
+}
+body.phone-page #remote :is(input, select, textarea) {
+  border: 1px solid #7f9db9;
+  border-radius: 0;
+  background: #ffffff;
+  color: #111111;
+}
+body.phone-page #remote :is(.primary-button, .secondary-button, .text-button) {
+  border: 1px solid #003c74;
+  border-radius: 4px;
+  background: linear-gradient(#ffffff, #f0eee3 85%, #dad7c7);
+  color: #111111;
+  box-shadow: inset 0 0 0 1px #ffffff;
+  font-family: "Tahoma XP", "Tahoma XP Fallback", Tahoma, Verdana, sans-serif;
+  text-shadow: none;
+}
+body.phone-page #remote .primary-button {
+  background: linear-gradient(#4198ff, #0058e8 40%, #0043cf);
+  color: #ffffff;
+  text-shadow: 1px 1px 0 #0a1f6b;
+}
+
+#game-pad .stick {
+  position: relative;
+  container-type: size;
+  min-width: 0;
+  min-height: 0;
+  border: 1px solid #003c74;
+  border-radius: 12px;
+  background: #d8d4c4;
+  box-shadow: inset 0 0 0 1px #ffffff;
+  touch-action: none;
+}
+#game-pad .stick.locked {
+  opacity: 0.55;
+  pointer-events: none;
+}
+#game-pad .stick b {
+  position: absolute;
+  top: 8px;
+  left: 0;
+  right: 0;
+  margin: 0;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  pointer-events: none;
+}
+#game-pad .stick .knob {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 72px;
+  height: 72px;
+  margin: -36px 0 0 -36px;
+  border: 1px solid #003c74;
+  border-radius: 50%;
+  background: linear-gradient(#ffffff, #dad7c7);
+  box-shadow: inset 0 0 0 1px #ffffff;
+  pointer-events: none;
+}
+#game-pad .stick-axis {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+#game-pad .stick-axis.across {
+  left: 100%;
+}
+#game-pad .stick-axis.down {
+  top: 100%;
+}
+#game-pad .stick::before {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  background: #c4c0b0;
+  border-radius: 4px;
+}
+#game-pad .stick[data-axis="xy"]::before {
+  left: 50%;
+  top: 50%;
+  width: 72cqmin;
+  height: 72cqmin;
+  transform: translate(-50%, -50%);
+  border: 8px solid #c4c0b0;
+  border-radius: 50%;
+  background: transparent;
+  box-sizing: border-box;
+}
+#game-pad .stick[data-axis="x"]::before {
+  left: 12%;
+  right: 12%;
+  top: 50%;
+  height: 10px;
+  margin-top: -5px;
+}
+#game-pad .stick[data-axis="y"]::before {
+  top: 16%;
+  bottom: 16%;
+  left: 50%;
+  width: 10px;
+  margin-left: -5px;
+}
