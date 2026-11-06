@@ -71,7 +71,7 @@ function connect(attempt = 0) {
         if (found && !announced) {
           announced = true;
           console.log(
-            `\n  FUNCASTER IS READY FOR COMPANY\n\n  Open this on the big screen:\n  ${found[0]}\n\n  The QR on that page works on Wi-Fi or mobile data.\n  Keep this terminal and the big-screen page open.\n  Ctrl+C closes the server and public link.\n\n  This is a temporary demo address, not permanent hosting.\n`,
+            `\n  CHONKS IS READY FOR COMPANY\n\n  Open this on the big screen:\n  ${found[0]}\n\n  The QR on that page works on Wi-Fi or mobile data.\n  Keep this terminal and the big-screen page open.\n  Ctrl+C closes the server and public link.\n\n  This is a temporary demo address, not permanent hosting.\n`,
           );
         }
         if (data.toString().includes("ERR")) process.stderr.write(data);

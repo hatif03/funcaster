@@ -8,7 +8,7 @@ const namespace =
   namespaceIndex < 0 ? "creator" : process.argv[namespaceIndex + 1];
 if (
   !/^[a-z][a-z0-9-]{1,39}$/.test(namespace || "") ||
-  ["funcaster", "system"].includes(namespace)
+  ["chonks", "system"].includes(namespace)
 )
   throw Error("Choose your own lowercase namespace");
 const dir = path.resolve("creator-games", slug);

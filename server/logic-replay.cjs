@@ -228,14 +228,14 @@ class LogicReplay {
 }
 function verifyLogic(replay, scores) {
   const id = {
-    "funcaster.kart-rush": "mario-kart",
-    "funcaster.pocket-greens": "golf",
-    "funcaster.table-tennis": "table-tennis",
-    "funcaster.foam-fencers": "swordplay",
-    "funcaster.time-trial": "kart",
-    "funcaster.cloud-cruise": "island-flyover",
-    "funcaster.shooting-range": "shooting-range",
-    "funcaster.alien-attack": "alien-attack",
+    "chonks.kart-rush": "mario-kart",
+    "chonks.pocket-greens": "golf",
+    "chonks.table-tennis": "table-tennis",
+    "chonks.foam-fencers": "swordplay",
+    "chonks.time-trial": "kart",
+    "chonks.cloud-cruise": "island-flyover",
+    "chonks.shooting-range": "shooting-range",
+    "chonks.alien-attack": "alien-attack",
   }[replay.gameId];
   if (!id) return false;
   if (replay.logicBoards?.length) {

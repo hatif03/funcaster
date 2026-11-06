@@ -1,7 +1,7 @@
 "use strict";
 const path = require("node:path");
 
-function attachShellRoutes(app, root, defaultShell = process.env.FUNCASTER_SHELL) {
+function attachShellRoutes(app, root, defaultShell = process.env.CHONKS_SHELL) {
   const shellFile = (shell) =>
     path.join(root, "public", shell === "os" ? "os/index.html" : "index.html");
   const send = (res, shell) =>

@@ -14,6 +14,10 @@ function createArcade({
   persist,
   eventStats,
   remoteReason = () => null,
+  web3Reason = () => null,
+  authorizeHost = null,
+  playerName = (p) => SEATS[p.slot]?.name,
+  releasePlayer = () => {},
   pairPromoted = () => {},
 }) {
   const budgets = new Map();
@@ -64,7 +68,7 @@ function createArcade({
           name: "Next up",
           color: "#f7c600",
         }
-      : { slot: p.slot, token: p.token, ...SEATS[p.slot] };
+      : { slot: p.slot, token: p.token, ...SEATS[p.slot], name: playerName(p) };
   function publishQueue(room) {
     const a = room.arcade;
     if (a)
@@ -114,6 +118,8 @@ function createArcade({
     if (!room.host) return "Waiting for the main screen";
     const screenReason = remoteReason(room);
     if (screenReason) return screenReason;
+    const partnerReason = web3Reason(room);
+    if (partnerReason) return partnerReason;
     const n = room.players.filter((p) => p?.socket && p.ready).length;
     const min = matchSetup(gameById(room.game), room.setup || {}, n).minHumans;
     return n < min
@@ -245,6 +251,7 @@ function createArcade({
     for (const slot of slots) {
       const p = room.players[slot];
       if (!p) continue;
+      releasePlayer(p);
       const socket = ns.sockets.get(p.socket),
         m = socket?.data.arcadeMember;
       if (m) {
@@ -479,6 +486,8 @@ function createArcade({
       if (seq === holder.adminSeq) return ack(holder.adminReply);
       if (seq < (holder.adminSeq || 0))
         return ack({ error: "This command has expired." });
+      if (holder.adminPending)
+        return ack({ error: "A room command is still being checked." });
       if (!limit(`admin:${socket.id}`, 5, 1000))
         return ack({ error: "Give it a moment." });
       const cmd = data?.cmd,
@@ -503,53 +512,110 @@ function createArcade({
         )
       )
         return ack({ error: "Choose a listed game." });
-      let reply;
-      if (cmd === "lock" && a) {
-        a.locked = data.args?.locked === true;
-        reply = { ok: true };
-        broadcast(room);
-      } else if (cmd === "transfer" && a && a.mode === "party")
-        reply = grant(room, data.args?.slot)
-          ? { ok: true }
-          : { error: "That player is not ready." };
-      else if (
-        cmd === "stats" &&
-        (m.role === "host" || a?.staff.has(m.player?.token))
-      )
-        reply = {
-          ok: true,
-          metrics: eventStats?.() || a?.metrics,
-          log: a?.logs,
-        };
-      else if (cmd === "status")
-        reply = { ok: true, staff: a?.staff.has(m.player?.token) || false };
-      else if (handlers.has(cmd)) {
-        if (
-          ["start", "select", "setup", "next-player"].includes(cmd) &&
-          !["lobby", "results"].includes(room.phase)
-        )
-          reply = { error: "Wait until this round ends." };
-        else if (cmd === "start" && startReason(room) !== "Ready to play")
-          reply = { error: startReason(room) };
+      const run = () => {
+        let reply;
+        if (cmd === "lock" && a) {
+          a.locked = data.args?.locked === true;
+          reply = { ok: true };
+          broadcast(room);
+        } else if (cmd === "transfer" && a && a.mode === "party")
+          reply = grant(room, data.args?.slot)
+            ? { ok: true }
+            : { error: "That player is not ready." };
         else if (
-          ["lobby", "remove"].includes(cmd) &&
-          data.args?.confirmed !== true &&
-          m.role !== "host"
+          cmd === "stats" &&
+          (m.role === "host" || a?.staff.has(m.player?.token))
         )
-          reply = { error: "Hold to confirm this action." };
-        else if (cmd === "remove" && data.args?.slot === m.player?.slot)
-          reply = { error: "Use Leave to leave your own seat." };
-        else {
-          handlers.get(cmd)(data.args || {}, (r) => {
-            reply = r;
-          });
-          reply ||= { ok: true };
-        }
-      } else reply = { error: "That command is not available." };
-      holder.adminSeq = seq;
-      holder.adminReply = reply;
-      if (reply.ok) log(room, m, cmd);
-      ack(reply);
+          reply = {
+            ok: true,
+            metrics: eventStats?.() || a?.metrics,
+            log: a?.logs,
+          };
+        else if (cmd === "status")
+          reply = { ok: true, staff: a?.staff.has(m.player?.token) || false };
+        else if (
+          ["stakes", "predictions", "commerce"].includes(cmd) &&
+          handlers.has(cmd)
+        ) {
+          holder.adminPending = seq;
+          const complete = (answer) => {
+            holder.adminPending = null;
+            holder.adminSeq = seq;
+            holder.adminReply = answer;
+            if (answer?.ok) log(room, m, cmd);
+            ack(answer);
+          };
+          Promise.resolve(handlers.get(cmd)(data.args || {}, complete)).catch(
+            () => complete({ error: "This service is unavailable." }),
+          );
+          return;
+        } else if (handlers.has(cmd)) {
+          if (
+            ["start", "select", "setup", "next-player"].includes(cmd) &&
+            !["lobby", "results"].includes(room.phase)
+          )
+            reply = { error: "Wait until this round ends." };
+          else if (cmd === "start" && startReason(room) !== "Ready to play")
+            reply = { error: startReason(room) };
+          else if (
+            ["lobby", "remove"].includes(cmd) &&
+            data.args?.confirmed !== true &&
+            m.role !== "host"
+          )
+            reply = { error: "Hold to confirm this action." };
+          else if (cmd === "remove" && data.args?.slot === m.player?.slot)
+            reply = { error: "Use Leave to leave your own seat." };
+          else {
+            handlers.get(cmd)(data.args || {}, (r) => {
+              reply = r;
+            });
+            reply ||= { ok: true };
+          }
+        } else reply = { error: "That command is not available." };
+        holder.adminSeq = seq;
+        holder.adminReply = reply;
+        if (reply.ok) log(room, m, cmd);
+        ack(reply);
+      };
+      const delegated = m.role === "player" && !a?.staff.has(m.player?.token);
+      if (!authorizeHost || !delegated) return run();
+      const token = m.player.token;
+      holder.adminPending = seq;
+      Promise.resolve()
+        .then(() => authorizeHost(room, m.player, cmd))
+        .then(
+          (decision) => {
+            holder.adminPending = null;
+            if (
+              get() !== m ||
+              m.player.token !== token ||
+              seq <= (holder.adminSeq || 0)
+            )
+              return ack({
+                error: "Room controls changed while checking this command.",
+              });
+            if (!decision?.allowed) {
+              holder.adminSeq = seq;
+              holder.adminReply = {
+                error:
+                  decision?.message || "Host permissions could not be checked.",
+              };
+              return ack(holder.adminReply);
+            }
+            if (!admin(m))
+              return ack({
+                error: "Room controls changed while checking this command.",
+              });
+            run();
+          },
+          () => {
+            holder.adminPending = null;
+            ack({
+              error:
+                "Host permissions could not be checked. Use the main screen.",
+            });
+          },
+        );
     });
   }
   return {

@@ -236,9 +236,9 @@ class SharedRound {
 function verifyShared(replay, scores) {
   try {
     const id = {
-      "funcaster.kart-rush": "mario-kart",
-      "funcaster.table-tennis": "table-tennis",
-      "funcaster.foam-fencers": "swordplay",
+      "chonks.kart-rush": "mario-kart",
+      "chonks.table-tennis": "table-tennis",
+      "chonks.foam-fencers": "swordplay",
     }[replay.gameId];
     if (
       !id ||

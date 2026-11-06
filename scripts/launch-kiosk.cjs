@@ -4,7 +4,7 @@ const { join, isAbsolute } = require("node:path");
 const { tmpdir, homedir } = require("node:os");
 const { spawn } = require("node:child_process");
 function candidates(platform, env = process.env) {
-  if (env.FUNCASTER_BROWSER) return [env.FUNCASTER_BROWSER];
+  if (env.CHONKS_BROWSER) return [env.CHONKS_BROWSER];
   if (platform === "darwin")
     return [
       "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
@@ -44,7 +44,7 @@ function candidates(platform, env = process.env) {
 function kioskUrl(value, env = process.env) {
   const url = new URL(
     value ||
-      env.FUNCASTER_URL ||
+      env.CHONKS_URL ||
       `${env.HTTP === "1" ? "http" : "https"}://localhost:${Number(env.PORT) || 8443}/`,
   );
   if (
@@ -66,10 +66,10 @@ function launchSpec({
   const executable = candidates(platform, env).find(exists);
   if (!executable)
     throw new Error(
-      "Chrome or Edge was not found. Set FUNCASTER_BROWSER to its executable path.",
+      "Chrome or Edge was not found. Set CHONKS_BROWSER to its executable path.",
     );
-  if (env.FUNCASTER_BROWSER && !isAbsolute(executable))
-    throw new Error("FUNCASTER_BROWSER must be an absolute executable path.");
+  if (env.CHONKS_BROWSER && !isAbsolute(executable))
+    throw new Error("CHONKS_BROWSER must be an absolute executable path.");
   const target = kioskUrl(url, env);
   const args = [
     "--kiosk",
@@ -89,8 +89,8 @@ function main(argv = process.argv.slice(2)) {
   const dry = argv.includes("--dry-run"),
     url = argv.find((arg) => !arg.startsWith("--"));
   const profile = dry
-    ? join(tmpdir(), "funcaster-kiosk-PREVIEW")
-    : mkdtempSync(join(tmpdir(), "funcaster-kiosk-"));
+    ? join(tmpdir(), "chonks-kiosk-PREVIEW")
+    : mkdtempSync(join(tmpdir(), "chonks-kiosk-"));
   const spec = launchSpec({ url, profile });
   if (dry) {
     console.log(JSON.stringify(spec, null, 2));

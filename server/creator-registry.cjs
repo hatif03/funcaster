@@ -37,7 +37,7 @@ class CreatorRegistry {
   namespace(name, owner) {
     if (
       !/^[a-z][a-z0-9-]{1,39}$/.test(name) ||
-      ["funcaster", "creator", "system"].includes(name)
+      ["chonks", "creator", "system"].includes(name)
     )
       throw Error("Choose an unreserved namespace");
     if (typeof owner !== "string" || !owner.trim() || owner.length > 100)

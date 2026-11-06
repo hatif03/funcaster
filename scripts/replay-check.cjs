@@ -40,14 +40,14 @@ if (rules && require("../server/logic-replay.cjs").SUPPORTED.has(rules.id)) {
   console.log("Verified: fixed-step logic replay matches the recorded scores.");
   process.exit(0);
 }
-if (["funcaster.fruit-ninja", "funcaster.slice-dojo"].includes(replay.gameId)) {
+if (["chonks.fruit-ninja", "chonks.slice-dojo"].includes(replay.gameId)) {
   if (!require("../server/slice-replay.cjs").verifySlice(replay, result.scores))
     throw Error("Slice replay scores do not agree");
   console.log("Verified: seeded Slice Dojo replay and final scores agree.");
   process.exit(0);
 }
 if (
-  !["funcaster.star-catch", "funcaster.neon-drift", "funcaster.bubble-burst"].includes(
+  !["chonks.star-catch", "chonks.neon-drift", "chonks.bubble-burst"].includes(
     replay.gameId,
   )
 )
