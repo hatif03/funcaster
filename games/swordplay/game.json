@@ -12,9 +12,10 @@
   "duration": "First to 3",
   "action": "Strike",
   "schemaVersion": 2,
-  "gameId": "funcaster.foam-fencers",
+  "gameId": "chonks.foam-fencers",
   "version": "1.1.0",
   "order": 7,
+  "hidden": true,
   "maxPlayers": 2,
   "controller": "aim",
   "view": "shared",
@@ -61,7 +62,7 @@
     ]
   },
   "legacyIds": [
-    "funcaster.swordplay"
+    "chonks.swordplay"
   ],
   "seats": 2,
   "engine": "classic",

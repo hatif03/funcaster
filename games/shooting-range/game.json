@@ -13,9 +13,10 @@
   "duration": "Target challenge",
   "action": "Fire",
   "schemaVersion": 2,
-  "gameId": "funcaster.shooting-range",
+  "gameId": "chonks.shooting-range",
   "version": "1.1.0",
   "order": 10,
+  "hidden": false,
   "maxPlayers": 4,
   "controller": "aim",
   "view": "split",
@@ -61,7 +62,7 @@
     ]
   },
   "legacyIds": [
-    "funcaster.shooting-range"
+    "chonks.shooting-range"
   ],
   "seats": 4,
   "engine": "classic",

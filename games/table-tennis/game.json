@@ -12,9 +12,10 @@
   "duration": "First to 7",
   "action": "Power return",
   "schemaVersion": 2,
-  "gameId": "funcaster.table-tennis",
+  "gameId": "chonks.table-tennis",
   "version": "1.1.0",
   "order": 6,
+  "hidden": false,
   "maxPlayers": 2,
   "controller": "aim",
   "view": "shared",
@@ -61,7 +62,7 @@
     ]
   },
   "legacyIds": [
-    "funcaster.table-tennis"
+    "chonks.table-tennis"
   ],
   "seats": 2,
   "engine": "classic",

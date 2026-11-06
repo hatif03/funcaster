@@ -18,7 +18,7 @@ export function scopedStorage(gameId, storage) {
     throw Error("A namespaced gameId is required");
   const key = (name) => {
     if (!/^[a-z0-9.-]{1,64}$/i.test(name)) throw Error("Invalid storage key");
-    return `funcaster.game.${gameId}.${name}`;
+    return `chonks.game.${gameId}.${name}`;
   };
   return {
     get(name, fallback = null) {

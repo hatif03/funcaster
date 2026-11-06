@@ -217,9 +217,10 @@ for (const game of games) {
   const max = twoPlayer.has(game.id) ? 2 : 4;
   Object.assign(game, {
     schemaVersion: 2,
-    gameId: `funcaster.${game.id === "mario-kart" ? "kart-rush" : game.id}`,
+    gameId: `chonks.${game.id === "mario-kart" ? "kart-rush" : game.id}`,
     version: "1.0.0",
     order: order.indexOf(game.id),
+    hidden: ["golf", "fruit-ninja", "kart", "swordplay"].includes(game.id),
     maxPlayers: max,
     controller: game.mode,
     view: split.has(game.id) ? "split" : "shared",
@@ -269,8 +270,8 @@ const neutralIds = {
   "island-flyover": "cloud-cruise",
 };
 for (const game of games) {
-  game.legacyIds = [...new Set([game.gameId, `funcaster.${game.id}`])];
-  game.gameId = `funcaster.${neutralIds[game.id] || game.id}`;
+  game.legacyIds = [...new Set([game.gameId, `chonks.${game.id}`])];
+  game.gameId = `chonks.${neutralIds[game.id] || game.id}`;
   game.seats = game.maxPlayers;
   game.engine = game.classic ? "classic" : "server";
   game.seatView = [

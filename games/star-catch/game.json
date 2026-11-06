@@ -10,9 +10,10 @@
   "mode": "side",
   "tag": "EASY TO LOVE",
   "schemaVersion": 2,
-  "gameId": "funcaster.star-catch",
+  "gameId": "chonks.star-catch",
   "version": "1.1.0",
   "order": 3,
+  "hidden": false,
   "maxPlayers": 4,
   "controller": "side",
   "view": "shared",
@@ -59,7 +60,7 @@
     ]
   },
   "legacyIds": [
-    "funcaster.star-catch"
+    "chonks.star-catch"
   ],
   "seats": 4,
   "engine": "server",

@@ -20,9 +20,9 @@ test("selector subscriptions skip unrelated and shallow-equal changes; unsubscri
 });
 test("Funcaster settings keep legacy keys and migrate only new preferences", () => {
   const data = new Map([
-    ["funcaster.party-volume", "42"],
-    ["funcaster.reduced-effects", "true"],
-    ["funcaster.nickname", "Mrow"],
+    ["chonks.party-volume", "42"],
+    ["chonks.reduced-effects", "true"],
+    ["chonks.nickname", "Mrow"],
   ]);
   const api = {
     getItem: (k) => data.get(k) ?? null,
@@ -31,8 +31,8 @@ test("Funcaster settings keep legacy keys and migrate only new preferences", () 
   };
   const s = createStorage(api);
   assert.equal(preferences(s).volume, 42);
-  assert.equal(data.get("funcaster.volume"), "42");
-  assert.equal(data.get("funcaster.party-volume"), "42");
+  assert.equal(data.get("chonks.volume"), "42");
+  assert.equal(data.get("chonks.party-volume"), "42");
   assert.equal(s.read("nickname"), "Mrow");
   s.write("setup.mario-kart", { laps: 3 });
   assert.deepEqual(s.read("setup.mario-kart"), { laps: 3 });
@@ -58,5 +58,5 @@ test("storage survives blocked APIs and brand identifiers stay unchanged", () =>
   s.write("skin", null);
   assert.equal(s.read("skin"), null);
   assert.equal(BRAND.name, "Funcaster");
-  assert.equal(title("Settings"), "Settings — Funcaster OS");
+  assert.equal(title("Settings"), "Settings — Funcaster");
 });

@@ -13,9 +13,10 @@
   "duration": "Arcade rounds",
   "action": "Start slicing",
   "schemaVersion": 2,
-  "gameId": "funcaster.slice-dojo",
+  "gameId": "chonks.slice-dojo",
   "version": "1.1.0",
   "order": 2,
+  "hidden": true,
   "maxPlayers": 4,
   "controller": "aim",
   "view": "shared",
@@ -61,7 +62,7 @@
     ]
   },
   "legacyIds": [
-    "funcaster.fruit-ninja"
+    "chonks.fruit-ninja"
   ],
   "seats": 4,
   "engine": "classic",

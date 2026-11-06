@@ -10,9 +10,10 @@
   "mode": "wheel",
   "tag": "A LITTLE COMPETITIVE",
   "schemaVersion": 2,
-  "gameId": "funcaster.neon-drift",
+  "gameId": "chonks.neon-drift",
   "version": "1.1.0",
   "order": 4,
+  "hidden": false,
   "maxPlayers": 4,
   "controller": "wheel",
   "view": "shared",
@@ -59,7 +60,7 @@
     ]
   },
   "legacyIds": [
-    "funcaster.neon-drift"
+    "chonks.neon-drift"
   ],
   "seats": 4,
   "engine": "server",

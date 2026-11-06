@@ -2,12 +2,12 @@
 export function createStorage(storage) {
   const memory = new Map();
   const keyFor = (key) =>
-    key.startsWith("funcaster.") || key.startsWith("openwii.")
+    key.startsWith("chonks.") || key.startsWith("openwii.")
       ? key
-      : `funcaster.${key}`;
+      : `chonks.${key}`;
   function write(key, value) {
     key = keyFor(key);
-    if (key === "funcaster.host" || key.startsWith("funcaster.player."))
+    if (key === "chonks.host" || key.startsWith("chonks.player."))
       throw new TypeError("Session identities are not OS preferences");
     if (value === undefined) return;
     if (value === null) memory.delete(key);
@@ -62,7 +62,7 @@ export function preferences(storage) {
       100,
       Math.max(
         0,
-        Number(storage.read("volume", 70, ["funcaster.party-volume"])) || 0,
+        Number(storage.read("volume", 70, ["chonks.party-volume"])) || 0,
       ),
     ),
     mascot: storage.read("mascot", true),

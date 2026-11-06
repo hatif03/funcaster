@@ -12,9 +12,10 @@
   "duration": "20 checkpoints",
   "action": "Take off",
   "schemaVersion": 2,
-  "gameId": "funcaster.cloud-cruise",
+  "gameId": "chonks.cloud-cruise",
   "version": "1.1.0",
   "order": 9,
+  "hidden": false,
   "maxPlayers": 4,
   "controller": "flight",
   "view": "split",
@@ -61,7 +62,7 @@
     ]
   },
   "legacyIds": [
-    "funcaster.island-flyover"
+    "chonks.island-flyover"
   ],
   "seats": 4,
   "engine": "classic",

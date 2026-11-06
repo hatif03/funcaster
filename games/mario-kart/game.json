@@ -13,9 +13,10 @@
   "duration": "1 or 3 laps",
   "action": "Start race",
   "schemaVersion": 2,
-  "gameId": "funcaster.kart-rush",
+  "gameId": "chonks.kart-rush",
   "version": "1.1.0",
   "order": 0,
+  "hidden": false,
   "maxPlayers": 4,
   "controller": "wheel",
   "view": "split",
@@ -61,8 +62,8 @@
     ]
   },
   "legacyIds": [
-    "funcaster.kart-rush",
-    "funcaster.mario-kart"
+    "chonks.kart-rush",
+    "chonks.mario-kart"
   ],
   "seats": 4,
   "engine": "classic",

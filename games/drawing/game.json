@@ -13,9 +13,10 @@
   "duration": "Draw & guess / free draw",
   "action": "Pen up / down",
   "schemaVersion": 2,
-  "gameId": "funcaster.drawing",
+  "gameId": "chonks.drawing",
   "version": "1.1.0",
   "order": 12,
+  "hidden": false,
   "maxPlayers": 4,
   "controller": "aim",
   "view": "shared",
@@ -61,7 +62,7 @@
     ]
   },
   "legacyIds": [
-    "funcaster.drawing"
+    "chonks.drawing"
   ],
   "seats": 4,
   "engine": "classic",

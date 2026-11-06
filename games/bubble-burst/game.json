@@ -10,9 +10,10 @@
   "mode": "aim",
   "tag": "HAPPY LITTLE CHAOS",
   "schemaVersion": 2,
-  "gameId": "funcaster.bubble-burst",
+  "gameId": "chonks.bubble-burst",
   "version": "1.1.0",
   "order": 5,
+  "hidden": false,
   "maxPlayers": 4,
   "controller": "aim",
   "view": "shared",
@@ -59,7 +60,7 @@
     ]
   },
   "legacyIds": [
-    "funcaster.bubble-burst"
+    "chonks.bubble-burst"
   ],
   "seats": 4,
   "engine": "server",
