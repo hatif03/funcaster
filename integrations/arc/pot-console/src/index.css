@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0d1b2f;
+  --bg-gradient: linear-gradient(180deg, #0d1b2f 0%, #0d1b2f 58%, #122d45 100%);
+  --surface: rgba(255, 255, 255, 0.07);
+  --surface-strong: rgba(255, 255, 255, 0.11);
+  --surface-muted: #1f2f44;
+  --ink: #f9faf3;
+  --ink-2: #e3ecf9;
+  --muted: #cbd5e1;
+  --subtle: #94a3b8;
+  --border: rgba(255, 255, 255, 0.12);
+  --border-strong: rgba(203, 219, 242, 0.55);
+  --accent: #acc6e9;
+  --accent-hover: #cbdbf2;
+  --success: #8dd89f;
+  --danger: #e86d7a;
+  --warn: #f0c674;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--bg);
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  color: var(--ink);
+  background: var(--bg-gradient);
+  background-attachment: fixed;
+  /* No remote font loading: this page only talks to the public RPC. */
+  font-family: "DM Sans", ui-sans-serif, "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+.display {
+  font-family:
+    "Space Grotesk", "DM Sans", ui-sans-serif, "Helvetica Neue", sans-serif;
+  letter-spacing: -0.03em;
+}
+
+.mono {
+  font-family: "JetBrains Mono", Menlo, ui-monospace, monospace;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Compact blue "XP" window chrome used by the pot console. No remote assets. */
+.xp-window {
+  border: 1px solid #2d5fae;
+  border-radius: 10px 10px 8px 8px;
+  background: var(--surface);
+  overflow: hidden;
+  min-width: 0;
+}
+
+.xp-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2rem;
+  padding: 0.3rem 0.75rem;
+  background: linear-gradient(180deg, #3f87dc 0%, #2368c9 46%, #1a56b0 100%);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.35);
+}
+
+.xp-btn {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0 1.25rem;
+  border: 1px solid #1b4f9c;
+  border-radius: 8px;
+  background: linear-gradient(180deg, #6fb1f5 0%, #3b83e0 52%, #2a6fd0 100%);
+  color: #fff;
+  font-weight: 700;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  transition: filter 120ms ease;
+}
+
+.xp-btn:hover:not(:disabled) {
+  filter: brightness(1.08);
+}
+
+.xp-btn:disabled {
+  cursor: not-allowed;
+  filter: grayscale(0.75) brightness(0.8);
+  opacity: 0.7;
+}
+
+.xp-btn-ghost {
+  background: var(--surface-strong);
+  border-color: var(--border-strong);
+  box-shadow: none;
+  color: var(--ink);
+  text-shadow: none;
+}

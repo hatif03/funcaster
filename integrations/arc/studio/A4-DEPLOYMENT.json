@@ -1,0 +1,14 @@
+{
+  "purpose": "Owner-run direct deployment of the reviewed Studio ConditionalPot; testnet only",
+  "chainId": 5042002,
+  "compiler": "0.8.28+commit.7893614a",
+  "evmVersion": "cancun",
+  "optimizerRuns": 200,
+  "bytecodeHash": "0x7c1b5216925bb21d7f3b0c3d771d2ae00d81e86002c4c73dadb8c535b2db5562",
+  "creationHash": "0x6d408badb54f1647fb33da60e2093539c5105c54c20c527b960f43b8dadf4acf",
+  "creationBytes": 15459,
+  "minimumFeeGwei": "20",
+  "maximumFeeGwei": "100",
+  "maximumGasUSDC": "0.1",
+  "retainedUSDC": "0.05"
+}
