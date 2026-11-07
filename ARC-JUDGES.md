@@ -18,12 +18,13 @@ The ledger separately checks canonical transaction receipts through two distinct
 
 All addresses below are on **Arc testnet, chain 5042002**. Only test assets are used.
 
-| Contract           | Address and explorer                                                                                                             | Role                                                                          |
-| ------------------ | -------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| ConditionalPot     | [0xe339B15Aa54596B4752923d981DAC30B7A569F82](https://explorer.testnet.arc.io/address/0xe339B15Aa54596B4752923d981DAC30B7A569F82) | Player deposits, cooperative settlement, disputes and refunds; USDC/EURC      |
-| ChonksMatchMarkets | [0x31c000cFe6FE6F5d12CA5735B913E3e0149fD5DF](https://explorer.testnet.arc.io/address/0x31c000cFe6FE6F5d12CA5735B913E3e0149fD5DF) | Spectator winner predictions, matching reports and pull claims                |
-| SplitPayout        | [0xC82c2BA2c1A057C2ED73d8030e77FF7100a719F9](https://explorer.testnet.arc.io/address/0xC82c2BA2c1A057C2ED73d8030e77FF7100a719F9) | Cheers shared among the frozen human lineup, or refunded                      |
-| RevenueRouter      | [0x43fD866eF3FCA5b0A7b02c262F3602283D5aA192](https://explorer.testnet.arc.io/address/0x43fD866eF3FCA5b0A7b02c262F3602283D5aA192) | Immutable creator versions, room passes and recipient-specific revenue claims |
+| Name               | Address and explorer                                                                                                                                     | Role                                                                          |
+| ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| Relayer            | [0x81DdeD7eE7753791cEaF24Ab6Cb1694d1F39A008](https://explorer.testnet.arc.io/address/0x81DdeD7eE7753791cEaF24Ab6Cb1694d1F39A008?tab=txs)                   | Worker that pays Arc gas and submits sponsored transfers                      |
+| ConditionalPot     | [0xe339B15Aa54596B4752923d981DAC30B7A569F82](https://explorer.testnet.arc.io/address/0xe339B15Aa54596B4752923d981DAC30B7A569F82)                           | Player deposits, cooperative settlement, disputes and refunds; USDC/EURC      |
+| MatchMarkets       | [0x31c000cFe6FE6F5d12CA5735B913E3e0149fD5DF](https://explorer.testnet.arc.io/address/0x31c000cFe6FE6F5d12CA5735B913E3e0149fD5DF)                           | Spectator winner predictions, matching reports and pull claims (`ChonksMatchMarkets`) |
+| SplitPayout        | [0xC82c2BA2c1A057C2ED73d8030e77FF7100a719F9](https://explorer.testnet.arc.io/address/0xC82c2BA2c1A057C2ED73d8030e77FF7100a719F9)                           | Cheers shared among the frozen human lineup, or refunded                      |
+| RevenueRouter      | [0x43fD866eF3FCA5b0A7b02c262F3602283D5aA192](https://explorer.testnet.arc.io/address/0x43fD866eF3FCA5b0A7b02c262F3602283D5aA192)                           | Immutable creator versions, room passes and recipient-specific revenue claims |
 
 Pinned tokens: [USDC](https://explorer.testnet.arc.io/address/0x3600000000000000000000000000000000000000) and [EURC](https://explorer.testnet.arc.io/address/0x89B50855Aa3bE2F677cD6303Cec089B5F319D72a). Creator commerce currently accepts USDC only.
 
