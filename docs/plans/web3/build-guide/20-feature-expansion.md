@@ -23,7 +23,7 @@ This document adds those features. It does not replace the base design in [02](0
 | **F-E5** | **Record aliasing for receipts** | ENS | 02 | Every seat's name shows the latest match with one write | VE-03 |
 | **F-E6** | **Agents as namespaces** (referee, auto-host, tipsters) | ENS, Arc, Arkiv | 02, 03, 16 | "Meet the agents": names, powers, online dots, track records | VE-06, VE-08 |
 | **F-E7** | **Creator namespaces** (`<game>.games.<parent>.eth`) | ENS, Swarm, Arc | 02, build/creator platform | A creator's game has a name, a bundle on Swarm, and a payout address | VE-05, VK-15 |
-| **F-E8** | **ENS avatar from Swarm** and names everywhere | ENS, Swarm | 02, 04 | Caster-style avatar and recap on your name; names (not hex) in every list | VE-09 |
+| **F-E8** | **ENS avatar from Swarm** and names everywhere | ENS, Swarm | 02, 04 | Chonk-style avatar and recap on your name; names (not hex) in every list | VE-09 |
 | **F-A3** | **Splits: creator, venue and charity cuts** in a pot's terms | Arc, ENS | 03 | "Give 5% to the game's creator" as one line on the terms card | VA-06 |
 | **F-A4** | **Table Cheers** (spectator tips, split equally among the seats, refunded if the match fails) | Arc, ENS | 03, 10 | A Cheer button for the table; the seats get it after the verified result | VA-06, VA-07 |
 | **F-A5** | **Autopilot** (spending allowance with hard limits) | Arc, ENS | 10 | "Predict for me": rules and a cap that the chain enforces | VA-02 |
@@ -60,12 +60,12 @@ ENSv2 lets one parent define different rules per subname. Funcaster uses **all f
 
 The Champion and Legend are the "hall of fame names" the Cup pays out ([F-X3](#f-x3-the-season-cup-lifecycle-the-flagship-flow)). The Name Gallery (a tab of the Funcaster Live hub, [21](21-ux-laws-and-os-ux.md) section 5) lists the four kinds with one real example each and a link to the explorer; the can and cannot evidence is part of the evidence book ([07](07-tests-evidence-demo.md)): a seat cannot be transferred, a champion can, nobody can unregister a legend.
 
-Records on every kind: `addr`, `avatar` (F-E8), `funcaster.receipt` (the last result hash), `funcaster.kind`, and for Champion and Legend `funcaster.season` and `funcaster.proof` (the Arkiv `season` entity key).
+Records on every kind: `addr`, `avatar` (F-E8), `chonks.receipt` (the last result hash), `chonks.kind`, and for Champion and Legend `chonks.season` and `chonks.proof` (the Arkiv `season` entity key).
 
 **Review fixes (6 November, [22](22-integration-review.md)):**
 
 1. **One name for the player (Occam, Jakob).** The plans already hold four name ideas: the **nickname** typed on the phone, the **seat name** (plumbing, per party), the Arkiv **profile `handle`** ([04](04-arkiv-guide.md)) and the ENS hall-of-fame name of [13](13-users-scenarios-and-accounts.md) (L3 "Named"). They are **one thing**: the **handle**. A player sees only two names: the **nickname** (shown for a match) and the **handle** (kept; the label under `players.<parent>.eth`). The Arkiv `profile.handle`, the Champion name and the boards all use the handle string, and **choosing a handle checks the existing Arkiv profiles and the `players` registry first** (first come; the check is one Arkiv query by `handle` plus one ENS read), so the two can only disagree in a race, which the ENS mint resolves by the suffix rule below. Seat names stay plumbing and are never offered to the player as something to remember.
-2. **Squatting and look-alikes.** A handle is checked against the reserved list (`play`, `players`, `legends`, `fans`, `booth`, `games`, `agents`, `host`, `tv`, `admin`, `funcaster`, `www`) and a confusables table (VE-10), and a free handle that is **not** earned (no Cup placing and no verified match) is not minted at all: the **Champion/Legend names are earned, not typed**, so nobody can claim a famous name by winning one match under it. If the wanted label is taken the claim offers `<handle>-<4 characters of the address>`.
+2. **Squatting and look-alikes.** A handle is checked against the reserved list (`play`, `players`, `legends`, `fans`, `booth`, `games`, `agents`, `host`, `tv`, `admin`, `chonks`, `www`) and a confusables table (VE-10), and a free handle that is **not** earned (no Cup placing and no verified match) is not minted at all: the **Champion/Legend names are earned, not typed**, so nobody can claim a famous name by winning one match under it. If the wanted label is taken the claim offers `<handle>-<4 characters of the address>`.
 3. **Key custody before anything permanent.** A Champion or Legend name is owned by the **phone's session key**, which lives in `localStorage` and is lost with the browser's storage ([09](09-seamlessness-and-signing-budget.md) F5). A "forever" name on a disposable key is a contradiction. Claiming therefore starts with a one-tap **"Save your name"** step: **Use on another phone** (the device-link flow of [13](13-users-scenarios-and-accounts.md) section 2, which needs no World) and an exported key as the fallback. The name is minted only after the player links or exports; if they skip, the claim stays open for the season's grace period and then the name is **held for them by the console** (a "held" mark; released to any key they later link). Account recovery via World ([13](13-users-scenarios-and-accounts.md) L2) is **not** assumed to exist ([22](22-integration-review.md) finding C1).
 4. **ENS namespace.** The names above add the labels `legends` (no-expiry, parent-less), `fans` (F-E3), `booth` (F-E4) and `hall` (F-X1) to the `play`, `players`, `agents`, `games` set of [02](02-ens-guide.md) section 4; [02](02-ens-guide.md) lists them.
 5. **Party names are short-lived by design.** `ens.party.end` unregisters the party name ([02](02-ens-guide.md) section 7), so a **result's `party` attribute becomes plain history text**: it is **not** a live pointer after the party ends. The permanent pointers are the **handle**, the Arkiv entity key and the transaction logs; the Hall shows an ended party's name with "(expired by design)".
@@ -76,11 +76,11 @@ Spectators who predict or cheer need a name that appears in boards and the Ledge
 
 ### F-E4 Stable booth name
 
-A venue gets `mumbai.booth.<parent>.eth` once. Its records `funcaster.party` (the current party's name) and `url` are updated by the worker whenever the booth starts a new party (one write). The kiosk's QR and the Invite window carry **the stable name**, and the phone's "join by name" resolves it to the current party. Printed posters and the ENS entry therefore never go stale. If VE-03 offers real aliasing (the booth name's subregistry aliasing to the party's), use that and keep zero writes per party; otherwise the one write is cheap. A visible benefit: the demo QR code on the slide, the README and the table card are the same forever.
+A venue gets `mumbai.booth.<parent>.eth` once. Its records `chonks.party` (the current party's name) and `url` are updated by the worker whenever the booth starts a new party (one write). The kiosk's QR and the Invite window carry **the stable name**, and the phone's "join by name" resolves it to the current party. Printed posters and the ENS entry therefore never go stale. If VE-03 offers real aliasing (the booth name's subregistry aliasing to the party's), use that and keep zero writes per party; otherwise the one write is cheap. A visible benefit: the demo QR code on the slide, the README and the table card are the same forever.
 
 ### F-E5 Record aliasing for receipts
 
-Each seat name's `funcaster.last` should show the latest match. Without aliasing that is one write per seat per match. With a resolver link it is **zero**: the seat's record reads through to the party's `funcaster.receipt`, written once. VE-03 decides; the fallback is one `multicall` of N writes (already costed).
+Each seat name's `chonks.last` should show the latest match. Without aliasing that is one write per seat per match. With a resolver link it is **zero**: the seat's record reads through to the party's `chonks.receipt`, written once. VE-03 decides; the fallback is one `multicall` of N writes (already costed).
 
 ### F-E6 Agents as namespaces
 
@@ -88,21 +88,21 @@ Three real agents already exist in the plan; this gives them names, powers and r
 
 | Agent | Name | What it does | Power on ENS | Power on Arc | Shown on Arkiv |
 | --- | --- | --- | --- | --- | --- |
-| **Referee** | `referee.agents.<parent>.eth` | Re-runs the replay and signs the **second report** for markets | text key `funcaster.status` only | none (signs reports; paid by F-A6) | `agent` entity with a 60 s lease |
+| **Referee** | `referee.agents.<parent>.eth` | Re-runs the replay and signs the **second report** for markets | text key `chonks.status` only | none (signs reports; paid by F-A6) | `agent` entity with a 60 s lease |
 | **Auto-host** | `autohost.agents.<parent>.eth` | Runs a Kiosk booth: starts matches, advances players, opens the next market | the **control** role on the booth's party resolver, **not** the kick role | none | `agent` entity |
-| **Tipsters** (two or three, labelled bots) | `oracle-otter.agents.<parent>.eth`, `dhaba-dan...` | Place small, public predictions with their own play-coin wallets and publish a rationale | `funcaster.status` only | a wallet with a fixed budget | `agent` entity + their bets are public on Arc |
+| **Tipsters** (two or three, labelled bots) | `oracle-otter.agents.<parent>.eth`, `dhaba-dan...` | Place small, public predictions with their own play-coin wallets and publish a rationale | `chonks.status` only | a wallet with a fixed budget | `agent` entity + their bets are public on Arc |
 
 Rules: every agent record includes an ENSIP-26-style description (what it is, what it can do, what it cannot) and, when the deployment supports it, a two-way link to its ERC-8004 identity on Arc (VE-08). **Agents are labelled "bot" in every list; a tipster never places a bet that a human could mistake for a person's.** The TV's **Revoke** button works on agents exactly as on the host phone: one on-chain revoke and the auto-host stops accepting commands (shown by the live check). Tipsters give spectators something to follow, a reason for Autopilot (F-A5) and a genuine "agents with ENS" story. The owner's guardrail "humans-only by default" is untouched: bots are never seats in a match.
 
-**Review fixes:** (a) **One resolver per agent** (as for parties): [02](02-ens-guide.md) records that text-role scope is per resolver, not per name, so a shared `agents` resolver would let the referee's `funcaster.status` role write every other agent's record; VE-06 proves it and per-agent resolvers (made from the warm pool) are the default. (b) **Bots are excluded from every ranking and prize**: tipsters and Autopilot bets are marked `bot` in the Ledger, never enter the predictor boards of [14](14-stats-and-leaderboards.md), the Season Vault or the humans' pools' statistics, and never bet on a match with fewer than a set pool depth (they would be the pool). (c) The auto-host's `control` role is **pre-granted in the warm pool's resolver `initialize`**, so a new party costs no extra grant transaction.
+**Review fixes:** (a) **One resolver per agent** (as for parties): [02](02-ens-guide.md) records that text-role scope is per resolver, not per name, so a shared `agents` resolver would let the referee's `chonks.status` role write every other agent's record; VE-06 proves it and per-agent resolvers (made from the warm pool) are the default. (b) **Bots are excluded from every ranking and prize**: tipsters and Autopilot bets are marked `bot` in the Ledger, never enter the predictor boards of [14](14-stats-and-leaderboards.md), the Season Vault or the humans' pools' statistics, and never bet on a match with fewer than a set pool depth (they would be the pool). (c) The auto-host's `control` role is **pre-granted in the warm pool's resolver `initialize`**, so a new party costs no extra grant transaction.
 
 ### F-E7 Creator namespaces
 
-The creator platform lets outsiders add games ([build/creator docs](../../build/README.md)). When the console approves a game, the registrar mints `<slug>.games.<parent>.eth` **to the creator's key**, with these records: `funcaster.bundle` (the Swarm reference of the bundle), `funcaster.entity` (the Arkiv `game` key), `payout` (the address for royalties, F-A3), `avatar`, `description`. The creator owns the name and may update **their own** keys (per-key text roles on their own name, the Radius pattern; **one resolver per creator name**, because role scope is per resolver), so shipping a new version is a record change by the creator, not a request to us. Name, bundle and entity are three views of one game, and anyone can check that they agree.
+The creator platform lets outsiders add games ([build/creator docs](../../build/README.md)). When the console approves a game, the registrar mints `<slug>.games.<parent>.eth` **to the creator's key**, with these records: `chonks.bundle` (the Swarm reference of the bundle), `chonks.entity` (the Arkiv `game` key), `payout` (the address for royalties, F-A3), `avatar`, `description`. The creator owns the name and may update **their own** keys (per-key text roles on their own name, the Radius pattern; **one resolver per creator name**, because role scope is per resolver), so shipping a new version is a record change by the creator, not a request to us. Name, bundle and entity are three views of one game, and anyone can check that they agree.
 
 ### F-E8 Avatars from Swarm and names everywhere
 
-A player's `avatar` record points at the recap card or their Caster portrait on Swarm (an `https://api.gateway.ethswarm.org/bzz/<ref>` URL; unencrypted only). Boards, the Hall, the Ledger and the Predictions window show the **ENS name** (reverse-checked, VE-09) instead of a hex address or a nickname alone, with the provenance mark "on ENS".
+A player's `avatar` record points at the recap card or their Chonk portrait on Swarm (an `https://api.gateway.ethswarm.org/bzz/<ref>` URL; unencrypted only). Boards, the Hall, the Ledger and the Predictions window show the **ENS name** (reverse-checked, VE-09) instead of a hex address or a nickname alone, with the provenance mark "on ENS".
 
 ## 4. Arc features
 
@@ -262,7 +262,7 @@ Invariant, tested (VX-01): **no journey asks the player to approve a transaction
 
 ## 9. What this changes in the other documents
 
-| Document | Change (done 6 November, or to do when building) |
+| Document | Change (6 November, or to do when building) |
 | --- | --- |
 | [00](00-README.md) | Reading order rows 19 to 21; section 6 capacity note |
 | [04](04-arkiv-guide.md) | Section 5 now points to the extension types here; section 10 gains tasks K13 to K24 |

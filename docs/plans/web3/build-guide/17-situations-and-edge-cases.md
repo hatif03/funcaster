@@ -26,7 +26,7 @@ Part of the [build guide](00-README.md). Status: plan, 6 November 2026. **No cod
 | **In-app browsers** (WhatsApp, Instagram, Telegram, X, Facebook) | often blocked | **separate storage from the normal browser: a different account** | yes | Detect by user agent; show "Open in your browser to keep your history" |
 | **Tablet** | maybe | yes | yes | Two-column layout (section 3 of [11](11-prediction-market-ui.md) addendum) |
 | **Laptop or desktop browser** | no (not needed) | yes (per browser profile) | yes | The **spectator laptop**: predictions, Ledger, boards; a wide layout with keyboard and mouse |
-| **The TV shell** (Funcaster OS) | n/a | the shell has **no money key**; it can optionally bind a **host account** | **never initiates money actions** | Shows aggregates; a QR for everything personal |
+| **The TV shell** (Funcaster) | n/a | the shell has **no money key**; it can optionally bind a **host account** | **never initiates money actions** | Shows aggregates; a QR for everything personal |
 | **Smart-TV built-in browser** | no | uncertain | n/a | Treat as a display only (Leaderboard, Predictions board, Ledger read-only); the shell needs a modern browser (laptop or stick) |
 | **Kiosk tablet** (a staffed "Predict station") | no | **session-only by design** | yes | Section 6 |
 | **OBS browser source** (a streamer overlay, later) | no | none | none | A read-only overlay page of odds and results |
@@ -190,7 +190,7 @@ Format: **situation, expected behaviour, where specified or tested**. "Spec" ref
 | H1 | Win-trading, bots, throwing, wash bets, faucet farming | The detectors F1 to F15 and the hard rules |
 | H2 | A spectator scripts the directory | Rate limits and caching; nothing sensitive is exposed |
 | H3 | Spam markets or rooms | Only the relay creates markets; caps |
-| H4 | Someone signs a message the page did not ask for | Signatures are domain-separated (`FuncasterPot`, `FuncasterMarket`, USDC authorization to our contract only); typed data is readable; a stolen key is play money |
+| H4 | Someone signs a message the page did not ask for | Signatures are domain-separated (`ChonksPot`, `ChonksMarket`, USDC authorization to our contract only); typed data is readable; a stolen key is play money |
 | H5 | A relayer misbehaves | Anyone can submit signed intents; two relayers |
 | H6 | A reporter key is compromised | One key cannot resolve or force a void alone |
 | H7 | Insider operator | Barred addresses, `ops` rows, hash chain, transparency log |

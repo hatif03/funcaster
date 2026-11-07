@@ -1,6 +1,6 @@
 # Build guide 06: tasks, order, dependencies, and the prompts to give Codex
 
-Part of the [build guide](00-README.md). Status: plan, 6 November 2026. Estimates are my judgement for one engineer or one Codex lane; they are not measurements. Dates assume work starts **Tuesday 6 November** and that the Funcaster OS build on `main` freezes on **6 November**, the booth opens **Tuesday 6 November**, and the hackathon runs **5 to 6 November** (submission 6 November 09:00 IST). **Nothing here is written yet.** Every task works on the branch `web3/integrations` ([01](01-architecture.md) section 4).
+Part of the [build guide](00-README.md). Status: plan, 6 November 2026. Estimates are my judgement for one engineer or one Codex lane; they are not measurements. Dates assume work starts **6 November** and that the Funcaster build on `main` freezes on **6 November**, the booth opens **6 November**, and the hackathon runs **6 November** (submission Saturday 6 November 00:00 IST). **Nothing here is written yet.** Every task works on the branch `web3/integrations` ([01](01-architecture.md) section 4).
 
 ## 1. Lanes and how they depend on each other
 
@@ -11,7 +11,7 @@ S shared foundation ──┬── E ENS ──────────┐
                       └── Q QA and evidence (continuous)
 ```
 
-Lanes **E** and **A** can run in parallel once **S2** (the module skeleton with mock providers) exists; **U** can start as soon as the state shape in [01](01-architecture.md) section 7.1 is coded in the mock provider (S2) and the demo fixtures (U1). **K** (updated 6 November: Arkiv's brief is published) runs its **spike K0 on the first day** beside E0 and A0, because the friction log must be written as things break; K1 to K3 start once S2 (mock provider and outbox) exists; the rest follows the tiers in [04](04-arkiv-guide.md) section 10.
+Lanes **E** and **A** can run in parallel once **S2** (the module skeleton with mock providers) exists; **U** can start as soon as the state shape in [01](01-architecture.md) section 7.1 is coded in the mock provider (S2) and the demo fixtures (U1). **K** (6 November: Arkiv's brief is published) runs its **spike K0 on the first day** beside E0 and A0, because the friction log must be written as things break; K1 to K3 start once S2 (mock provider and outbox) exists; the rest follows the tiers in [04](04-arkiv-guide.md) section 10.
 
 ## 2. Task list
 
@@ -78,7 +78,7 @@ Format: **ID, task, spec, depends on, hours, acceptance**. Acceptance is checkab
 
 ### M: Spectator prediction market ([10](10-prediction-market.md), [11](11-prediction-market-ui.md))
 
-**The largest lane (about 190 hours; Tier 1 about 125).** Start it only after the pot (A lane) and host enforcement (E5) work. Tasks M0 to M11 are in [10](10-prediction-market.md) section 11 and the UI tasks P1 to P9 in [11](11-prediction-market-ui.md) section 11. **Tier 1:** M0 to M6 with the Winner template only, a minimal phone page (P1 to P3), the Predictions window (P5, P6) and the Game Properties row (P8). **Schedule:** M0 to M2 can start on D4 beside A4; M3 to M6 on D5 to D7; the phone page and window on D6 to D8 (target a demo-able Tier 1 slice by the booth stage); tier 2 and 3 after. **Cut order:** layer C, the play token, the odds chart, Beat-the-line, the seed commit, the wizard. **Never cut:** the invariants, the close rule, agree-or-void, the exclusion of seated players, pull claims.
+**The largest lane (about 190 hours; Tier 1 about 125).** Start it only after the pot (A lane) and host enforcement (E5) work. Tasks M0 to M11 are in [10](10-prediction-market.md) section 11 and the UI tasks P1 to P9 in [11](11-prediction-market-ui.md) section 11. **Tier 1:** M0 to M6 with the Winner template only, a minimal phone page (P1 to P3), the Predictions window (P5, P6) and the Game Properties row (P8). **Schedule:** M0 to M2 can start on D4 (Fri 30 Oct) beside A4; M3 to M6 on D5 to D7; the phone page and window on D6 to D8 (the booth opens D8, so a Tier 1 slice should be demo-able on 6 November); tier 2 and 3 after. **Cut order:** layer C, the play token, the odds chart, Beat-the-line, the seed commit, the wizard. **Never cut:** the invariants, the close rule, agree-or-void, the exclusion of seated players, pull claims.
 
 
 ### Q: QA and evidence
@@ -93,24 +93,22 @@ Format: **ID, task, spec, depends on, hours, acceptance**. Acceptance is checkab
 | Q6 | Evidence files, READMEs per partner, architecture diagram, AI-use record | 6 |
 | Q7 | Demo recording and submission pack | 6 |
 
-> **Review note (6 November).** The task list and the later lanes (S, E, A, U, K, M, P, X, R, I, N, and the expansions FX, UX, K13 to K24 in [20](20-feature-expansion.md) and [21](21-ux-laws-and-os-ux.md)) add up to **more than the hours before 6 November 09:00 IST**, even with several parallel agents. [22](22-integration-review.md) section 5 gives the **value-ordered gates and the freeze order**: read it before assigning tasks. The ID spaces are now disjoint (FX, UX, KS, and CP for the creator platform in [23](23-creator-platform-and-economy.md); CP1 to CP5, CP15 and CP16 are in gate G2; the business model behind them is in [24](24-business-model-and-revenue.md); the streamer lane SL1 to SL17 for Twitch, YouTube and Kick is in [25](25-streamer-network-and-after-hours-economy.md)).
+> **Review note (6 November).** The task list and the later lanes (S, E, A, U, K, M, P, X, R, I, N, and the expansions FX, UX, K13 to K24 in [20](20-feature-expansion.md) and [21](21-ux-laws-and-os-ux.md)) add up to **more than the hours before 6 November 00:00 IST**, even with several parallel agents. [22](22-integration-review.md) section 5 gives the **value-ordered gates and the freeze order**: read it before assigning tasks. The ID spaces are now disjoint (FX, UX, KS, and CP for the creator platform in [23](23-creator-platform-and-economy.md); CP1 to CP5, CP15 and CP16 are in gate G2; the business model behind them is in [24](24-business-model-and-revenue.md); the streamer lane SL1 to SL17 for Twitch, YouTube and Kick is in [25](25-streamer-network-and-after-hours-economy.md)).
 
-## 3. Work sequence
+## 3. The schedule
 
-Calendar dates have been removed because the original schedule was unsupported. The D identifiers preserve the planned order, not elapsed days or completion dates; this is not a record of work performed.
-
-| Stage (legacy ID) | Work | Gate |
-| --- | --- | --- |
-| D1 | S0, S1; E0, A0 spikes; A1 (Studio setup, a human logs in) | Spike results recorded; Studio app exists; baseline saved |
-| D2 | S2 (module, mock, parity tests); E1, E2; A2 begins (Studio turns run in the background); U1 | Mock mode shows a named party and a staked flow in demo scenarios |
-| D3 | S3, S4, S5; E3; A2 continues, A3; U2 | A real party name resolves; the worker runs; a phone binds |
-| D4 | E4; A4, A5; U3, U4; **merge `main` into the branch** | A seat is minted for a phone; a testnet pot completes by script |
-| D5 | E5; A6; U5, U7; Funcaster OS rehearsal 1 happens on `main` | Host delegation enforced on chain; cooperative settlement works |
-| D6 | `main` freezes; **merge `main` into the branch again**; E6; A7; U8; fix parity if main moved | Full stake flow on mock and on testnet; parity green |
-| D7 | E8; A10 start; U6, U9; **K0 spike and `/arkiv/friction.md` started in a scratch repo (no project code before 6 Nov)**; hosted instance deploy of the branch | Tests green on the hosted instance |
-| D8 | Booth opens (staff the booth first); Q3, Q4; E9 if staffed; check ENS mainnet status and the DAO timelock | Fault injection green |
-| D9 | Hardening, evidence, `PARTNERS=mock` kiosk fallback verified; Arkiv: funded wallets, pinned SDK, Swarm gateway round trip re-checked | Release candidate tagged on the branch |
-| Event | Polish, evidence hashes, README per partner, demo recording, submission by 09:00 IST on 6 Nov; **Arkiv and Swarm Tier 1 (K1 to K7, K12) are built here, in small commits from 6 Nov (the track is "from scratch")**, Tier 2 after | Submitted |
+| Date | Day | Work | Gate |
+| --- | --- | --- | --- |
+| Tue 27 Oct | D1 | S0, S1; E0, A0 spikes; A1 (Studio setup, a human logs in) | Spike results recorded; Studio app exists; baseline saved |
+| Wed 28 Oct | D2 | S2 (module, mock, parity tests); E1, E2; A2 begins (Studio turns run in the background); U1 | Mock mode shows a named party and a staked flow in demo scenarios |
+| Thu 29 Oct | D3 | S3, S4, S5; E3; A2 continues, A3; U2 | A real party name resolves; the worker runs; a phone binds |
+| Fri 30 Oct | D4 | E4; A4, A5; U3, U4; **merge `main` into the branch** | A seat is minted for a phone; a testnet pot completes by script |
+| Sat 31 Oct | D5 | E5; A6; U5, U7; Funcaster rehearsal 1 happens on `main` | Host delegation enforced on chain; cooperative settlement works |
+| 6 November | D6 | `main` freezes; **merge `main` into the branch again**; E6; A7; U8; fix parity if main moved | Full stake flow on mock and on testnet; parity green |
+| 6 November | D7 | E8; A10 start; U6, U9; **K0 spike and `/arkiv/friction.md` started in a scratch repo (no project code 6 November)**; hosted instance deploy of the branch | Tests green on the hosted instance |
+| 6 November | D8 | Booth opens (staff the booth first); Q3, Q4; E9 if staffed; check ENS mainnet status and the DAO timelock | Fault injection green |
+| 6 November | D9 | Hardening, evidence, `PARTNERS=mock` kiosk fallback verified; Arkiv: funded wallets, pinned SDK, Swarm gateway round trip re-checked | Release candidate tagged on the branch |
+| Thu 5 to 6 November | Event | Polish, evidence hashes, README per partner, demo recording, submission by 09:00 IST on 6 November; **Arkiv and Swarm Tier 1 (K1 to K7, K12) are built here, in small commits 6 November (the track is "from scratch")**, Tier 2 after | Submitted |
 
 If time runs short, **cut in this order**: stretch items (E10, A8, A9) first, then E9, then U6 and the Leaderboard window, then the Records history verify button; **never cut** the parity tests, host enforcement (E5), the stakes start gate, or gasless funding (A3, A4).
 
@@ -125,7 +123,7 @@ Give Codex **one lane at a time** (or one prompt per Codex session), after the t
 ### 5.1 Common preamble (paste first)
 
 ```text
-You are working on Funcaster Console. Repo rules and landmines are in CLAUDE.md and AGENTS.md (read them). WORK ONLY ON THE BRANCH web3/integrations (create it from main if missing; sub-branches web3/ens, web3/arc, web3/arkiv, web3/ui merge into it). NEVER commit to main and never merge into main. Commit small and often.
+You are working on Funcaster. Repo rules and landmines are in CLAUDE.md and AGENTS.md (read them). WORK ONLY ON THE BRANCH web3/integrations (create it from main if missing; sub-branches web3/ens, web3/arc, web3/arkiv, web3/ui merge into it). NEVER commit to main and never merge into main. Commit small and often.
 
 The web3 spec is docs/plans/web3/build-guide/ (read 00-README.md, then 01-architecture.md, then the document for your lane). You are implementing a SPECIFICATION: do not redesign it, do not skip its tests, and do not add scope. If the spec conflicts with the code, say so and follow the spec unless it cannot work.
 
@@ -158,7 +156,7 @@ Record a baseline first: run `npm run check` once and keep the output (on Window
 [preamble] Implement the UI lane from 05-ui-integration.md after S2 (the mock provider emits view().web3). Begin with U1 (web3-data.js pure functions, WEB3_STRINGS, web3.css, every demo scenario, demo-session stubs) and unit-test the row models without a DOM. Then the surfaces in the order of the task table. Respect section 1 of that document (data-nav and data-id, plain words, PLAY MONEY, nothing visible when off except the disabled Stakes row). The Results window re-renders only when its signature array changes: add the receipt fields. On the phone the #enable handler must await nothing before requestMotionPermissions (add a regression test). Add Playwright e2e files next to tests/os/shell.e2e.mjs; they are run manually.
 ```
 
-### 5.6 Arkiv and Swarm lane (K0 to K12), brief published 6 November
+### 5.6 Arkiv and Swarm lane (K0 to K12), brief 6 November
 
 ```text
 [preamble] Implement the Arkiv and Swarm lane from 04-arkiv-guide.md, and write the judged documents from 18-arkiv-submission-pack.md. Pin @arkiv-network/sdk to 0.8.1 (never latest) and use the installed Arkiv skills (arkiv-data-modeling, arkiv-entity-lifecycle, arkiv-query, arkiv-write-safety, arkiv-security-trust) before writing queries. Entity model: the five types in section 5 (result, score, receipt, profile, live), attributes named project, entity_type, schema_version and typed (addr, bytes32, u256, u64, i32, str), lowercase snake_case of at most 32 bytes. Results, scores and receipts are created readonly; the profile is transferred to the phone key with permissionlessExtension; live entries are leases (90 s, renewed every 30 s, deleted at the end). Every read filters createdBy for one trusted console at a time (an allowlist) and validates the payload shape; browsers read Arkiv directly (the relay's reader is only the fallback). Use executeBatch for writes (never loop createEntity), u64 for timestamps, one serialised worker. Swarm: upload the replay bundle and a deterministic SVG recap card through the public gateway API host in the worker (never in view, finish or the tick); store the 32-byte references as bytes32; NEVER store an encrypted Swarm reference in an entity, log or URL; add a keeper that re-uploads from the local store. Write scripts/arkiv-query.mjs and scripts/arkiv-verify.mjs (no key, no relay). Create /arkiv/schema.md, friction.md, reach.md, why-arkiv.md and how-you-use-arkiv.md at the repo root and keep friction.md updated with exact error text and a runnable repro for every problem. Do not claim in any document a feature that is not built. Keep the module behind the Records capability with a mock provider.

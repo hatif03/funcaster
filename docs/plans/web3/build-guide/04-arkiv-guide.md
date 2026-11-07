@@ -1,8 +1,10 @@
 # Build guide 04: Arkiv and Swarm (the public layer: results, trophies, live directory)
 
-Part of the [build guide](00-README.md). Status: plan, **rewritten 6 November 2026** after Arkiv published its Mumbai prizes (read from [ethglobal.com/events/mumbai/prizes](https://ethglobal.com/events/mumbai/prizes) the same day; the page text is quoted in section 1). **No code is written.** This replaces the 6 November version, which was built before the brief existed. The judging strategy, the five documents the judges read and the demo are in [18](18-arkiv-submission-pack.md); this document is the build.
+> **Owner-approved update, 6 November 2026:** Rabdi 7794095 / exact Arkiv SDK 1.0.1 replaces Tiramisu/0.8.1 and the old query/schema assumptions below. Follow [the migration and measured limits](../../../web3/rabdi-migration.md); all K0 gates still apply.
 
-Evidence marks: **[P]** the prizes page, 6 November; **[K]** Arkiv's knowledge tools and skills (SDK 0.8.1, `network_status` probed 6 November; link checks dated 6 November); **[S]** Swarm documentation and the Swarm ID gateway notes, fetched 6 November; **[inf]** inference. The Arkiv MCP is configured for a different Arkiv event; it is used here only for SDK and network facts, never for Mumbai rules.
+Part of the [build guide](00-README.md). Status: plan, **6 November 2026** after Arkiv published its Mumbai prizes (read from [ethglobal.com/events/mumbai/prizes](https://ethglobal.com/events/mumbai/prizes) the same day; the page text is quoted in section 1). **No code is written.** This replaces 6 November version, which was built before the brief existed. The judging strategy, the five documents the judges read and the demo are in [18](18-arkiv-submission-pack.md); this document is the build.
+
+Evidence marks: **[P]** the prizes page, 6 November; **[K]** Arkiv's knowledge tools and skills (SDK 0.8.1, `network_status` 6 November; link checks 6 November); **[S]** Swarm documentation and the Swarm ID gateway notes, 6 November; **[inf]** inference. The Arkiv MCP is configured for a different Arkiv event; it is used here only for SDK and network facts, never for Mumbai rules.
 
 ## 1. What the brief says, and what it changes
 
@@ -27,7 +29,7 @@ Evidence marks: **[P]** the prizes page, 6 November; **[K]** Arkiv's knowledge t
 
 **Qualification [P]:** built from scratch at the event; writes to Arkiv's testnet with `@arkiv-network/sdk` (or JSON-RPC) and **at least one feature users see reads its data from Arkiv**; the README lists **the wallet address(es) that wrote the entities and one query the judges can run**; `/arkiv/schema.md` (entities, fields queried, owners, expiry) and the four files above; a public repo with an open-source licence; **a statement of how AI was used**. **Explicitly not counted: "the SDK installed but never used to read, or Arkiv used only as a log that nothing reads."** Swarm bonus: the project uses both; the README says **how Swarm is used and gives one Swarm reference the judges can open**; **an encrypted Swarm reference contains its key and Arkiv entities are public, so never store one in an entity as it is.**
 
-### What the 6 November plan missed (the findings of this review)
+### What 6 November plan missed (the findings of this review)
 
 | # | Gap | Consequence if left | Fix (section) |
 | --- | --- | --- | --- |
@@ -71,7 +73,7 @@ Each row is a feature the user can see. The honest limit is stated in [18](18-ar
 
 Two further uses are typed queries the user sees: **"My history"** (`player = me`), **head-to-head** (intersection of two players' matches), and the **market listing** that expires at its close.
 
-## 4. Network and SDK facts [K], re-checked 6 November
+## 4. Network and SDK facts [K], re-6 November
 
 | Item | Value |
 | --- | --- |
@@ -93,7 +95,7 @@ Two further uses are typed queries the user sees: **"My history"** (`player = me
 
 **Update, 6 November (owner):** capacity and Swarm retention are no longer constraints, and new features are welcome when they make sense in the console. The five **core** types below are unchanged and remain the qualifying build (Tier 1 and 2). The **extension** types `challenge`, `claim`, `agent`, `game`, `season`, `badge` and `follow` are specified in [20](20-feature-expansion.md) section 5 with the same rules (typed lowercase attributes, `project` and `schema_version`, createdBy allowlist on read, a visible surface for each, a measured lease). Every claim below that depends on a platform behaviour is tested first by the matching item in [19](19-verification-and-fix-protocol.md) (`VK-xx`), and the schema here changes if a test says it must.
 
-`project` is the constant `funcaster_mumbai_2026`; `schema_version` is `i32(1)`. **Creator** is a console's Arkiv wallet (the `SPONSOR` of the earlier plan, now **one per console**). Hashes and Swarm references are `bytes32`; wallet addresses are `addr`; stake amounts are `u256` in USDC base units (6 decimals). **No `key()` references**: entities join on stable application ids (`match`), as Arkiv's data-modelling guidance advises, so no cross-entity key prediction is needed.
+`project` is the constant `chonks_mumbai_2026`; `schema_version` is `i32(1)`. **Creator** is a console's Arkiv wallet (the `SPONSOR` of the earlier plan, now **one per console**). Hashes and Swarm references are `bytes32`; wallet addresses are `addr`; stake amounts are `u256` in USDC base units (6 decimals). **No `key()` references**: entities join on stable application ids (`match`), as Arkiv's data-modelling guidance advises, so no cross-entity key prediction is needed.
 
 | `entity_type` | Queryable attributes (typed) | Payload | Owner | Flags | Lease | Why these |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -147,7 +149,7 @@ Two further uses are typed queries the user sees: **"My history"** (`player = me
 
 | Link | How | What breaks without it | Extra user step |
 | --- | --- | --- | --- |
-| ENS name to Arkiv | The party's ENS name is the `party` attribute of `live` and `result`; typing it on a phone finds the live match; the result hash in the ENS `funcaster.receipt` record is the Arkiv `result_hash`, so each side finds the other **without an extra transaction** | Join by name would need a server directory; a name could not be followed to its record | none |
+| ENS name to Arkiv | The party's ENS name is the `party` attribute of `live` and `result`; typing it on a phone finds the live match; the result hash in the ENS `chonks.receipt` record is the Arkiv `result_hash`, so each side finds the other **without an extra transaction** | Join by name would need a server directory; a name could not be followed to its record | none |
 | Arc to Arkiv | `receipt` entities from the contract's events; the result carries the same `result_hash` as the Arc `resultHash` and the ENS record | "My pots" and the history would be the relay's say-so | none |
 | Market listing | `live` with `kind=market` and `closes`: **a listing that expires at its deadline**, one of Arkiv's named directions; **positions stay on Arc** | Spectators would find markets only through one relay | none |
 | One key | The seat's session key is the ENS owner, the Arc seat and the Arkiv trophy and profile owner ([09](09-seamlessness-and-signing-budget.md)) | Three identities to reconcile | none |
@@ -200,11 +202,11 @@ Two further uses are typed queries the user sees: **"My history"** (`player = me
 
 Tier 4 (K14 to K24) is the extension tier of [20](20-feature-expansion.md): about 54 hours, plus 8 for K13 (tier 0, which gates the others); all optional for qualification, each gated by its spike and its feature flag.
 
-**Capacity (updated 6 November): the owner will dedicate whatever time is needed, so nothing is cut for capacity; the cut line below now applies only to a feature whose spike in [19](19-verification-and-fix-protocol.md) failed and whose fallback is not acceptable.** Build order is still by dependency: Tier 1, then Tier 2, then Tier 4, with the stretch items last.
+**Capacity (6 November): the owner will dedicate whatever time is needed, so nothing is cut for capacity; the cut line below now applies only to a feature whose spike in [19](19-verification-and-fix-protocol.md) failed and whose fallback is not acceptable.** Build order is still by dependency: Tier 1, then Tier 2, then Tier 4, with the stretch items last.
 
 **Tier 1 is about 36 hours, Tier 2 about 13 (49 in all), and the stretch tier adds 6.** This is **not** the 12 to 16 hours of the earlier plan. It is two people, or one person plus the lead's UI time. Reaching the Tier 1 line earns the qualification and most of the points; Tier 2 is what makes *How you use Arkiv* (owner, lease) and *Reach* strong. **The cut line if time runs short:** drop KS1 to KS3, then K11, then K10, then K9 (and remove every claim of player ownership), then K8's market half. **Never cut K0, K6 or K7.** An owner decision is needed on capacity (README section 4): the Ledger indexers (about 14 hours) and the stats lane ([14](14-stats-and-leaderboards.md), [15](15-integrity-and-anti-cheat.md)) are the largest blocks that earn no prize points of their own.
 
-**Schedule, and the constraint that drives it.** The track is "built from scratch at ETHGlobal Mumbai", so **only K0 (a learning spike in a scratch repo) may happen before 6 November; K1 onward is written inside the event window**, which is about 36 working hours from Thursday afternoon to the 09:00 IST submission on Saturday. Tier 1 alone is about 36 hours, so it needs **two people (or two Codex lanes) on Arkiv for the whole window** while ENS and Arc are also finishing. This is the real cost of the track and the owner should decide it knowingly: either staff it, or take the cut line early (drop Tier 2 and the stretch, keep K0, K1 to K3, K5 to K7, K12 and a thin K4). The friction log starts at K0 so it is written as things break. K1 to K3 and K6 first (the shared foundation S0 to S6 and the mock provider must exist), then K4 and K5, K7 continuously, K8 to K11 only when Tier 1 is green on the hosted instance.
+**Schedule, and the constraint that drives it.** The track is "built from scratch at ETHGlobal Mumbai", so **only K0 (a learning spike in a scratch repo) may happen 6 November; K1 onward is written inside the event window**, which is about 36 working hours from Thursday afternoon to the 09:00 IST submission on Saturday. Tier 1 alone is about 36 hours, so it needs **two people (or two Codex lanes) on Arkiv for the whole window** while ENS and Arc are also finishing. This is the real cost of the track and the owner should decide it knowingly: either staff it, or take the cut line early (drop Tier 2 and the stretch, keep K0, K1 to K3, K5 to K7, K12 and a thin K4). The friction log starts at K0 so it is written as things break. K1 to K3 and K6 first (the shared foundation S0 to S6 and the mock provider must exist), then K4 and K5, K7 continuously, K8 to K11 only when Tier 1 is green on the hosted instance.
 
 **Review addendum (6 November, [22](22-integration-review.md) finding D1).** The owner has since said time and capacity are not a concern, and the extension features (K13 to K24, [20](20-feature-expansion.md)) make Arkiv the largest lane. The "from scratch in the event window" rule still stands as written by the organisers, so the value-ordered **gates** of [22](22-integration-review.md) section 5 decide what is **inside the window** and what is a **stretch that is shown only if finished**; Tier 1 stays the unconditional core. The owner must confirm the start rule (22 section 6, decision 2) before K1 is written.
 
@@ -214,7 +216,7 @@ Tier 4 (K14 to K24) is the extension tier of [20](20-feature-expansion.md): abou
 
 | Risk | Mitigation |
 | --- | --- |
-| The from-scratch track is judged on "built at the event"; the console is pre-existing ([README](../README.md) section 3, settled by the owner) | All Arkiv and Swarm code is new, in its own folders, committed from 6 November with small commits; the README says what existed before and what was added; if ETHGlobal rules the team Continuity-only, the existing-projects Arkiv prize applies and **the Swarm bonus is lost** (section 1) |
+| The from-scratch track is judged on "built at the event"; the console is pre-existing ([README](../README.md) section 3, settled by the owner) | All Arkiv and Swarm code is new, in its own folders, committed 6 November with small commits; the README says what existed before and what was added; if ETHGlobal rules the team Continuity-only, the existing-projects Arkiv prize applies and **the Swarm bonus is lost** (section 1) |
 | Faucet needs a human and a CAPTCHA; GLM runs out (the profile drip and renewals use it) | Fund two keys early; profiles are opt-in; measure gas in K0; budget renewals per match |
 | Anonymous RPC limit with many screens | Browsers read directly; the cached relay reader is the fallback; an access key stays on the backend |
 | The Swarm gateway is rate limited and its retention is unstated | The keeper; the local store is the source; an optional own stamp; **nothing outside the demo depends on the gateway** |

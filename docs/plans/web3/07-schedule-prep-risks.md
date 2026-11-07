@@ -6,14 +6,14 @@ Part of the [web3 plan](README.md). Status: plan, 6 November 2026. Dates are fro
 
 | Date | What | Note |
 | --- | --- | --- |
-| Now to 6 Nov | Preparation (section 2) and the Funcaster OS build ([build/07](../build/07-schedule-tests-runbook.md)) | Integration code **must not** be committed to the game repo yet |
-| 6 Nov | Devcon 8 India starts (Jio World Centre); the booth runs | |
-| 6 Nov | ETHGlobal Mumbai hacking starts | **The start time is not stated on the page.** A 36-hour hackathon ending at the 6 November 09:00 IST deadline implies a start of about 21:00 IST on 6 November (inference) |
-| Thu 5 and 6 Nov | **The booth and the hackathon overlap** | Two crews: a booth crew and a hack crew (section 4) |
-| **6 Nov 09:00 IST** | **Submission deadline, no late entries** | Stop building at 07:30 |
+| Now to 6 November | Preparation (section 2) and the Funcaster build ([build/07](../build/07-schedule-tests-runbook.md)) | Integration code **must not** be committed to the game repo yet |
+| 6 November | Devcon 8 India starts (Jio World Centre); the booth runs | |
+| 6 November | ETHGlobal Mumbai hacking starts | **The start time is not stated on the page.** A 36-hour hackathon ending at the 6 November 00:00 IST deadline implies a start of about 21:00 IST on 6 November (inference) |
+| Thu 5 and 6 November | **The booth and the hackathon overlap** | Two crews: a booth crew and a hack crew (section 4) |
+| **6 November 09:00 IST** | **Submission deadline, no late entries** | Stop building at 07:30 |
 | After | Closing ceremony; partner winners announced | |
 
-## 2. Preparation before 6 November (allowed, and it keeps the 36 hours for building)
+## 2. Preparation 6 November (allowed, and it keeps the 36 hours for building)
 
 The rule is: **prepare accounts, keys, knowledge, scratch spikes and the baseline interfaces; do not write the integrations in the game repo.**
 
@@ -36,7 +36,7 @@ The rule is: **prepare accounts, keys, knowledge, scratch spikes and the baselin
 | --- | --- | --- |
 | **0 to 3** | First commit "event start: integrations scaffold" (small commits from here); wire `PARTNERS=on` end to end with mocks; confirm hosted relay, keys, faucets, parent name | A green baseline on the hosted instance |
 | **3 to 15** | The three integrations in parallel, one owner each: **the pot on Arc ([09](09-arc-pot-and-settlement-plan.md), started in Arc Studio at hour 0 to 1)**, World ([04](04-world-plan.md)), Arkiv ([05](05-arkiv-plan.md)); ENS ([03](03-ens-plan.md)) only with a fifth engineer. Each lands behind its capability interface with a contract test | Each integration works against its real testnet |
-| **15 to 24** | UI surfaces in Funcaster OS and the phone (badges, names, receipts, live leaderboard, consent card); end-to-end flow on the booth TV | A demo-able flow |
+| **15 to 24** | UI surfaces in Funcaster and the phone (badges, names, receipts, live leaderboard, consent card); end-to-end flow on the booth TV | A demo-able flow |
 | **24 to 30** | Hardening: fault injection (provider down), offline `mock` fallback, **a scripted replay of a full staked match as the stage fallback**, the README sections per partner (each with a "what breaks without it" sentence, test counts and an honest limitations list, per [10](10-winner-patterns.md)), architecture diagram, `FEEDBACK.md` / `friction.md` where a sponsor asks | Submission materials drafted |
 | **30 to 33** | Record the video (3:30, person speaking, no AI voice); final tests on real phones | Video file |
 | **33 to 34.5** | Submission form: pick the **three partners** and the tracks, write the per-partner notes, link the repo and video, attach the AI-use record | Submitted |
@@ -44,9 +44,9 @@ The rule is: **prepare accounts, keys, knowledge, scratch spikes and the baselin
 
 ## 4. People
 
-**Glossary.** *Booth crew*: the people who run the physical Funcaster booth at Devcon 8 India (3 to 6 November): setting up the TV and phones, helping visitors join, running the self-driving Kiosk. *Hack crew*: the people building the integrations during the ETHGlobal hackathon (5 to 6 November, a 36-hour sprint). The two events overlap on 5 and 6 November, and one person cannot do booth duty and the sprint at once, so the sprint needs its own people or the booth runs the Kiosk with a staff PIN. A staffing question for later, not a blocker.
+**Glossary.** *Booth crew*: the people who run the physical Funcaster booth at Devcon 8 India (6 November): setting up the TV and phones, helping visitors join, running the self-driving Kiosk. *Hack crew*: the people building the integrations during the ETHGlobal hackathon (6 November, a 36-hour sprint). The two events overlap on 6 November, and one person cannot do booth duty and the sprint at once, so the sprint needs its own people or the booth runs the Kiosk with a staff PIN. A staffing question for later, not a blocker.
 
-At least **three integration owners** (the Arc pot, World, Arkiv; ENS only with a fifth person) plus a **lead** who owns the registry, the hosted relay, the demo and the submission. Because the booth runs on 5 and 6 November, the **booth crew** must be separate from the hack crew (or the booth runs the self-driving Kiosk with a staff PIN while the hack crew works). Confirm the headcount.
+At least **three integration owners** (the Arc pot, World, Arkiv; ENS only with a fifth person) plus a **lead** who owns the registry, the hosted relay, the demo and the submission. Because the booth runs on 5 6 November, the **booth crew** must be separate from the hack crew (or the booth runs the self-driving Kiosk with a staff PIN while the hack crew works). Confirm the headcount.
 
 ## 5. The public-repo problem (background: closed by the owner on 6 November)
 
@@ -62,11 +62,11 @@ Several sponsors require "open-source code" and a **public** repository (ENS: "l
 
 ## 6. The demo (3:30)
 
-1. **The desktop** on the big screen: the Funcaster OS shell, the QR and the room name (an ENS name); one sentence: phones are the controllers and every match leaves a receipt you own.
+1. **The desktop** on the big screen: the Funcaster shell, the QR and the room name (an ENS name); one sentence: phones are the controllers and every match leaves a receipt you own.
 2. **Two phones join**: one verifies as a human (World), one is a guest with a visible guest badge; seat names resolve from ENS.
 3. **A short match** of the most reliable game (Star Catch, Bubble Burst or Golf are the safest; Kart Rush if it is stable).
 4. **The result**: verified replay label, the **Results window** with its receipt; the **Leaderboard window updates live** (Arkiv); open the entity in the explorer (authorship, expiry, owner).
-5. **The pot** ([09](09-arc-pot-and-settlement-plan.md) section 6): two phones accept the terms card and fund (Caster's collar tags light up), the match runs, the pot pays in under a second; a second pot is contested and refunds; then **kill the relay and pull a refund**. Labelled "PLAY MONEY" throughout. (If ENS is built: the party name resolves live and the seats show expiring names.)
+5. **The pot** ([09](09-arc-pot-and-settlement-plan.md) section 6): two phones accept the terms card and fund (Chonk's collar tags light up), the match runs, the pot pays in under a second; a second pot is contested and refunds; then **kill the relay and pull a refund**. Labelled "PLAY MONEY" throughout. (If ENS is built: the party name resolves live and the seats show expiring names.)
 6. **The "humans only" proof**: a bot or guest seat is refused a stake, or a repeat verification from the same human is rejected (nullifier).
 7. One sentence: what is new and what is pre-existing.
 
@@ -91,4 +91,4 @@ The event requires AI use to be documented (where and how, with the specific fil
 | Testnet outages or faucet limits | Funded spare keys; `mock` fallback; the outbox |
 | Continuity rules (pre-existing versus new) | `PRE_EXISTING.md`, small commits from hour 0, the scratch-repo rule |
 | A late brief changes the plan | The week-of re-read; the plan is modular |
-| Time lost to the booth or to Funcaster OS bugs | The order of sacrifice in the build plan; the hosted instance is the only hard prerequisite |
+| Time lost to the booth or to Funcaster bugs | The order of sacrifice in the build plan; the hosted instance is the only hard prerequisite |

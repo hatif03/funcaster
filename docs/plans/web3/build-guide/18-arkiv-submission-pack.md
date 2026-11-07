@@ -1,5 +1,7 @@
 # Build guide 18: the Arkiv and Swarm submission pack (judging strategy, the five documents, the demo)
 
+> **Owner-approved update, 6 November 2026:** Rabdi 7794095 / exact Arkiv SDK 1.0.1 replaces Tiramisu/0.8.1 and the old query/schema assumptions below. Follow [the migration and measured limits](../../../web3/rabdi-migration.md); all K0 gates still apply.
+
 Part of the [build guide](00-README.md). Status: plan, 6 November 2026. **Nothing here is built.** Arkiv's judges (the Arkiv team, per the brief) score **four equal criteria of 25%**, each answered in its **own file at the repo root**. This document says what each file must prove, gives a **draft of every file** with the measured numbers left as `[fill]`, and lists the README block, the demo and the submission checklist. The build is [04](04-arkiv-guide.md). The brief is quoted in section 1 of 04.
 
 **The rules for writing these files (so nothing is overclaimed):** every claim names the feature and a way to check it (a link, a number, or a command the judges can run); **nothing describes a feature that is not built and demonstrated** ([12](12-reality-and-ledger.md) rule: nothing faked); when a feature is cut (the cut line in [04](04-arkiv-guide.md) section 10) its sentence is deleted from the files the same day; known limits are stated, because the judges read for judgement, not for adjectives.
@@ -71,7 +73,7 @@ For **who can edit each entity** and **when it expires**, link to the table in `
 
 > **Who is it for?** People at a venue or a party who want a game they can start from their phone in about 20 seconds with no install and no account; friends who want to stake play money on a match; spectators who predict a match; and **game creators** whose games, built with the Funcaster SDK, get a public board with no backend of their own.
 > **Can they try it today?** `[fill: the hosted URL]`, with the Hall at `[fill]`. The Hall needs no login and no wallet, and works with our server stopped. At the Mumbai venue: `[fill: how a stranger joins]`.
-> **Will we keep building?** Yes: Funcaster Console is the product ([plan.md](../../../../plan.md)), and the Arkiv layer is how its results become public. *[fill: the owner's own commitments after Mumbai: venue pilots, creator onboarding.]*
+> **Will we keep building?** Yes: Funcaster is the product ([plan.md](../../../../plan.md)), and the Arkiv layer is how its results become public. *[fill: the owner's own commitments after Mumbai: venue pilots, creator onboarding.]*
 > **Numbers (filled during the event, from queries the judges can run):** matches published `[fill]`, distinct players `[fill]`, consoles `[fill]`, Swarm recap cards `[fill]`.
 
 ### 2.5 `/arkiv/friction.md` (kept from the first spike)
@@ -84,7 +86,7 @@ Format for every entry, so it answers the judges' two questions:
 ## 3. The README block (required content)
 
 1. One sentence: what breaks without Arkiv (the 4 P-properties in one line).
-2. **Pre-existing versus new.** The console and the games existed; **everything under `integrations/arkiv/`, `integrations/swarm/`, `public/hall/`, the two scripts, the Leaderboard window and `/arkiv/` is new work from 6 November** (link the first commit).
+2. **Pre-existing versus new.** The console and the games existed; **everything under `integrations/arkiv/`, `integrations/swarm/`, `public/hall/`, the two scripts, the Leaderboard window and `/arkiv/` is new work 6 November** (link the first commit).
 3. **The wallet address(es) that wrote the entities** (each console's Arkiv wallet) with explorer links.
 4. **One query the judges can run**: `npm run arkiv:query -- --board star-catch --season 2026-11` (prints the top ten with their entity keys; no key, no server). Plus the raw SDK snippet.
 5. **How Swarm is used** (three sentences) and **one Swarm reference we can open** (a recap card at `https://api.gateway.ethswarm.org/bzz/<ref>/`, a replay at `/bytes/<ref>`) and the verify command that uses it.

@@ -95,7 +95,7 @@ s    = 1 if i placed above q, 0.5 if tied, 0 if below
 
 1. Every `matchRecord` (with its result hash) is a leaf of an **append-only RFC 6962 Merkle log**; the **flag log** is a second log of `{subject commitment, flag code, evidence hash, effective epoch, status}`.
 2. **Daily signed checkpoint** in the **C2SP `tlog-checkpoint`** format (origin, tree size, root hash; Ed25519 signature; a log never signs two checkpoints without a consistency proof [V]), plus the **ruleset hash** and the **leaderboard hash**.
-3. **Publish the checkpoint on chain** once per day, in one transaction (an Arc transaction carrying the root, ruleset hash and leaderboard hash; see [16](16-arc-native-features.md) for the memo mechanism), mirrored in the `funcaster.checkpoint` text record on the `play` ENS registry and as an Arkiv entity. The Ledger's own head hash goes the same way ([12](12-reality-and-ledger.md) section 4.3).
+3. **Publish the checkpoint on chain** once per day, in one transaction (an Arc transaction carrying the root, ruleset hash and leaderboard hash; see [16](16-arc-native-features.md) for the memo mechanism), mirrored in the `chonks.checkpoint` text record on the `play` ENS registry and as an Arkiv entity. The Ledger's own head hash goes the same way ([12](12-reality-and-ledger.md) section 4.3).
 4. **The leaderboard is a pure function of (match log, flag log, chain events, ruleset).** `scripts/web3-stats-recompute.mjs` downloads both logs and the chain events and reproduces every board; **test vectors** are committed; the Ledger and the TV window show the **checkpoint age and the verification status** ("recomputed and matches the published hash").
 5. **Flags are published without shaming innocents** (the three treatment tiers of [15](15-integrity-and-anti-cheat.md)): rule-based exclusions are silent and name matches or markets, not people; "under review" is neutral; only confirmed removals are public, with a reason code and an evidence hash.
 
@@ -167,7 +167,7 @@ Needs: **Id** a persistent key (all stats); **V** fairness needs a verified huma
 - **Phone: the Stats tab** of the account app ([13](13-users-scenarios-and-accounts.md)): a profile card (handle, level badge, trophies), **Skill per game** with the ± bar and tier, wins and win rate, streak, personal bests, head-to-head, **predictor stats** (net, ROI, edge Z, hit rate), achievements and rank, every figure with a **"Why?"** that opens the underlying matches and transactions.
 - **Results window:** a **rating change line** ("Skill 1276 → 1301 (+25)") after a rated match; **Players window:** the rating tier chip.
 - **Web: `/leaderboard`** (public): the same boards, the recompute instructions and the checkpoint history.
-- **Arkiv entities** ([04](04-arkiv-guide.md)): **changed 6 November.** The `rating`, `matchrecord`, `checkpoint` and `flag` entity types are **dropped**: ratings are computed from the public `score` entities (anyone can recompute them, which is the point), flags are never public, and a checkpoint is written to Arkiv **only if a screen reads it back** (Arkiv does not count "a log that nothing reads").
+- **Arkiv entities** ([04](04-arkiv-guide.md)): **6 November.** The `rating`, `matchrecord`, `checkpoint` and `flag` entity types are **dropped**: ratings are computed from the public `score` entities (anyone can recompute them, which is the point), flags are never public, and a checkpoint is written to Arkiv **only if a screen reads it back** (Arkiv does not count "a log that nothing reads").
 
 ## 9. Tests and tasks (lane R)
 

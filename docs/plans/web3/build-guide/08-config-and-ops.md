@@ -1,5 +1,7 @@
 # Build guide 08: configuration, keys, funding, hosting and operations
 
+> **Owner-approved update, 6 November 2026:** Rabdi 7794095 / exact Arkiv SDK 1.0.1 replaces Tiramisu/0.8.1 and the old query/schema assumptions below. Follow [the migration and measured limits](../../../web3/rabdi-migration.md); all K0 gates still apply.
+
 Part of the [build guide](00-README.md). Status: plan, 6 November 2026. **No code is written.** Names below are the specified names; the config loader (task S1) validates them and gives a plain error for a bad value. Facts about the chains are from [02](02-ens-guide.md), [03](03-arc-guide.md) and [04](04-arkiv-guide.md) and must be re-read on the day.
 
 ## 1. Separate environment files, never one
@@ -39,7 +41,7 @@ The relay process must **never** hold a signing key or a platform secret. So:
 | `ARC_SETTLE_DEADLINE_SECONDS` | `900` | After this a locked, unsettled pot is refundable |
 | `ARC_CHALLENGE_WINDOW_SECONDS` | `120` | The oracle path's objection window (minimum 60) |
 | `ARC_ORACLE` | `relay` | `relay` (layer B) or `chainlink` (layer C) |
-| `ARKIV_RPC_URL`, `ARKIV_WS_URL`, `ARKIV_PROJECT` | the Tiramisu URLs, `funcaster_mumbai_2026` | Public reads and the live watcher (`ARKIV_APP` is renamed `ARKIV_PROJECT`; the attribute is `project`) |
+| `ARKIV_RPC_URL`, `ARKIV_WS_URL`, `ARKIV_PROJECT` | the Tiramisu URLs, `chonks_mumbai_2026` | Public reads and the live watcher (`ARKIV_APP` is renamed `ARKIV_PROJECT`; the attribute is `project`) |
 | `ARKIV_TRUSTED_CREATORS` | (this console's address) | Comma-separated addresses of **trusted consoles**: reads run one `createdBy` query per address and show "published by" (public, not keys). Replaces `ARKIV_SPONSOR_ADDRESS` |
 | `ARKIV_LEASE_LIVE_S`, `ARKIV_RENEW_LIVE_S` | `90`, `30` | The live directory lease and its renewal |
 | `ARKIV_PROFILE_DRIP_GLM` | (measured in K0) | The GLM sent to a phone that opts into a profile; capped per device and per hour |
@@ -122,7 +124,7 @@ The creator and streamer contracts reuse `ARC_RELAYER_KEY` for gasless relaying;
 
 `ARC_STUDIO_TOKEN` is for the developer's CLI session only: **never put it in either server env file**.
 
-## 3. Wallets, funding and who does it (do this before 6 November; several steps need a human)
+## 3. Wallets, funding and who does it (do this 6 November; several steps need a human)
 
 | Wallet | Chain | What it needs | How | Notes |
 | --- | --- | --- | --- | --- |

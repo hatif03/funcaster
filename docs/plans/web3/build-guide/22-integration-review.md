@@ -1,23 +1,25 @@
 # Build guide 22: whole-plan integration review (6 November 2026)
 
+> **Owner-approved update, 6 November 2026:** Rabdi 7794095 / exact Arkiv SDK 1.0.1 replaces Tiramisu/0.8.1 and the old query/schema assumptions below. Follow [the migration and measured limits](../../../web3/rabdi-migration.md); all K0 gates still apply.
+
 **Question asked by the owner:** go through the whole plan again; do any of the technologies fail to work together; does everything gel?
 
 **Method.** Every guide (00 to 21) was read for contradictions with the others, for cross-technology assumptions (a record written by one technology that another technology reads), and for things that **cannot** work as written. Items that can only be settled by running code are given a verification item in [19](19-verification-and-fix-protocol.md). **Status** below is one of: **fixed in the docs** (the text now says the right thing), **verify** (a test in 19 decides it), **owner** (needs a decision, section 6).
 
-**Short answer.** The three technologies fit together: nothing makes one of them unusable with another. But the review found **one hidden fourth dependency (World)**, **three places where two parts of the plan contradicted each other in a way that would have broken a feature or the integrity of the market**, a handful of **technology limits that the expansion features had ignored**, and one **real planning problem: the total work is larger than the time to 6 November 09:00 IST**, so a value-ordered gate plan is needed (section 5).
+**Short answer.** The three technologies fit together: nothing makes one of them unusable with another. But the review found **one hidden fourth dependency (World)**, **three places where two parts of the plan contradicted each other in a way that would have broken a feature or the integrity of the market**, a handful of **technology limits that the expansion features had ignored**, and one **real planning problem: the total work is larger than the time to 6 November 00:00 IST**, so a value-ordered gate plan is needed (section 5).
 
 ## 1. Pairwise compatibility matrix
 
 | Pair | Verdict | The seam and what holds it together | Items |
 | --- | --- | --- | --- |
-| **ENS x Arc** | Works | Seat name `addr` record = the Arc seat address; the pot's terms hash and the `funcaster.receipt` record carry the same result hash; the referee agent name links to its ERC-8004 identity (ENSIP-25). Sepolia (12 s blocks) and Arc (sub-second) are on different chains, so ENS is always **asynchronous** (the outbox): nothing on Arc ever waits for ENS. Cheers and cuts resolve names to addresses **at terms time** and fix the address in the hash. | VE-08, VA-01 |
+| **ENS x Arc** | Works | Seat name `addr` record = the Arc seat address; the pot's terms hash and the `chonks.receipt` record carry the same result hash; the referee agent name links to its ERC-8004 identity (ENSIP-25). Sepolia (12 s blocks) and Arc (sub-second) are on different chains, so ENS is always **asynchronous** (the outbox): nothing on Arc ever waits for ENS. Cheers and cuts resolve names to addresses **at terms time** and fix the address in the hash. | VE-08, VA-01 |
 | **ENS x Arkiv** | Works, one lifetime trap | The handle is the join key (the same string is the ENS label and `profile.handle`). **Trap (fixed):** a party name is **unregistered when the party ends**, so a `result.party` attribute is history text, not a live link; permanent pointers are the handle, the entity key and logs. | VE-11, VE-12 |
 | **ENS x Swarm** | Works with a limit | `contenthash` for a Swarm manifest is settable and decodable. **Limit (fixed in text):** public ENS gateways resolve **mainnet** names, ours are on **Sepolia**, so a browser cannot open the Hall by typing the name; the Swarm address is the way in and the name is a verifiable pointer ("Resolve this name" button). | VE-07, VE-13 |
 | **Arc x Arkiv** | Works | The one result hash binds both; Arkiv holds rows that anyone can re-hash; the Arc pot settles from the relay-verified result and the replay checker reads Arkiv + Swarm. Different chains, no shared transaction, so no atomicity is claimed: the outbox and idempotency keys give "eventually both", with the Ledger showing any gap. | VX-03, VX-05 |
 | **Arc x Swarm** | Works | Only through the replay hash: the pot settles on the hash, the replay lives on Swarm. Encrypted references contain the key and are never written to an entity. | VK items |
 | **Arkiv x Swarm** | Works | Unencrypted 32-byte references fit `bytes32`; the console keeper re-uploads by content; `result` carries `replay_hash` and `replay_ref`. | VK items |
 | **Arkiv x relay/worker** | Works | Phone-created entities fail the createdBy allowlist, so the console creates and transfers ownership (profile, **follow** (fixed), badge, season). | VK-05, VK-12 |
-| **World x everything** | Hidden fourth technology, now removed from the critical path | L2 feeds ranked eligibility, caps, recovery and the Cup, but nothing built World verification. **Decided 6 November:** L2 is a booth attestation; World is a later upgrade. See finding C1. | decided |
+| **World x everything** | Hidden fourth technology, now removed from the critical path | L2 feeds ranked eligibility, caps, recovery and the Cup, but nothing built World verification. **6 November:** L2 is a booth attestation; World is a later upgrade. See finding C1. | decided |
 | **viem x everything** | Needs one pinned version | ENSv2 reads need viem 2.35+; the Arkiv SDK 0.8.1 pins its own viem peer; Arc writes use viem too. | VX-08 |
 | **Arc contracts x Arc token** | Works, with documented limits | Circle FiatToken v2.2 proxies are upgradeable, pausable and have a blocklist (the "not trustless" statement); a blocklisted or drained account makes some transfers revert, hence pull claims and the drain floor. | VA-12 |
 
@@ -72,7 +74,7 @@ Severity: **S1** breaks a feature, the market's integrity or a track claim; **S2
 
 | ID | Sev | Finding | Resolution | Status |
 | --- | --- | --- | --- | --- |
-| D1 | **S1** | **The work is larger than the time.** Deadline: 6 November 09:00 IST. The earlier guides already summed to more than the days available (market about 190 h, Arkiv 49 h, stats 90 h, integrity 84 h, accounts 66 h, ledger 60 h, ENS 37 h core, Arc 29 to 37 h plus 17 h native, plus shared and UI); the expansion adds about **280 h** (my estimate: [20](20-feature-expansion.md) tasks FX1 to FX12 and K13 to K24, [21](21-ux-laws-and-os-ux.md) UX1 to UX12). The Arkiv lane is also written "from scratch in the event window". | A **gate plan** (section 5): value-ordered gates, a freeze order, and a rule that nothing in a later gate starts until the previous gate is green on the hosted instance. | gates confirmed (section 6) |
+| D1 | **S1** | **The work is larger than the time.** Deadline: 6 November 00:00 IST. The earlier guides already summed to more than the days available (market about 190 h, Arkiv 49 h, stats 90 h, integrity 84 h, accounts 66 h, ledger 60 h, ENS 37 h core, Arc 29 to 37 h plus 17 h native, plus shared and UI); the expansion adds about **280 h** (my estimate: [20](20-feature-expansion.md) tasks FX1 to FX12 and K13 to K24, [21](21-ux-laws-and-os-ux.md) UX1 to UX12). The Arkiv lane is also written "from scratch in the event window". | A **gate plan** (section 5): value-ordered gates, a freeze order, and a rule that nothing in a later gate starts until the previous gate is green on the hosted instance. | gates confirmed (section 6) |
 
 ### E. Documentation hygiene
 

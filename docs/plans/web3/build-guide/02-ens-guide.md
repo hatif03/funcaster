@@ -1,6 +1,6 @@
 # Build guide 02: ENS (ENSv2 as the party's namespace, roster, permission layer and receipt trail)
 
-Part of the [build guide](00-README.md). Status: plan, 6 November 2026. **No code is written; this is the specification a teammate and Codex build from.** It replaces the build detail of [the 6 November ENS plan](../03-ens-plan.md) (kept as background) using the winning-project study and a fresh ENSv2 fact check.
+Part of the [build guide](00-README.md). Status: plan, 6 November 2026. **No code is written; this is the specification a teammate and Codex build from.** It replaces the build detail of [6 November ENS plan](../03-ens-plan.md) (kept as background) using the winning-project study and a fresh ENSv2 fact check.
 
 Evidence marks: **[V]** verified in source or docs on 6 November; **[code]** read in a winning repository; **[I]** inference to be verified in a spike (section 11). **Re-read every [V] fact on the day you build.** ENSv2 addresses changed about three times in six weeks.
 
@@ -15,7 +15,7 @@ Evidence marks: **[V]** verified in source or docs on 6 November; **[code]** rea
 | **Who is in the party** | The party registry and the seat names (owned by each phone's key) | The pot's seat list is built from ENS names at lock time; without ENS it would just be the relay's say-so |
 | **Who may command the party** | **EAC roles** on the party registry and the party resolver; the relay checks `hasRoles` on every delegated `host.cmd` | A delegated phone's power would be a server token the TV can't prove or revoke on a public ledger |
 | **How long a party and a seat live** | **Expiry** on the party and seat names; `unregister` ends the party | Names would never expire; no on-chain notion of "this party is over" |
-| **How to find and join a party** | The party name's text records (`funcaster.code`, `funcaster.relay`): a phone can join **by name** | Joining would need the code or the QR only |
+| **How to find and join a party** | The party name's text records (`chonks.code`, `chonks.relay`): a phone can join **by name** | Joining would need the code or the QR only |
 
 Plus a **receipt trail**: each result's hash is written as a text record on the party name, and the Records window reads the party's history back **from the registry's own event logs** (the product visibly reads what it wrote; this avoids the "mirror" weakness that cost Tide first place). The pattern is the one all four winners share ([10](../10-winner-patterns.md), the ENS research): **ENS is the policy store and the enforcer reads it live; authority flows down from the parent; expiry and revocation are real and shown live; "can't" is proven on chain; a server key pays gas; there is a transaction-hash book.**
 
@@ -63,7 +63,7 @@ Plus a **receipt trail**: each result's hash is written as a text record on the 
   games.<parent>.eth                      (stretch E-S3) creator namespaces
 ```
 
-**Party label:** an adjective-animal pair chosen by hashing the room code, plus two characters from the code (for example `kart-otter-7k`); check `getState` and bump the suffix on collision. **Seat label:** the nickname slugged to a-z, 0-9 and hyphen, 3 to 20 characters, de-duplicated within the party (`asha`, `asha-2`); reserved labels blocked (`play`, `players`, `legends`, `fans`, `booth`, `hall`, `games`, `agents`, `host`, `tv`, `admin`, `funcaster`, `www`); empty nickname falls back to the seat name (`peeli`, `magenta`, `cyan`, `marigold`).
+**Party label:** an adjective-animal pair chosen by hashing the room code, plus two characters from the code (for example `kart-otter-7k`); check `getState` and bump the suffix on collision. **Seat label:** the nickname slugged to a-z, 0-9 and hyphen, 3 to 20 characters, de-duplicated within the party (`asha`, `asha-2`); reserved labels blocked (`play`, `players`, `legends`, `fans`, `booth`, `hall`, `games`, `agents`, `host`, `tv`, `admin`, `chonks`, `www`); empty nickname falls back to the seat name (`peeli`, `magenta`, `cyan`, `marigold`).
 
 **Namespace extension (review, 6 November).** The expansion features of [20](20-feature-expansion.md) add, all as stretch lanes **under the same rules** (one registry per parent label, **one resolver per party, agent, creator and fan-group name** because role scope is per resolver): `legends.<parent>.eth` (Legend names, no expiry), `fans.<parent>.eth` (F-E3), `booth.<parent>.eth` (F-E4 venue names), `hall.<parent>.eth` (one name carrying the Hall's Swarm `contenthash`, F-X1). The **handle** of a player is one label under `players`; the same string is the Arkiv `profile.handle` (see [20](20-feature-expansion.md) F-E2 review fixes). **A seat or party name expiring does not break history**: the permanent references are the handle, the Arkiv entity keys and the transaction logs. Name wording in the UI: **name** (handle) and **table name** (party); the words *registry*, *resolver*, *subname* stay in Proof ([21](21-ux-laws-and-os-ux.md)).
 
@@ -71,15 +71,15 @@ Plus a **receipt trail**: each result's hash is written as a text record on the 
 
 | Name | Key | Value | Written | **Read by the product to…** |
 | --- | --- | --- | --- | --- |
-| Party | `funcaster.v` | schema version `1` | at open | validate |
-| Party | `funcaster.code` and `funcaster.relay` | room code; public origin | at open | **join by name** (the relay resolves them) |
-| Party | `funcaster.game` | current game id (`funcaster.<slug>`) | on game change (not every state) | Invite window and Records header |
-| Party | `funcaster.host` | the delegated host's key address | on host grant and revoke | the Players window "host: asha" chip and the live check |
-| Party | `funcaster.pot` | `arc:5042002:<potAddress>:<potId>` | on pot create | the Results window's pot link; the roster check |
-| Party | `funcaster.receipt` | latest result hash | on each result | **History**: the Records window reads the party's `TextUpdated` logs for this key to list every match with its hash |
+| Party | `chonks.v` | schema version `1` | at open | validate |
+| Party | `chonks.code` and `chonks.relay` | room code; public origin | at open | **join by name** (the relay resolves them) |
+| Party | `chonks.game` | current game id (`chonks.<slug>`) | on game change (not every state) | Invite window and Records header |
+| Party | `chonks.host` | the delegated host's key address | on host grant and revoke | the Players window "host: asha" chip and the live check |
+| Party | `chonks.pot` | `arc:5042002:<potAddress>:<potId>` | on pot create | the Results window's pot link; the roster check |
+| Party | `chonks.receipt` | latest result hash | on each result | **History**: the Records window reads the party's `TextUpdated` logs for this key to list every match with its hash |
 | Seat | `addr` (coin type 60) | the seat's session-key address | on mint, in the same `multicall` (the resolver's setter admin role covers `SET_ADDRESS`) | **the pot roster**: resolving the seat name returns the staking address, so ENS and Arc always agree on who is who |
-| Seat | `funcaster.seat` | `slot=2;shape=circle;color=#…` | on mint (set in the same transaction via the resolver's `multicall`) | seat identity on the phone and the shell |
-| Seat | `funcaster.last` | `<matchId>:<resultHash>:<place>` | on each result | the player's "last match" line |
+| Seat | `chonks.seat` | `slot=2;shape=circle;color=#…` | on mint (set in the same transaction via the resolver's `multicall`) | seat identity on the phone and the shell |
+| Seat | `chonks.last` | `<matchId>:<resultHash>:<place>` | on each result | the player's "last match" line |
 
 **One transaction per meaningful change, batched with `multicall`; never one write per game tick.** Seat owners hold no resolver roles, so they cannot edit records; only the worker (registrar) writes, and the host holds only the **control** scope.
 
@@ -89,7 +89,7 @@ Plus a **receipt trail**: each result's hash is written as a text record on the 
 
 | Capability | On-chain grant | Commands it authorises (relay maps `host.cmd` and the `onAdmin` handlers to a class) |
 | --- | --- | --- |
-| **control** | `grantSetterRoles(setText calldata for key "funcaster.control")` on the **party resolver** (so the resource is `keccak256("funcaster.control")`, role `ROLE_SET_TEXT`) | `start`, `pause`, `setup`, `select`, `lobby`, `extend`, `next-player`, `results-hold`, `pointer-mode`, `stakes` |
+| **control** | `grantSetterRoles(setText calldata for key "chonks.control")` on the **party resolver** (so the resource is `keccak256("chonks.control")`, role `ROLE_SET_TEXT`) | `start`, `pause`, `setup`, `select`, `lobby`, `extend`, `next-player`, `results-hold`, `pointer-mode`, `stakes` |
 | **kick** | **root** `ROLE_UNREGISTER` on the **party registry** (`grantRootRoles(ROLE_UNREGISTER, host)`) | `remove` (the relay then executes `unregister` on that seat's name) |
 
 The registrar key holds `ROLE_UNREGISTER_ADMIN` and the resolver admin roles so it can **revoke** (granting and revoking need the admin variant) [V]. **Transfer, decline, end and a TV-side "Revoke" button** enqueue the matching revoke; the TV shell host and the staff PIN paths keep working as today and are **not** chain-checked (they are physically in the room).
@@ -138,7 +138,7 @@ A player types a nickname they already type today. Nothing else: no wallet, no s
 | E3 | `ens.party.open` with the warm pool, party label generation, idempotency, expiry, records in `initialize` | 6 |
 | E4 | `ens.seat.mint`, `ens.seat.release`, label sanitising and reserved list, collision handling, seat records | 4 |
 | E5 | Host delegation: grants and revokes tied to the host grant events, `authorize` with cache, the `EACRolesChanged` watcher, the 5 s live check, `soft` and `strict`, relay enforcement and messages | 8 |
-| E6 | Records: batching, `funcaster.*` writes, the History read from logs, join by name, roster resolution for the pot | 6 |
+| E6 | Records: batching, `chonks.*` writes, the History read from logs, join by name, roster resolution for the pot | 6 |
 | E7 | UI work with lane U ([05](05-ui-integration.md)) | (in U) |
 | E8 | Tests: fork tests, CAN and CANNOT book, time-travel expiry, revoke, fault injection ([07](07-tests-evidence-demo.md)) | 8 |
 | E9 | Hardening: the wrapper registrar contract and its tests | 6 |
@@ -154,12 +154,12 @@ Core scope is E0 to E6 plus E8 (about 37 hours); E9 and E10 are additions in tha
 | S-ENS-2 | Do the ensjs 5.2.x v2 write helpers cover `deployVerifiableProxy`, `createSubname`, `setRecords`, `grantRoles` and `grantResolverRoles` against the live Sepolia set; else fall back to raw ABIs from `@ensdomains/ensjs-abi` |
 | S-ENS-3 | A subname with `roleBitmap = 0` and an explicit resolver: confirm it resolves, the owner cannot `setText`, the owner cannot transfer |
 | S-ENS-4 | Root `ROLE_UNREGISTER` grant to a second key, then that key `unregister`s a seat; the registrar revokes it (admin variant needed) |
-| S-ENS-5 | `grantSetterRoles` for the key `funcaster.control`: `hasRoles(keccak256("funcaster.control"), ROLE_SET_TEXT, host)` is true, then false after the revoke; confirm the cache-busting `EACRolesChanged` event |
+| S-ENS-5 | `grantSetterRoles` for the key `chonks.control`: `hasRoles(keccak256("chonks.control"), ROLE_SET_TEXT, host)` is true, then false after the revoke; confirm the cache-busting `EACRolesChanged` event |
 | S-ENS-6 | Gas and latency for: deploy two proxies, register the party, mint a seat, grant, revoke (measure with `estimateGas` and wall time) |
 
 ## 12. Mainnet
 
-Build and demo on **Sepolia**. Mainnet addresses are published (from branch `deploy/mainnet-v2-20261002`, redeployed on 6 November) but **resolution stays on v1 until the activation transaction and the security council's upgrade**; after execution `.eth` registrations freeze for hours. Keep `ENS_CHAIN` configurable so the same code can target mainnet if resolution flips before the event; **re-check the rollout tracker (`https://discuss.ens.domains/t/tracking-the-ensv2-rollout-on-enswhois/22507`) and the DAO timelock `0xFe89cc7aBB2C4183683ab71653C4cdc9B02D44b7` daily**, and decide on 6 November. The Continuity-only mainnet track is out of scope unless that happens.
+Build and demo on **Sepolia**. Mainnet addresses are published (from branch `deploy/mainnet-v2-20261002`, redeployed on 23 6 November) but **resolution stays on v1 until the activation transaction and the security council's upgrade**; after execution `.eth` registrations freeze for hours. Keep `ENS_CHAIN` configurable so the same code can target mainnet if resolution flips before the event; **re-check the rollout tracker (`https://discuss.ens.domains/t/tracking-the-ensv2-rollout-on-enswhois/22507`) and the DAO timelock `0xFe89cc7aBB2C4183683ab71653C4cdc9B02D44b7` daily**, and decide on 6 November. The Continuity-only mainnet track is out of scope unless that happens.
 
 ## 13. Tests (summary; full list in [07](07-tests-evidence-demo.md))
 

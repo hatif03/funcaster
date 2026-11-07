@@ -19,7 +19,7 @@ Not pursued: the Mobile Web Consumer Agent bounty (its API docs link is still a 
 
 | Fact | Value | Note |
 | --- | --- | --- |
-| Testnet | chain id **5042002**; RPC `https://rpc.testnet.arc.io` (also Blockdaemon, dRPC, QuickNode); explorer `explorer.testnet.arc.io`; faucet `faucet.circle.com` | Faucet limits and any human step unknown: test before 6 November |
+| Testnet | chain id **5042002**; RPC `https://rpc.testnet.arc.io` (also Blockdaemon, dRPC, QuickNode); explorer `explorer.testnet.arc.io`; faucet `faucet.circle.com` | Faucet limits and any human step unknown: test 6 November |
 | Mainnet | chain id **5042**; RPC `https://rpc.mainnet.arc.io`; explorer `explorer.arc.io` | **Never used for the event** (no-value rule) |
 | Gas token | **USDC**, native, **18 decimals** | The ERC-20 interface of USDC uses its own decimals (commonly 6): **read `decimals()`, never assume**, and never mix the native and ERC-20 units |
 | Finality | under 1 second | "Settled" is instant in the demo |
@@ -79,7 +79,7 @@ Rules baked into the code: the oracle supplies only the **places** (1 = best; eq
 
 ## 6. Demo moments this adds (see [07](07-schedule-prep-risks.md) section 6)
 
-1. Two phones accept the same terms card ("Golf, 5 play-USDC each, winner takes all, oracle: relay") and fund; **Caster's collar tags light up** as each seat funds; the pot locks and the match starts.
+1. Two phones accept the same terms card ("Golf, 5 play-USDC each, winner takes all, oracle: relay") and fund; **Chonk's collar tags light up** as each seat funds; the pot locks and the match starts.
 2. The match ends; both phones sign; the pot **pays in under a second** (Arc finality) and the Results window shows the transaction.
 3. A second match where one phone is **contested**: the pot refunds everyone.
 4. **Kill the relay mid-pot and pull the refund from the explorer or the Studio app** (the CROPS moment, and proof that the platform never holds the money).

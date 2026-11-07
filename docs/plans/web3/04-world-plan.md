@@ -91,7 +91,7 @@ Part of the [web3 plan](README.md). Status: plan, 6 November 2026. **World has n
 | Risk | Mitigation |
 | --- | --- |
 | **Orb access in India** | Selfie Check and Sandbox as the demo path; a visible guest fallback; the games never depend on World |
-| **AgentKit instability** (repo archived 6 November, beta) | Pin 0.2.1; re-read the docs on day one; keep the agent seat behind an interface that falls back to a CPU bot; test the CLI early on the testnet with `--manual`; the registration chain conflict (World Chain versus Base) to be settled by a spike |
+| **AgentKit instability** (repo 6 November, beta) | Pin 0.2.1; re-read the docs on day one; keep the agent seat behind an interface that falls back to a CPU bot; test the CLI early on the testnet with `--manual`; the registration chain conflict (World Chain versus Base) to be settled by a spike |
 | Selfie Check is not strict uniqueness | Say so; use `sybil_score`; Orb for the strict claim |
 | Rate limits undocumented | Verify once per profile; cache; keep Sandbox credentials ready |
 | A track requires a Mini App (MiniKit) | Do not claim a MiniKit track unless we build one |
@@ -100,4 +100,4 @@ Part of the [web3 plan](README.md). Status: plan, 6 November 2026. **World has n
 
 ## Sources
 
-ethglobal.com/events/mumbai/prizes/world; ETHGlobal New York, Cannes and Lisbon 2026 World prize pages; docs.world.org (llms.txt, world-id/idkit/integrate, javascript, signatures, credentials, concepts, session-proofs, 4-0-migration, sandbox, credentials/11, agents/agent-kit/integrate and sdk-reference, mini-apps); github.com/worldcoin/agentkit; npm package pages; TechCrunch and The Block on the December 2023 Orb pause; The Block on the 6 November 2026 World announcement.
+ethglobal.com/events/mumbai/prizes/world; ETHGlobal New York, Cannes and Lisbon 2026 World prize pages; docs.world.org (llms.txt, world-id/idkit/integrate, javascript, signatures, credentials, concepts, session-proofs, 4-0-migration, sandbox, credentials/11, agents/agent-kit/integrate and sdk-reference, mini-apps); github.com/worldcoin/agentkit; npm package pages; TechCrunch and The Block on the December 2023 Orb pause; The Block on 6 November 2026 World announcement.

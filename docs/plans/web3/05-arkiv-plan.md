@@ -38,12 +38,12 @@ It also fits the product's own rule that web3 is additive: the relay keeps its l
 
 ## 3. The entity model
 
-All attribute names are lowercase and at most 32 bytes. `app` is a globally unique string for this event (for example `funcaster-mumbai-2026`). The backend wallet that signs everything is **`SPONSOR`** (a dedicated key in an environment variable; a separate process from the room relay).
+All attribute names are lowercase and at most 32 bytes. `app` is a globally unique string for this event (for example `chonks-mumbai-2026`). The backend wallet that signs everything is **`SPONSOR`** (a dedicated key in an environment variable; a separate process from the room relay).
 
 | Entity (`type`) | Attributes (typed) | Payload | Expiry | Owner and lifecycle |
 | --- | --- | --- | --- | --- |
 | **`room`** | `app`, `type`, `room` (code), `game`, `mode`, `status` (open, playing, closed), `seats` (i32), `host` (str), `started` (u64) | Join URL (hosted), seat shapes and colours (no names), setup summary | **2 hours**, **extended on every round** (a lease renewed by activity); a closed room is left to lapse | Created only when the host taps **Make this room public**; `SPONSOR` owns it; a "find a free room" list for remote friends and the kiosk's "next up" |
-| **`result`** | `app`, `type`, `match` (matchId, str), `game` (the `funcaster.<slug>` id, str), `mode` (str), `board` (hash of the scoreboard key, str), `verif` (str: verified, attested, failed, unverified), `players` (i32), `top` (i32), `at` (u64), `season` (str) | The full `ResultV1` JSON (under 8 KiB) including its canonical `hash` and `replayHash` | Long (for example 365 days; not `permanent()`) | `SPONSOR` creates; **`changeOwnership` to the winner's address** when the winner has one (the trophy) |
+| **`result`** | `app`, `type`, `match` (matchId, str), `game` (the `chonks.<slug>` id, str), `mode` (str), `board` (hash of the scoreboard key, str), `verif` (str: verified, attested, failed, unverified), `players` (i32), `top` (i32), `at` (u64), `season` (str) | The full `ResultV1` JSON (under 8 KiB) including its canonical `hash` and `replayHash` | Long (for example 365 days; not `permanent()`) | `SPONSOR` creates; **`changeOwnership` to the winner's address** when the winner has one (the trophy) |
 | **`score`** | `app`, `type`, `board` (str), `game` (str), `score` (**i32**), `player` (handle or address, str), `verif` (str), `at` (u64), `season` (str), `match` (str) | `{ name, stats }` (validated on read) | One **season** (for example 30 days); a separate **`record`** entity (best per board, patched only when beaten, single writer) is long-lived | `SPONSOR` creates after a **verified or attested** result; the board is ranked client-side |
 | **`replay`** | `app`, `type`, `match`, `seq` (i32), `of` (i32) | A compressed `ReplayV1` chunk (under 128 KiB each) | 30 days | `SPONSOR`; only when the players opted in (consent switch) |
 | **`game`** | `app`, `type`, `gameid` (str), `ns` (str, the creator namespace), `ver` (str), `bundle` (bytes32, the bundle hash), `status` (published, withdrawn) | The manifest | A **lease renewed by plays** (`extendEntity` on each play); created with **permissionless extension** so anyone can keep a game alive | Created by `SPONSOR` at publish, then `changeOwnership` to the creator's address |
@@ -105,6 +105,6 @@ New code lives under **`integrations/arkiv/`** (one folder, so the diff against 
 | Node quirks (no `ne` or `exists`, lowercase names, no sort) | The model avoids them by design (positive predicates, lowercase, client-side ranking) |
 | Public data and forged entries | `createdBy` on every read; payload validation; no `innerHTML` |
 | Anonymous rate limit with many TVs | Reads go through the relay's cached reader; an access key (backend only) if needed |
-| Continuity rules | The records pipeline is the documented base; **the Arkiv sink, reader, window and entities are new work, committed from 6 November** |
+| Continuity rules | The records pipeline is the documented base; **the Arkiv sink, reader, window and entities are new work, committed 6 November** |
 
 **Before the event:** a funded sponsor wallet; the SDK pinned; a scratch-repo spike that writes and reads one entity; the schema reviewed; consent copy; `docs/` stubs for **`/arkiv/schema.md`** and **`/arkiv/friction.md`** (Arkiv's sibling event required a schema file and a friction report; cheap to produce and likely welcome).

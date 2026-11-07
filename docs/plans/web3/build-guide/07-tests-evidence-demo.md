@@ -10,7 +10,7 @@ Part of the [build guide](00-README.md). Status: plan, 6 November 2026. **No cod
 | Party harness tests | `tests/party/web3-*.test.cjs` using `tests/party/harness.cjs` (`fixture`, `FakePhone`, injectable clock) | Module wiring, bind handshake, name event, stakes gate and abandon rule, host enforcement outcomes, state parity |
 | Shell and phone unit tests | `public/os/**/*.test.mjs`, `tests/os/*.test.mjs`, `public/party/*.test.mjs` | Row models, strings, `startStatus`, `optionFields`, Results signature, demo scenarios |
 | Contract tests | Foundry: `integrations/arc/onchain/test/` (Studio-generated and ours) and `integrations/ens/contracts/test/` (the wrapper); run with `forge test`; **fork tests** against Sepolia (`anvil --fork-url`) for ENS | The Arc contract (Appendix B of [03](03-arc-guide.md)); the ENS CAN and CANNOT book |
-| Browser e2e (manual, Playwright) | `tests/os/web3-*.e2e.mjs` next to `shell.e2e.mjs` (they spawn their own server with `HTTP=1 FUNCASTER_SHELL=os PARTNERS=mock` and fake phones) | Chain window by pointer and D-pad, the Stakes row, the start gate, the terms card, the settle card, join by name |
+| Browser e2e (manual, Playwright) | `tests/os/web3-*.e2e.mjs` next to `shell.e2e.mjs` (they spawn their own server with `HTTP=1 CHONKS_SHELL=os PARTNERS=mock` and fake phones) | Chain window by pointer and D-pad, the Stakes row, the start gate, the terms card, the settle card, join by name |
 | Live testnet checks (manual, scripted) | `scripts/web3-preflight.mjs`, `scripts/web3-evidence.mjs` | Real transactions that produce the evidence book |
 
 Format new files with prettier; add the new test globs and `public/os/web3*` files to the `format:check` list in `package.json` (new `server/`, `tests/party/` and `public/party/` files are not prettier-checked unless added).
@@ -61,7 +61,7 @@ For each of ENS and Arc **and Arkiv with Swarm** a README section; **Arkiv's has
 1. **0:00 The physical hook.** The TV desktop; three people scan the QR and join with their own phones; no app, no wallet. One sentence: "phones are the controllers, and now the party is a name and the bet is a contract."
 2. **0:25 ENS, live.** The Invite window shows `kart-otter-7k.play.<parent>.eth`; open the ENS explorer: the party registry, the expiry, the seats minted to the phones' keys. A fourth friend **joins by typing the name**. The Players window shows "host (on-chain)".
 3. **0:55 The chain is the authority.** The host phone kicks a player (a registry `unregister` shows); **revoke the host role live** in the explorer: the phone's next command is refused ("the chain says no").
-4. **1:25 The pot.** Host picks 1.00 play-USDC, winner takes all; each phone shows the terms card; **one tap each**; Caster's collar tags light; "Locked" appears; Start enables. No gas, no wallet screen. Flash the Arc explorer: the pot contract and the funded events.
+4. **1:25 The pot.** Host picks 1.00 play-USDC, winner takes all; each phone shows the terms card; **one tap each**; Chonk's collar tags light; "Locked" appears; Start enables. No gas, no wallet screen. Flash the Arc explorer: the pot contract and the funded events.
 5. **1:55 The match** (the most reliable game: Star Catch, Bubble Burst or Golf). Ten seconds of real play.
 6. **2:20 Settlement.** The result appears; phones agree; **the pot pays in under a second**; the Results window shows the receipt and the trophy name. Open the pot console: state, transactions, **Claim** done.
 7. **2:45 The safety net.** A second pot; **kill the relay** (stop the process) and pull the **Refund** from the pot console; then show a contested pot refunding. One sentence: "the platform never holds the money."
@@ -73,11 +73,11 @@ For each of ENS and Arc **and Arkiv with Swarm** a README section; **Arkiv's has
 
 ## 7. Rehearsals
 
-Two full rehearsals on the hosted instance with real phones and a real TV (Q5): the first on Monday 6 November, the second on Wednesday 6 November. Checklist: relayer and registrar balances above the floor; faucets topped up (Circle 20 USDC per address per 2 hours behind a reCAPTCHA; Sepolia ETH; Arkiv test GLM behind a CAPTCHA); `npm run web3:preflight` green; the warm pool full; the worker running; the kill-switch file absent; the scripted replay verified; both demo phones' keys reset; the mock fallback verified; the explorer tabs open.
+Two full rehearsals on the hosted instance with real phones and a real TV (Q5): the first on 6 November, the second on 6 November. Checklist: relayer and registrar balances above the floor; faucets topped up (Circle 20 USDC per address per 2 hours behind a reCAPTCHA; Sepolia ETH; Arkiv test GLM behind a CAPTCHA); `npm run web3:preflight` green; the warm pool full; the worker running; the kill-switch file absent; the scripted replay verified; both demo phones' keys reset; the mock fallback verified; the explorer tabs open.
 
 ## 8. Submission checklist
 
-Public repository (the owner has handled the repository question); small commits from the start of work; per-partner README sections; the evidence book; the architecture diagram; the demo video (2 to 4 minutes; ETHGlobal rejects anything outside that at upload); the Arc submission names its bounty and includes the Studio project URL; the ENS submission links the live demo and the open-source code; the AI-use record and spec files referenced; partner prize selection (up to three partners; several tracks of one partner count as one); submitted before **6 November 09:00 IST** (no late submissions); stop building at 07:30.
+Public repository (the owner has handled the repository question); small commits from the start of work; per-partner README sections; the evidence book; the architecture diagram; the demo video (2 to 4 minutes; ETHGlobal rejects anything outside that at upload); the Arc submission names its bounty and includes the Studio project URL; the ENS submission links the live demo and the open-source code; the AI-use record and spec files referenced; partner prize selection (up to three partners; several tracks of one partner count as one); submitted before **Saturday 6 November 00:00 IST** (no late submissions); stop building at 07:30.
 
 ## 9. Added tests and evidence (6 November, later)
 

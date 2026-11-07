@@ -1,4 +1,4 @@
-# Build guide 05: adapting the Funcaster OS UI and the phone to show the web3 layer
+# Build guide 05: adapting the Funcaster UI and the phone to show the web3 layer
 
 Part of the [build guide](00-README.md). Status: plan, 6 November 2026. **No code is written.** This is the complete UI specification: every surface that changes, where in the real code it changes (from a code read of `main` at `4a182fe`), what state feeds it, what copy it shows, and the rules that keep it reachable from the phone and safe. The data it shows is defined in [01](01-architecture.md) section 7 (`view().web3`), the ENS content in [02](02-ens-guide.md), the Arc content in [03](03-arc-guide.md) and the Arkiv content in [04](04-arkiv-guide.md).
 
@@ -100,7 +100,7 @@ States per line: **Saving…** (receipt pending), **Saved** (link), **Saved loca
 
 ### 3.7 Records window and the Leaderboard window
 
-**Records** keeps its local list and gains a **Chain history** section: the party's `funcaster.receipt` history read from the ENS registry's `TextUpdated` logs, one row per match (time, game, result hash, place), each with a **verify** button that fetches `/api/web3/result/<hash>` and shows "hash matches" (a visible demonstration that the receipt can be re-checked by anyone). **Leaderboard** is a **new tool window** (there is none today; the attract window reads `room.leaderboard`): per-game board from Arkiv (nickname or ENS name, score, verified mark), a **live** dot while events arrive, a game selector (`choiceList`), and a fallback to `room.leaderboard` with the note "Local board" when Arkiv is down. Add Start menu entries for both ([3.9](#39-start-menu-balloons-attract-mascot)).
+**Records** keeps its local list and gains a **Chain history** section: the party's `chonks.receipt` history read from the ENS registry's `TextUpdated` logs, one row per match (time, game, result hash, place), each with a **verify** button that fetches `/api/web3/result/<hash>` and shows "hash matches" (a visible demonstration that the receipt can be re-checked by anyone). **Leaderboard** is a **new tool window** (there is none today; the attract window reads `room.leaderboard`): per-game board from Arkiv (nickname or ENS name, score, verified mark), a **live** dot while events arrive, a game selector (`choiceList`), and a fallback to `room.leaderboard` with the note "Local board" when Arkiv is down. Add Start menu entries for both ([3.9](#39-start-menu-balloons-attract-mascot)).
 
 ### 3.8 Session, store and demo plumbing
 
@@ -111,7 +111,7 @@ States per line: **Saving…** (receipt pending), **Saved** (link), **Saved loca
 - **Start menu:** add `["chain", S.chain, "<icon role>"]` and `["leaderboard", S.leaderboard, "leaderboard"]` to the system-button array (`startmenu.js` ~lines 49 to 57), hidden when partners are off.
 - **Balloons** (`context.balloons.show`, deduped by key, suspended during a running game, max 3 queued): "Party name ready: kart-otter-7k" (key `party-ready`), "Stakes locked: 3 of 3 in" (`stakes-locked`), "Pot settled: asha takes 2.00 play-USDC" (`stakes-settled`), "Pot refunded" (`stakes-refunded`), "Host power was revoked" (`host-revoked`), and a degraded notice "Chain services are slow: play continues" (`web3-degraded`, once per outage).
 - **Attract / Kiosk** (`shell/boot.js`): show the party name and "Type this name on your phone" beside the QR; feed the board from Arkiv with the live dot.
-- **Mascot:** optional `mascot.event("pot-locked" | "pot-settled" | "refund")` reactions (Caster's four collar tags light as seats fund: tie to `stakes.funded`); skip if the mascot lane is busy.
+- **Mascot:** optional `mascot.event("pot-locked" | "pot-settled" | "refund")` reactions (Chonk's four collar tags light as seats fund: tie to `stakes.funded`); skip if the mascot lane is busy.
 
 ## 4. The phone surfaces
 
@@ -119,7 +119,7 @@ The phone page loads `controller.html` with sections `#code-form`, `#waiting-vie
 
 ### 4.1 Name claim (in `#join-view`, before the "Tap to start" button)
 
-A single line: the existing nickname (from `funcaster.nickname`, `maxlength=20`) shown as "Your name in this party: **asha**" with an edit link; Save emits `name {nick}`. It does **not** replace or delay `#enable`. **Critical iOS rule:** `requestMotionPermissions` is called **synchronously inside the user's tap on `#enable`**; no `await` may precede it. The name claim and the key bind happen **before** the user taps (on `acceptIdentity`) and **never** inside that tap handler. When the seat gets its ENS name, the chip shows "asha - on ENS".
+A single line: the existing nickname (from `chonks.nickname`, `maxlength=20`) shown as "Your name in this party: **asha**" with an edit link; Save emits `name {nick}`. It does **not** replace or delay `#enable`. **Critical iOS rule:** `requestMotionPermissions` is called **synchronously inside the user's tap on `#enable`**; no `await` may precede it. The name claim and the key bind happen **before** the user taps (on `acceptIdentity`) and **never** inside that tap handler. When the seat gets its ENS name, the chip shows "asha - on ENS".
 
 ### 4.2 The terms and funding card (`<dialog id="terms">`)
 

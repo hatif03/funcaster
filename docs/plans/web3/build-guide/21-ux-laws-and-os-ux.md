@@ -1,4 +1,4 @@
-# Build guide 21: the UX laws applied to Funcaster OS and the phone (same Windows XP look, better behaviour)
+# Build guide 21: the UX laws applied to Funcaster and the phone (same Windows XP look, better behaviour)
 
 Part of the [build guide](00-README.md). Status: plan, **6 November 2026**. **Nothing is built.** The owner supplied twenty UI and UX laws and asked which apply, what to change and how, while keeping the console looking like the Windows-XP-style OS it is now.
 
@@ -6,7 +6,7 @@ Part of the [build guide](00-README.md). Status: plan, **6 November 2026**. **No
 
 ## 1. The constraints that shape every answer
 
-1. **The look stays.** Windows XP Luna blue (Classic grey as the high-contrast option), Tahoma, the supplied icon set, the pixel-art Mumbai wallpaper, the Caster mascot. Improvements are **behaviour, content, order, timing and grouping**, not a restyle. No glass, no flat redesign, no new typefaces, no emoji in the shell. New icons come from the existing pack (`docs/plans/build/data/icons-48.json`; roles already include `leaderboard`, `records.history`, `players.crew`, `invite.network`, `msg.*`, `qr.camera`).
+1. **The look stays.** Windows XP Luna blue (Classic grey as the high-contrast option), Tahoma, the supplied icon set, the pixel-art Mumbai wallpaper, the Chonk mascot. Improvements are **behaviour, content, order, timing and grouping**, not a restyle. No glass, no flat redesign, no new typefaces, no emoji in the shell. New icons come from the existing pack (`docs/plans/build/data/icons-48.json`; roles already include `leaderboard`, `records.history`, `players.crew`, `invite.network`, `msg.*`, `qr.camera`).
 2. **Goal 1 of the North star is the benchmark:** a stranger scans, understands and is **playing within about 20 seconds**; a spectator is **predicting within 40**.
 3. **Two input worlds.** The TV shell is driven by a phone-as-pointer and a D-pad (no keyboard, no precise mouse); the phone is touch. Fitts, Hick and Miller therefore bite harder on the TV.
 4. **Honesty rules stay** (labels, `PLAY MONEY`, plain words). A law never justifies a dark pattern: no streak bonuses, no fake urgency, no hidden costs ([11](11-prediction-market-ui.md) bans streaks and double-or-nothing; section 8 keeps that).
@@ -59,7 +59,7 @@ These go in `public/os/web3.css` and one small helper module (`public/os/ui/kit.
 | **XP idioms** | Tabs, group boxes, default button, OK or Cancel, wizards with Back, Next, Finish, balloons for background news, message boxes with the `msg.*` icons | Jakob |
 | **Phone idioms** | Bottom sheets, the OS share sheet, large pill buttons, no hamburger menus; the Home button on the remote opens the party menu where **My Funcaster** lives (no new remote buttons) | Jakob, Occam |
 | **Sound and motion** | The XP sounds already supplied ([sounds.json](../../build/data/sounds.json)): a ding when a pot locks, tada for a prize, the XP error chord only for real errors, one soft click for taps; all optional (Settings), none under `prefers-reduced-motion` for motion | Aesthetic, feedback |
-| **Mascot** | Caster reacts to the key moments (collar tags light as seats join or fund; a cheer on win; a nap in empty states); one reaction per moment, never a tutorial | Aesthetic, peak-end |
+| **Mascot** | Chonk reacts to the key moments (collar tags light as seats join or fund; a cheer on win; a nap in empty states); one reaction per moment, never a tutorial | Aesthetic, peak-end |
 | **Empty and error states** | Empty: a short line, the mascot, one action ("No match yet. Start one."). Error: **what happened, what it means for you, one action**; never raw error text, never a code the player must read | Aesthetic, Postel |
 
 ## 4. The desktop, the Start menu and the first minute (what the code does today, and the changes)
@@ -127,7 +127,7 @@ The first twenty seconds, step by step, with the law that justifies each choice.
 | Typing | The nickname field accepts anything: emoji, accents, spaces, long; a **live preview** shows exactly what the TV will show ("You will appear as ◆ asha") | Postel (accept liberal, show strict), recognition | Preview updates under 100 ms |
 | Join by name or code | One field accepts a room code, a party name (with or without `.play.<parent>.eth`), a pasted link or the stable booth name; case, spaces, hyphens and look-alike characters (O and 0, I and 1) are normalised; a "**Your last party**" chip offers rejoin | Postel, recognition | One tap to rejoin |
 | Tap to start | The single tap asks for motion and fullscreen as the platform requires; the key is made silently | Tesler | 1 s plus the permission |
-| In the party | A "2 of 4 phones in" ring with Caster's collar tags lighting, then the remote | Goal-gradient, aesthetic | Within 1 s of joining |
+| In the party | A "2 of 4 phones in" ring with Chonk's collar tags lighting, then the remote | Goal-gradient, aesthetic | Within 1 s of joining |
 
 The remote itself ([build 06](../../build/06-phone-remote-and-pointer.md)) does not change; the web3 features add **no remote buttons** (Occam, Jakob). The Home menu gains **My Funcaster**, **Predict** and **Challenge** items in that order (serial position: the action first, the account last). The reconnect state ("Reconnecting… you are still in the party") is a banner, not a dialog (Doherty, feedback).
 
@@ -147,7 +147,7 @@ Today the Results window shows the winner, the rankings, standings, a verificati
 
 | Today | New | Law |
 | --- | --- | --- |
-| Everything appears at once | **A short reveal** (about 2.5 s): the winner row slides in with the Caster cheer sound and the winner's seat colour, then the other rows; the buttons are enabled at the end of the reveal but **Skip** (any button press) jumps to the end. Never longer than 2.5 s | Peak-end, aesthetic |
+| Everything appears at once | **A short reveal** (about 2.5 s): the winner row slides in with the Chonk cheer sound and the winner's seat colour, then the other rows; the buttons are enabled at the end of the reveal but **Skip** (any button press) jumps to the end. Never longer than 2.5 s | Peak-end, aesthetic |
 | A verification sentence | A **provenance badge** (Replay checked) plus, one by one as they complete, **status chips** for Pot, Receipt, Saved (Arkiv), Card (Swarm): Saving… to Saved ✓ | Feedback loops, similarity |
 | Four equal-weight buttons | **Three**: **Again** (default, primary), **Change options**, **Desktop**; **Save** moves into a "More" disclosure with *Save recap card*, *Save data*, *Open receipt* | Hick, Occam, visual hierarchy, Fitts |
 | A countdown "returns in N" | Keep; add the existing hold behaviour message in plain words, and a progress ring | Goal-gradient, feedback |
@@ -242,7 +242,7 @@ Why it works: **Hick** (two sides, three chips, one button), **Fitts** (the CTA 
 | **UX4** | Welcome window with QR and room name; Start menu "Most played"; `data-help` in the status line | `windows/welcome.js`, `shell/startmenu.js`, `status` | UX1 |
 | **UX5** | Results: reveal, three buttons plus More, status chips, closing card | `windows/results.js`, `result-data.js` (add the receipt fields to the `signature` array) | UX1, web3 receipts |
 | **UX6** | Shut Down "Tonight" summary | `windows/shutdown.js` | UX5 |
-| **UX7** | The Funcaster Live hub (Live, Boards, Crew, Shelf, Proof) | `windows/funcaster-live.js`, `manifest.js` (one tuple), `icon-grid.js` (one system icon), `startmenu.js` | UX1 to UX3, web3 state |
+| **UX7** | The Funcaster Live hub (Live, Boards, Crew, Shelf, Proof) | `windows/chonks-live.js`, `manifest.js` (one tuple), `icon-grid.js` (one system icon), `startmenu.js` | UX1 to UX3, web3 state |
 | **UX8** | Phone: join card (prefill, preview, liberal join, rejoin chip), Home menu items | `public/controller.html`, `public/party/phone.js`, `phone.css` | UX1 |
 | **UX9** | Phone: prediction slip (quick predict), challenge sheet, cheer, My Funcaster passport | `public/party/phone-predict.js`, `public/me/` | UX8, [20](20-feature-expansion.md) FX7, FX12 |
 | **UX10** | Sound, haptics, mascot hooks, balloons | `shell/*`, `public/os/sounds` through `sounds.json` | UX5 |

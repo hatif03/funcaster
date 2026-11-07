@@ -21,7 +21,7 @@ Our product already has four things ENSv2 models natively, which keeps the integ
 
 1. **Ephemeral groups with member names:** a party is a room that exists for a couple of hours and has seats. ENSv2 subregistries with **expiring** subnames are the natural namespace for it.
 2. **Delegated, revocable authority:** the host phone is granted scoped commands (start, pause, kick, lock) that the TV can revoke. ENSv2's **Enhanced Access Control** (roles as bitmaps, per-resource, revocable) is a close semantic match.
-3. **Namespaces owned by outside creators:** the creator platform already has `funcaster.<slug>` ids and namespace owners. ENSv2's **registry hierarchy** gives each creator a subregistry they control.
+3. **Namespaces owned by outside creators:** the creator platform already has `chonks.<slug>` ids and namespace owners. ENSv2's **registry hierarchy** gives each creator a subregistry they control.
 4. **Agents and bots with identities:** we have CPU racers, helper bots and planned human-backed agent seats. ENSIP-25/26 define agent records.
 
 ## 3. What to build (scope tiers for 36 hours; one strong engineer is about 80 to 90 hours for everything, so cut)
@@ -32,7 +32,7 @@ Our product already has four things ENSv2 models natively, which keeps the integ
 | | 2. **Party namespace with expiring seats**: on room creation the relay deploys a party registry, mints seat names with an expiry equal to the planned party end, and links resolver records | 8 | Registry hierarchy, expiring subnames, non-transferable roles |
 | | 3. **Live reads** in the shell and the phone: resolve names, read expiry and roles; the Players window shows the seat's ENS name and a "valid until" | 8 | Universal Resolver reads |
 | | 4. **Host delegation as EAC roles**: the TV grants the VIP phone scoped roles on the party registry and resolver; the relay accepts a `host.cmd` from that phone only if the chain says the phone holds the role; revoking removes the power | 8 | Enhanced Access Control, scoped roles, revoke |
-| **Stretch** | 5. **Creator namespaces**: `kart-rush.funcaster.games.<parent>.eth` resolves the bundle hash and manifest; the creator holds the subregistry | 10 | Sub-registries, per-creator resolvers, scoped roles, aliasing |
+| **Stretch** | 5. **Creator namespaces**: `kart-rush.chonks.games.<parent>.eth` resolves the bundle hash and manifest; the creator holds the subregistry | 10 | Sub-registries, per-creator resolvers, scoped roles, aliasing |
 | | 6. **Player text records**: best scores and the latest receipt on a player name | 6 | Permissioned Resolver text roles |
 | | 7. **Agents as namespaces**: CPU racers and helper bots get names with ENSIP-26 records; a human-backed agent from the World track gets an ENSIP-25 link | 6 | Agent records, non-transferable names |
 
@@ -48,8 +48,8 @@ play.<parent>.eth                 a registry for parties
   kart-otter.play.<parent>.eth    one party (its own registry), expiry = planned end of the party
     asha.kart-otter.play.<parent>.eth    a seat, non-transferable, same expiry
 games.<parent>.eth                a registry for creators        (stretch)
-  funcaster.games.<parent>.eth       a creator namespace            (stretch)
-    kart-rush.funcaster.games.<parent>.eth   a game (contenthash = bundle, text = manifest, version)
+  chonks.games.<parent>.eth       a creator namespace            (stretch)
+    kart-rush.chonks.games.<parent>.eth   a game (contenthash = bundle, text = manifest, version)
 agents.<parent>.eth               a registry for agents          (bonus)
 ```
 
@@ -61,8 +61,8 @@ The party word (`kart-otter`) is generated from the room code plus a word list; 
 2. **Roles for the minting service.** `grantRootRoles(bitmap, relayAddress)` with `ROLE_REGISTRAR` (`1<<0`) and `ROLE_RENEW` (`1<<16`).
 3. **A party.** In the `play` registry: `register(label, owner, registry, resolver, roleBitmap, expiry)` with `expiry` an absolute `uint64`, the party's own freshly deployed UserRegistry as `registry`, and the shared or per-party resolver. `renew(id, newExpiry)` extends (it cannot shorten); `unregister(id)` ends the party at once (needs `ROLE_UNREGISTER`); an expired name resolves to a zero owner and zero resolver, and when a parent expires its subnames stop resolving.
 4. **A seat.** In the party registry: `register(label, owner, 0, resolver, roleBitmap = 0 or minimal, expiry)`. Leaving out `ROLE_CAN_TRANSFER_ADMIN` makes the name **non-transferable**; leaving out `ROLE_SET_RESOLVER` and `ROLE_SET_SUBREGISTRY` stops the owner re-pointing it. Per-name admin roles can only be assigned at registration; afterwards they can only be revoked.
-5. **Seat records.** `PermissionedResolver.setText(bytes dnsName, key, value)`; records live in numbered bundles linked to nodes (`linkToNode`, `linkToRecord`), and the root node's record is the default for names without their own. Keys: `funcaster.seat` (shape, colour), `funcaster.game`, `funcaster.best[...]`, `funcaster.receipt`.
-6. **Delegation.** Grant the host phone's **session address** roles on the party registry (`grantRoles(resource, bitmap, account)`): `ROLE_UNREGISTER` for kick; on the resolver, `grantSetterRoles(...)` scoped to a single key (for example `funcaster.state`) for start and pause; `revokeRoles` removes them. **Resolver roles are not per name** (a scoped grant applies to every name that resolver serves), so **each party gets its own resolver instance**. The caller of a grant must hold the admin role for every role in the request; there are at most 15 holders per role per resource; **token ids regenerate on every role change, so key data by label hash or resource**.
+5. **Seat records.** `PermissionedResolver.setText(bytes dnsName, key, value)`; records live in numbered bundles linked to nodes (`linkToNode`, `linkToRecord`), and the root node's record is the default for names without their own. Keys: `chonks.seat` (shape, colour), `chonks.game`, `chonks.best[...]`, `chonks.receipt`.
+6. **Delegation.** Grant the host phone's **session address** roles on the party registry (`grantRoles(resource, bitmap, account)`): `ROLE_UNREGISTER` for kick; on the resolver, `grantSetterRoles(...)` scoped to a single key (for example `chonks.state`) for start and pause; `revokeRoles` removes them. **Resolver roles are not per name** (a scoped grant applies to every name that resolver serves), so **each party gets its own resolver instance**. The caller of a grant must hold the admin role for every role in the request; there are at most 15 holders per role per resource; **token ids regenerate on every role change, so key data by label hash or resource**.
 
 ### 4.3 Where the relay and the chain meet
 
@@ -82,7 +82,7 @@ CPU racers and helper bots get names under `agents.<parent>.eth` with `roleBitma
 
 **I:** probably not alone. The prize names the new registry hierarchy, EAC, Permissioned Resolvers and aliasing, and requires them to be central. The Universal Resolver v2 does serve CCIP-Read, so a gateway could carry volume as a supplement, but **keep the hierarchy, expiry and roles on chain**. Ask the ENS team at the venue; no judge statement was found.
 
-## 5. UI surfaces (Funcaster OS and the phone)
+## 5. UI surfaces (Funcaster and the phone)
 
 | Surface | Change |
 | --- | --- |
@@ -115,7 +115,7 @@ Foundry or anvil fork tests against Sepolia (the ENS CLI does this); **CAN and C
 | Continuity: pre-existing versus new | Tag the baseline; **write no ENS integration code before the hackathon starts** (pre-event code counts as pre-existing); small commits from hour 0 |
 | Gas numbers unknown | Measure with `estimateGas` on Sepolia on day 1 (an assumption of 100k to 300k per proxy deploy or mint is **I**) |
 
-## 9. What to prepare before 6 November (non-code)
+## 9. What to prepare 6 November (non-code)
 
 Faucet ETH; a funded wallet and secrets in an environment file; a decision on the parent name and its availability on Sepolia (and mainnet); reading the ENSv2 docs; a clean, documented baseline commit of the console; the Foundry fork setup.
 

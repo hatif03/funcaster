@@ -39,7 +39,7 @@ Figures marked **[U]** are my illustrative assumptions, not data. Benchmarks com
 
 ## 4. The business model
 
-### 4.1 Revenue engines (revised 6 November 2026; the research and numbers are in [24](24-business-model-and-revenue.md))
+### 4.1 Revenue engines (6 November 2026; the research and numbers are in [24](24-business-model-and-revenue.md))
 
 The first draft treated $1 passes as the engine and showed they need about 13,000 rooms a day for $10,000 a month. **That conclusion stands, and it is why passes are now the long tail, not the engine.** Researching how Steam, Epic, Fortnite, Roblox, itch.io, Discord, Poki, AirConsole, Jackbox and Twitch earn and pay shows that creator pools are funded by **demand the platform already has**; for us that demand is **sponsors, events and venues** first, subscribers second.
 
@@ -122,7 +122,7 @@ The Arc bounty asks for **advanced programmable stablecoin logic** built in Arc 
 
 | Area | The change | Lane / guide | Risk to manage |
 | --- | --- | --- | --- |
-| **Launcher and Funcaster OS** | The launcher becomes a storefront: a game page (creator, version, tier, price, plays, verification badge, probation badge, a fork's parent), search, a **Shelf** tab already in Funcaster Live ([21](21-ux-laws-and-os-ux.md)); a **Creator Studio** window (Start menu) and a phone page | UX lane | Hick and Miller: the Shelf must stay five-ish choices per view; filters over a long list |
+| **Launcher and Funcaster** | The launcher becomes a storefront: a game page (creator, version, tier, price, plays, verification badge, probation badge, a fork's parent), search, a **Shelf** tab already in Funcaster Live ([21](21-ux-laws-and-os-ux.md)); a **Creator Studio** window (Start menu) and a phone page | UX lane | Hick and Miller: the Shelf must stay five-ish choices per view; filters over a long list |
 | **Host flow** | A **pass check in the start gate** next to the stake gate, with the reason shown and **Play the free demo** visible; a venue console never asks for payment from a visitor | 05, 21 | A paywall at the wrong moment kills a party; first two minutes free, never block a joined crowd |
 | **SDK and compatibility** | Semver, a deprecation policy, a **conformance suite** (`game:conformance`), a deterministic-rules linter, a local mock of the router, docs per tier; a stable `GameSession` | `docs/SDK.md` | Breaking the SDK breaks every creator; version the SDK and keep two majors |
 | **Relay and execution (the biggest engineering item)** | Creator rules for T1/T2 must run on the server and in the replay checker. Today no creator code runs in Node. Running third-party rules needs an **isolated runtime** (a worker or isolate with no I/O, a step and memory budget, a deadline) | server, `core/` | Remote code execution if done carelessly. **Until the sandbox is proven, creators ship T0 and browser-hosted T1; T2 is for first-party games and invited creators** |

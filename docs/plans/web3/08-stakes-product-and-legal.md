@@ -30,7 +30,7 @@ The Lobby's **Ranked** and **Dare terms** options (standing owner decision: alwa
 
 1. **Setup (host phone or Game Properties).** Game, seats (2 to 4), stake (a preset such as 1, 5, 10 test-USDC), payout rule, funding deadline. The room shows **STAKES: PLAY MONEY** (testnet) or the real label.
 2. **Join and verify.** Each seat joins by QR, verifies as a human (World), and sees the terms on the phone: a plain card with the stake, the payout rule, "what happens if someone leaves", and **Accept**.
-3. **Fund.** Each accepted seat funds its stake into the pot contract. At the event the phone's session key is topped up with testnet USDC by the sponsor wallet on join (no wallet app needed); for real value the player connects their own wallet. The Players window shows funded seats as lit collar tags on Caster (the mascot's four seat tags).
+3. **Fund.** Each accepted seat funds its stake into the pot contract. At the event the phone's session key is topped up with testnet USDC by the sponsor wallet on join (no wallet app needed); for real value the player connects their own wallet. The Players window shows funded seats as lit collar tags on Chonk (the mascot's four seat tags).
 4. **Lock.** When every seat has funded, the pot locks and the match may start. **The match cannot start until the pot is locked** (when stakes are on).
 5. **Play.** Unchanged. The games know nothing about stakes (the hook is `match.finish`; no game file changes).
 6. **Settle.** The relay builds the canonical result and the **payout vector**. Two paths ([09](09-arc-pot-and-settlement-plan.md) section 4): the **cooperative path** (every seat's phone signs the same EIP-712 payout message; the contract pays at once) and the **oracle path** (a signed report from the result oracle, then a challenge window). Anything else (abandon, dispute, timeout) refunds.
@@ -44,7 +44,7 @@ The Lobby's **Ranked** and **Dare terms** options (standing owner decision: alwa
 | Stakes state on a room | `server/party.cjs` | `room.stakes = { rung, terms, potId, status }`; `start` is refused while `status` is not `locked` |
 | Payout calculation | `server/stakes.cjs` (new) | Pure function from the canonical result and the payout rule to the payout vector; unit-tested; ties and abandons covered |
 | Terms signing | `public/party/phone.js` (consent card) | Same session-key signer as the other partner features |
-| UI | Funcaster OS Game Properties, Players, Results; phone terms card | All hidden when `PARTNERS=off` except the disabled Stakes row |
+| UI | Funcaster Game Properties, Players, Results; phone terms card | All hidden when `PARTNERS=off` except the disabled Stakes row |
 | Contracts and oracle | `integrations/arc-pot/` | [09](09-arc-pot-and-settlement-plan.md) |
 
 ## 5. Business-plan alignment (what this does to `business-plan.md`)
@@ -58,7 +58,7 @@ The Lobby's **Ranked** and **Dare terms** options (standing owner decision: alwa
 
 What the research on 6 November found, from legal commentary (secondary sources, not the Gazette text; the later 2026 Rules need reading in full):
 
-- **India: the Promotion and Regulation of Online Gaming Act, 2025** (presidential assent 22 August 2025) **bans online money games**: games played by paying fees, depositing money or **other stakes** in expectation of winning, **whether skill, chance or both**. Commentary says credits, coins and tokens, real or virtual, count as "other stakes". Offering or facilitating one carries **up to three years' imprisonment and a fine of up to ₹1 crore**, advertising up to two years and ₹50 lakh; offences are described as cognisable and non-bailable, and companies and their officers are liable. Players are described as victims, not offenders. One source reports the Act and the *Promotion and Regulation of Online Gaming Rules, 2026* **came into force on 1 May 2026** (verify against the Gazette). Sources: [SCC Online](https://www.scconline.com/blog/post/2025/08/24/promotion-regulation-online-gaming-act-2025-legal-reform/), [Mondaq analysis of the Act and 2026 Rules](https://www.mondaq.com/india/gaming/1784444/indias-new-online-gaming-framework-analysis-of-the-2025-act-and-2026-rules), [Lexology](https://www.lexology.com/library/detail.aspx?g=31a466da-49b3-40b5-9767-2ff42367d307).
+- **India: the Promotion and Regulation of Online Gaming Act, 2025** (presidential 6 November 2025) **bans online money games**: games played by paying fees, depositing money or **other stakes** in expectation of winning, **whether skill, chance or both**. Commentary says credits, coins and tokens, real or virtual, count as "other stakes". Offering or facilitating one carries **up to three years' imprisonment and a fine of up to ₹1 crore**, advertising up to two years and ₹50 lakh; offences are described as cognisable and non-bailable, and companies and their officers are liable. Players are described as victims, not offenders. One source reports the Act and the *Promotion and Regulation of Online Gaming Rules, 2026* **came into force on 6 November 2026** (verify against the Gazette). Sources: [SCC Online](https://www.scconline.com/blog/post/2025/08/24/promotion-regulation-online-gaming-act-2025-legal-reform/), [Mondaq analysis of the Act and 2026 Rules](https://www.mondaq.com/india/gaming/1784444/indias-new-online-gaming-framework-analysis-of-the-2025-act-and-2026-rules), [Lexology](https://www.lexology.com/library/detail.aspx?g=31a466da-49b3-40b5-9767-2ff42367d307).
 - **What the research did not find:** any statement on **private bets between friends** or on **non-custodial smart-contract escrow**. On the face of the definition, the counterparty being a friend does not obviously exempt it. Treat this as **unresolved and probably adverse** until counsel says otherwise.
 - **Consequence.** A real-value pot, run by a company in Mumbai and shown at Devcon, is the highest-risk thing in this entire plan. It is a **legal risk to the people, not a technical risk**, and it is not one to accept by default.
 
@@ -96,7 +96,7 @@ Payout function (ties, abandon, one winner, 70/30, rounding to the smallest unit
 
 | Risk | Mitigation |
 | --- | --- |
-| **Legal exposure in India** | Section 6: testnet only at events, off by default, counsel before 6 November, no rake, no public rooms |
+| **Legal exposure in India** | Section 6: testnet only at events, off by default, counsel 6 November, no rake, no public rooms |
 | Wallet and funding friction on phones | Session-key funding with a faucet drip at the event; real wallets only for real value; the pot can be pre-funded before game night |
 | A staked match with a flaky seat (disconnects) | The `abandoned` rule and permissionless refund; the lock-before-start rule |
 | Collusion (one human, several seats) | The humans-only rule (World); the seat count limit; no strangers in staked rooms |

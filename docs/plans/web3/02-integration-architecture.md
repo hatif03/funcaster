@@ -1,6 +1,6 @@
 # Web3 plan 02: the shared integration architecture (one seam per capability)
 
-Part of the [web3 plan](README.md). Status: plan, 6 November 2026. This updates the design note in `plan-history.md` section 5f (written before the party engine, the records pipeline and Funcaster OS existed) to the code as it is now. **Nothing here is built.** The partner choice ([README](README.md)) changes which providers are plugged in, not this architecture. **6 November:** Settlement is now an active capability (friend stakes, [08](08-stakes-product-and-legal.md)); a staked room additionally refuses `start` until the pot is locked, and the sponsor wallet also drips play-money funds to phone session keys.
+Part of the [web3 plan](README.md). Status: plan, 6 November 2026. This updates the design note in `plan-history.md` section 5f (written before the party engine, the records pipeline and Funcaster existed) to the code as it is now. **Nothing here is built.** The partner choice ([README](README.md)) changes which providers are plugged in, not this architecture. **6 November:** Settlement is now an active capability (friend stakes, [08](08-stakes-product-and-legal.md)); a staked room additionally refuses `start` until the pot is locked, and the sponsor wallet also drips play-money funds to phone session keys.
 
 ## 1. Principles (unchanged, and still binding)
 
@@ -16,13 +16,13 @@ Part of the [web3 plan](README.md). Status: plan, 6 November 2026. This updates 
 
 | Existing piece | Where | Used for |
 | --- | --- | --- |
-| `makeResult(...)` returns `{ result, replay }`; `result` has `schemaVersion`, `matchId`, `gameId` (`funcaster.<slug>`), `version`, `bundleHash`, `setup`, `seed`, `seedSource`, `startedAt`, `endedAt`, `status`, `verification`, `scores[]` (`slot`, `score`, `rank`, `outcome`, `stats`), `replayHash`, and a canonical `hash`; `canonical`, `hash` exported | `server/records.cjs` | The record every sink stores |
+| `makeResult(...)` returns `{ result, replay }`; `result` has `schemaVersion`, `matchId`, `gameId` (`chonks.<slug>`), `version`, `bundleHash`, `setup`, `seed`, `seedSource`, `startedAt`, `endedAt`, `status`, `verification`, `scores[]` (`slot`, `score`, `rank`, `outcome`, `stats`), `replayHash`, and a canonical `hash`; `canonical`, `hash` exported | `server/records.cjs` | The record every sink stores |
 | Result finalisation (`finish()`) | `server/party.cjs` | The single call site for the `Records` capability |
 | Event store (bounded, persistent leaderboards and counters) | `server/event-store.cjs` | Stays; partners are extra sinks and sources |
 | Creator registry (namespaces, review, publish, withdraw) | `server/creator-registry.cjs` | The `game` listing hook (Arkiv) and the namespace hook (ENS) |
 | Operating modes, host delegation, `host.cmd`, `state.leaderboard`, `state.operatingMode` | `server/arcade.cjs`, `server/party.cjs` | Where consent, identity and the Kiosk view attach |
 | Phone `device` and `join` payloads, seat token, nickname | `public/party/phone.js`, `core/device-session.js` | Where identity attaches to a seat |
-| Funcaster OS windows: Players, Invite, Results, Records, Leaderboard (attract), Settings | `docs/plans/build/03-shell-architecture.md` | Where partner state is shown |
+| Funcaster windows: Players, Invite, Results, Records, Leaderboard (attract), Settings | `docs/plans/build/03-shell-architecture.md` | Where partner state is shown |
 
 ## 3. The capability contracts (the registry)
 
@@ -35,7 +35,7 @@ A small registry (`core/integrations.js`, outside the bundle-hash-sensitive game
 | **Records** | `putResult(result)`, `putReplay(replay)`, `query(filter)`, `watch(filter)` | `LocalRecords` (the event store) | Arkiv ([05](05-arkiv-plan.md)); Hedera HCS if chosen as an option ([06](06-alternates.md)) |
 | **Signing** | `request(seat, typedData) -> signature` | `NoSigner` (results are `unsigned`) | Session-key EIP-712 signatures |
 | **Randomness** | `seed(roomId, ctx) -> { value, source, proof? }` | `LocalSeed` (`source: server-crypto`, as today) | Chainlink VRF or a CRE workflow ([06](06-alternates.md)) |
-| **Settlement** | `open(terms)`, `fund(seat)`, `lockStatus()`, `settle(result)`, `refund()` | `LocalPot` (a mock that behaves like the contract; **play money only**) | The Arc pot contract ([09](09-arc-pot-and-settlement-plan.md)); decided 6 November ([08](08-stakes-product-and-legal.md)), no longer held |
+| **Settlement** | `open(terms)`, `fund(seat)`, `lockStatus()`, `settle(result)`, `refund()` | `LocalPot` (a mock that behaves like the contract; **play money only**) | The Arc pot contract ([09](09-arc-pot-and-settlement-plan.md)); 6 November ([08](08-stakes-product-and-legal.md)), no longer held |
 | **Consent** | `get(seat) -> { publishScore, publishReplay }` | Both off | The phone's consent switches, stored with the seat token |
 
 Hook points: **join** (identity, naming), **match start** (randomness), **match end** (build result, consent, sign, `putResult`), **Records and Leaderboard windows** (query, watch), **Players and Invite windows** (verified badge, names).
@@ -55,7 +55,7 @@ Hook points: **join** (identity, naming), **match start** (randomness), **match 
 - `receipts` records where the result was stored so the Results window can show "Saved to Arkiv", "Saved locally" or "Saving...".
 - Because `bundleHash` covers `core/`, `sdk/` and `games/`, **put the registry and every provider outside those trees** or accept that old records need the archived build. The registry file is therefore `server/integrations.cjs` (server side) with a thin browser shim in `public/os/integrations.js`, and the providers live in `integrations/`.
 
-## 5. Where partner state shows up (UI, in the Funcaster OS shell and the phone)
+## 5. Where partner state shows up (UI, in the Funcaster shell and the phone)
 
 | Surface | What appears when a provider is on | When off |
 | --- | --- | --- |
@@ -87,7 +87,7 @@ Hook points: **join** (identity, naming), **match start** (randomness), **match 
 ## 8. Repository and Continuity hygiene
 
 - Baseline additions (pre-existing work, documented in `PRE_EXISTING.md`): `server/integrations.cjs`, the browser shim, the mock providers, `docs/integrations.md` (these contracts), an empty `integrations/` with a README. **No chain, ENS, World or Arkiv package in the baseline.**
-- At the event: provider code under `integrations/<partner>/`; **small commits from 6 November onward** (a single large commit can disqualify); a `.env.example`; the AI-use record (where and how AI assisted, with the spec and prompt files committed), required by the event rules.
+- At the event: provider code under `integrations/<partner>/`; **small commits 6 November onward** (a single large commit can disqualify); a `.env.example`; the AI-use record (where and how AI assisted, with the spec and prompt files committed), required by the event rules.
 - **Prototype in a scratch repo before the event**, never in the game repo, so the event's commits are visibly the new work.
 
 ## 9. Tests
