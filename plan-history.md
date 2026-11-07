@@ -1,10 +1,10 @@
-> Historical scenario book and audits, archived 6 November 2026. For current completed/pending status, use [plan.md](plan.md). Old approval and missing-feature notes below are superseded.
+> Historical scenario book and audits, 6 November 2026. For current completed/pending status, use [plan.md](plan.md). Old approval and missing-feature notes below are superseded.
 
-# Funcaster Console — Plan v4: a game menu, then multiplayer (Kart Rush, Golf and Slice Dojo first), then the ETHGlobal tracks
+# Funcaster — Plan v4: a game menu, then multiplayer (Kart Rush, Golf and Slice Dojo first), then the ETHGlobal tracks
 
 ## Implementation update — 6 November 2026
 
-The launch implementation is in this tree. Nothing is deployed. The [dated implementation ledger](docs/IMPLEMENTATION.md) and [release evidence](docs/RELEASE-2026-11-06.md) are the current source of truth.
+The launch implementation is on `codex/arcade-launch-plan`, delivered through [PR #2](https://github.com/hatif03/web3-multiplayer-games/pull/2). Nothing is merged or deployed. The [dated implementation ledger](docs/IMPLEMENTATION.md) and [release evidence](docs/RELEASE-2026-11-06.md) are the current source of truth.
 
 - [x] Shared catalog/IDs, controller calibration and pacing, four-seat lifecycle, queues, grace and explicit round outcomes.
 - [x] Approved revocable host-phone controls, PIN-protected kiosk mode, room/network safeguards and persistent event records.
@@ -20,7 +20,7 @@ The older sections below are retained as historical planning/audit material. The
 
 ## Implementation status — 6 November 2026
 
-This is the current release checklist; the detailed design/scenario book below remains a record of the larger roadmap, not a claim that every exploratory variant has passed acceptance. The checklist describes the code in this tree. It was not delivered through a pull request, and it is not deployed.
+This is the current release checklist; the detailed design/scenario book below remains a record of the larger roadmap, not a claim that every exploratory variant has passed acceptance. Work is on `codex/hackathon-party-experience`, delivered through draft PR #1. Backend changes are not merged.
 
 - [x] Walk-up QR joining over Wi-Fi/mobile data, calibrated motion and touch fallback, reconnect identity, gentler landscape racing, Brake left / Boost center / Accelerate right, three boosts and eight-second cooldown.
 - [x] All **13 games** in one shared catalog with validated mode/setup/scoring contracts, fixed match setup, two-human Multiplayer start gates and common results.
@@ -45,7 +45,7 @@ Implementation choices for the hackathon build: snapshot displays instead of pee
 
 ## Status audit: 6 November 2026 (verified against the repository)
 
-This section was written after a full read of the repository at commit `3607d9a` (nine commits; the party platform, a new phone UI, three new games, original kart art and release docs were added on 9-6 November). It supersedes the 6 November checklist above where they differ. Method: five parallel read-only audits of the code (server and hosting, controller, menu and SDK, every game, results and docs), each citing file and line; the unit suite was run (**262 of 262 pass**) and the party tests partly (**10 of 11 files pass; `session.test.cjs` could not load because `socket.io-client` is not installed in this checkout**, so its 19 tests did not run). No browser or phone was used, so nothing visual or sensor-related is verified.
+This section was written after a full read of the repository at commit `3607d9a` (nine commits; the party platform, a new phone UI, three new games, original kart art and release docs were added on 9-6 November). It supersedes 6 November checklist above where they differ. Method: five parallel read-only audits of the code (server and hosting, controller, menu and SDK, every game, results and docs), each citing file and line; the unit suite was run (**262 of 262 pass**) and the party tests partly (**10 of 11 files pass; `session.test.cjs` could not load because `socket.io-client` is not installed in this checkout**, so its 19 tests did not run). No browser or phone was used, so nothing visual or sensor-related is verified.
 
 **Legend:** ~~struck through~~ = done and verified in code; 🟡 partial; ↔ built differently from this plan; ⛔ missing.
 
@@ -111,7 +111,7 @@ The plan assumed a **host seat on a phone** and a **screens/seats model**. The b
 | Results | Verification tiers | ↔ only four games are `verifiable`; the rest `attested` means "reported by the host tab" |
 | SDK | ~~Manifest v2 validator, scoped storage, template generator, sandboxed paste-HTML preview~~ | done (minimal) |
 | SDK | `defineGame` lifecycle, sandbox for real games, sideloading, validator depth, registry | ⛔ missing (`sdk/index.js` is a barrel; `GameSession` is used by no game) |
-| Ids | Namespaced ids | ↔ `funcaster.<slug>` with a dot and **folder slugs** (`funcaster.fruit-ninja`, `funcaster.kart-rush`) |
+| Ids | Namespaced ids | ↔ `chonks.<slug>` with a dot and **folder slugs** (`chonks.fruit-ninja`, `chonks.kart-rush`) |
 | Names | ~~Platform and game renames in the UI~~ | done |
 | Assets | ~~Original kart art and synthesised audio replace the Nintendo pack at runtime; legacy paths return 404; Docker excludes them~~ | done |
 | Assets | Nintendo-derived files removed | ⛔ **132 files (98 MB) are still tracked in git**, including voices, models, a course and a Nintendo screenshot in `docs/images` |
@@ -152,7 +152,7 @@ Where the older sections below contradict this audit, the audit and the new docu
 
 ---
 
-Updated 6 November 2026. ETHGlobal Mumbai submission deadline: **6 November 2026, 09:00 IST** ([details](https://ethglobal.com/events/mumbai/info/details)).
+6 November 2026. ETHGlobal Mumbai submission deadline: **6 November 2026, 09:00 IST** ([details](https://ethglobal.com/events/mumbai/info/details)).
 
 You are on the **Continuity track and approved**, so the work splits in two:
 
@@ -201,7 +201,7 @@ Sections: [0 Summary](#0-summary) · [1 State of the code](#1-where-the-code-is-
 - **Hosting and first run** ([§5b](#5b-hosting-distribution-and-first-run)): the QR can point at the wrong adapter, the certificate needs OpenSSL, auto-open is macOS-only, and nothing guards against stale builds.
 - **Safety, privacy and content** ([§5c](#5c-safety-privacy-and-content)): phone-supplied text must never reach `innerHTML`, a swung phone needs the safety treatment the Wii strap taught Nintendo, and Part B publishes data publicly.
 - **Missing product pieces** ([§5d](#5d-product-details-the-first-plan-missed)): settings, onboarding, profiles, groups larger than two, a party mode, pause semantics, and changes between matches.
-- **Names and assets** ([§5e](#5e-names-assets-and-the-pre-existing-base)): Funcaster Console and the new game names, and the fact that the Kart Rush pack is Nintendo's own models, audio and UI, which a rename does not change.
+- **Names and assets** ([§5e](#5e-names-assets-and-the-pre-existing-base)): Funcaster and the new game names, and the fact that the Kart Rush pack is Nintendo's own models, audio and UI, which a rename does not change.
 
 - **Partner-track readiness (deferred, kept as a note for later)** ([§5f](#5f-designing-part-a-for-the-partner-tracks)): Part A ships interfaces and mock providers for identity, naming, randomness, records, signing, settlement and consent, fixes the result and replay formats, stable game ids and canonical hashing, and keeps every partner feature optional and non-blocking, so the integrations at the event are a new layer on a clean base.
 - **A platform for other people's games** ([§5g](#5g-a-platform-for-other-peoples-games)): games get a validated manifest, namespaced immutable ids with a version and a bundle hash, generic scoring and stats, honest verification tiers (verifiable, attested, casual), and later a sandbox, a validator and a registry. The contracts are fixed now; the SDK is extracted from the three Tier 1 games before anything outside is allowed in.
@@ -796,7 +796,7 @@ A **device matrix** (current and previous iPhone, mid and low-end Android, one t
 | **Hosted relay** (the same code deployed to a server) | Everyone; judges; friends who can't run Node | Rooms live on the server; the games are served as static files; the host just opens a URL. Needs the Nintendo-derived assets replaced before it can be public ([§5e](#5e-names-assets-and-the-pre-existing-base)) |
 | **Desktop app** (packaged host) | Later | Only if a hosted relay isn't enough |
 
-**Plan:** keep local mode for offline play and make the relay deployable as a hosted service from the same code. Remote and hybrid play, and judging, should not depend on one person's laptop and home network. **Decided 6 November: three tiers (a hosted relay on one small Mumbai-region VM with real HTTPS, a booth offline fallback with a real certificate on a local hostname, and the tunnel for emergencies); details and the region-by-measurement method are in [§5h.14.1](#5h141-hosting).**
+**Plan:** keep local mode for offline play and make the relay deployable as a hosted service from the same code. Remote and hybrid play, and judging, should not depend on one person's laptop and home network. **6 November: three tiers (a hosted relay on one small Mumbai-region VM with real HTTPS, a booth offline fallback with a real certificate on a local hostname, and the tunnel for emergencies); details and the region-by-measurement method are in [§5h.14.1](#5h141-hosting).**
 
 ### 5b.2 Local-mode failures found in the code
 
@@ -893,17 +893,17 @@ Swinging a phone is a hardware risk, and the Wii Remote's history shows it: its 
 
 ### 5e.1 Names
 
-**Platform: Funcaster Console.** Only the things that need the new name carry it: the controller's brand mark and page title, the menu button and title, the server banner, every page title and the docs. **Games do not get a "Chonk" prefix.**
+**Platform: Funcaster.** Only the things that need the new name carry it: the controller's brand mark and page title, the menu button and title, the server banner, every page title and the docs. **Games do not get a "Chonk" prefix.**
 
 | Today | Now | Why |
 | --- | --- | --- |
-| OpenWii | **Funcaster Console** (shown on the controller as "Funcaster") | Your decision. "Wii" is Nintendo's trademark |
+| OpenWii | **Funcaster** (shown on the controller as "Funcaster") | Your decision. "Wii" is Nintendo's trademark |
 | Mario Kart | **Kart Rush** | Nintendo's title and trademark |
 | Fruit Ninja | **Slice Dojo** | Another company's title |
 | Swordplay, Island Flyover | **unchanged** | I recall these as activity names in a Nintendo sports game, but I haven't verified that and they are ordinary descriptive words. Change them if a check says so |
 | Kart Time Trial, Table Tennis, Golf, Shooting Range, Alien Attack, Sketch | **unchanged** | Generic, descriptive names |
 
-Kart Rush and Slice Dojo are working names chosen only to remove the two third-party titles; they are cheap to change (the `game.json` title, the page title and a few strings). None of this is a trademark clearance. A quick web search found no game or software mark for "Funcaster Console", "Kart Rush" or "Slice Dojo" (I searched the Caster-prefixed names earlier; the only nearby hit was a registered "CHEEKY CHONKS" mark for plush toys, [GleanMark](https://gleanmark.com/trademark/uspto-79398099), a different class but worth knowing if you ever make merchandise). A proper search of USPTO, EUIPO, WIPO and the Indian register should happen before any name goes on something public. The in-game words that belong to the original (character names, item names such as mushroom, shells and star) are tied to the Nintendo-derived pack and are replaced with it (workstream R, below).
+Kart Rush and Slice Dojo are working names chosen only to remove the two third-party titles; they are cheap to change (the `game.json` title, the page title and a few strings). None of this is a trademark clearance. A quick web search found no game or software mark for "Funcaster", "Kart Rush" or "Slice Dojo" (I searched the Chonk-prefixed names earlier; the only nearby hit was a registered "CHEEKY CHONKS" mark for plush toys, [GleanMark](https://gleanmark.com/trademark/uspto-79398099), a different class but worth knowing if you ever make merchandise). A proper search of USPTO, EUIPO, WIPO and the Indian register should happen before any name goes on something public. The in-game words that belong to the original (character names, item names such as mushroom, shells and star) are tied to the Nintendo-derived pack and are replaced with it (workstream R, below).
 
 ### 5e.2 Assets: renaming does not fix this
 
@@ -930,7 +930,7 @@ Until replaced, keep the Nintendo pack **local and untracked**, never deploy it,
 
 ### 5e.3 The pre-existing base
 
-Funcaster Console grows out of a pre-existing open-source base whose assets and some of whose code we reuse and are changing extensively. This plan deliberately doesn't name it. Two obligations still apply, and neither is a plan item to skip:
+Funcaster grows out of a pre-existing open-source base whose assets and some of whose code we reuse and are changing extensively. This plan deliberately doesn't name it. Two obligations still apply, and neither is a plan item to skip:
 
 1. **The MIT licence** requires the original copyright and permission notice to stay with copies or substantial portions of the software. Keep the `LICENSE` file and notices in the repository even after the rename; the rename should not strip them.
 2. **ETHGlobal's Continuity rules** require clearly documenting pre-existing work and showing what is new ([rules](https://ethglobal.com/events/mumbai/info/details)). The submission needs a `PRE_EXISTING.md` listing what is reused. That document is where the base is named.
@@ -941,10 +941,10 @@ Funcaster Console grows out of a pre-existing open-source base whose assets and 
 
 | Changed | Where |
 | --- | --- |
-| Controller: page title "Remote — Funcaster Console", brand mark "Funcaster", kart steering guide "KART RUSH · Hold sideways" | [public/controller.html](public/controller.html) |
+| Controller: page title "Remote — Funcaster", brand mark "Funcaster", kart steering guide "KART RUSH · Hold sideways" | [public/controller.html](public/controller.html) |
 | Menu: page title, the bar button text and its hover label | [public/index.html](public/index.html), [public/menu.js](public/menu.js) |
 | Server banner and header comment | [server.js](server.js) |
-| All ten game page titles now end "— Funcaster Console" | `games/*/index.html` |
+| All ten game page titles now end "— Funcaster" | `games/*/index.html` |
 | **Kart Rush** (was Mario Kart): menu title and tagline, page title, stadium and cup labels, in-world signage text, the intro logo (a plain text placeholder replaces the old logotype until original art exists) | `games/mario-kart/` |
 | **Slice Dojo** (was Fruit Ninja): menu title and page title | `games/fruit-ninja/` |
 | README, CLAUDE.md, AGENTS.md: new name, no upstream clone URL, a neutral note that the project builds on an earlier open-source one | root |
@@ -994,7 +994,7 @@ These are hard to change once something is published, so Part A defines them.
 
 | Item | Rule |
 | --- | --- |
-| **Stable `gameId`** | **`namespace:slug`**, immutable and never reused, independent of the display name and the folder. First-party games are `funcaster:kart-race`, `funcaster:golf`, `funcaster:fruit-slice` and so on. Defined in full, with versions and bundle hashes, in [§5g.4](#5g4-game-ids-versions-and-bundle-hashes), which supersedes any flat list. Don't use today's folder slugs; two of them are third-party names |
+| **Stable `gameId`** | **`namespace:slug`**, immutable and never reused, independent of the display name and the folder. First-party games are `chonks:kart-race`, `chonks:golf`, `chonks:fruit-slice` and so on. Defined in full, with versions and bundle hashes, in [§5g.4](#5g4-game-ids-versions-and-bundle-hashes), which supersedes any flat list. Don't use today's folder slugs; two of them are third-party names |
 | **Other ids** | `roomId`, `matchId` (relay-generated, unique, time-sortable), `seatId` (room-scoped), `playerId` (hash of the phone's device token), `buildId`. `playerId` is not a wallet address |
 | **`ResultV1`** | `{ v, matchId, roomId, gameId, gameVersion, bundleHash, mode, buildId, setup (the frozen match setup), seed: { value, source }, startedAt, endedAt, status: completed or abandoned, verification: verified, attested, unverified or failed, seats: [{ seatId, playerId, handle, controller: human, ai or autopilot, verified, address?, ensName?, score, rank, stats }], winners, logHash, replayRef? }`. Per-seat `score` and `stats` are validated against the game's manifest ([§5g.6](#5g6-scoring-stats-and-results-for-any-game)) |
 | **`ReplayV1`** | An **envelope** `{ v, gameId, gameVersion, bundleHash, seed, setup, step, payloadFormat, payload }`. The envelope, compression and chunking belong to the platform; the payload and the verifier that reads it belong to the game, and a third-party verifier runs in a sandbox ([§5g.6](#5g6-scoring-stats-and-results-for-any-game), [§5g.7](#5g7-verification-tiers)). This is the log format of [P5](#p5-determinism-and-replay-m) |
@@ -1086,7 +1086,7 @@ The result and replay pipeline now exists (`server/records.cjs`, `scripts/replay
 
 | Specified | Built | Fix |
 | --- | --- | --- |
-| `namespace:slug` neutral ids, immutable | `funcaster.<slug>` with a dot, **folder slugs** (`funcaster.fruit-ninja`, `funcaster.kart-rush`), no length or reserved-namespace check | **Now:** neutral slugs, a legacy-id alias map, enforce length and reserve `funcaster` |
+| `namespace:slug` neutral ids, immutable | `chonks.<slug>` with a dot, **folder slugs** (`chonks.fruit-ninja`, `chonks.kart-rush`), no length or reserved-namespace check | **Now:** neutral slugs, a legacy-id alias map, enforce length and reserve `chonks` |
 | Integer scores and times | Scores rounded to 3 decimals | **Now:** integers |
 | Unique, time-sortable `matchId` | `roomCode.roundId` (repeats across rooms over time) | **Now** |
 | Per-game `bundleHash` | The whole-platform build id (16 hex) | **Now:** per-game bundle hash |
@@ -1102,7 +1102,7 @@ Hashes are unkeyed, so anyone can recompute them: they give **tamper-evidence, n
 
 ## 5g. A platform for other people's games
 
-The goal is that, later, outside creators can build games for Funcaster Console and list them next to ours. That is mostly a question of *contracts*: what a game declares, what the platform gives it, how its results are identified and checked, and how untrusted code is kept away from everyone else. Most of those contracts are cheap to define now and expensive to change after anything is published, so this section fixes them early. The big pieces (sandboxing, a registry, submissions) come later, in stages, after our own games have proved the shape.
+The goal is that, later, outside creators can build games for Funcaster and list them next to ours. That is mostly a question of *contracts*: what a game declares, what the platform gives it, how its results are identified and checked, and how untrusted code is kept away from everyone else. Most of those contracts are cheap to define now and expensive to change after anything is published, so this section fixes them early. The big pieces (sandboxing, a registry, submissions) come later, in stages, after our own games have proved the shape.
 
 ### 5g.1 What this means, and what it does not
 
@@ -1147,10 +1147,10 @@ Every game, first-party or not, ships a manifest. It extends today's `game.json`
 
 This **supersedes the flat id list** in [§5f.3](#5f3-data-that-must-be-fixed-now).
 
-- **`gameId` is `namespace:slug`**, for example `funcaster:kart-race`. The slug is `[a-z0-9-]`, 3 to 40 characters. The namespace `funcaster` is reserved for first-party games. A creator gets a namespace when they register; initially an opaque identifier, later possibly a verified name. **Ids are immutable and never reused**, even after a game is withdrawn.
+- **`gameId` is `namespace:slug`**, for example `chonks:kart-race`. The slug is `[a-z0-9-]`, 3 to 40 characters. The namespace `chonks` is reserved for first-party games. A creator gets a namespace when they register; initially an opaque identifier, later possibly a verified name. **Ids are immutable and never reused**, even after a game is withdrawn.
 - **Three separate things identify a build:** `gameId` (which game), `gameVersion` (the creator's semantic version) and **`bundleHash`** (a content hash over every file in the bundle). Results and replays record all three. A replay is verified against the exact bundle that produced it.
 - **Rooms pin the bundle.** The build handshake ([§5b.3](#5b3-version-handshake)) extends to the game: every screen in a match must run the same `bundleHash`, which lockstep play needs anyway.
-- The first-party list is `funcaster:kart-race`, `funcaster:golf`, `funcaster:fruit-slice`, `funcaster:table-tennis`, `funcaster:swordplay`, `funcaster:kart-time-trial`, `funcaster:island-flyover`, `funcaster:shooting-range`, `funcaster:alien-attack` and `funcaster:sketch`. They are neutral on purpose: Kart Rush and Slice Dojo are working display names that may change again, and renames never touch the id.
+- The first-party list is `chonks:kart-race`, `chonks:golf`, `chonks:fruit-slice`, `chonks:table-tennis`, `chonks:swordplay`, `chonks:kart-time-trial`, `chonks:island-flyover`, `chonks:shooting-range`, `chonks:alien-attack` and `chonks:sketch`. They are neutral on purpose: Kart Rush and Slice Dojo are working display names that may change again, and renames never touch the id.
 
 ### 5g.5 The game SDK contract
 
@@ -1283,7 +1283,7 @@ Consequences:
 - **E games are already remote-ready.** The display page draws server frames for anyone holding the display link; the host tab is not part of the simulation.
 - **S games work remotely today at a basic level**: a friend's phone joins from anywhere, and a display shows the board. It is a *viewer* with about 100-250 ms of lag, plus the network. That is fine for turns and drawing and weak for real-time rallies.
 - **I games need the display to run the game itself** (the view-token design), because that is the only way to keep the player's own game responsive.
-- **K (Kart Rush) uses server-sequenced lockstep**, decided 6 November: every screen with a human runs the same deterministic race from one input stream ([§5h.6a](#5h6a-kart-rush-remote-server-sequenced-lockstep-decided-6-november)).
+- **K (Kart Rush) uses server-sequenced lockstep**, 6 November: every screen with a human runs the same deterministic race from one input stream ([§5h.6a](#5h6a-kart-rush-remote-server-sequenced-lockstep-decided-6-november-2026)).
 - **The recipe is per mode, not per game.** If Shooting Range and Alien Attack gain a shared co-op or versus mode (as the games plan intends), *that mode* runs as engine S and gets the snapshot recipe, while their independent mode stays I. Slice Dojo is already like this: race is I, co-op and battle are S.
 
 ### 5h.2 Rules every multiplayer change must keep
@@ -1340,7 +1340,7 @@ Rules: a screen can be bound to **one seat**; two friends sharing one remote lap
 
 **Engine E, server-simulated (Star Catch, Neon Drift, Bubble Burst).** The simplest case. The remote display already receives server frames. To build: pairing ([§5h.5](#5h5-pairing-how-a-remote-friend-joins)); the display highlights *the paired seat's lane*; frame size is reduced (3-decimal rounding, drop unused fields) before more than four lanes or more than a few displays; the 8-display cap is a setting. These are the best candidates for a remote demo at the hackathon, because they need no host-tab simulation and their results are verified.
 
-**Engine I, independent views.** Implemented as the view-token design in [remote-play-via-displays.md](docs/plans/remote-play-via-displays.md): a server-side opaque token per view; the paired display opens `/games/<slug>/?party=&round=&view=&play=1`; the server routes that seat's phone to it; the start gate and replay-chunk acks make it fair and verifiable; the merge is unchanged. About 8 working days behind `FUNCASTER_REMOTE_VIEWS`. Trust note: scores from these games are attested by a client, now possibly a friend's, so the result says "reported remotely".
+**Engine I, independent views.** Implemented as the view-token design in [remote-play-via-displays.md](docs/plans/remote-play-via-displays.md): a server-side opaque token per view; the paired display opens `/games/<slug>/?party=&round=&view=&play=1`; the server routes that seat's phone to it; the start gate and replay-chunk acks make it fair and verifiable; the merge is unchanged. About 8 working days behind `CHONKS_REMOTE_VIEWS`. Trust note: scores from these games are attested by a client, now possibly a friend's, so the result says "reported remotely".
 
 **Engine S, shared board.** The host's sim stays authoritative; the remote screen is a snapshot viewer. This is *real play* for turn-based and slow games and *casual play* for real-time ones.
 
@@ -1353,7 +1353,7 @@ Rules: a screen can be bound to **one seat**; two friends sharing one remote lap
 
 Snapshot-viewer improvements, shared by all S games: client sends 20 Hz and the server relays 20 Hz to viewers (today 10 Hz and about 15 Hz); the viewer buffers about three snapshots and interpolates (Gaffer's rule, already cited in P4); a `lag` readout in the host UI; and snapshot size is measured per game before changing rates.
 
-#### 5h.6a Kart Rush remote: server-sequenced lockstep (decided 6 November)
+#### 5h.6a Kart Rush remote: server-sequenced lockstep (decided 6 November 2026)
 
 **Decision.** The owner chose Route 2, deterministic lockstep, for remote Kart Rush. The snapshot viewport (old Route 1) is kept only as the **spectator view** and as the **automatic fallback** for a screen that cannot keep up.
 
@@ -1408,14 +1408,14 @@ Remote screens add two failure points per seat (the phone and the screen). **Kar
 | --- | --- | --- | --- |
 | **Phone drops** | As X7: autopilot or idle for 20-30 s, then DNF | Same | Input zeroed, then marked left |
 | **Remote screen drops** (network blip) | The copy keeps simulating; reconnecting within **10 s** re-registers the same token | Viewer reconnects and receives the latest snapshot; the seat is unaffected | Reconnects and resumes frames |
-| **Remote screen closed** | After the 10 s grace the view is `lost` and the seat is a **forfeit** ([§5h.7a](#5h7a-leaving-a-match-the-standard-rule-decided-6-november)) with its last reported progress; others finish normally | The seat's play is unaffected, but its player is blind; the host is told | Same as S |
+| **Remote screen closed** | After the 10 s grace the view is `lost` and the seat is a **forfeit** ([§5h.7a](#5h7a-leaving-a-match-the-standard-rule-decided-6-november-2026)) with its last reported progress; others finish normally | The seat's play is unaffected, but its player is blind; the host is told | Same as S |
 | **Host tab drops** | Clock and relay freeze; the host reclaims within 120 s | Same | Round is server-side and continues; host controls resume on reclaim |
 | **Tab in the background** | Throttled timers and no rendering: a toast on the host and a pause prompt | Viewer only | Viewer only |
 | **Wrong build** | Seat falls back to the host tab; the display shows *Reload* | Reload | Reload |
 
-Fairness notes: independent games use a fixed 16:9 letterbox on remote screens (Slice already forces it); a remote screen cannot affect other seats' scores; replays reject sequence gaps, so chunk acks and retransmits are part of the build; takeover resume from a snapshot is *not* offered for independent-view games, because snapshots exclude the RNG state; Kart Rush lockstep instead resumes by replaying the input log. Leaving and dropping follow [§5h.7a](#5h7a-leaving-a-match-the-standard-rule-decided-6-november).
+Fairness notes: independent games use a fixed 16:9 letterbox on remote screens (Slice already forces it); a remote screen cannot affect other seats' scores; replays reject sequence gaps, so chunk acks and retransmits are part of the build; takeover resume from a snapshot is *not* offered for independent-view games, because snapshots exclude the RNG state; Kart Rush lockstep instead resumes by replaying the input log. Leaving and dropping follow [§5h.7a](#5h7a-leaving-a-match-the-standard-rule-decided-6-november-2026).
 
-#### 5h.7a Leaving a match: the standard rule (decided 6 November)
+#### 5h.7a Leaving a match: the standard rule (decided 6 November 2026)
 
 The owner's rule: a remote (or any) player who drops mid-round is marked did-not-finish, but also **penalised**: they lose, or in a multiplayer match finish last. This is how most multiplayer games treat a leaver, and it is applied the same way to every game.
 
@@ -1533,16 +1533,16 @@ Hackathon note: the same-room path and Kiosk mode come first ([hackathon-floor-p
 
 | Question | Decision |
 | --- | --- |
-| Kart Rush remote route | **Route 2, server-sequenced lockstep** ([§5h.6a](#5h6a-kart-rush-remote-server-sequenced-lockstep-decided-6-november)), gated by a spike. The snapshot viewport stays as the spectator view and fallback |
+| Kart Rush remote route | **Route 2, server-sequenced lockstep** ([§5h.6a](#5h6a-kart-rush-remote-server-sequenced-lockstep-decided-6-november-2026)), gated by a spike. The snapshot viewport stays as the spectator view and fallback |
 | Table Tennis and Foam Fencers remote | **Same room for now; online later on the lockstep layer** ([§5h.6b](#5h6b-table-tennis-and-foam-fencers-online-play)). No casual snapshot seat |
-| A remote player who drops | **Forfeit with a penalty** (last place, or a loss in a two-seat match), after a grace period; no penalty for a short drop or for being removed ([§5h.7a](#5h7a-leaving-a-match-the-standard-rule-decided-6-november)) |
+| A remote player who drops | **Forfeit with a penalty** (last place, or a loss in a two-seat match), after a grace period; no penalty for a short drop or for being removed ([§5h.7a](#5h7a-leaving-a-match-the-standard-rule-decided-6-november-2026)) |
 | Remote screens in Kiosk mode | **Off by default.** It is a room setting, not a design limit: `remoteScreens` is `off` or `invite`, defaulting to `invite` in Party mode and `off` in Kiosk mode. Staff can change it for a room with the PIN, and the default can be changed later in one place. Turning it on in a public booth first needs the room hardening in the host plan (H5a): rate limits and invite hygiene |
 
-**Open questions now have recommended answers** (adopted unless the owner overrides): hosting is three tiers with a Mumbai-region VM as primary, the lockstep spike has a defined test and decision table, a screen that drops (including the host TV) follows one symmetric pause-then-continue rule, and the input delay is chosen per match from measurement. See [§5h.14](#5h14-recommended-answers-to-the-four-open-questions-6-november). **Genuinely still open:** the actual spike result, which cannot be known until it is run; and the region, which is chosen by measurement.
+**Open questions now have recommended answers** (adopted unless the owner overrides): hosting is three tiers with a Mumbai-region VM as primary, the lockstep spike has a defined test and decision table, a screen that drops (including the host TV) follows one symmetric pause-then-continue rule, and the input delay is chosen per match from measurement. See [§5h.14](#5h14-recommended-answers-to-the-four-open-questions-6-november-2026). **Genuinely still open:** the actual spike result, which cannot be known until it is run; and the region, which is chosen by measurement.
 
 **Could not verify from the code alone.** Browser behaviour (audio activation inside iframes, wake lock, fullscreen); real latency, tunnel throughput and per-game snapshot sizes; whether the games interpolate between 10 Hz snapshots in viewer mode; that Golf's flight can be re-simulated from a stroke event on every screen without drift across browsers; that Kart Rush's item randomness is fully on the race's RNG; whether the three-engine float behaviour (Chrome, Safari, Firefox) stays hash-equal for a whole race. Each is a named check inside the stages above, not an assumption.
 
-### 5h.14 Recommended answers to the four open questions (6 November)
+### 5h.14 Recommended answers to the four open questions (6 November 2026)
 
 The owner asked for the best answer on each of these, so they are **adopted as the plan unless overridden**. Time check: today is 6 November and Devcon starts on 6 November, **21 days away**. Of everything in this section, only hosting is on the hackathon-critical path ([hackathon-floor-plan.md](docs/plans/hackathon-floor-plan.md)); the lockstep work (the spike, the delay, drop handling) is not, and must not displace the Kiosk slice.
 
@@ -1615,7 +1615,7 @@ The result cannot be known until the spike is run, so the plan fixes **what to t
 | --- | --- | --- |
 | **0-10 s** | The sequencer **pauses for everyone**; an overlay says whose screen is missing. No penalty, nobody loses places. The returning screen replays the log and rejoins | Host tab lost: clock and relay freeze, as today. A remote copy keeps playing locally and may reconnect within 10 s |
 | **10-30 s** | The race **resumes** for the others; the missing screen's seats are on autopilot. If it returns, autopilot stops with **no penalty** | The freeze continues until the host returns. A remote view not back by 10 s is `lost` |
-| **30 s and later** | Those seats **forfeit** ([§5h.7a](#5h7a-leaving-a-match-the-standard-rule-decided-6-november)). If **no screen with a human remains**, the match is **voided** (no contest) and nobody is penalised | Remote: forfeit at `lost`. Host not back within 120 s: the room follows today's expiry and the round is voided |
+| **30 s and later** | Those seats **forfeit** ([§5h.7a](#5h7a-leaving-a-match-the-standard-rule-decided-6-november-2026)). If **no screen with a human remains**, the match is **voided** (no contest) and nobody is penalised | Remote: forfeit at `lost`. Host not back within 120 s: the room follows today's expiry and the round is voided |
 
 **Why.** The host TV is not special once the server owns the input stream; treating it like any other screen is simpler to build and to explain. A TV tab that crashes and reloads recovers in seconds, which the short pause absorbs without punishing the people sitting at it, and a remote friend is not held hostage for long. Room controls (kick, lobby, settings) stay reclaimable for 120 s as today, separately from the race. The 30 s limit matches the phone's grace in X7.
 
@@ -2268,7 +2268,7 @@ An earlier version of this plan had these; they were dropped in a rewrite and ar
 | Decision | Status | What's ready either way |
 | --- | --- | --- |
 | Final three partners | Arkiv, ENS, World leading | Seams in [§12](#12-part-b-track-integrations-at-the-hackathon) |
-| A pot / stakes | **Decided 6 November 2026: wanted** (play money at events, real value gated; see `docs/plans/web3/08-stakes-product-and-legal.md`). Was: Held | `match.finish` is the only settlement hook; a stake module attaches there without touching games. Ladder below |
+| A pot / stakes | **6 November 2026: wanted** (play money at events, real value gated; see `docs/plans/web3/08-stakes-product-and-legal.md`). Was: Held | `match.finish` is the only settlement hook; a stake module attaches there without touching games. Ladder below |
 | World fallback if no Orb is reachable | Held | Guest/ranked split; staging simulator; Chainlink spare |
 | Ethereum Foundation ($15,000) | Watch the brief | Session-key story fits the phone-held key |
 

@@ -1,4 +1,4 @@
-# Funcaster Console
+# Funcaster
 
 Motion-controlled games for the browser — the player's phone is the remote. A
 Node/Socket.io relay streams phone IMU data over the LAN to a game running on the
@@ -22,11 +22,11 @@ Source: https://www.instagram.com/reel/DZiAyThpC63/
 
 ## Goals and direction (read before changing UI)
 
-The goal is a walk-up, phone-controlled browser game console that strangers can start in about 20 seconds and play with friends, shown on a TV and operable entirely from a phone. Since 6 November 2026 the interface is being rebuilt as a **Windows-XP-style desktop** (Funcaster OS) over a pixel-art Mumbai wallpaper, with a universal phone remote, a mascot and a backdrop per game. Start at **plan.md** (the North star section), then `docs/plans/build/README.md` (the build specification).
+The goal is a walk-up, phone-controlled browser game console that strangers can start in about 20 seconds and play with friends, shown on a TV and operable entirely from a phone. Since 6 November 2026 the interface is being rebuilt as the **Funcaster** Windows-XP-style desktop over a pixel-art Mumbai wallpaper, with a universal phone remote, a mascot and a backdrop per game. Start at **plan.md** (the North star section), then `docs/plans/build/README.md` (the build specification).
 
 Owner decision: the supplied Windows asset pack (`assets/source/winxp`) and the CraftPix packs are used as supplied (the owner confirmed their licences allow free use) and are committed under `assets/source/`; the build generates the shippable subset into `assets/os/`. The server must not serve `/assets/source`. The implementation spec is `docs/plans/build/README.md`.
 
-**Web3 hackathon plans (locked 6 November 2026).** Partner-track plans for ETHGlobal Mumbai live in `docs/plans/web3/` (start at its README). They are **not being built now**: the current work is the games and the Funcaster OS UI. The final partners are chosen only after all sponsor problem statements are published.
+**Current integration (6 November 2026 edition).** Main includes Arc/ENS workers, PostgreSQL, the XP desktop and the updated touch-first controller. Read `ARCHITECTURE.md`, `plan.md`, `ARC-JUDGES.md` and `ENS-JUDGES.md`. Historical plans are not current deployment instructions.
 
 ## Things that will bite you
 
@@ -41,7 +41,4 @@ Owner decision: the supplied Windows asset pack (`assets/source/winxp`) and the 
 
 ## Working agreement
 
-Commit directly to `main` — no feature branches, no PRs. Commit only when asked.
-
-**Exception (6 November 2026): web3 work is done on the branch `web3/integrations`** (sub-branches `web3/ens`, `web3/arc`, `web3/arkiv`, `web3/ui` merge into it) and is **never merged into `main` without the owner's say**. Everything else still commits directly to `main`. See `docs/plans/web3/build-guide/00-README.md`.
-
+The owner explicitly approved merging PR #5 and `new-controller-updated` into main. New backend work still requires PR delivery and specific merge approval. Public signing/activation stays owner-operated; merging source does not deploy signer services. Preserve private journals, protected unrelated files and supplied asset licences.

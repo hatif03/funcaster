@@ -1,85 +1,56 @@
-# Funcaster — your phone, your moves, the whole party
+# Funcaster — a party console in your browser
 
-Thirteen browser games for 1–4 phones. Scan the shared screen’s QR, allow motion or choose touch, and play. No account or app installation. **Kart Rush** now has original robot drivers and karts, simultaneous human racers, and a camera for each player.
+Documentation edition: **6 November 2026**.
 
-## Start a party
+Thirteen games on a TV or laptop, with 1–4 phones as controllers. Scan the QR, join, and play. The Windows-XP-style desktop and landscape phone pads come from `new-controller-updated`; Arc and ENS integration is now on `main`.
 
-Requires Node.js **22.12 or newer**, a computer browser with WebGL 2, and phones with Safari or Chrome.
+**Try the deployed build:** [funcaster.onrender.com](https://funcaster.onrender.com). Deployment revisions are pinned independently of Git: merging main does not automatically update the hosted signer services.
+
+**Judges:** [Arc guide](ARC-JUDGES.md) · [ENS guide](ENS-JUDGES.md) · [Architecture](ARCHITECTURE.md) · [Current plan](plan.md).
+
+## Run locally
+
+Requires Node.js 22.12+ and a browser with WebGL 2.
 
 ```sh
 npm ci
-npm run share
+npm run start:basic
 ```
 
-Open the printed **public HTTPS address on the shared screen**. Its QR works from mobile data or Wi-Fi. `share` needs Cloudflare’s `cloudflared` executable on PATH, in `.tools`, or selected with `CLOUDFLARED`. This checkout has the macOS Apple Silicon executable in the ignored `.tools` directory. The address is temporary; keep the process and host page open. Stable hosting is deliberately pending the user’s choice of account and domain.
-
-For local development, `npm start` serves self-signed HTTPS at `https://localhost:8443`. `HTTP=1 PORT=8556 NO_OPEN=1 npm start` serves a local HTTP preview; a phone on an HTTP LAN address must use touch. Use the trusted share link for visitors.
-
-## Funcaster OS development preview
-
-The new Luna desktop is at `/?shell=os` (or `/os`); use `/?shell=os&demo=1` for a local visual preview without creating a room. The software rebuild is implemented: all 13 Game Properties windows and games, phone pointer/D-pad navigation, pause/results, room tools, boot/attract/staff, skins, helper/audio, street pets and seat avatars. The 234-case viewport matrix and shell flow pass; physical phone/TV acceptance and stable hosting remain pending. The playable fallback stays at `/?shell=classic`. `FUNCASTER_SHELL=os` changes the default root route; the explicit classic query remains available.
-
-Follow [the build specification](docs/plans/build/README.md) and [current progress](docs/OS-BUILD-PROGRESS.md). Generated theme assets live in `assets/os/`; sources under `assets/source/` are never served. Rebuild instructions are in [scripts/os-assets](scripts/os-assets/README.md).
-
-## Games
-
-| Game | Players and controls |
-| --- | --- |
-| **Kart Rush** | 1–4 drivers; optional CPU field up to eight racers. Landscape wheel tilt, Brake / Boost / Accelerate. |
-| **Pocket Greens** | 1–4 golfers plus optional computer opponents. Tilt to aim, hold and release to shoot; 1, 3 or 6 holes. |
-| **Slice Dojo** | 1–4; shared-score co-op, competitive shared board or separate boards with the same fruit schedule. |
-| **Star Catch** | 1–4; tilt sideways to catch stars. |
-| **Neon Drift** | 1–4; landscape steering, pedals and three boosts. |
-| **Bubble Burst** | 1–4; tilt to pop, with an optional burst button. |
-| **Table Tennis** | Solo versus AI or two humans. Larger crews use Pick two, Winner stays or a bracket. |
-| **Foam Fencers** | Solo versus AI or two humans; tilt to guard and tap to strike. Crew rotation available. |
-| **Time Trial** | 1–4 separate race views; landscape steering and pedals. |
-| **Cloud Cruise** | 1–4 separate flight views; tilt to bank, climb and dive. |
-| **Shooting Range** | 1–4 separate boards with the same challenge; aim and tap Fire. |
-| **Alien Attack** | 1–4 separate space runs; tilt to dodge and tap Fire. |
-| **Drawing** | Solo free draw, 2–4 draw-and-guess with private phone prompts, or four pens on one canvas. |
-
-All games share the same room and connected phones. Multiplayer requires two ready humans; CPU players and spectator screens do not count. Solo preserves the original AI opponents where applicable. Match options freeze when the round starts.
-
-Racing uses gentle progressive steering, a 2° dead zone, and a separate saved sensitivity. **Brake is left, Boost is center, Accelerate is right.** There are three boosts per race/round and an eight-second cooldown. A refresh does not refill them.
-
-## Party features
-
-Playlists, cumulative standings, common results, replay exports, host pause, reconnect identities, mirrored pedals, optional vibration, local best scores, volume and gentle effects. Open a private display invite from **Make it your party** to follow one player, a pair or everyone on another screen. The main host must remain open; displays cannot become the game authority.
-
-`/self-test` checks HTTPS, WebGL, build compatibility, connection round trips and phone motion. `/creator` previews a generated game in an isolated iframe. Community publishing stays disabled until an outside creator completes the SDK trial.
-
-## Development and checks
+Open `https://localhost:8443/?shell=os`. This starts a relay and worker with explicit simulated Arc/ENS providers, local durable data and no public transactions. It does not load private env files. For a localhost-only touch preview:
 
 ```sh
-npm run check
-npm run format:check
-npm run test:os
-node tests/os/shell.e2e.mjs
-node tests/os/viewport.e2e.mjs --smoke
-node tests/os/viewport.e2e.mjs
+HTTP=1 PORT=8794 NO_OPEN=1 npm run start:basic
+```
+
+For trusted HTTPS on phones, `npm run share` uses Cloudflare's `cloudflared`. Open its public URL on the shared screen so the QR works on any network. Motion requires trusted HTTPS. `npm start` alone runs the normal server; `/?shell=classic` keeps the classic dashboard reachable, while `/?shell=os&demo=1` previews the desktop without a room.
+
+## Controller and games
+
+The Luna-blue XP controller supplies per-game buttons, joysticks, drawing paper and touch pointer navigation. Gameplay uses landscape controls with a rotated-page fallback. Slice Dojo and Foam Fencers retain optional motion; most games use touch directly. Escape pauses a round. Racing includes steering, accelerator, brake, and three boosts with an eight-second cooldown.
+
+Games: Kart Rush, Pocket Greens, Slice Dojo, Star Catch, Neon Drift, Bubble Burst, Table Tennis, Foam Fencers, Time Trial, Cloud Cruise, Shooting Range, Alien Attack and Drawing. Solo is preserved; multiplayer starts with two ready humans and supports up to four. Phones, room setup and score verification remain separate from financial authority.
+
+## Arc and ENS
+
+- **Arc testnet:** sponsored test-USDC funding, optional game stakes through ConditionalPot, spectator winner predictions, equal-seat cheers, and creator publishing/passes/revenue claims. A separate verifier checks replay results before reporting market outcomes.
+- **ENS on Sepolia:** `funcaster.eth`, party names beneath `play.funcaster.eth`, phone-bound seat names, scoped host authority and a restricted `players.funcaster.eth` namespace. Product issuance of earned player handles still needs acceptance.
+- **PostgreSQL on Render:** application documents, payment jobs, signer recovery records, canonical game records and a receipt hash chain. Rooms remain in memory; a relay restart ends a live table but preserves saved payments.
+
+Open **Start → Funcaster Live**; spectators use `/predict`, creators `/commerce/`, and records `/records/`. Local simulated balances are visibly marked. A confirmed receipt badge means two RPC hosts agree on the transaction receipt; it does not independently prove every game outcome.
+
+Public funding, party/seat names, creator registration/pass and two predictions are verified. The stopped prediction round was refunded. A complete successful hosted game→cheer→payout→creator-claim attempt remains open; do not replay the expired acceptance journal. See [deployment evidence](docs/web3/market-read-recovery.md) and [current progress](docs/web3/progress.md).
+
+## Development
+
+```sh
+npm run catalog:check
+npm run validate:games
+node --test public/party/pads.test.mjs tests/party/orientation.test.mjs
 npm run game:create -- my-game
-npm run game:validate -- creator-games/my-game
 npm run replay:check -- saved-round.json
 ```
 
-The two browser suites use Playwright Chromium (`npx playwright install chromium` if needed), launch their own isolated local server, and write reports/screenshots under `.local/os-evidence/`. `OS_EVIDENCE_DIR` overrides that directory; `HEADED=1` shows the browser and `OS_BROWSER_CHANNEL` selects a channel. The full viewport run covers 234 solo/max-human samples; `--games=mario-kart,drawing` limits it to selected games. Browser checks are separate from `npm run check`, and do not replace physical sensor or simultaneous-touch testing.
+`npm run check` is the complete regression suite; use focused checks during small changes. Browser smoke checks use Playwright. Physical iPhone/Android multitouch, sensor permissions and venue-network testing remain distinct from browser automation.
 
-For an event screen, start the relay or hosted endpoint, then use the kiosk launcher:
-
-```sh
-npm run kiosk -- --dry-run https://your-console.example/
-npm run kiosk -- https://your-console.example/
-```
-
-The launcher adds `shell=os`, finds Chrome/Edge, and uses a temporary profile with fullscreen/autoplay flags. `FUNCASTER_URL` supplies a default URL; `FUNCASTER_BROWSER` supplies an absolute executable path. The local dry-run found no installed Chrome/Edge, so actual booth fullscreen/audio still needs rehearsal. This command does not deploy or start the server. Asset regeneration and its Python/FFmpeg requirements are documented in [scripts/os-assets](scripts/os-assets/README.md).
-
-Three party games run their rules on the server. Ten browser games run on the host and send bounded snapshots to read-only displays. Slice Dojo additionally streams its seeded cursor log to a Node checker. Results are labelled `verified` only after a replay agrees; other browser scores remain `attested`.
-
-See [hackathon operation](docs/HACKATHON.md), [SDK](docs/SDK.md), [networking decisions](docs/NETWORKING.md), [release checks](docs/RELEASE.md), and the current status at the top of [plan.md](plan.md). A Dockerfile prepares a single-instance HTTPS deployment; rooms and recent records are in memory.
-
-The historical standalone launcher and remote remain at `/classic.html` and `/classic-controller`. Legacy internal game URLs are preserved. The public kart game uses native procedural models, vector artwork and synthesized sound; extracted legacy assets are blocked from serving and excluded from the container.
-
-## License and provenance
-
-`package.json` declares the MIT license. This tree has no `LICENSE` file and no copyright notice. [PRE_EXISTING.md](PRE_EXISTING.md) distinguishes the inherited game code and fixtures from the party implementation.
+See [SDK](docs/SDK.md), [networking](docs/NETWORKING.md), [startup research](docs/plans/startup/README.md), and [desktop build specification](docs/plans/build/README.md). Supplied source artwork is not served from `/assets/source`; generated assets are in `assets/os/`. Legacy internal URLs and storage keys remain for compatibility. Software is [MIT licensed](LICENSE); upstream notices are preserved.
