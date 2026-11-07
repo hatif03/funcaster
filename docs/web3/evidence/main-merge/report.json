@@ -1,0 +1,17 @@
+{
+  "documentationDate": "2026-11-06",
+  "mode": "mock",
+  "branch": "main",
+  "testedCodeCommit": "dc1ee13",
+  "resultHash": "01b333858a32898ccf7b4f76ebab11a709df3914b4c547ed1640129dab78d935",
+  "checks": [
+    "Two phone controllers joined; party and both seat ENS names are ready",
+    "Both phones received confirmed Arc test-USDC starting play money",
+    "Two independent spectators backed opposite outcomes with 0.05 each and sent a 0.05 cheer",
+    "One two-player Star Catch round completed with a verified replay and durable Hall result",
+    "MOCK predictions and cheers reached verified pull payouts"
+  ],
+  "creatorFlow": "publish, free demo, simulated pass, earnings claim passed on same relay",
+  "padComponent": "touch-enabled isolated real component press/release and landscape bounds passed",
+  "limitation": "Original wrapper exited after payout checkpoints because its persistent phone contexts lack hasTouch. Corrected isolated touch check passed; no second game or public transaction was run. Physical devices and new hosted successful financial gameplay remain unverified."
+}

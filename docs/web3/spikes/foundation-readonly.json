@@ -1,0 +1,41 @@
+{
+  "at": "2026-11-06T09:00:02.131Z",
+  "scope": "READ ONLY / PARTIAL G0; no writes or transactions",
+  "sources": [
+    "https://docs.ens.domains/learn/deployments/",
+    "https://github.com/ensdomains/contracts-v2/blob/07e55a056f5b6a9c90119f501bdd05714e67dddd/contracts/deployments/sepolia/ETHRegistrar.json",
+    "viem@2.57.14 sepolia chain metadata",
+    "docs/plans/web3/build-guide/03-arc-guide.md"
+  ],
+  "rows": [
+    {
+      "lane": "Arc rpc.testnet.arc.io",
+      "chainId": 5042002,
+      "decimals": 6,
+      "name": "USDC",
+      "version": "2",
+      "domainMatches": true,
+      "block": "70154566",
+      "baseFeeWei": "20000000000",
+      "relayerBalanceBaseUnits": "0",
+      "result": "READS-PASS; VA-01 writes and VA-12 remain OPEN"
+    },
+    {
+      "lane": "ENS availability",
+      "chainId": 11155111,
+      "registrar": "0xf633e7fc17e2bbe0d0965d18ec1821dcb754a3d3",
+      "block": "12039964",
+      "available": {
+        "funcaster.eth": true,
+        "chonksplay.eth": true
+      },
+      "registrarGasWei": "0",
+      "result": "READS-PASS; VE-01 remains OPEN until registration/roles"
+    },
+    {
+      "lane": "Arc rpc.testnet.arc.network",
+      "error": "Request exceeds defined limit.",
+      "result": "FAIL-OPEN"
+    }
+  ]
+}

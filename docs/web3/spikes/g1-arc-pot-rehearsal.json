@@ -1,0 +1,475 @@
+{
+  "at": "2026-11-06T08:12:28.614Z",
+  "scope": "LOCAL ARC FORK ONLY; no public broadcasts or role keys",
+  "sourceBlock": "70998665",
+  "artifactSha256": "55604efffcd8e41d2e15f986e970c410a2bc8644ef94986d42c32ad0762db58b",
+  "checks": [
+    {
+      "id": "pot domain",
+      "status": "PASS-LOCAL",
+      "detail": "ChonksPot/1, local chain 31337, exact deployed contract"
+    },
+    {
+      "id": "USDC funding replay denied",
+      "status": "PASS-LOCAL",
+      "detail": "Simulation reverts on the local fork"
+    },
+    {
+      "id": "USDC funding and lock",
+      "status": "PASS-LOCAL",
+      "detail": "Three canonical Accept/authorization pairs, exact stake, retained 0.05 per seat; EURC needs no native gas"
+    },
+    {
+      "id": "USDC blocked claim isolated",
+      "status": "PASS-LOCAL",
+      "detail": "Simulation reverts on the local fork"
+    },
+    {
+      "id": "USDC settle and claims",
+      "status": "PASS-LOCAL",
+      "detail": "Payout vector equals JS; blocked recipient cannot prevent the others; final contract balance drains to zero"
+    },
+    {
+      "id": "USDC early refund denied",
+      "status": "PASS-LOCAL",
+      "detail": "Simulation reverts on the local fork"
+    },
+    {
+      "id": "USDC partial refund",
+      "status": "PASS-LOCAL",
+      "detail": "Funding deadline boundary refunds only the funded seat, whose full stake is claimable"
+    },
+    {
+      "id": "USDC early oracle denied",
+      "status": "PASS-LOCAL",
+      "detail": "Simulation reverts on the local fork"
+    },
+    {
+      "id": "USDC contest refund",
+      "status": "PASS-LOCAL",
+      "detail": "Delayed oracle proposal, gasless seat contest, full refunds and zero residual contract balance"
+    },
+    {
+      "id": "EURC funding replay denied",
+      "status": "PASS-LOCAL",
+      "detail": "Simulation reverts on the local fork"
+    },
+    {
+      "id": "EURC funding and lock",
+      "status": "PASS-LOCAL",
+      "detail": "Three canonical Accept/authorization pairs, exact stake, retained 0.05 per seat; EURC needs no native gas"
+    },
+    {
+      "id": "EURC blocked claim isolated",
+      "status": "PASS-LOCAL",
+      "detail": "Simulation reverts on the local fork"
+    },
+    {
+      "id": "EURC settle and claims",
+      "status": "PASS-LOCAL",
+      "detail": "Payout vector equals JS; blocked recipient cannot prevent the others; final contract balance drains to zero"
+    },
+    {
+      "id": "EURC early refund denied",
+      "status": "PASS-LOCAL",
+      "detail": "Simulation reverts on the local fork"
+    },
+    {
+      "id": "EURC partial refund",
+      "status": "PASS-LOCAL",
+      "detail": "Funding deadline boundary refunds only the funded seat, whose full stake is claimable"
+    },
+    {
+      "id": "EURC early oracle denied",
+      "status": "PASS-LOCAL",
+      "detail": "Simulation reverts on the local fork"
+    },
+    {
+      "id": "EURC contest refund",
+      "status": "PASS-LOCAL",
+      "detail": "Delayed oracle proposal, gasless seat contest, full refunds and zero residual contract balance"
+    }
+  ],
+  "transactions": [
+    {
+      "label": "deploy local ConditionalPot",
+      "hash": "0x4016ace36e6483da9f5efad5de9cb9c4f4e2e7046aab93f112a32736ab6340fd",
+      "blockNumber": "70998666",
+      "gasUsed": "3179726",
+      "feeWei": "63594520000000000"
+    },
+    {
+      "label": "USDC cooperative create",
+      "hash": "0x9e84aeb608a26991be9578c0947138e54586ee366cdcae154b24250bb25ee519",
+      "blockNumber": "70998667",
+      "gasUsed": "249831",
+      "feeWei": "5246451000000000"
+    },
+    {
+      "label": "USDC fund seat 0",
+      "hash": "0x15f62b2a904676e533c6f70b78d255a21aa771897cf75c1c0e40af869ca6209b",
+      "blockNumber": "70998668",
+      "gasUsed": "125765",
+      "feeWei": "2641065000000000"
+    },
+    {
+      "label": "USDC fund seat 1",
+      "hash": "0x5a57ba916cb53ac43ed3f62e99d79384f85acb2d2f8d68a7f7cc0a3c598dc336",
+      "blockNumber": "70998669",
+      "gasUsed": "128111",
+      "feeWei": "2690331000000000"
+    },
+    {
+      "label": "USDC fund seat 2",
+      "hash": "0xdbb2eaf2e4f1ad3815cd4ff537bb5bf070fa79eae19d862032e1913e43daaee1",
+      "blockNumber": "70998670",
+      "gasUsed": "154313",
+      "feeWei": "3240573000000000"
+    },
+    {
+      "label": "USDC cooperative settle",
+      "hash": "0xd3d9af59bfc2589f517a7c061d838b4f53a0c69bde0d1d5e77a7d10431134751",
+      "blockNumber": "70998671",
+      "gasUsed": "143782",
+      "feeWei": "3019422000000000"
+    },
+    {
+      "label": "USDC locally block first recipient",
+      "hash": "0x92bbdb94c2b0265fafa955794274625a53d7584724ecc9457539a0cdc694035a",
+      "blockNumber": "70998672",
+      "gasUsed": "59474",
+      "feeWei": "1248954000000000"
+    },
+    {
+      "label": "USDC claim seat 1",
+      "hash": "0x79ccfd05389046f2ccd23fe5cabef6a70cedf910b287b742bb3417d685defcd0",
+      "blockNumber": "70998673",
+      "gasUsed": "61954",
+      "feeWei": "1301034000000000"
+    },
+    {
+      "label": "USDC claim seat 2",
+      "hash": "0x0f0b43c9e0378bddb8154cb6791bd54c3da00c373673b3922c7f0dbe7b030601",
+      "blockNumber": "70998674",
+      "gasUsed": "61954",
+      "feeWei": "1301034000000000"
+    },
+    {
+      "label": "USDC locally unblock recipient",
+      "hash": "0x4e2ffe90560307f0ae8ffdbb889f1f6ce3f6fa810b30e196f0109f545f547078",
+      "blockNumber": "70998675",
+      "gasUsed": "38762",
+      "feeWei": "814002000000000"
+    },
+    {
+      "label": "USDC final claim",
+      "hash": "0x58117c8988804051f72aac7429cb6efdbbd8350e373f4d94b034b5ac8504d76e",
+      "blockNumber": "70998676",
+      "gasUsed": "61954",
+      "feeWei": "1301034000000000"
+    },
+    {
+      "label": "USDC partial-refund create",
+      "hash": "0xad7994f74f6b91726f05654f35c1ad715bf3940ac7420d34470f65358f3824fb",
+      "blockNumber": "70998677",
+      "gasUsed": "249831",
+      "feeWei": "5246451000000000"
+    },
+    {
+      "label": "USDC fund seat 0",
+      "hash": "0xe640731aea2f2194750bc704f86f229af8953170576c6e2018dea5cbbae74be6",
+      "blockNumber": "70998678",
+      "gasUsed": "125733",
+      "feeWei": "2640393000000000"
+    },
+    {
+      "label": "USDC partial refund",
+      "hash": "0xd5d9fae785f63f78bd3d9230813f7acdb0fb27a7cca6dfbd48d2fc63356062b9",
+      "blockNumber": "70998680",
+      "gasUsed": "61162",
+      "feeWei": "1284402000000000"
+    },
+    {
+      "label": "USDC refund claim",
+      "hash": "0x08b8ca640ed381dcdc571aa885b4a5d52b01d294b748e5629d7d8fb323815101",
+      "blockNumber": "70998681",
+      "gasUsed": "62117",
+      "feeWei": "1304457000000000"
+    },
+    {
+      "label": "USDC contest create",
+      "hash": "0x833882cffa026dbe80b1083f08c9d32915c735444f78c68e62e9f9eff9391096",
+      "blockNumber": "70998682",
+      "gasUsed": "223397",
+      "feeWei": "4691337000000000"
+    },
+    {
+      "label": "USDC fund seat 0",
+      "hash": "0xc17e033b95b135de638b4b51c1c708b5ba09eff112f6426666c97b5d0a6f971f",
+      "blockNumber": "70998683",
+      "gasUsed": "125745",
+      "feeWei": "2640645000000000"
+    },
+    {
+      "label": "USDC fund seat 1",
+      "hash": "0x6a38a6c28fd068ed5296f7a088c096ebc4ad6f771665a140904c90e38e4a8b07",
+      "blockNumber": "70998684",
+      "gasUsed": "151955",
+      "feeWei": "3191055000000000"
+    },
+    {
+      "label": "USDC propose",
+      "hash": "0x08b71edfee5f1100c21f663d9a5feb841b462964bbbfba670a5b0fe00d37e568",
+      "blockNumber": "70998686",
+      "gasUsed": "107475",
+      "feeWei": "2256975000000000"
+    },
+    {
+      "label": "USDC contest",
+      "hash": "0x4d65dedf46d0502eef504d3f9c84e7f5e990817e745ae66872b0c4a4bff74fbd",
+      "blockNumber": "70998687",
+      "gasUsed": "47188",
+      "feeWei": "990948000000000"
+    },
+    {
+      "label": "USDC contested refund",
+      "hash": "0x1564474dd90f66fac3b19e28267ee5b3ebd8331e610c0e16c2bed32009ebca79",
+      "blockNumber": "70998688",
+      "gasUsed": "83556",
+      "feeWei": "1754676000000000"
+    },
+    {
+      "label": "USDC contested claim",
+      "hash": "0x18332d1bc6526860a03ae55387b09abb78293d2ae0f921d5495fc9b756ec887c",
+      "blockNumber": "70998689",
+      "gasUsed": "62117",
+      "feeWei": "1304457000000000"
+    },
+    {
+      "label": "USDC contested claim",
+      "hash": "0x0c040a60b51d03f4d063673f624cff2ec42eec6b661e4ec800118926144ba128",
+      "blockNumber": "70998690",
+      "gasUsed": "62117",
+      "feeWei": "1304457000000000"
+    },
+    {
+      "label": "configure local EURC minter",
+      "hash": "0x8f7e3cb3e0baec059549ff5e2107e12bedb190d355ba506ce7c61637f8cb3729",
+      "blockNumber": "70998691",
+      "gasUsed": "79233",
+      "feeWei": "1663893000000000"
+    },
+    {
+      "label": "mint local EURC fixture",
+      "hash": "0xed8dd72186b53efea7c6d19fc5c39ee438618efe494c63f35024ab8c54e784f2",
+      "blockNumber": "70998692",
+      "gasUsed": "72591",
+      "feeWei": "1524411000000000"
+    },
+    {
+      "label": "mint local EURC fixture",
+      "hash": "0x6d586ca27c8d2cb4e9fa05232335beb0483be0e44d55780598f0f11507aa8b94",
+      "blockNumber": "70998693",
+      "gasUsed": "72591",
+      "feeWei": "1524411000000000"
+    },
+    {
+      "label": "mint local EURC fixture",
+      "hash": "0x0bbc5d7d8381a69472cc354ca4cabc3d166322d2f2d8bb3bba5e6b55ea63d585",
+      "blockNumber": "70998694",
+      "gasUsed": "72591",
+      "feeWei": "1524411000000000"
+    },
+    {
+      "label": "EURC cooperative create",
+      "hash": "0xfb10d0131cb975caace74bdfd0c4c19169e1dd2f8251aa8dc4ce503ab0a7c6e5",
+      "blockNumber": "70998695",
+      "gasUsed": "250059",
+      "feeWei": "5251239000000000"
+    },
+    {
+      "label": "EURC fund seat 0",
+      "hash": "0x1931ddce6b4d16de0c729408395ea3470409aca72a78437ba0f0c70d38e48990",
+      "blockNumber": "70998696",
+      "gasUsed": "139106",
+      "feeWei": "2921226000000000"
+    },
+    {
+      "label": "EURC fund seat 1",
+      "hash": "0x5f6365ee9ec0d43b2e00bead57295dab985da74c93fc283803c601e63c3f8d1e",
+      "blockNumber": "70998697",
+      "gasUsed": "124384",
+      "feeWei": "2612064000000000"
+    },
+    {
+      "label": "EURC fund seat 2",
+      "hash": "0xabcc0b3dcfe72e6875640c4a1ff243730b7ecd847232c0c8203e43c1b763e36c",
+      "blockNumber": "70998698",
+      "gasUsed": "150566",
+      "feeWei": "3161886000000000"
+    },
+    {
+      "label": "EURC cooperative settle",
+      "hash": "0x4d551bf99290a19f10f6636d49f025b0287a8c5143e354fb0f9ffa6b9c411e1b",
+      "blockNumber": "70998699",
+      "gasUsed": "143794",
+      "feeWei": "3019674000000000"
+    },
+    {
+      "label": "EURC locally block first recipient",
+      "hash": "0x40bec2b808edf3c5bed422a642ae636b529987537af82f57e12d3ee3ae7288cf",
+      "blockNumber": "70998700",
+      "gasUsed": "37466",
+      "feeWei": "786786000000000"
+    },
+    {
+      "label": "EURC claim seat 1",
+      "hash": "0x453ad4fc739df07b240d094be7a4abe34fad984140fb7e76552459e4c2174a7f",
+      "blockNumber": "70998701",
+      "gasUsed": "56063",
+      "feeWei": "1177323000000000"
+    },
+    {
+      "label": "EURC claim seat 2",
+      "hash": "0xf8744e5437a62dcbbae4e9fac48399577a36cd8ef2b262a70a2aa3c9ae107591",
+      "blockNumber": "70998702",
+      "gasUsed": "56063",
+      "feeWei": "1177323000000000"
+    },
+    {
+      "label": "EURC locally unblock recipient",
+      "hash": "0xe757138deab87c1a5a703ee27789d0492e4c145ebb482fb74e8e48e487274e93",
+      "blockNumber": "70998703",
+      "gasUsed": "37430",
+      "feeWei": "786030000000000"
+    },
+    {
+      "label": "EURC final claim",
+      "hash": "0x841806d04561d80ab0fac1d137475c8359a508e7b152998ebc7c90e47a9d858d",
+      "blockNumber": "70998704",
+      "gasUsed": "51263",
+      "feeWei": "1076523000000000"
+    },
+    {
+      "label": "mint local EURC fixture",
+      "hash": "0xdfbd43ec48ed6e57b2d204008f606ea23ee7d761f75ea48d560a79914a175933",
+      "blockNumber": "70998705",
+      "gasUsed": "72591",
+      "feeWei": "1524411000000000"
+    },
+    {
+      "label": "mint local EURC fixture",
+      "hash": "0x1429cf3ad7d1d5ab00bf72665bf5d2706346324ab1f4ac681ffe66b5ee562ca2",
+      "blockNumber": "70998706",
+      "gasUsed": "72591",
+      "feeWei": "1524411000000000"
+    },
+    {
+      "label": "mint local EURC fixture",
+      "hash": "0x1418e7ed138aa222d374417fb26618347a220d3a781927b90e29692b853a2210",
+      "blockNumber": "70998707",
+      "gasUsed": "72591",
+      "feeWei": "1524411000000000"
+    },
+    {
+      "label": "EURC partial-refund create",
+      "hash": "0x6940cedb55d694049fb0b824b9d8ea99d9ce628e632c1a2a959f83a5d943d57e",
+      "blockNumber": "70998708",
+      "gasUsed": "250059",
+      "feeWei": "5251239000000000"
+    },
+    {
+      "label": "EURC fund seat 0",
+      "hash": "0x60a4b4811482d2687408ed59cd2628b8987a3be0c8c106a0bca86f5cb5461237",
+      "blockNumber": "70998709",
+      "gasUsed": "139106",
+      "feeWei": "2921226000000000"
+    },
+    {
+      "label": "EURC partial refund",
+      "hash": "0x287bee4c5f7460f5b2411d2911ae1a9931b75b9cb9014c807e9edfb11d05d904",
+      "blockNumber": "70998711",
+      "gasUsed": "61162",
+      "feeWei": "1284402000000000"
+    },
+    {
+      "label": "EURC refund claim",
+      "hash": "0x02f1918274560062e2a8b2a5e100e76e8ab0a06ef55bee1fe683247f5d7080da",
+      "blockNumber": "70998712",
+      "gasUsed": "51426",
+      "feeWei": "1079946000000000"
+    },
+    {
+      "label": "mint local EURC fixture",
+      "hash": "0xbe4d8c467b1603e402e17e4cdef5ff507dc5bbfc41c12e47fb6ffe0f512b5003",
+      "blockNumber": "70998713",
+      "gasUsed": "72591",
+      "feeWei": "1524411000000000"
+    },
+    {
+      "label": "mint local EURC fixture",
+      "hash": "0xc4128b1d2ddc8e05f1508aa90100770941570ab4dbe577e8cecb9dd7659ccde1",
+      "blockNumber": "70998714",
+      "gasUsed": "72579",
+      "feeWei": "1524159000000000"
+    },
+    {
+      "label": "EURC contest create",
+      "hash": "0xba783e7e1afc992739cb28a6184e89c1d6d8b24357b8f393e6cf784d9ebdd7e8",
+      "blockNumber": "70998715",
+      "gasUsed": "223613",
+      "feeWei": "4695873000000000"
+    },
+    {
+      "label": "EURC fund seat 0",
+      "hash": "0xfd4ec601c192b01113a9de6b976d8cda643804438526ee6860473c7b9846b76f",
+      "blockNumber": "70998716",
+      "gasUsed": "139086",
+      "feeWei": "2920806000000000"
+    },
+    {
+      "label": "EURC fund seat 1",
+      "hash": "0xd7fc0da5eaa5833e04cfc9024cafb05cf1f04ad7e8cea1f65cc321e08771ed7a",
+      "blockNumber": "70998717",
+      "gasUsed": "148196",
+      "feeWei": "3112116000000000"
+    },
+    {
+      "label": "EURC propose",
+      "hash": "0x926815d169da3bdb7b3829c38b484612de6d408338b94f592f7b7b63e393fc5c",
+      "blockNumber": "70998719",
+      "gasUsed": "107475",
+      "feeWei": "2256975000000000"
+    },
+    {
+      "label": "EURC contest",
+      "hash": "0xe9da6d8d9bfec71ac9cbc38ce7176d08a382040691078b03803b4aeee84131eb",
+      "blockNumber": "70998720",
+      "gasUsed": "47176",
+      "feeWei": "990696000000000"
+    },
+    {
+      "label": "EURC contested refund",
+      "hash": "0x6ba102ffb191f05a4863d2c2f21af1fdecca7e4692062d26ff89e45a6abf2a90",
+      "blockNumber": "70998721",
+      "gasUsed": "83556",
+      "feeWei": "1754676000000000"
+    },
+    {
+      "label": "EURC contested claim",
+      "hash": "0xbeba9f2893c692bef819efdd50d4727f24b3da3f42817ac5a9a2ae035405e1fe",
+      "blockNumber": "70998722",
+      "gasUsed": "56226",
+      "feeWei": "1180746000000000"
+    },
+    {
+      "label": "EURC contested claim",
+      "hash": "0x53749b4126276d9670b6e88e7e602980b9e77a5331db5143031ebf68e0626a78",
+      "blockNumber": "70998723",
+      "gasUsed": "51414",
+      "feeWei": "1079694000000000"
+    }
+  ],
+  "contract": "0x3623b7480f76a64e8ea1521a0778637820249a42",
+  "ok": true
+}

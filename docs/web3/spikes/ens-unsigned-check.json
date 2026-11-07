@@ -1,0 +1,19 @@
+{
+  "at": "2026-11-06T10:18:27.269Z",
+  "chainId": 11155111,
+  "scope": "UNSIGNED READ-ONLY CHECK; no private key loaded or transaction sent",
+  "owner": "0x04b0970f4a58caa9E58C5aDBBF7eB402339264a5",
+  "token": "0x240b0316df57887dbbe58b586508b19e633a14aa",
+  "tokenSymbol": "USDC",
+  "mintUnits": "8000021",
+  "mintSimulation": "success",
+  "mintGas": "141730",
+  "nativeValueWei": "0",
+  "approvalSpender": "0xf633e7fc17e2bbe0d0965d18ec1821dcb754a3d3",
+  "approvalUnits": "8000021",
+  "chainSafety": "Only chain 11155111 accepted; no mainnet override exists",
+  "sources": [
+    "https://docs.ens.domains/ensv2/tutorial-app-developers/#getting-test-funds",
+    "https://ens.domains/blog/post/ensv2-beta-public-testing"
+  ]
+}

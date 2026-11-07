@@ -1,0 +1,57 @@
+{
+  "at": "2026-11-06T11:02:32.752Z",
+  "scope": "Index of separate pre-event scratch evidence; not production Arkiv code",
+  "directory": "/Users/raihankhan/Documents/Projects/chonks-arkiv-k0/",
+  "files": [
+    {
+      "path": "network-readonly.mjs",
+      "sha256": "43bdce77545b816172bd16ab1acd5ea87e5421abda410f691e022550429c3c3b",
+      "bytes": 2715
+    },
+    {
+      "path": "swarm-retention.mjs",
+      "sha256": "ebac9e9073225ebcd091a32ef153a45db03dc54648f770e3f8c954bebf38130a",
+      "bytes": 2406
+    },
+    {
+      "path": "bundle-probe.mjs",
+      "sha256": "4d410805418002e7afb19dc03d710326b0b83f423b0018619e0a8dbef9660e57",
+      "bytes": 1008
+    },
+    {
+      "path": "package.json",
+      "sha256": "ef5362ea4b0b5eb1b40e5c8939d81024168a5224e194934c2a39bc5e30d5dbf4",
+      "bytes": 242
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "4a5cc6d34de396a0ee4aeacdc781acefc9fff1afd7009b6839470ce8323d0350",
+      "bytes": 15622
+    },
+    {
+      "path": "evidence/network-readonly.json",
+      "sha256": "91ee3b3554eeb4c75bdfbb71118f8cdee205e0416548bdfa77ea61c6e9a9eab6",
+      "bytes": 2513
+    },
+    {
+      "path": "evidence/swarm-retention.json",
+      "sha256": "f19fe73c01e1f5b74751b669ea26e34d564dd5c775bec1212a39b94d3b0608d5",
+      "bytes": 2454
+    },
+    {
+      "path": "evidence/dependency-tree.json",
+      "sha256": "2a8164bb7decc1ce9a9149e901636b8a1ef4f1489e599f4e57c9a2256601d50a",
+      "bytes": 757
+    },
+    {
+      "path": "evidence/bundle-probe.json",
+      "sha256": "b0cf680231c32909a1e7efdf130ec9b1de99a3d7cb62a09e55e6b075cfbde78e",
+      "bytes": 167
+    },
+    {
+      "path": "arkiv/friction.md",
+      "sha256": "4888001d74da023325367fcf7191b85484872ec4e8a202389b0bb4ea705717a2",
+      "bytes": 2576
+    }
+  ]
+}

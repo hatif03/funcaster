@@ -1,0 +1,61 @@
+{
+  "at": "2026-11-06T05:06:56.693Z",
+  "scope": "INDEPENDENT PUBLIC READS; no keys or sends",
+  "chainId": 5042002,
+  "providers": [
+    {
+      "host": "rpc.testnet.arc.io",
+      "transactions": [
+        {
+          "hash": "0x4e1cca71dd8d5215bc2100394fed8d49907ff6598bbc1d1ef4e22e6029ae2e62",
+          "blockNumber": "70943614",
+          "blockHash": "0x939cb0563f47aa6cba12eccb059c7fc3b14109deb8b0996aef046771ac0766cc",
+          "status": "success",
+          "gasCost": "1242940000000000",
+          "checked": "sender, token, calldata, value, exact token-emitter Transfer, receipt gas, canonical block"
+        },
+        {
+          "hash": "0x0468caecbca29a8d05fd3947a047b6fc6ea4c8763d285e64a17767211b0292f6",
+          "blockNumber": "70943623",
+          "blockHash": "0xb1098ab95436cd470588dd63b4d59b962b56c07d1ed327316aa7d4deffebd6c6",
+          "status": "success",
+          "gasCost": "1723420000000000",
+          "checked": "sender, token, calldata, value, exact token-emitter Transfer, receipt gas, canonical block"
+        }
+      ],
+      "postStateBlock": "70943623",
+      "authorizationUsed": true,
+      "senderRetained": "0.05",
+      "symbol": "EURC",
+      "donorMinorUnits": "19950000"
+    },
+    {
+      "host": "rpc.testnet.arc.network",
+      "transactions": [
+        {
+          "hash": "0x4e1cca71dd8d5215bc2100394fed8d49907ff6598bbc1d1ef4e22e6029ae2e62",
+          "blockNumber": "70943614",
+          "blockHash": "0x939cb0563f47aa6cba12eccb059c7fc3b14109deb8b0996aef046771ac0766cc",
+          "status": "success",
+          "gasCost": "1242940000000000",
+          "checked": "sender, token, calldata, value, exact token-emitter Transfer, receipt gas, canonical block"
+        },
+        {
+          "hash": "0x0468caecbca29a8d05fd3947a047b6fc6ea4c8763d285e64a17767211b0292f6",
+          "blockNumber": "70943623",
+          "blockHash": "0xb1098ab95436cd470588dd63b4d59b962b56c07d1ed327316aa7d4deffebd6c6",
+          "status": "success",
+          "gasCost": "1723420000000000",
+          "checked": "sender, token, calldata, value, exact token-emitter Transfer, receipt gas, canonical block"
+        }
+      ],
+      "postStateBlock": "70943623",
+      "authorizationUsed": true,
+      "senderRetained": "0.05",
+      "symbol": "EURC",
+      "donorMinorUnits": "19950000"
+    }
+  ],
+  "totalGasUSDC": "0.00296636",
+  "result": "PASS: owner-executed EURC authorization and retained floor; product flows remain separate gates"
+}

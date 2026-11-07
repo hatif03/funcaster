@@ -1,0 +1,45 @@
+{
+  "scope": "KEYLESS RECONCILIATION OF OWNER-SIGNED FIRST DRIP; not completed A4 acceptance",
+  "transaction": "0x55b4ae9edc418fbc50f6c7f5ff594e6ba74d74dbc8cdc67491165749ddd9c313",
+  "blockNumber": "71010928",
+  "costWei": "1478760000000000",
+  "status": "success",
+  "verifiedHosts": [
+    "rpc.testnet.arc.io",
+    "rpc.testnet.arc.network"
+  ],
+  "newTransactionsSentByVerifier": 0,
+  "originalWorkerError": "RECEIPT_MISMATCH",
+  "wrapperError": "ENOENT reading absent receipts.jsonl before worker backoff",
+  "repair": "Keep exact jobs, fixture keys and budgets; bounded polling permits worker reconciliation and reports failed/pending step.",
+  "resumedStartup": {
+    "ownerReportedCode": "UNAVAILABLE",
+    "originalNestedCause": "not recorded; unknown",
+    "readOnlyReproduction": {
+      "phase": "preflight-balances",
+      "name": "LimitExceededRpcError",
+      "rpcCode": -32005
+    },
+    "repair": "Retry explicitly allowed reads only, at most four attempts; retain fail-closed proofs and one-shot sends; remove duplicate startup verification; report safe diagnostic phases.",
+    "readOnlyStartup": "PASS on both configured hosts; 144 reads, zero worker polls/signatures/broadcasts",
+    "relayerJournalTransactions": 1,
+    "oracleJournalTransactions": 0,
+    "publicAcceptanceComplete": false
+  },
+  "backgroundRefund": {
+    "ownerFailure": "ERR_ASSERTION",
+    "workerRecoveryError": "RECEIPT_MISMATCH",
+    "hash": "0xcd4bc25176ec8aed6628b2caa756a0e63ba506af128e9441eb937530e3643dc8",
+    "blockNumber": "71015406",
+    "costWei": "1216820000000000",
+    "status": "success",
+    "verifiedHosts": [
+      "rpc.testnet.arc.io",
+      "rpc.testnet.arc.network"
+    ],
+    "relayerAdmissions": 11,
+    "oracleAdmissions": 0,
+    "repairCommit": "46d1e1e",
+    "scope": "READ-ONLY CANONICAL INTENT/RECEIPT READBACK; remaining claim and scenario require owner resume; no signing/resend/reset"
+  }
+}

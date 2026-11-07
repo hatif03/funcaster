@@ -1,0 +1,36 @@
+{
+  "at": "2026-11-06T21:21:27.894Z",
+  "scope": "Local-origin real Chromium anonymous Rabdi read; no signing; not the final Hall",
+  "bundle": {
+    "bytes": 360562,
+    "gzipBytes": 116659
+  },
+  "samples": [
+    {
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "count": 8,
+      "block": "263964",
+      "methods": [
+        "eth_chainId",
+        "arkiv_query"
+      ],
+      "status": "PASS-READ"
+    },
+    {
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "count": 8,
+      "block": "263965",
+      "methods": [
+        "eth_chainId",
+        "arkiv_query"
+      ],
+      "status": "PASS-READ"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "at": "2026-11-06T00:13:16.233Z",
+  "scope": "PUBLIC READS + UNSIGNED ESTIMATE",
+  "name": "play.funcaster.eth",
+  "resolver": "0x8FB3Bc94532Ff13C75d84201D72E7A0A77Bf9439",
+  "registrar": "0x04b0970f4a58caa9E58C5aDBBF7eB402339264a5",
+  "console": "0xE581E56c592Ab9D6d3D234168EE9a89032273c00",
+  "existing": null,
+  "estimate": "384834",
+  "maxGasWei": "461800014777600",
+  "operations": [],
+  "dataHash": "0xf02468bbbe5f6653311ef0177b2f0556d79404e14273ac80cd96f9d0d07d8ec0"
+}

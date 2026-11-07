@@ -1,0 +1,262 @@
+{
+  "at": "2026-11-06T21:08:39.520Z",
+  "scope": "Local exported G0 diagnostic; Chromium",
+  "samples": [
+    {
+      "width": 320,
+      "height": 568,
+      "scenario": "live",
+      "layout": {
+        "overflow": [],
+        "buttonHeight": 44,
+        "bodyScroll": false
+      },
+      "methods": [
+        "eth_chainId",
+        "eth_blockNumber",
+        "eth_call"
+      ],
+      "status": "Connected\n\nPublic RPC reachable on the expected chain. Read-only.",
+      "screenshot": "320-live.png"
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "scenario": "wrong-chain",
+      "layout": {
+        "overflow": [],
+        "buttonHeight": 44,
+        "bodyScroll": false
+      },
+      "methods": [
+        "eth_chainId"
+      ],
+      "status": "Wrong chain\n\nWrong chain: the RPC reports chain 1, but this page only reads Arc Testnet (5042002).",
+      "screenshot": "320-wrong-chain.png"
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "scenario": "unavailable",
+      "layout": {
+        "overflow": [],
+        "buttonHeight": 44,
+        "bodyScroll": false
+      },
+      "methods": [
+        "eth_chainId"
+      ],
+      "status": "RPC unavailable\n\nCould not read from the public RPC: Missing or invalid parameters. Double check you have provided the correct parameters.",
+      "screenshot": "320-unavailable.png"
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "scenario": "large-balance",
+      "layout": {
+        "overflow": [],
+        "buttonHeight": 44,
+        "bodyScroll": false
+      },
+      "methods": [
+        "eth_chainId",
+        "eth_blockNumber",
+        "eth_call"
+      ],
+      "status": "Connected\n\nPublic RPC reachable on the expected chain. Read-only.",
+      "screenshot": "320-large-balance.png"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scenario": "live",
+      "layout": {
+        "overflow": [],
+        "buttonHeight": 44,
+        "bodyScroll": false
+      },
+      "methods": [
+        "eth_chainId",
+        "eth_blockNumber",
+        "eth_call"
+      ],
+      "status": "Connected\n\nPublic RPC reachable on the expected chain. Read-only.",
+      "screenshot": "390-live.png"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scenario": "wrong-chain",
+      "layout": {
+        "overflow": [],
+        "buttonHeight": 44,
+        "bodyScroll": false
+      },
+      "methods": [
+        "eth_chainId"
+      ],
+      "status": "Wrong chain\n\nWrong chain: the RPC reports chain 1, but this page only reads Arc Testnet (5042002).",
+      "screenshot": "390-wrong-chain.png"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scenario": "unavailable",
+      "layout": {
+        "overflow": [],
+        "buttonHeight": 44,
+        "bodyScroll": false
+      },
+      "methods": [
+        "eth_chainId"
+      ],
+      "status": "RPC unavailable\n\nCould not read from the public RPC: Missing or invalid parameters. Double check you have provided the correct parameters.",
+      "screenshot": "390-unavailable.png"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scenario": "large-balance",
+      "layout": {
+        "overflow": [],
+        "buttonHeight": 44,
+        "bodyScroll": false
+      },
+      "methods": [
+        "eth_chainId",
+        "eth_blockNumber",
+        "eth_call"
+      ],
+      "status": "Connected\n\nPublic RPC reachable on the expected chain. Read-only.",
+      "screenshot": "390-large-balance.png"
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "scenario": "live",
+      "layout": {
+        "overflow": [],
+        "buttonHeight": 44,
+        "bodyScroll": false
+      },
+      "methods": [
+        "eth_chainId",
+        "eth_blockNumber",
+        "eth_call"
+      ],
+      "status": "Connected\n\nPublic RPC reachable on the expected chain. Read-only.",
+      "screenshot": "844-live.png"
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "scenario": "wrong-chain",
+      "layout": {
+        "overflow": [],
+        "buttonHeight": 44,
+        "bodyScroll": false
+      },
+      "methods": [
+        "eth_chainId"
+      ],
+      "status": "Wrong chain\n\nWrong chain: the RPC reports chain 1, but this page only reads Arc Testnet (5042002).",
+      "screenshot": "844-wrong-chain.png"
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "scenario": "unavailable",
+      "layout": {
+        "overflow": [],
+        "buttonHeight": 44,
+        "bodyScroll": false
+      },
+      "methods": [
+        "eth_chainId"
+      ],
+      "status": "RPC unavailable\n\nCould not read from the public RPC: Missing or invalid parameters. Double check you have provided the correct parameters.",
+      "screenshot": "844-unavailable.png"
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "scenario": "large-balance",
+      "layout": {
+        "overflow": [],
+        "buttonHeight": 44,
+        "bodyScroll": false
+      },
+      "methods": [
+        "eth_chainId",
+        "eth_blockNumber",
+        "eth_call"
+      ],
+      "status": "Connected\n\nPublic RPC reachable on the expected chain. Read-only.",
+      "screenshot": "844-large-balance.png"
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "scenario": "live",
+      "layout": {
+        "overflow": [],
+        "buttonHeight": 44,
+        "bodyScroll": false
+      },
+      "methods": [
+        "eth_chainId",
+        "eth_blockNumber",
+        "eth_call"
+      ],
+      "status": "Connected\n\nPublic RPC reachable on the expected chain. Read-only.",
+      "screenshot": "1280-live.png"
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "scenario": "wrong-chain",
+      "layout": {
+        "overflow": [],
+        "buttonHeight": 44,
+        "bodyScroll": false
+      },
+      "methods": [
+        "eth_chainId"
+      ],
+      "status": "Wrong chain\n\nWrong chain: the RPC reports chain 1, but this page only reads Arc Testnet (5042002).",
+      "screenshot": "1280-wrong-chain.png"
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "scenario": "unavailable",
+      "layout": {
+        "overflow": [],
+        "buttonHeight": 44,
+        "bodyScroll": false
+      },
+      "methods": [
+        "eth_chainId"
+      ],
+      "status": "RPC unavailable\n\nCould not read from the public RPC: Missing or invalid parameters. Double check you have provided the correct parameters.",
+      "screenshot": "1280-unavailable.png"
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "scenario": "large-balance",
+      "layout": {
+        "overflow": [],
+        "buttonHeight": 44,
+        "bodyScroll": false
+      },
+      "methods": [
+        "eth_chainId",
+        "eth_blockNumber",
+        "eth_call"
+      ],
+      "status": "Connected\n\nPublic RPC reachable on the expected chain. Read-only.",
+      "screenshot": "1280-large-balance.png"
+    }
+  ]
+}

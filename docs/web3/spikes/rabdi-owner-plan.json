@@ -1,0 +1,18 @@
+{
+  "at": "2026-11-06T21:14:24.637Z",
+  "scope": "PUBLIC READS + UNSIGNED ESTIMATE",
+  "sdk": "1.0.1",
+  "chainId": 7794095,
+  "owner": "0xE581E56c592Ab9D6d3D234168EE9a89032273c00",
+  "balanceWei": "10000000000000000000",
+  "balanceTGLM": "10",
+  "budgetTGLM": "0.5",
+  "singleCreate": {
+    "estimate": "248754",
+    "gas": "1000000",
+    "gasPrice": "1000000000",
+    "maxCostWei": "1000000000000000"
+  },
+  "checks": [],
+  "operations": []
+}

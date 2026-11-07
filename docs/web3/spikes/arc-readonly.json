@@ -1,0 +1,153 @@
+{
+  "at": "2026-11-06T05:34:07.085Z",
+  "scope": "Daily public A0 reads only; combine with authorization receipts and native-flow evidence for the G0 verdict",
+  "config": {
+    "chainId": 5042002,
+    "rpcUrls": [
+      "https://rpc.testnet.arc.io",
+      "https://rpc.testnet.arc.network"
+    ],
+    "source": "https://docs.arc.io/arc/references/contract-addresses",
+    "relayer": "0x81DdeD7eE7753791cEaF24Ab6Cb1694d1F39A008",
+    "testBlocklistedAddress": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+    "assets": [
+      {
+        "symbol": "USDC",
+        "address": "0x3600000000000000000000000000000000000000",
+        "name": "USDC",
+        "version": "2",
+        "decimals": 6
+      },
+      {
+        "symbol": "EURC",
+        "address": "0x89B50855Aa3bE2F677cD6303Cec089B5F319D72a",
+        "name": "EURC",
+        "version": "2",
+        "decimals": 6
+      }
+    ],
+    "contracts": {
+      "Multicall3": "0xcA11bde05977b3631167028862bE2a173976CA11",
+      "Memo": "0x5294E9927c3306DcBaDb03fe70b92e01cCede505"
+    }
+  },
+  "endpoints": [
+    {
+      "rpc": "https://rpc.testnet.arc.io",
+      "status": "PASS",
+      "chainId": 5042002
+    },
+    {
+      "rpc": "https://rpc.testnet.arc.network",
+      "status": "PASS",
+      "chainId": 5042002
+    }
+  ],
+  "checks": [
+    {
+      "id": "USDC code",
+      "status": "PASS-READ",
+      "result": {
+        "bytes": 1798,
+        "hash": "0xc9987bd3af6b26a030951faa7eacc017b68343aeedf3ce5fe68f821c4b93939d"
+      }
+    },
+    {
+      "id": "USDC domain",
+      "status": "PASS-READ",
+      "result": {
+        "name": "USDC",
+        "version": "2",
+        "decimals": 6,
+        "separator": "0x361191522483d32a83e70ae7183b4b9629442c13a78bc9921d6f707911c8c6b0",
+        "matches": true
+      }
+    },
+    {
+      "id": "USDC state",
+      "status": "PASS-READ",
+      "result": {
+        "paused": false,
+        "testAddressBlacklisted": true,
+        "relayerBalance": "19943804",
+        "units": "ERC20 minor units (6 decimals)"
+      }
+    },
+    {
+      "id": "USDC payee-only guard",
+      "status": "PASS-READ",
+      "result": {
+        "revert": "FiatTokenV2: caller must be the payee",
+        "successfulAuthorization": "NOT TESTED"
+      }
+    },
+    {
+      "id": "EURC code",
+      "status": "PASS-READ",
+      "result": {
+        "bytes": 1798,
+        "hash": "0x35bca78fda57cc45ed6ac8b61e4911e0a7fe1e89c05b9f187d3a8705e94013a2"
+      }
+    },
+    {
+      "id": "EURC domain",
+      "status": "PASS-READ",
+      "result": {
+        "name": "EURC",
+        "version": "2",
+        "decimals": 6,
+        "separator": "0x649ec6b0634bd74f28684781d2c9ae49dff14ba3d5f9bb5d70c1e1f0e1ebf160",
+        "matches": true
+      }
+    },
+    {
+      "id": "EURC state",
+      "status": "PASS-READ",
+      "result": {
+        "paused": false,
+        "testAddressBlacklisted": false,
+        "relayerBalance": "19950000",
+        "units": "ERC20 minor units (6 decimals)"
+      }
+    },
+    {
+      "id": "EURC payee-only guard",
+      "status": "PASS-READ",
+      "result": {
+        "revert": "FiatTokenV2: caller must be the payee",
+        "successfulAuthorization": "NOT TESTED"
+      }
+    },
+    {
+      "id": "Multicall3 code",
+      "status": "PASS-READ",
+      "result": {
+        "bytes": 3808,
+        "hash": "0xd5c15df687b16f2ff992fc8d767b4216323184a2bbc6ee2f9c398c318e770891"
+      }
+    },
+    {
+      "id": "Memo code",
+      "status": "PASS-READ",
+      "result": {
+        "bytes": 1228,
+        "hash": "0x3e5d663b3c99d70c9ff00d597ae68ce2f2e2843b2d39adae5eb78d8eb6877b95"
+      }
+    },
+    {
+      "id": "Memo EOA unsigned simulation",
+      "status": "PASS-READ",
+      "result": {
+        "result": "eth_call succeeded",
+        "transactionSent": false,
+        "source": "https://explorer.testnet.arc.io/api/v2/smart-contracts/0x5294E9927c3306DcBaDb03fe70b92e01cCede505"
+      }
+    }
+  ],
+  "block": {
+    "number": "70979980",
+    "hash": "0xd31fe0f826082a32d8eab7dbac234834fc8397ae86c735922bee18ea44f914d5",
+    "timestamp": "1793943249",
+    "baseFeePerGas": "20000000000"
+  }
+}

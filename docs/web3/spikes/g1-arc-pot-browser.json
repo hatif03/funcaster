@@ -1,0 +1,799 @@
+{
+  "at": "2026-11-06T08:22:56.646Z",
+  "scope": "Chromium console UI with explicit RPC fixtures; no chain sends",
+  "samples": [
+    {
+      "width": 320,
+      "height": 568,
+      "scenario": "empty",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "scenario": "invalid",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "scenario": "funding",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "scenario": "locked",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "scenario": "proposed",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "scenario": "contested",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "scenario": "settled",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "scenario": "refunded",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "scenario": "wrong-chain",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "scenario": "unavailable",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "scenario": "not-found",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "scenario": "stale",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "scenario": "details",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "scenario": "about",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "scenario": "create-empty",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "scenario": "create-invalid",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "scenario": "create-review",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "scenario": "wallet-claim",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "scenario": "wallet-refund",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "scenario": "wallet-create",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "scenario": "wallet-rejected",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "scenario": "wallet-account-change",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scenario": "empty",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scenario": "invalid",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scenario": "funding",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scenario": "locked",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scenario": "proposed",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scenario": "contested",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scenario": "settled",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scenario": "refunded",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scenario": "wrong-chain",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scenario": "unavailable",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scenario": "not-found",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scenario": "stale",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scenario": "details",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scenario": "about",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scenario": "create-empty",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scenario": "create-invalid",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scenario": "create-review",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scenario": "wallet-claim",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scenario": "wallet-refund",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scenario": "wallet-create",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scenario": "wallet-rejected",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scenario": "wallet-account-change",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "scenario": "empty",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "scenario": "invalid",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "scenario": "funding",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "scenario": "locked",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "scenario": "proposed",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "scenario": "contested",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "scenario": "settled",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "scenario": "refunded",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "scenario": "wrong-chain",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "scenario": "unavailable",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "scenario": "not-found",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "scenario": "stale",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "scenario": "details",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "scenario": "about",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "scenario": "create-empty",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "scenario": "create-invalid",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "scenario": "create-review",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "scenario": "wallet-claim",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "scenario": "wallet-refund",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "scenario": "wallet-create",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "scenario": "wallet-rejected",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "scenario": "wallet-account-change",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "scenario": "empty",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "scenario": "invalid",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "scenario": "funding",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "scenario": "locked",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "scenario": "proposed",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "scenario": "contested",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "scenario": "settled",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "scenario": "refunded",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "scenario": "wrong-chain",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "scenario": "unavailable",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "scenario": "not-found",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "scenario": "stale",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "scenario": "details",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "scenario": "about",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "scenario": "create-empty",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "scenario": "create-invalid",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "scenario": "create-review",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "scenario": "wallet-claim",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "scenario": "wallet-refund",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "scenario": "wallet-create",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "scenario": "wallet-rejected",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "scenario": "wallet-account-change",
+      "status": "PASS",
+      "overflow": [],
+      "overlaps": [],
+      "shortControls": []
+    }
+  ],
+  "ok": true
+}

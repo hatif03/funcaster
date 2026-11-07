@@ -1,0 +1,610 @@
+{
+  "at": "2026-11-06T11:12:49.765Z",
+  "scope": "PUBLIC ARC TESTNET; synthetic worker acceptance, not gameplay or Ledger acceptance",
+  "deployment": {
+    "contract": "0xe339B15Aa54596B4752923d981DAC30B7A569F82",
+    "creationTx": "0x69d3bbc0f5428c25827e314f83121a4dcef954a69413d754e8b3adf629737448"
+  },
+  "checks": [
+    {
+      "id": "usdc bankroll seat 1",
+      "status": "PASS-PUBLIC-SCRIPT",
+      "tx": "0x55b4ae9edc418fbc50f6c7f5ff594e6ba74d74dbc8cdc67491165749ddd9c313",
+      "amount": "60000"
+    },
+    {
+      "id": "usdc bankroll seat 2",
+      "status": "PASS-PUBLIC-SCRIPT",
+      "tx": "0xe4c9c356d3e49e03f9a363157ff9a1fae16e6cf0e73bf2261d7221723e44288d",
+      "amount": "60000"
+    },
+    {
+      "id": "usdc cooperative",
+      "status": "PASS-PUBLIC-SCRIPT",
+      "potId": "0x371347230c2ff750d8560de5b8afa56ff7386caafa5f003db7043c942f4515f7",
+      "state": "Settled",
+      "blockNumber": "71019949",
+      "blockHash": "0xbae10f98eace39ede1b2868c2ff6a829c26ac11d747f06ddb9b33ad9bfb345ba",
+      "claimables": [
+        "0",
+        "0"
+      ],
+      "scope": "SCRIPTED WORKER JOBS; synthetic canonical relay-result fixture, not gameplay acceptance"
+    },
+    {
+      "id": "usdc refund",
+      "status": "PASS-PUBLIC-SCRIPT",
+      "potId": "0x0207e0acadb71b608113c8faa0457903e877e14f6af874548bf582866c7b6e3f",
+      "state": "Refunded",
+      "blockNumber": "71020029",
+      "blockHash": "0x3d2e84b57bfe449a749e35e0c514b5a645df69124483560688352ce6c80124af",
+      "claimables": [
+        "0",
+        "0"
+      ],
+      "scope": "SCRIPTED WORKER JOBS; synthetic canonical relay-result fixture, not gameplay acceptance"
+    },
+    {
+      "id": "usdc contest",
+      "status": "PASS-PUBLIC-SCRIPT",
+      "potId": "0x761c69f4c11532451d256628cc0410a2c31da3ef687079751ad0c4362cb40084",
+      "state": "Refunded",
+      "blockNumber": "71020700",
+      "blockHash": "0xe33227a60ea449f5dfcadcf8978a47a819e2b5f046f2b99cb7a6b1f1e0863320",
+      "claimables": [
+        "0",
+        "0"
+      ],
+      "scope": "SCRIPTED WORKER JOBS; synthetic canonical relay-result fixture, not gameplay acceptance"
+    },
+    {
+      "id": "usdc finalize",
+      "status": "PASS-PUBLIC-SCRIPT",
+      "potId": "0x21d00efa3a39f1196a649e49ab7cd13a9053995215689a7a0124847e29060c25",
+      "state": "Settled",
+      "blockNumber": "71021544",
+      "blockHash": "0x7c6ec98e41240eaa9afba9df3d85fad4d5f3418e25d55350cb6aff72dca7128c",
+      "claimables": [
+        "0",
+        "0"
+      ],
+      "scope": "SCRIPTED WORKER JOBS; synthetic canonical relay-result fixture, not gameplay acceptance"
+    },
+    {
+      "id": "eurc bankroll seat 1",
+      "status": "PASS-PUBLIC-SCRIPT",
+      "tx": "0x1b2c29bb4fb094ea883309dbba97e31412a0c2162498af967c250a4e53b0ae67",
+      "amount": "60000"
+    },
+    {
+      "id": "eurc bankroll seat 2",
+      "status": "PASS-PUBLIC-SCRIPT",
+      "tx": "0x865028fbef513c393b9b175151cc1189bbb5cc43756d4ece15bafcb3b5b5acce",
+      "amount": "60000"
+    },
+    {
+      "id": "eurc cooperative",
+      "status": "PASS-PUBLIC-SCRIPT",
+      "potId": "0x8bdd7495969b8507df6d1be513b1abcfbddf7a6e8b6d6115ecd5a21f74e5ba55",
+      "state": "Settled",
+      "blockNumber": "71022515",
+      "blockHash": "0xa72694c19cfa40cd7e4a6e9b51355bbaa05a78b8657cd46812548d6935704969",
+      "claimables": [
+        "0",
+        "0"
+      ],
+      "scope": "SCRIPTED WORKER JOBS; synthetic canonical relay-result fixture, not gameplay acceptance"
+    },
+    {
+      "id": "eurc refund",
+      "status": "PASS-PUBLIC-SCRIPT",
+      "potId": "0xce3d847d9a4b07677b08a1cee14d99511f0c5a3496169630d21c3e0a88fc921a",
+      "state": "Refunded",
+      "blockNumber": "71023098",
+      "blockHash": "0x07b57eae46cb8ae94c7c779fe580753886cce6ab7bf86002939fdba1dc4fb032",
+      "claimables": [
+        "0",
+        "0"
+      ],
+      "scope": "SCRIPTED WORKER JOBS; synthetic canonical relay-result fixture, not gameplay acceptance"
+    },
+    {
+      "id": "eurc contest",
+      "status": "PASS-PUBLIC-SCRIPT",
+      "potId": "0xef000f578ccda5f5c2745623c3af04831454ae3593ca57836ba82692ca94a722",
+      "state": "Refunded",
+      "blockNumber": "71024058",
+      "blockHash": "0xaa1efe3c5c84950ef30d810f962e47eb1557728b83bf6afa0f5a953554d331cd",
+      "claimables": [
+        "0",
+        "0"
+      ],
+      "scope": "SCRIPTED WORKER JOBS; synthetic canonical relay-result fixture, not gameplay acceptance"
+    },
+    {
+      "id": "eurc finalize",
+      "status": "PASS-PUBLIC-SCRIPT",
+      "potId": "0xa12af9e9f03fdd2002438081a75c8ef3a23f9c8d9d29519edcd295eaf2fc1174",
+      "state": "Settled",
+      "claimables": [
+        "0",
+        "0"
+      ],
+      "blockNumber": "71029051",
+      "blockHash": "0x441ccc474c8e3d4a6b24a090401b548fb4ed820a220b6b88ba1469bdaef142a1",
+      "scope": "SCRIPTED WORKER RECOVERY; retained synthetic fixture, not gameplay acceptance"
+    }
+  ],
+  "complete": true,
+  "ceilings": {
+    "gasUSDC": "0.55",
+    "drippedUSDC": "0.12",
+    "drippedEURC": "0.12",
+    "transactionsPerRole": 64
+  },
+  "preflight": {
+    "ok": true,
+    "scope": "READS AND UNSIGNED SIMULATION ONLY",
+    "deployment": {
+      "chainId": 5042002,
+      "contract": "0xe339B15Aa54596B4752923d981DAC30B7A569F82",
+      "runtimeCodeHash": "0x8583a77dd812bf10ef0c4c76da5dd3b9446f25ba3ec4bce38d18b7f9d27be279",
+      "blockNumber": 71010272,
+      "assets": [
+        {
+          "symbol": "USDC",
+          "address": "0x3600000000000000000000000000000000000000"
+        },
+        {
+          "symbol": "EURC",
+          "address": "0x89B50855Aa3bE2F677cD6303Cec089B5F319D72a"
+        }
+      ],
+      "explorer": "https://explorer.testnet.arc.io"
+    },
+    "blockNumber": "71019787",
+    "blockHash": "0xcb2da64f5383f8ff0771fa90fc411a706027a8b82a0e8bea0c1b2c34f2209ffe",
+    "assets": [
+      {
+        "symbol": "USDC",
+        "address": "0x3600000000000000000000000000000000000000",
+        "domain": {
+          "symbol": "USDC",
+          "address": "0x3600000000000000000000000000000000000000",
+          "chainId": 5042002,
+          "name": "USDC",
+          "version": "2",
+          "decimals": 6
+        },
+        "blockNumber": "71019789",
+        "blockHash": "0x7b7dd1beb4860bf26bc6358ade234d0df35427343c6e355b98a35ea53d59e3f7"
+      },
+      {
+        "symbol": "EURC",
+        "address": "0x89B50855Aa3bE2F677cD6303Cec089B5F319D72a",
+        "domain": {
+          "symbol": "EURC",
+          "address": "0x89B50855Aa3bE2F677cD6303Cec089B5F319D72a",
+          "chainId": 5042002,
+          "name": "EURC",
+          "version": "2",
+          "decimals": 6
+        },
+        "blockNumber": "71019793",
+        "blockHash": "0x2adfbb31f5a8831d770f0db21919874026e4d80a2a2925cd5ee5495f43fc30ff"
+      }
+    ],
+    "gas": "205880",
+    "fee": "40000000000",
+    "chainVerified": false,
+    "attempts": [
+      {
+        "host": "rpc.testnet.arc.io",
+        "ok": true,
+        "blockNumber": "71019787"
+      },
+      {
+        "host": "rpc.testnet.arc.network",
+        "ok": true,
+        "blockNumber": "71019799"
+      }
+    ]
+  },
+  "transactions": [
+    {
+      "role": "relayer",
+      "hash": "0x55b4ae9edc418fbc50f6c7f5ff594e6ba74d74dbc8cdc67491165749ddd9c313",
+      "blockNumber": "71010928",
+      "status": "success",
+      "costWei": "1478760000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0xe4c9c356d3e49e03f9a363157ff9a1fae16e6cf0e73bf2261d7221723e44288d",
+      "blockNumber": "71014721",
+      "status": "success",
+      "costWei": "1478760000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x84d19c565fe774604b8a502780842afd07845206d56c6f8aa933057d65856f37",
+      "blockNumber": "71014765",
+      "status": "success",
+      "costWei": "4467940000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0xa7a0a4204a273a535760e3248942f8523892162f21e059da84b8e3612144d1fb",
+      "blockNumber": "71014814",
+      "status": "success",
+      "costWei": "2514420000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0xe17b5d35e48d8617d6a794db41430fc91131ca37a401270333526fce24f24265",
+      "blockNumber": "71014845",
+      "status": "success",
+      "costWei": "3038860000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x7c6c927d24daeefef8caa13fe0abe0b973cf928cb16e99aa2d24815e464c5d12",
+      "blockNumber": "71014904",
+      "status": "success",
+      "costWei": "2191440000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x6455b6bfe18edab5a67bb72ff43c037f7bfe9c89035dc162d1e3ae21ee12b112",
+      "blockNumber": "71014936",
+      "status": "success",
+      "costWei": "1238840000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x472612eb6eac46db77ab5398d183b1c0df632fb1f42e145eae1cf275e4efc167",
+      "blockNumber": "71014962",
+      "status": "success",
+      "costWei": "1238840000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x3bb303e521f7dc98f88ecb02f2e7e764d372b0801bed580b0d2849f39c2df008",
+      "blockNumber": "71015041",
+      "status": "success",
+      "costWei": "4468180000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0xd7b03080774373ea774ff1c7fdb8c72842502421add88ed7a0fb52212b9000e9",
+      "blockNumber": "71015103",
+      "status": "success",
+      "costWei": "2514900000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0xcd4bc25176ec8aed6628b2caa756a0e63ba506af128e9441eb937530e3643dc8",
+      "blockNumber": "71015406",
+      "status": "success",
+      "costWei": "1216820000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x8a3ae1a859139570b7c4261396f9206755289b443f734081c34c6dbfc9bdff00",
+      "blockNumber": "71019847",
+      "status": "success",
+      "costWei": "1242340000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x36e02076b19bd6be7eabd58683574d5fe98438d622b00559cfd731cc16d1c0d6",
+      "blockNumber": "71020067",
+      "status": "success",
+      "costWei": "4467940000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0xd7c030e1d592418ed809137e0d0c0639e7d506b54c0b54bb7eeabca4d867ff47",
+      "blockNumber": "71020151",
+      "status": "success",
+      "costWei": "2514820000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0xb68fb1e1174490918613febf82f6fdc9380ab53ea18e6076f863641721cc734b",
+      "blockNumber": "71020239",
+      "status": "success",
+      "costWei": "3039100000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x070893210e63ba54fa8753ca10d6f1c0e68f284a22eb6e560371b4e8de78ee53",
+      "blockNumber": "71020493",
+      "status": "success",
+      "costWei": "895960000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x68153c20894ac3a411e5fc6747794370d2c0335d5692ae658122357ba7b307f5",
+      "blockNumber": "71020542",
+      "status": "success",
+      "costWei": "1670880000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0xe9c6c1e3bff483a0db2a9a49275e5107c59a587c49d19cf1e94d5fd3f09636b3",
+      "blockNumber": "71020595",
+      "status": "success",
+      "costWei": "1242100000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x6c0b5c9ed731d0a280cddfae1dd87e42e057643f1fdf6c1c98603871c724b413",
+      "blockNumber": "71020661",
+      "status": "success",
+      "costWei": "1242100000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x6774416d3b580afa0ccc90a328fa911f2fc4894b100e2e10e8a372e915ea477e",
+      "blockNumber": "71020730",
+      "status": "success",
+      "costWei": "4468180000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x01de71f5da52e2df37667a1cbee8154aa383ba82d975fd30ea650b46585c182c",
+      "blockNumber": "71020843",
+      "status": "success",
+      "costWei": "2515060000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0xb37169bf588e8311a1d3f02cafdddf9e775baa93daba4c12eb557eda663e78bc",
+      "blockNumber": "71020955",
+      "status": "success",
+      "costWei": "3038700000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0xc9ad1716435a372972e061e23bfc77bb11ecf89cde3a9c508b856ba4a5392f48",
+      "blockNumber": "71021398",
+      "status": "success",
+      "costWei": "1840760000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x3d0da4d6d856cb9912d25d93ba8c4ba0065b046fab74052803732cc616f765dd",
+      "blockNumber": "71021458",
+      "status": "success",
+      "costWei": "1239080000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0xd6a000ce85514ff195f3f335b44aaedbfdee406ff06e5eec6ed93b67ee9b6aab",
+      "blockNumber": "71021515",
+      "status": "success",
+      "costWei": "1239080000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x1b2c29bb4fb094ea883309dbba97e31412a0c2162498af967c250a4e53b0ae67",
+      "blockNumber": "71021604",
+      "status": "success",
+      "costWei": "1242940000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x865028fbef513c393b9b175151cc1189bbb5cc43756d4ece15bafcb3b5b5acce",
+      "blockNumber": "71021774",
+      "status": "success",
+      "costWei": "1242940000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x9118f8fdc8cd339a9060852c387ecc0f62c6b6736a34040f934b65dbedb50a90",
+      "blockNumber": "71021976",
+      "status": "success",
+      "costWei": "4472740000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x154fe254366f3ece19000064614ad67f8bafb60b129107011ef4e744d7f170a6",
+      "blockNumber": "71022072",
+      "status": "success",
+      "costWei": "2782120000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0xcd8c552b24f68d333b69e07228652b4c0d785cc0ac037184fbf027328f225b8a",
+      "blockNumber": "71022164",
+      "status": "success",
+      "costWei": "2963680000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0xa6523305046f036a7de369bbf706bb56c7a397e731d6645be0e2dc17b9eab3e4",
+      "blockNumber": "71022268",
+      "status": "success",
+      "costWei": "2191440000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x08d30871046a48315e6761d0cabe30f1d5d366a2e1c151b6182f4a9dbbec311f",
+      "blockNumber": "71022344",
+      "status": "success",
+      "costWei": "1121260000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0xe83bb84e643901e4df48766342f7441e5038af82c8a5ab7c840c2eb14c609f76",
+      "blockNumber": "71022420",
+      "status": "success",
+      "costWei": "1025260000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0xb3a2e5a7230cd8fbe7350305ac3043ceb69ca054b46d6672e0def7dec3fbcd2a",
+      "blockNumber": "71022561",
+      "status": "success",
+      "costWei": "4472740000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x2821fb46acc70512b3fefa87f804f24d07bcc2fcd3410ada0c2c5356398ec1ca",
+      "blockNumber": "71022672",
+      "status": "success",
+      "costWei": "2781720000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x2954d70a17ae14399e23eabd06d01c61438a0394ce6341036e6828fa51974a81",
+      "blockNumber": "71022943",
+      "status": "success",
+      "costWei": "1216820000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x2ec59947087a5a7fa315b18b965950032dee4be662a8b913df5d14e97ef6fee4",
+      "blockNumber": "71023024",
+      "status": "success",
+      "costWei": "1028520000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x39274afa192f130c9acd6b5d954e970556f4a1a26dd311dd9e3ba7360b564ab2",
+      "blockNumber": "71023141",
+      "status": "success",
+      "costWei": "4472500000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x865989edeb2d29f9df6182f522df200aeb9fbc166255386cc8221308cd332b6b",
+      "blockNumber": "71023262",
+      "status": "success",
+      "costWei": "2780760000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0xb0d4e34b4637eba5a8d7124345ecc6bf2f243788f214a09f0a9db77f0f328b8a",
+      "blockNumber": "71023384",
+      "status": "success",
+      "costWei": "2963520000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x8d3a111457c1e58cb81a37ccb1e1a8ea5c8267d4851afc036d96125f63b146e7",
+      "blockNumber": "71023678",
+      "status": "success",
+      "costWei": "896200000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x9c84b110b990abe2a64bae23425d5ee2034a04ef07e5f1679463db860797b888",
+      "blockNumber": "71023792",
+      "status": "success",
+      "costWei": "1670880000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0xb19dd06a3c75a4dba86b6f8fd5ad82575eee2a13354135335b126f699f9d6db0",
+      "blockNumber": "71023883",
+      "status": "success",
+      "costWei": "1124280000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0xe38a39197ae6859dc4ba6f2f41e157ac5d64ba82b9ea8e4a3d0dc04ddc78f91f",
+      "blockNumber": "71023976",
+      "status": "success",
+      "costWei": "1028280000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x6763abe063fea4f8be0f567b8816955bc5d8b4b25623d75e7708a1752dacd50c",
+      "blockNumber": "71024106",
+      "status": "success",
+      "costWei": "4472740000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x79e101c610fa2d8c2ca10143ce18df79268be101efdb19364ae3ff3bf8f619a0",
+      "blockNumber": "71024249",
+      "status": "success",
+      "costWei": "2781480000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x21222812949cc508d612e11f86cf2546425f4f5644d2f1fa560ad6aad903cf7b",
+      "blockNumber": "71024389",
+      "status": "success",
+      "costWei": "2963520000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0xc65301ea3be89b42376a8550f58c541b7227a5ed31db1477bbaa8966ee919ae7",
+      "blockNumber": "71027830",
+      "status": "success",
+      "costWei": "1840760000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0xa95a631263f573a4c860eb70d67394ead41016c3d0287fd155092bc3e2f31ff3",
+      "blockNumber": "71028902",
+      "status": "success",
+      "costWei": "1121260000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x9961aade2d12667b66a3b40ea4b5cf309b9a941ba1e3529437b86faa60b1cb3d",
+      "blockNumber": "71029002",
+      "status": "success",
+      "costWei": "1025260000000000"
+    },
+    {
+      "role": "oracle",
+      "hash": "0xa238107b2c6ed80013be6acbb0f9f468af9f00018d54309a20e7045ab6fe8df8",
+      "blockNumber": "71020434",
+      "status": "success",
+      "costWei": "2149260000000000"
+    },
+    {
+      "role": "oracle",
+      "hash": "0x2f58929c8f694124989cd6ae92a5a74a1d89b0566560018b4d27d22d2c6d7b15",
+      "blockNumber": "71021171",
+      "status": "success",
+      "costWei": "2149500000000000"
+    },
+    {
+      "role": "oracle",
+      "hash": "0x60dd2b3b77362305699a8fa9814b08041e6022eb419dc1fc455d7d3479f52ff4",
+      "blockNumber": "71023594",
+      "status": "success",
+      "costWei": "2149260000000000"
+    },
+    {
+      "role": "oracle",
+      "hash": "0xbf3d7329124a3c8681403cd9d9b157a99e57e5b8caafa2d6fbd021dcfb7a7f29",
+      "blockNumber": "71024607",
+      "status": "success",
+      "costWei": "2149500000000000"
+    }
+  ],
+  "priorFailure": {
+    "code": "ACCEPTANCE_RECOVERY_PENDING",
+    "phase": "worker-scenario",
+    "step": "arc.pot.finalize",
+    "causes": [
+      {
+        "name": "Error",
+        "code": "ACCEPTANCE_RECOVERY_PENDING"
+      }
+    ]
+  },
+  "recovery": {
+    "at": "2026-11-06T12:31:29.088Z",
+    "hash": "0xc65301ea3be89b42376a8550f58c541b7227a5ed31db1477bbaa8966ee919ae7",
+    "blockNumber": "71027830",
+    "scope": "Owner-authorized single dispatch of identical hash; original caps and fixtures retained"
+  }
+}

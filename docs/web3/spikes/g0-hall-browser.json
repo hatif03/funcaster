@@ -1,0 +1,58 @@
+{
+  "at": "2026-11-06T05:35:03.810Z",
+  "scope": "G0 compatibility Hall; real Chromium synthetic-state UI tests",
+  "bundles": {
+    "hallBytes": 365469,
+    "hallGzipBytes": 118552,
+    "compatibilityWorkerBytes": 1269865,
+    "foundationWorkerBytes": 23701
+  },
+  "budgetNote": "The plan sets 120 KB for the phone signer, but no numeric Hall budget. Hall size is measured here; product Hall will be measured again.",
+  "samples": [
+    {
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "status": "PASS",
+      "states": [
+        "missing run",
+        "trusted/forged/malformed",
+        "stale cache",
+        "empty",
+        "network error"
+      ],
+      "horizontalOverflow": false
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "status": "PASS",
+      "states": [
+        "missing run",
+        "trusted/forged/malformed",
+        "stale cache",
+        "empty",
+        "network error"
+      ],
+      "horizontalOverflow": false
+    },
+    {
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "status": "PASS",
+      "states": [
+        "missing run",
+        "trusted/forged/malformed",
+        "stale cache",
+        "empty",
+        "network error"
+      ],
+      "horizontalOverflow": false
+    }
+  ]
+}

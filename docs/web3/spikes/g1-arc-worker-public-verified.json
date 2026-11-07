@@ -1,0 +1,1093 @@
+{
+  "at": "2026-11-06T12:32:25.816Z",
+  "scope": "KEYLESS TWO-HOST A4 RECEIPT AND FINAL-STATE READBACK; synthetic fixtures, not gameplay or Ledger acceptance",
+  "complete": true,
+  "hosts": [
+    {
+      "host": "rpc.testnet.arc.io",
+      "transactions": [
+        {
+          "role": "relayer",
+          "hash": "0x55b4ae9edc418fbc50f6c7f5ff594e6ba74d74dbc8cdc67491165749ddd9c313",
+          "blockNumber": "71010928",
+          "blockHash": "0x888b5f12273cfa11dfded3ff89b7e57652a01db57c4df7174d6b2821e5a4b418",
+          "costWei": "1478760000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0xe4c9c356d3e49e03f9a363157ff9a1fae16e6cf0e73bf2261d7221723e44288d",
+          "blockNumber": "71014721",
+          "blockHash": "0xf4a82e3af625edd85c8351c0d31a92f74adfc1bf0876726b5d9325d5f12a1ae9",
+          "costWei": "1478760000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0x84d19c565fe774604b8a502780842afd07845206d56c6f8aa933057d65856f37",
+          "blockNumber": "71014765",
+          "blockHash": "0x01d5b87774be3b5dcd850d6c2afb544a660600ba1438db9f6b795a167217d498",
+          "costWei": "4467940000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0xa7a0a4204a273a535760e3248942f8523892162f21e059da84b8e3612144d1fb",
+          "blockNumber": "71014814",
+          "blockHash": "0x25d3e5274d446abae85108e4981d1426450d9de4e13a27c17d30dcd620076c56",
+          "costWei": "2514420000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0xe17b5d35e48d8617d6a794db41430fc91131ca37a401270333526fce24f24265",
+          "blockNumber": "71014845",
+          "blockHash": "0xe7da4cd9c76ce698dafb1574c0fa30add4aa7a35fd9a47cb5c579c56aaa830da",
+          "costWei": "3038860000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0x7c6c927d24daeefef8caa13fe0abe0b973cf928cb16e99aa2d24815e464c5d12",
+          "blockNumber": "71014904",
+          "blockHash": "0x5038903af606aceeb9aa754efcf5459c6c98a0aea59050312546e8d1a589094b",
+          "costWei": "2191440000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0x6455b6bfe18edab5a67bb72ff43c037f7bfe9c89035dc162d1e3ae21ee12b112",
+          "blockNumber": "71014936",
+          "blockHash": "0x686863512dbc7e0310edeaea974f46c3fa8d920221fa7ed6b9216e8d69f6e454",
+          "costWei": "1238840000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0x472612eb6eac46db77ab5398d183b1c0df632fb1f42e145eae1cf275e4efc167",
+          "blockNumber": "71014962",
+          "blockHash": "0xa28b6a9f3b784ad4786f5e4c59dbce40dcf82c9f5603b9de1c2d76e145ee8b6c",
+          "costWei": "1238840000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0x3bb303e521f7dc98f88ecb02f2e7e764d372b0801bed580b0d2849f39c2df008",
+          "blockNumber": "71015041",
+          "blockHash": "0xac73c663bbb9a0b92477a836f0674fae84378f03d31ac8265b571eed66564346",
+          "costWei": "4468180000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0xd7b03080774373ea774ff1c7fdb8c72842502421add88ed7a0fb52212b9000e9",
+          "blockNumber": "71015103",
+          "blockHash": "0xf41f47856d22c09704f8876130f6c532d57d9bf2e90db4b24cff7b8bf209c2a3",
+          "costWei": "2514900000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0xcd4bc25176ec8aed6628b2caa756a0e63ba506af128e9441eb937530e3643dc8",
+          "blockNumber": "71015406",
+          "blockHash": "0x09479232e327f2acbd409e7709de1c77135941713466413e9df3796f09d28dbf",
+          "costWei": "1216820000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0x8a3ae1a859139570b7c4261396f9206755289b443f734081c34c6dbfc9bdff00",
+          "blockNumber": "71019847",
+          "blockHash": "0xbd3b636a9dd69035cd799a613db9f7162fa9a17bdab31652c08243852e566b82",
+          "costWei": "1242340000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0x36e02076b19bd6be7eabd58683574d5fe98438d622b00559cfd731cc16d1c0d6",
+          "blockNumber": "71020067",
+          "blockHash": "0xed2d14440f3f47a768a4b8a93c0031bc37e70bf3b700e1f53c4677c81eca0d34",
+          "costWei": "4467940000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0xd7c030e1d592418ed809137e0d0c0639e7d506b54c0b54bb7eeabca4d867ff47",
+          "blockNumber": "71020151",
+          "blockHash": "0xc0dda7e1407af574f1d82f5f623199967066f5b8a650384427a90d46d709916d",
+          "costWei": "2514820000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0xb68fb1e1174490918613febf82f6fdc9380ab53ea18e6076f863641721cc734b",
+          "blockNumber": "71020239",
+          "blockHash": "0xf152fd0b5f4baf927cd5c168eb8e1ce856a2aecca22053aa13f8a17442fa4650",
+          "costWei": "3039100000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0x070893210e63ba54fa8753ca10d6f1c0e68f284a22eb6e560371b4e8de78ee53",
+          "blockNumber": "71020493",
+          "blockHash": "0x434c80a176885f71838b468453ff976901f3a2e4b6805f5267ccca35a7bffda4",
+          "costWei": "895960000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0x68153c20894ac3a411e5fc6747794370d2c0335d5692ae658122357ba7b307f5",
+          "blockNumber": "71020542",
+          "blockHash": "0xf561b2b22956a1f7070c6e01763125bc828763ac818be6d7038d7e22eb34dc1d",
+          "costWei": "1670880000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0xe9c6c1e3bff483a0db2a9a49275e5107c59a587c49d19cf1e94d5fd3f09636b3",
+          "blockNumber": "71020595",
+          "blockHash": "0xc7970d7d6ce23f65fbe53e08c3dd8cf336b94cd3e94d6867768b6e003d344d42",
+          "costWei": "1242100000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0x6c0b5c9ed731d0a280cddfae1dd87e42e057643f1fdf6c1c98603871c724b413",
+          "blockNumber": "71020661",
+          "blockHash": "0x3724c7a7be7be5f5a7aa35c07191c42a1432c8b03f36e1ab9c68552508edb3e7",
+          "costWei": "1242100000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0x6774416d3b580afa0ccc90a328fa911f2fc4894b100e2e10e8a372e915ea477e",
+          "blockNumber": "71020730",
+          "blockHash": "0xfc303e9d1be29636b74462e9447e03ae693c613686d30c286e78e1c8592830f5",
+          "costWei": "4468180000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0x01de71f5da52e2df37667a1cbee8154aa383ba82d975fd30ea650b46585c182c",
+          "blockNumber": "71020843",
+          "blockHash": "0x88738f0546ceab6dab8e36dc75e42dc239d80066258a8370b87c3765a9a4c13c",
+          "costWei": "2515060000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0xb37169bf588e8311a1d3f02cafdddf9e775baa93daba4c12eb557eda663e78bc",
+          "blockNumber": "71020955",
+          "blockHash": "0x3f7d1cb920401ce70fac52749c8c9e32fac4b1329e5d4c232040a6244717c446",
+          "costWei": "3038700000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0xc9ad1716435a372972e061e23bfc77bb11ecf89cde3a9c508b856ba4a5392f48",
+          "blockNumber": "71021398",
+          "blockHash": "0xa2f140d44bb7e4243a5d534c81331e30975c55c43b267daf998b971c8bc109f1",
+          "costWei": "1840760000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0x3d0da4d6d856cb9912d25d93ba8c4ba0065b046fab74052803732cc616f765dd",
+          "blockNumber": "71021458",
+          "blockHash": "0x04f0f98e20f7126a2da5c82a1e1c0ee16860c3b9b14afb35797df9794a413698",
+          "costWei": "1239080000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0xd6a000ce85514ff195f3f335b44aaedbfdee406ff06e5eec6ed93b67ee9b6aab",
+          "blockNumber": "71021515",
+          "blockHash": "0x3c1a639b7c592bd3dffdc9ff5d315c8e375acf79eef6dc106467e47596de53bb",
+          "costWei": "1239080000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0x1b2c29bb4fb094ea883309dbba97e31412a0c2162498af967c250a4e53b0ae67",
+          "blockNumber": "71021604",
+          "blockHash": "0x21015a5bd9159d064b5e48af217322352b83bb42125d64c2742ef7881bbdc252",
+          "costWei": "1242940000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0x865028fbef513c393b9b175151cc1189bbb5cc43756d4ece15bafcb3b5b5acce",
+          "blockNumber": "71021774",
+          "blockHash": "0xefbac229cd5d9c29a1af7ee6f3c798d496a282191a2e960145e826c9b299e176",
+          "costWei": "1242940000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0x9118f8fdc8cd339a9060852c387ecc0f62c6b6736a34040f934b65dbedb50a90",
+          "blockNumber": "71021976",
+          "blockHash": "0x1744f7e08cd4beca3284792b9e62376aa798b276cb8df6d58c985d6999a37a35",
+          "costWei": "4472740000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0x154fe254366f3ece19000064614ad67f8bafb60b129107011ef4e744d7f170a6",
+          "blockNumber": "71022072",
+          "blockHash": "0x12f68558c0e302c56036017982f39fb94c46dbe1b2a3821d43f7190a5dc6ebfc",
+          "costWei": "2782120000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0xcd8c552b24f68d333b69e07228652b4c0d785cc0ac037184fbf027328f225b8a",
+          "blockNumber": "71022164",
+          "blockHash": "0xb7dc269daf5dd576cc5d0ed3c3be0344b7637dda0ff44f82734104a2db775b4a",
+          "costWei": "2963680000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0xa6523305046f036a7de369bbf706bb56c7a397e731d6645be0e2dc17b9eab3e4",
+          "blockNumber": "71022268",
+          "blockHash": "0x5370c93d9fa86c5ab1bddb5e8c78941940a278d6f4e2aacd45a4599dfdf0d474",
+          "costWei": "2191440000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0x08d30871046a48315e6761d0cabe30f1d5d366a2e1c151b6182f4a9dbbec311f",
+          "blockNumber": "71022344",
+          "blockHash": "0x057c4feb14d2996d8a034c7eaee204a634646b40f10b7085517b1efae9a6583d",
+          "costWei": "1121260000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0xe83bb84e643901e4df48766342f7441e5038af82c8a5ab7c840c2eb14c609f76",
+          "blockNumber": "71022420",
+          "blockHash": "0xa216b8ed9c461037409e9d99615ef2fc2b052b1bf4628bd75480a8e5f5f404d4",
+          "costWei": "1025260000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0xb3a2e5a7230cd8fbe7350305ac3043ceb69ca054b46d6672e0def7dec3fbcd2a",
+          "blockNumber": "71022561",
+          "blockHash": "0x8433964300285186d43565f6030545c2b4f8a14622c195602cada9aab69909dc",
+          "costWei": "4472740000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0x2821fb46acc70512b3fefa87f804f24d07bcc2fcd3410ada0c2c5356398ec1ca",
+          "blockNumber": "71022672",
+          "blockHash": "0x6de25fe71e61da102da10fc527175129dacaaa3794c7cb201fbb377594c48f57",
+          "costWei": "2781720000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0x2954d70a17ae14399e23eabd06d01c61438a0394ce6341036e6828fa51974a81",
+          "blockNumber": "71022943",
+          "blockHash": "0x9b419345f80abf40d95e7c1af3731b16c3ee5474c6ed37c9c06279e68d51ccc3",
+          "costWei": "1216820000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0x2ec59947087a5a7fa315b18b965950032dee4be662a8b913df5d14e97ef6fee4",
+          "blockNumber": "71023024",
+          "blockHash": "0x0eda3ce3c6ed9e707419efd57b38618985af3c0389087fbfbba5f568cfcbac2f",
+          "costWei": "1028520000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0x39274afa192f130c9acd6b5d954e970556f4a1a26dd311dd9e3ba7360b564ab2",
+          "blockNumber": "71023141",
+          "blockHash": "0xd68223d031f7d251bdb76a180b58eae06453b51126d8dc28b088e0502181e2d6",
+          "costWei": "4472500000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0x865989edeb2d29f9df6182f522df200aeb9fbc166255386cc8221308cd332b6b",
+          "blockNumber": "71023262",
+          "blockHash": "0x45b10795c229232af273e6ecfcbf9c4e09b5d61a9fabb04d126fd79edff21275",
+          "costWei": "2780760000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0xb0d4e34b4637eba5a8d7124345ecc6bf2f243788f214a09f0a9db77f0f328b8a",
+          "blockNumber": "71023384",
+          "blockHash": "0xf7ba642182c274e7eb37807c75d765264477fed1930480187bc47138da866599",
+          "costWei": "2963520000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0x8d3a111457c1e58cb81a37ccb1e1a8ea5c8267d4851afc036d96125f63b146e7",
+          "blockNumber": "71023678",
+          "blockHash": "0xb081d82c22ebce4247178f973446913d7efd824f5146de2540a4c1fcf38b46c3",
+          "costWei": "896200000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0x9c84b110b990abe2a64bae23425d5ee2034a04ef07e5f1679463db860797b888",
+          "blockNumber": "71023792",
+          "blockHash": "0x67eb70aea5b7c73276ab8e121d2128dfec9fcb5da5067f7c5ffb99adddcec561",
+          "costWei": "1670880000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0xb19dd06a3c75a4dba86b6f8fd5ad82575eee2a13354135335b126f699f9d6db0",
+          "blockNumber": "71023883",
+          "blockHash": "0xac69e5caae89a2646d950f04b8132463bd6a4d223af4a2107507d9de8d6c28c6",
+          "costWei": "1124280000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0xe38a39197ae6859dc4ba6f2f41e157ac5d64ba82b9ea8e4a3d0dc04ddc78f91f",
+          "blockNumber": "71023976",
+          "blockHash": "0x691f19dbc6f6df6a7b354611551f8b9bf8256c01827825de90f09ec8ebb4306b",
+          "costWei": "1028280000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0x6763abe063fea4f8be0f567b8816955bc5d8b4b25623d75e7708a1752dacd50c",
+          "blockNumber": "71024106",
+          "blockHash": "0x2331f77427320396c30b992b7ed53de6e20ecc080f6e715cdecc914cd2729171",
+          "costWei": "4472740000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0x79e101c610fa2d8c2ca10143ce18df79268be101efdb19364ae3ff3bf8f619a0",
+          "blockNumber": "71024249",
+          "blockHash": "0xa840d0c749912300773b10b15bcd403be02d459a289cf014f49a65a49f9ebea8",
+          "costWei": "2781480000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0x21222812949cc508d612e11f86cf2546425f4f5644d2f1fa560ad6aad903cf7b",
+          "blockNumber": "71024389",
+          "blockHash": "0xd25622c52a81b8cbd81ed55272004d573ec1da60c173cafad2a7383d5cc54211",
+          "costWei": "2963520000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0xc65301ea3be89b42376a8550f58c541b7227a5ed31db1477bbaa8966ee919ae7",
+          "blockNumber": "71027830",
+          "blockHash": "0x2c9b912da9c4f0f4faa0b56ff9e4f5009db6ed63f638b67e39848b12728e9621",
+          "costWei": "1840760000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0xa95a631263f573a4c860eb70d67394ead41016c3d0287fd155092bc3e2f31ff3",
+          "blockNumber": "71028902",
+          "blockHash": "0x34ff1bfe08914f83738afef2af69d3b78f942caff77fac2d5399f7c871aa9f74",
+          "costWei": "1121260000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0x9961aade2d12667b66a3b40ea4b5cf309b9a941ba1e3529437b86faa60b1cb3d",
+          "blockNumber": "71029002",
+          "blockHash": "0x40ba945b705ea39708f3a7c9098159ee5090cf945d1709e3065e32cdd74a6c6b",
+          "costWei": "1025260000000000",
+          "status": "success"
+        },
+        {
+          "role": "oracle",
+          "hash": "0xa238107b2c6ed80013be6acbb0f9f468af9f00018d54309a20e7045ab6fe8df8",
+          "blockNumber": "71020434",
+          "blockHash": "0x993c98a0b6a6af1f15acb6352502ddf2107a04879af5cf0fc796adb82a731b1c",
+          "costWei": "2149260000000000",
+          "status": "success"
+        },
+        {
+          "role": "oracle",
+          "hash": "0x2f58929c8f694124989cd6ae92a5a74a1d89b0566560018b4d27d22d2c6d7b15",
+          "blockNumber": "71021171",
+          "blockHash": "0x2d774ccc20f05a41d10a8dbb05566e8cb0350576992e26cdfecfb901eb8a4994",
+          "costWei": "2149500000000000",
+          "status": "success"
+        },
+        {
+          "role": "oracle",
+          "hash": "0x60dd2b3b77362305699a8fa9814b08041e6022eb419dc1fc455d7d3479f52ff4",
+          "blockNumber": "71023594",
+          "blockHash": "0xceb4bec29ed56afa6298b8d6728412f99a8049b9b3d1d0ca65fac7b892353d6d",
+          "costWei": "2149260000000000",
+          "status": "success"
+        },
+        {
+          "role": "oracle",
+          "hash": "0xbf3d7329124a3c8681403cd9d9b157a99e57e5b8caafa2d6fbd021dcfb7a7f29",
+          "blockNumber": "71024607",
+          "blockHash": "0x82d7f49254a9acc759cb8d0b40ffc1a02a474a2ff48e97a9a930586b18555822",
+          "costWei": "2149500000000000",
+          "status": "success"
+        }
+      ],
+      "pots": [
+        {
+          "id": "usdc cooperative",
+          "potId": "0x371347230c2ff750d8560de5b8afa56ff7386caafa5f003db7043c942f4515f7",
+          "state": "Settled",
+          "termsHash": "0xe44cfe31440b6188d65fda8c9fa502f9232385ea5ba00c5bc7c03441f74718bd",
+          "blockNumber": "71029201",
+          "blockHash": "0x617ae10201bd2053278c7cc651f5c303503d38c3b90819262c7b486326cc05b4",
+          "claimables": [
+            "0",
+            "0"
+          ]
+        },
+        {
+          "id": "usdc refund",
+          "potId": "0x0207e0acadb71b608113c8faa0457903e877e14f6af874548bf582866c7b6e3f",
+          "state": "Refunded",
+          "termsHash": "0x9a5ef85fd4fc7fa000a222ab42b737310202bae126bc784eb4bda50b10d69d8f",
+          "blockNumber": "71029204",
+          "blockHash": "0xf8febc3547ead2be973d12e3f1462012e92d50dfead35c19cdb7be1ff38caa4f",
+          "claimables": [
+            "0",
+            "0"
+          ]
+        },
+        {
+          "id": "usdc contest",
+          "potId": "0x761c69f4c11532451d256628cc0410a2c31da3ef687079751ad0c4362cb40084",
+          "state": "Refunded",
+          "termsHash": "0x01dabe8cf1e43ec4635d517c5b671784a7f91f97e6f0a005da8ae05e35250bf8",
+          "blockNumber": "71029206",
+          "blockHash": "0xb4f97e112014c5faf6508d1b88e07d57a625b40b164161015fb1758d5f3043f6",
+          "claimables": [
+            "0",
+            "0"
+          ]
+        },
+        {
+          "id": "usdc finalize",
+          "potId": "0x21d00efa3a39f1196a649e49ab7cd13a9053995215689a7a0124847e29060c25",
+          "state": "Settled",
+          "termsHash": "0xd6fc320cf5fc02fbd77147cb316a5157fbdf979239620f1819f830d7fc76d515",
+          "blockNumber": "71029209",
+          "blockHash": "0x5da08a34f27579fbfcbbf768784e9f6067627ee5c4f2d29ffafa1834438363d4",
+          "claimables": [
+            "0",
+            "0"
+          ]
+        },
+        {
+          "id": "eurc cooperative",
+          "potId": "0x8bdd7495969b8507df6d1be513b1abcfbddf7a6e8b6d6115ecd5a21f74e5ba55",
+          "state": "Settled",
+          "termsHash": "0xd5f0453dfc2a7f9edd2dfe46c142a9947d8bd91153c040703cd692f692aa7d96",
+          "blockNumber": "71029212",
+          "blockHash": "0x3d4a276c931eb1ee874bf890e6f26f766ff630c7d9da11e9db28977b33e95071",
+          "claimables": [
+            "0",
+            "0"
+          ]
+        },
+        {
+          "id": "eurc refund",
+          "potId": "0xce3d847d9a4b07677b08a1cee14d99511f0c5a3496169630d21c3e0a88fc921a",
+          "state": "Refunded",
+          "termsHash": "0x9b31bbebb3ed96b2129b6fd35b02cee84078d8d2b041b769cb4eb1a9d94b8321",
+          "blockNumber": "71029215",
+          "blockHash": "0xb7eec02cfade170af6ae66f0db8282a31e54a0a77f8552f7a938afda9ed71311",
+          "claimables": [
+            "0",
+            "0"
+          ]
+        },
+        {
+          "id": "eurc contest",
+          "potId": "0xef000f578ccda5f5c2745623c3af04831454ae3593ca57836ba82692ca94a722",
+          "state": "Refunded",
+          "termsHash": "0x32f115631912b0c31971efc42b79c511298321cde4f9e20ef38f482d8b971869",
+          "blockNumber": "71029217",
+          "blockHash": "0xf48936d4ba6baa4f6e436ecd350613ef1b24f05622c592f101e65e7d5846e06e",
+          "claimables": [
+            "0",
+            "0"
+          ]
+        },
+        {
+          "id": "eurc finalize",
+          "potId": "0xa12af9e9f03fdd2002438081a75c8ef3a23f9c8d9d29519edcd295eaf2fc1174",
+          "state": "Settled",
+          "termsHash": "0x6c2c1278dfddbabf13472c0584c44191e2e752ae872b5e4b9fb72b02b84c9fb2",
+          "blockNumber": "71029220",
+          "blockHash": "0x2d9dbb9d00a6e69152fef3e3c9a5532677b1f86c97f7858fc5f413ce4630820b",
+          "claimables": [
+            "0",
+            "0"
+          ]
+        }
+      ],
+      "gasWei": {
+        "relayer": "112187480000000000",
+        "oracle": "8597520000000000"
+      },
+      "dripped": {
+        "usdc": "120000",
+        "eurc": "120000"
+      }
+    },
+    {
+      "host": "rpc.testnet.arc.network",
+      "transactions": [
+        {
+          "role": "relayer",
+          "hash": "0x55b4ae9edc418fbc50f6c7f5ff594e6ba74d74dbc8cdc67491165749ddd9c313",
+          "blockNumber": "71010928",
+          "blockHash": "0x888b5f12273cfa11dfded3ff89b7e57652a01db57c4df7174d6b2821e5a4b418",
+          "costWei": "1478760000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0xe4c9c356d3e49e03f9a363157ff9a1fae16e6cf0e73bf2261d7221723e44288d",
+          "blockNumber": "71014721",
+          "blockHash": "0xf4a82e3af625edd85c8351c0d31a92f74adfc1bf0876726b5d9325d5f12a1ae9",
+          "costWei": "1478760000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0x84d19c565fe774604b8a502780842afd07845206d56c6f8aa933057d65856f37",
+          "blockNumber": "71014765",
+          "blockHash": "0x01d5b87774be3b5dcd850d6c2afb544a660600ba1438db9f6b795a167217d498",
+          "costWei": "4467940000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0xa7a0a4204a273a535760e3248942f8523892162f21e059da84b8e3612144d1fb",
+          "blockNumber": "71014814",
+          "blockHash": "0x25d3e5274d446abae85108e4981d1426450d9de4e13a27c17d30dcd620076c56",
+          "costWei": "2514420000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0xe17b5d35e48d8617d6a794db41430fc91131ca37a401270333526fce24f24265",
+          "blockNumber": "71014845",
+          "blockHash": "0xe7da4cd9c76ce698dafb1574c0fa30add4aa7a35fd9a47cb5c579c56aaa830da",
+          "costWei": "3038860000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0x7c6c927d24daeefef8caa13fe0abe0b973cf928cb16e99aa2d24815e464c5d12",
+          "blockNumber": "71014904",
+          "blockHash": "0x5038903af606aceeb9aa754efcf5459c6c98a0aea59050312546e8d1a589094b",
+          "costWei": "2191440000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0x6455b6bfe18edab5a67bb72ff43c037f7bfe9c89035dc162d1e3ae21ee12b112",
+          "blockNumber": "71014936",
+          "blockHash": "0x686863512dbc7e0310edeaea974f46c3fa8d920221fa7ed6b9216e8d69f6e454",
+          "costWei": "1238840000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0x472612eb6eac46db77ab5398d183b1c0df632fb1f42e145eae1cf275e4efc167",
+          "blockNumber": "71014962",
+          "blockHash": "0xa28b6a9f3b784ad4786f5e4c59dbce40dcf82c9f5603b9de1c2d76e145ee8b6c",
+          "costWei": "1238840000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0x3bb303e521f7dc98f88ecb02f2e7e764d372b0801bed580b0d2849f39c2df008",
+          "blockNumber": "71015041",
+          "blockHash": "0xac73c663bbb9a0b92477a836f0674fae84378f03d31ac8265b571eed66564346",
+          "costWei": "4468180000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0xd7b03080774373ea774ff1c7fdb8c72842502421add88ed7a0fb52212b9000e9",
+          "blockNumber": "71015103",
+          "blockHash": "0xf41f47856d22c09704f8876130f6c532d57d9bf2e90db4b24cff7b8bf209c2a3",
+          "costWei": "2514900000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0xcd4bc25176ec8aed6628b2caa756a0e63ba506af128e9441eb937530e3643dc8",
+          "blockNumber": "71015406",
+          "blockHash": "0x09479232e327f2acbd409e7709de1c77135941713466413e9df3796f09d28dbf",
+          "costWei": "1216820000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0x8a3ae1a859139570b7c4261396f9206755289b443f734081c34c6dbfc9bdff00",
+          "blockNumber": "71019847",
+          "blockHash": "0xbd3b636a9dd69035cd799a613db9f7162fa9a17bdab31652c08243852e566b82",
+          "costWei": "1242340000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0x36e02076b19bd6be7eabd58683574d5fe98438d622b00559cfd731cc16d1c0d6",
+          "blockNumber": "71020067",
+          "blockHash": "0xed2d14440f3f47a768a4b8a93c0031bc37e70bf3b700e1f53c4677c81eca0d34",
+          "costWei": "4467940000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0xd7c030e1d592418ed809137e0d0c0639e7d506b54c0b54bb7eeabca4d867ff47",
+          "blockNumber": "71020151",
+          "blockHash": "0xc0dda7e1407af574f1d82f5f623199967066f5b8a650384427a90d46d709916d",
+          "costWei": "2514820000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0xb68fb1e1174490918613febf82f6fdc9380ab53ea18e6076f863641721cc734b",
+          "blockNumber": "71020239",
+          "blockHash": "0xf152fd0b5f4baf927cd5c168eb8e1ce856a2aecca22053aa13f8a17442fa4650",
+          "costWei": "3039100000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0x070893210e63ba54fa8753ca10d6f1c0e68f284a22eb6e560371b4e8de78ee53",
+          "blockNumber": "71020493",
+          "blockHash": "0x434c80a176885f71838b468453ff976901f3a2e4b6805f5267ccca35a7bffda4",
+          "costWei": "895960000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0x68153c20894ac3a411e5fc6747794370d2c0335d5692ae658122357ba7b307f5",
+          "blockNumber": "71020542",
+          "blockHash": "0xf561b2b22956a1f7070c6e01763125bc828763ac818be6d7038d7e22eb34dc1d",
+          "costWei": "1670880000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0xe9c6c1e3bff483a0db2a9a49275e5107c59a587c49d19cf1e94d5fd3f09636b3",
+          "blockNumber": "71020595",
+          "blockHash": "0xc7970d7d6ce23f65fbe53e08c3dd8cf336b94cd3e94d6867768b6e003d344d42",
+          "costWei": "1242100000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0x6c0b5c9ed731d0a280cddfae1dd87e42e057643f1fdf6c1c98603871c724b413",
+          "blockNumber": "71020661",
+          "blockHash": "0x3724c7a7be7be5f5a7aa35c07191c42a1432c8b03f36e1ab9c68552508edb3e7",
+          "costWei": "1242100000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0x6774416d3b580afa0ccc90a328fa911f2fc4894b100e2e10e8a372e915ea477e",
+          "blockNumber": "71020730",
+          "blockHash": "0xfc303e9d1be29636b74462e9447e03ae693c613686d30c286e78e1c8592830f5",
+          "costWei": "4468180000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0x01de71f5da52e2df37667a1cbee8154aa383ba82d975fd30ea650b46585c182c",
+          "blockNumber": "71020843",
+          "blockHash": "0x88738f0546ceab6dab8e36dc75e42dc239d80066258a8370b87c3765a9a4c13c",
+          "costWei": "2515060000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0xb37169bf588e8311a1d3f02cafdddf9e775baa93daba4c12eb557eda663e78bc",
+          "blockNumber": "71020955",
+          "blockHash": "0x3f7d1cb920401ce70fac52749c8c9e32fac4b1329e5d4c232040a6244717c446",
+          "costWei": "3038700000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0xc9ad1716435a372972e061e23bfc77bb11ecf89cde3a9c508b856ba4a5392f48",
+          "blockNumber": "71021398",
+          "blockHash": "0xa2f140d44bb7e4243a5d534c81331e30975c55c43b267daf998b971c8bc109f1",
+          "costWei": "1840760000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0x3d0da4d6d856cb9912d25d93ba8c4ba0065b046fab74052803732cc616f765dd",
+          "blockNumber": "71021458",
+          "blockHash": "0x04f0f98e20f7126a2da5c82a1e1c0ee16860c3b9b14afb35797df9794a413698",
+          "costWei": "1239080000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0xd6a000ce85514ff195f3f335b44aaedbfdee406ff06e5eec6ed93b67ee9b6aab",
+          "blockNumber": "71021515",
+          "blockHash": "0x3c1a639b7c592bd3dffdc9ff5d315c8e375acf79eef6dc106467e47596de53bb",
+          "costWei": "1239080000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0x1b2c29bb4fb094ea883309dbba97e31412a0c2162498af967c250a4e53b0ae67",
+          "blockNumber": "71021604",
+          "blockHash": "0x21015a5bd9159d064b5e48af217322352b83bb42125d64c2742ef7881bbdc252",
+          "costWei": "1242940000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0x865028fbef513c393b9b175151cc1189bbb5cc43756d4ece15bafcb3b5b5acce",
+          "blockNumber": "71021774",
+          "blockHash": "0xefbac229cd5d9c29a1af7ee6f3c798d496a282191a2e960145e826c9b299e176",
+          "costWei": "1242940000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0x9118f8fdc8cd339a9060852c387ecc0f62c6b6736a34040f934b65dbedb50a90",
+          "blockNumber": "71021976",
+          "blockHash": "0x1744f7e08cd4beca3284792b9e62376aa798b276cb8df6d58c985d6999a37a35",
+          "costWei": "4472740000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0x154fe254366f3ece19000064614ad67f8bafb60b129107011ef4e744d7f170a6",
+          "blockNumber": "71022072",
+          "blockHash": "0x12f68558c0e302c56036017982f39fb94c46dbe1b2a3821d43f7190a5dc6ebfc",
+          "costWei": "2782120000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0xcd8c552b24f68d333b69e07228652b4c0d785cc0ac037184fbf027328f225b8a",
+          "blockNumber": "71022164",
+          "blockHash": "0xb7dc269daf5dd576cc5d0ed3c3be0344b7637dda0ff44f82734104a2db775b4a",
+          "costWei": "2963680000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0xa6523305046f036a7de369bbf706bb56c7a397e731d6645be0e2dc17b9eab3e4",
+          "blockNumber": "71022268",
+          "blockHash": "0x5370c93d9fa86c5ab1bddb5e8c78941940a278d6f4e2aacd45a4599dfdf0d474",
+          "costWei": "2191440000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0x08d30871046a48315e6761d0cabe30f1d5d366a2e1c151b6182f4a9dbbec311f",
+          "blockNumber": "71022344",
+          "blockHash": "0x057c4feb14d2996d8a034c7eaee204a634646b40f10b7085517b1efae9a6583d",
+          "costWei": "1121260000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0xe83bb84e643901e4df48766342f7441e5038af82c8a5ab7c840c2eb14c609f76",
+          "blockNumber": "71022420",
+          "blockHash": "0xa216b8ed9c461037409e9d99615ef2fc2b052b1bf4628bd75480a8e5f5f404d4",
+          "costWei": "1025260000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0xb3a2e5a7230cd8fbe7350305ac3043ceb69ca054b46d6672e0def7dec3fbcd2a",
+          "blockNumber": "71022561",
+          "blockHash": "0x8433964300285186d43565f6030545c2b4f8a14622c195602cada9aab69909dc",
+          "costWei": "4472740000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0x2821fb46acc70512b3fefa87f804f24d07bcc2fcd3410ada0c2c5356398ec1ca",
+          "blockNumber": "71022672",
+          "blockHash": "0x6de25fe71e61da102da10fc527175129dacaaa3794c7cb201fbb377594c48f57",
+          "costWei": "2781720000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0x2954d70a17ae14399e23eabd06d01c61438a0394ce6341036e6828fa51974a81",
+          "blockNumber": "71022943",
+          "blockHash": "0x9b419345f80abf40d95e7c1af3731b16c3ee5474c6ed37c9c06279e68d51ccc3",
+          "costWei": "1216820000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0x2ec59947087a5a7fa315b18b965950032dee4be662a8b913df5d14e97ef6fee4",
+          "blockNumber": "71023024",
+          "blockHash": "0x0eda3ce3c6ed9e707419efd57b38618985af3c0389087fbfbba5f568cfcbac2f",
+          "costWei": "1028520000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0x39274afa192f130c9acd6b5d954e970556f4a1a26dd311dd9e3ba7360b564ab2",
+          "blockNumber": "71023141",
+          "blockHash": "0xd68223d031f7d251bdb76a180b58eae06453b51126d8dc28b088e0502181e2d6",
+          "costWei": "4472500000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0x865989edeb2d29f9df6182f522df200aeb9fbc166255386cc8221308cd332b6b",
+          "blockNumber": "71023262",
+          "blockHash": "0x45b10795c229232af273e6ecfcbf9c4e09b5d61a9fabb04d126fd79edff21275",
+          "costWei": "2780760000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0xb0d4e34b4637eba5a8d7124345ecc6bf2f243788f214a09f0a9db77f0f328b8a",
+          "blockNumber": "71023384",
+          "blockHash": "0xf7ba642182c274e7eb37807c75d765264477fed1930480187bc47138da866599",
+          "costWei": "2963520000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0x8d3a111457c1e58cb81a37ccb1e1a8ea5c8267d4851afc036d96125f63b146e7",
+          "blockNumber": "71023678",
+          "blockHash": "0xb081d82c22ebce4247178f973446913d7efd824f5146de2540a4c1fcf38b46c3",
+          "costWei": "896200000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0x9c84b110b990abe2a64bae23425d5ee2034a04ef07e5f1679463db860797b888",
+          "blockNumber": "71023792",
+          "blockHash": "0x67eb70aea5b7c73276ab8e121d2128dfec9fcb5da5067f7c5ffb99adddcec561",
+          "costWei": "1670880000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0xb19dd06a3c75a4dba86b6f8fd5ad82575eee2a13354135335b126f699f9d6db0",
+          "blockNumber": "71023883",
+          "blockHash": "0xac69e5caae89a2646d950f04b8132463bd6a4d223af4a2107507d9de8d6c28c6",
+          "costWei": "1124280000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0xe38a39197ae6859dc4ba6f2f41e157ac5d64ba82b9ea8e4a3d0dc04ddc78f91f",
+          "blockNumber": "71023976",
+          "blockHash": "0x691f19dbc6f6df6a7b354611551f8b9bf8256c01827825de90f09ec8ebb4306b",
+          "costWei": "1028280000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0x6763abe063fea4f8be0f567b8816955bc5d8b4b25623d75e7708a1752dacd50c",
+          "blockNumber": "71024106",
+          "blockHash": "0x2331f77427320396c30b992b7ed53de6e20ecc080f6e715cdecc914cd2729171",
+          "costWei": "4472740000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0x79e101c610fa2d8c2ca10143ce18df79268be101efdb19364ae3ff3bf8f619a0",
+          "blockNumber": "71024249",
+          "blockHash": "0xa840d0c749912300773b10b15bcd403be02d459a289cf014f49a65a49f9ebea8",
+          "costWei": "2781480000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0x21222812949cc508d612e11f86cf2546425f4f5644d2f1fa560ad6aad903cf7b",
+          "blockNumber": "71024389",
+          "blockHash": "0xd25622c52a81b8cbd81ed55272004d573ec1da60c173cafad2a7383d5cc54211",
+          "costWei": "2963520000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0xc65301ea3be89b42376a8550f58c541b7227a5ed31db1477bbaa8966ee919ae7",
+          "blockNumber": "71027830",
+          "blockHash": "0x2c9b912da9c4f0f4faa0b56ff9e4f5009db6ed63f638b67e39848b12728e9621",
+          "costWei": "1840760000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0xa95a631263f573a4c860eb70d67394ead41016c3d0287fd155092bc3e2f31ff3",
+          "blockNumber": "71028902",
+          "blockHash": "0x34ff1bfe08914f83738afef2af69d3b78f942caff77fac2d5399f7c871aa9f74",
+          "costWei": "1121260000000000",
+          "status": "success"
+        },
+        {
+          "role": "relayer",
+          "hash": "0x9961aade2d12667b66a3b40ea4b5cf309b9a941ba1e3529437b86faa60b1cb3d",
+          "blockNumber": "71029002",
+          "blockHash": "0x40ba945b705ea39708f3a7c9098159ee5090cf945d1709e3065e32cdd74a6c6b",
+          "costWei": "1025260000000000",
+          "status": "success"
+        },
+        {
+          "role": "oracle",
+          "hash": "0xa238107b2c6ed80013be6acbb0f9f468af9f00018d54309a20e7045ab6fe8df8",
+          "blockNumber": "71020434",
+          "blockHash": "0x993c98a0b6a6af1f15acb6352502ddf2107a04879af5cf0fc796adb82a731b1c",
+          "costWei": "2149260000000000",
+          "status": "success"
+        },
+        {
+          "role": "oracle",
+          "hash": "0x2f58929c8f694124989cd6ae92a5a74a1d89b0566560018b4d27d22d2c6d7b15",
+          "blockNumber": "71021171",
+          "blockHash": "0x2d774ccc20f05a41d10a8dbb05566e8cb0350576992e26cdfecfb901eb8a4994",
+          "costWei": "2149500000000000",
+          "status": "success"
+        },
+        {
+          "role": "oracle",
+          "hash": "0x60dd2b3b77362305699a8fa9814b08041e6022eb419dc1fc455d7d3479f52ff4",
+          "blockNumber": "71023594",
+          "blockHash": "0xceb4bec29ed56afa6298b8d6728412f99a8049b9b3d1d0ca65fac7b892353d6d",
+          "costWei": "2149260000000000",
+          "status": "success"
+        },
+        {
+          "role": "oracle",
+          "hash": "0xbf3d7329124a3c8681403cd9d9b157a99e57e5b8caafa2d6fbd021dcfb7a7f29",
+          "blockNumber": "71024607",
+          "blockHash": "0x82d7f49254a9acc759cb8d0b40ffc1a02a474a2ff48e97a9a930586b18555822",
+          "costWei": "2149500000000000",
+          "status": "success"
+        }
+      ],
+      "pots": [
+        {
+          "id": "usdc cooperative",
+          "potId": "0x371347230c2ff750d8560de5b8afa56ff7386caafa5f003db7043c942f4515f7",
+          "state": "Settled",
+          "termsHash": "0xe44cfe31440b6188d65fda8c9fa502f9232385ea5ba00c5bc7c03441f74718bd",
+          "blockNumber": "71029258",
+          "blockHash": "0xa775daecd7f9f4e040e97039e3505b0fa54e3e226d714796c5d8a8d973f60c02",
+          "claimables": [
+            "0",
+            "0"
+          ]
+        },
+        {
+          "id": "usdc refund",
+          "potId": "0x0207e0acadb71b608113c8faa0457903e877e14f6af874548bf582866c7b6e3f",
+          "state": "Refunded",
+          "termsHash": "0x9a5ef85fd4fc7fa000a222ab42b737310202bae126bc784eb4bda50b10d69d8f",
+          "blockNumber": "71029261",
+          "blockHash": "0x122500bb5252f17c9adec8bf6c604534431bbb76bd5d4a7db502dddc93187eab",
+          "claimables": [
+            "0",
+            "0"
+          ]
+        },
+        {
+          "id": "usdc contest",
+          "potId": "0x761c69f4c11532451d256628cc0410a2c31da3ef687079751ad0c4362cb40084",
+          "state": "Refunded",
+          "termsHash": "0x01dabe8cf1e43ec4635d517c5b671784a7f91f97e6f0a005da8ae05e35250bf8",
+          "blockNumber": "71029264",
+          "blockHash": "0xb1e8ab7c2168bc793c1116657148508dddcbd2f1064a7733163e5c5adae1086c",
+          "claimables": [
+            "0",
+            "0"
+          ]
+        },
+        {
+          "id": "usdc finalize",
+          "potId": "0x21d00efa3a39f1196a649e49ab7cd13a9053995215689a7a0124847e29060c25",
+          "state": "Settled",
+          "termsHash": "0xd6fc320cf5fc02fbd77147cb316a5157fbdf979239620f1819f830d7fc76d515",
+          "blockNumber": "71029266",
+          "blockHash": "0xd3ceef4a8eeb7de38794021d18295723c73c32d2f8a40ef0d595878b0501e705",
+          "claimables": [
+            "0",
+            "0"
+          ]
+        },
+        {
+          "id": "eurc cooperative",
+          "potId": "0x8bdd7495969b8507df6d1be513b1abcfbddf7a6e8b6d6115ecd5a21f74e5ba55",
+          "state": "Settled",
+          "termsHash": "0xd5f0453dfc2a7f9edd2dfe46c142a9947d8bd91153c040703cd692f692aa7d96",
+          "blockNumber": "71029269",
+          "blockHash": "0xa6dd339fe157d72a42308f4ea79e0b0ed3945d1db14874c2fd48dc2cb1ff43b9",
+          "claimables": [
+            "0",
+            "0"
+          ]
+        },
+        {
+          "id": "eurc refund",
+          "potId": "0xce3d847d9a4b07677b08a1cee14d99511f0c5a3496169630d21c3e0a88fc921a",
+          "state": "Refunded",
+          "termsHash": "0x9b31bbebb3ed96b2129b6fd35b02cee84078d8d2b041b769cb4eb1a9d94b8321",
+          "blockNumber": "71029272",
+          "blockHash": "0xaecb3f5d49990c685f77523ff99f11867a2e7e19ee66e08874c17d66746719bb",
+          "claimables": [
+            "0",
+            "0"
+          ]
+        },
+        {
+          "id": "eurc contest",
+          "potId": "0xef000f578ccda5f5c2745623c3af04831454ae3593ca57836ba82692ca94a722",
+          "state": "Refunded",
+          "termsHash": "0x32f115631912b0c31971efc42b79c511298321cde4f9e20ef38f482d8b971869",
+          "blockNumber": "71029274",
+          "blockHash": "0xb1d334b8f8ccbf20bc70ba0ead2e251183a781ba57cf34423755badafea6918d",
+          "claimables": [
+            "0",
+            "0"
+          ]
+        },
+        {
+          "id": "eurc finalize",
+          "potId": "0xa12af9e9f03fdd2002438081a75c8ef3a23f9c8d9d29519edcd295eaf2fc1174",
+          "state": "Settled",
+          "termsHash": "0x6c2c1278dfddbabf13472c0584c44191e2e752ae872b5e4b9fb72b02b84c9fb2",
+          "blockNumber": "71029277",
+          "blockHash": "0x5ad4c30ba0c58ddc6b84d9b635679e4b881e7cbefd37df8b8861266aef7e5b3a",
+          "claimables": [
+            "0",
+            "0"
+          ]
+        }
+      ],
+      "gasWei": {
+        "relayer": "112187480000000000",
+        "oracle": "8597520000000000"
+      },
+      "dripped": {
+        "usdc": "120000",
+        "eurc": "120000"
+      }
+    }
+  ]
+}

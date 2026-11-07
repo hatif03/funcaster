@@ -1,0 +1,21 @@
+{
+  "at": "2026-11-06T00:27:47.217Z",
+  "scope": "INDEPENDENT PUBLIC READS; not a two-provider Ledger badge",
+  "status": "PASS",
+  "name": "play.funcaster.eth",
+  "resolved": "0xE581E56c592Ab9D6d3D234168EE9a89032273c00",
+  "ensReceipts": [
+    {
+      "hash": "0x18a59daed07c0fd5e5e95a430252946f47c4001c28a6fc81fa4c3259dec22ffe",
+      "block": "12073001",
+      "blockHash": "0xbfb6c9ef84f18ce31676cafe25351f62c29eee0a2b55a1c3044e80d5f91af342",
+      "gasCost": "370940005564100"
+    }
+  ],
+  "arkiv": {
+    "hash": "0x2e8466a5b15092d1d46334bad1ce0c1e647ac9f4d33dc47d175090c0814ada8f",
+    "key": "0xafc7c87bb6374e7d878dc5c5e48f6d395446502ad71e59ec797fa99c63488662",
+    "createdAt": "269494",
+    "who": "0xE581E56c592Ab9D6d3D234168EE9a89032273c00"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "at": "2026-11-06T09:53:14.589Z",
+  "scope": "READ ONLY; oracle funding confirmed; no keys loaded, signing or funding",
+  "hosts": [
+    {
+      "host": "rpc.testnet.arc.io",
+      "block": "71010411",
+      "balances": [
+        {
+          "role": "ARC_RELAYER",
+          "address": "0x81DdeD7eE7753791cEaF24Ab6Cb1694d1F39A008",
+          "nativeUSDC": "19.8802102",
+          "EURC": "19.95"
+        },
+        {
+          "role": "ARC_ORACLE",
+          "address": "0x7DcF0D60291cDBBD31f4DC3ef831afb1B41a8F21",
+          "nativeUSDC": "20",
+          "EURC": "0"
+        }
+      ]
+    },
+    {
+      "host": "rpc.testnet.arc.network",
+      "block": "71010413",
+      "balances": [
+        {
+          "role": "ARC_RELAYER",
+          "address": "0x81DdeD7eE7753791cEaF24Ab6Cb1694d1F39A008",
+          "nativeUSDC": "19.8802102",
+          "EURC": "19.95"
+        },
+        {
+          "role": "ARC_ORACLE",
+          "address": "0x7DcF0D60291cDBBD31f4DC3ef831afb1B41a8F21",
+          "nativeUSDC": "20",
+          "EURC": "0"
+        }
+      ]
+    }
+  ]
+}

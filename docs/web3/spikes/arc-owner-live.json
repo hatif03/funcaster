@@ -1,0 +1,42 @@
+{
+  "at": "2026-11-06T21:03:53.136Z",
+  "scope": "OWNER EXECUTED LIVE TESTNET",
+  "chainId": 5042002,
+  "donor": "0x81DdeD7eE7753791cEaF24Ab6Cb1694d1F39A008",
+  "sender": "0xd910Fb008F7F9A63f20e575aC394A47aCcb7bc91",
+  "asset": "0x3600000000000000000000000000000000000000",
+  "value": "1000",
+  "retainedFloor": "50000",
+  "maxTotalCostNative": "200000000000000000",
+  "before": {
+    "donor": "20000000",
+    "sender": "0",
+    "authorizationUsed": false
+  },
+  "operations": [
+    {
+      "id": "bankroll developer probe",
+      "hash": "0xb99934a228a783c23a5fdd62aa98181680ebc6a34b94e6ce11de28be171b16bb",
+      "status": "success",
+      "tokenSpend": "51000",
+      "dataHash": "0xa85756b7f22d5029819741a13caf0685a631fe1aee8df65b3a71d03d32c858d0",
+      "gasCost": "1478520000000000",
+      "blockNumber": "70919676"
+    },
+    {
+      "id": "receive sponsored authorization",
+      "hash": "0xf1a0c031706d1c97891ec1918d50985fa4145e796aecf11a877aabfea0c6c76c",
+      "status": "success",
+      "tokenSpend": "0",
+      "dataHash": "0x32e89b15dcaf8a95a0c80682e29088c834c8b7bcc12a8f3d538f428dd08718d0",
+      "gasCost": "1750400000000000",
+      "blockNumber": "70919681"
+    }
+  ],
+  "replaySimulation": "contract revert",
+  "after": {
+    "donor": "19946771",
+    "sender": "50000",
+    "authorizationUsed": true
+  }
+}

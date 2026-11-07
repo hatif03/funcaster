@@ -1,0 +1,37 @@
+{
+  "at": "2026-11-06T00:23:53.834Z",
+  "scope": "OWNER EXECUTED LIVE TESTNET",
+  "name": "play.funcaster.eth",
+  "resolver": "0x8FB3Bc94532Ff13C75d84201D72E7A0A77Bf9439",
+  "registrar": "0x04b0970f4a58caa9E58C5aDBBF7eB402339264a5",
+  "console": "0xE581E56c592Ab9D6d3D234168EE9a89032273c00",
+  "existing": null,
+  "estimate": "384834",
+  "maxGasWei": "461800013854000",
+  "operations": [
+    {
+      "chainId": 11155111,
+      "name": "play.funcaster.eth",
+      "hash": "0x18a59daed07c0fd5e5e95a430252946f47c4001c28a6fc81fa4c3259dec22ffe",
+      "dataHash": "0xf02468bbbe5f6653311ef0177b2f0556d79404e14273ac80cd96f9d0d07d8ec0",
+      "nonce": 11,
+      "gas": "461800",
+      "maxFee": "1000000030",
+      "gasCost": "370940005564100",
+      "blockNumber": "12073001"
+    }
+  ],
+  "dataHash": "0xf02468bbbe5f6653311ef0177b2f0556d79404e14273ac80cd96f9d0d07d8ec0",
+  "resolved": "0xE581E56c592Ab9D6d3D234168EE9a89032273c00",
+  "arkiv": {
+    "hash": "0x2e8466a5b15092d1d46334bad1ce0c1e647ac9f4d33dc47d175090c0814ada8f",
+    "key": "0xafc7c87bb6374e7d878dc5c5e48f6d395446502ad71e59ec797fa99c63488662",
+    "who": "0xE581E56c592Ab9D6d3D234168EE9a89032273c00"
+  },
+  "arcChainId": 5042002,
+  "versions": {
+    "viem": "2.57.14",
+    "ensjs": "5.2.7",
+    "arkiv": "1.0.1"
+  }
+}

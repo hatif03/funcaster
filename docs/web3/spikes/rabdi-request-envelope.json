@@ -1,0 +1,21 @@
+{
+  "at": "2026-11-06T23:14:18.232Z",
+  "scope": "UNSIGNED worst-column request-envelope check",
+  "cases": [
+    {
+      "payloadBytes": 128000,
+      "userColumns": 31,
+      "calldataBytes": 134532,
+      "jsonRequestBytes": 269251,
+      "status": "HTTP-413"
+    },
+    {
+      "payloadBytes": 120000,
+      "userColumns": 31,
+      "calldataBytes": 126532,
+      "jsonRequestBytes": 253251,
+      "estimate": "4943342",
+      "status": "PASS-UNSIGNED"
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "verifiedAt": "2026-11-06T10:29:39.925Z",
+  "scope": "Independent read-only RPC check; no key loaded and no broadcasts",
+  "result": "PASS",
+  "chainId": 11155111,
+  "name": "funcaster.eth",
+  "owner": "0x04b0970f4a58caa9E58C5aDBBF7eB402339264a5",
+  "registeredTransaction": "0xfde4cb5c70062b1dda668345d593654f3402b23a225df2cf8501963d79ef0022",
+  "expiryUTC": "2027-11-01T10:27:12.000Z",
+  "expiryIST": "1 November 2027 at 15:57:12 GMT+5:30",
+  "tokenId": "92307351419498138517360877870304868669031256202096391105364751017170824069120",
+  "rolesMatchPinnedSource": true,
+  "unrelatedKeyDenied": true,
+  "registrationCostMockUSDCUnits": "8000021",
+  "remainingTokenAllowance": "0",
+  "resolver": "0x0000000000000000000000000000000000000000",
+  "subregistry": "0x0000000000000000000000000000000000000000",
+  "gasCostSepETH": "0.000000000017831283",
+  "balanceSepETH": "0.769999999982168717",
+  "receipts": [
+    {
+      "operation": "mint",
+      "hash": "0x8f89e9da7a6c63c00c6825489b05b6fb8ef71b46bba0dda83a4cd0e19ca3b059",
+      "block": "12040373",
+      "confirmations": "39",
+      "status": "success",
+      "gasCostWei": "2390013"
+    },
+    {
+      "operation": "approve",
+      "hash": "0x9a8ae96e49bf55c100042c822cb660cc9857f0b605a9d04365b6192664d23da3",
+      "block": "12040375",
+      "confirmations": "37",
+      "status": "success",
+      "gasCostWei": "2180658"
+    },
+    {
+      "operation": "commit",
+      "hash": "0x00d865a545ed2fbe8372c9a1d3e330acf2b3449fde95192416c56f6b87ad795d",
+      "block": "12040378",
+      "confirmations": "34",
+      "status": "success",
+      "gasCostWei": "2166786"
+    },
+    {
+      "operation": "register",
+      "hash": "0xfde4cb5c70062b1dda668345d593654f3402b23a225df2cf8501963d79ef0022",
+      "block": "12040400",
+      "confirmations": "12",
+      "status": "success",
+      "gasCostWei": "11093826"
+    }
+  ]
+}

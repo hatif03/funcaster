@@ -1,0 +1,148 @@
+{
+  "at": "2026-11-06T09:55:30.975Z",
+  "scope": "KEYLESS PUBLIC WORKER PREFLIGHT; no signing or sends",
+  "reports": [
+    {
+      "host": "rpc.testnet.arc.io",
+      "proof": {
+        "ok": true,
+        "scope": "READS AND UNSIGNED SIMULATION ONLY",
+        "deployment": {
+          "chainId": 5042002,
+          "contract": "0xe339B15Aa54596B4752923d981DAC30B7A569F82",
+          "runtimeCodeHash": "0x8583a77dd812bf10ef0c4c76da5dd3b9446f25ba3ec4bce38d18b7f9d27be279",
+          "blockNumber": 71010272,
+          "assets": [
+            {
+              "symbol": "USDC",
+              "address": "0x3600000000000000000000000000000000000000",
+              "name": "USDC",
+              "version": "2",
+              "decimals": 6
+            },
+            {
+              "symbol": "EURC",
+              "address": "0x89B50855Aa3bE2F677cD6303Cec089B5F319D72a",
+              "name": "EURC",
+              "version": "2",
+              "decimals": 6
+            }
+          ],
+          "explorer": "https://explorer.testnet.arc.io",
+          "creationTx": "0x69d3bbc0f5428c25827e314f83121a4dcef954a69413d754e8b3adf629737448",
+          "deployer": "0x81dded7ee7753791ceaf24ab6cb1694d1f39a008",
+          "chainVerified": false,
+          "artifactSha256": "55604efffcd8e41d2e15f986e970c410a2bc8644ef94986d42c32ad0762db58b",
+          "checkedAt": "2026-11-06T09:54:40.670Z",
+          "scope": "TWO-HOST DEPLOYMENT READBACK; not a Ledger badge"
+        },
+        "blockNumber": "71010655",
+        "blockHash": "0x11d6d943ef0139f6360a99e5a68e3f004cde3976aede09eed197c5d1b1ed0e3c",
+        "assets": [
+          {
+            "symbol": "USDC",
+            "address": "0x3600000000000000000000000000000000000000",
+            "domain": {
+              "symbol": "USDC",
+              "address": "0x3600000000000000000000000000000000000000",
+              "name": "USDC",
+              "version": "2",
+              "decimals": 6,
+              "chainId": 5042002
+            },
+            "blockNumber": "71010657",
+            "blockHash": "0xf3b84dda3c49516be814ab985120f6776baefba55900ef9ebe922439d64fa726"
+          },
+          {
+            "symbol": "EURC",
+            "address": "0x89B50855Aa3bE2F677cD6303Cec089B5F319D72a",
+            "domain": {
+              "symbol": "EURC",
+              "address": "0x89B50855Aa3bE2F677cD6303Cec089B5F319D72a",
+              "name": "EURC",
+              "version": "2",
+              "decimals": 6,
+              "chainId": 5042002
+            },
+            "blockNumber": "71010662",
+            "blockHash": "0xd364b157e533753d5c2bcb09631df4f6d4c791d61441f20fac506d5c0df5bc3e"
+          }
+        ],
+        "gas": "205880",
+        "fee": "40000000000",
+        "chainVerified": false
+      }
+    },
+    {
+      "host": "rpc.testnet.arc.network",
+      "proof": {
+        "ok": true,
+        "scope": "READS AND UNSIGNED SIMULATION ONLY",
+        "deployment": {
+          "chainId": 5042002,
+          "contract": "0xe339B15Aa54596B4752923d981DAC30B7A569F82",
+          "runtimeCodeHash": "0x8583a77dd812bf10ef0c4c76da5dd3b9446f25ba3ec4bce38d18b7f9d27be279",
+          "blockNumber": 71010272,
+          "assets": [
+            {
+              "symbol": "USDC",
+              "address": "0x3600000000000000000000000000000000000000",
+              "name": "USDC",
+              "version": "2",
+              "decimals": 6
+            },
+            {
+              "symbol": "EURC",
+              "address": "0x89B50855Aa3bE2F677cD6303Cec089B5F319D72a",
+              "name": "EURC",
+              "version": "2",
+              "decimals": 6
+            }
+          ],
+          "explorer": "https://explorer.testnet.arc.io",
+          "creationTx": "0x69d3bbc0f5428c25827e314f83121a4dcef954a69413d754e8b3adf629737448",
+          "deployer": "0x81dded7ee7753791ceaf24ab6cb1694d1f39a008",
+          "chainVerified": false,
+          "artifactSha256": "55604efffcd8e41d2e15f986e970c410a2bc8644ef94986d42c32ad0762db58b",
+          "checkedAt": "2026-11-06T09:54:40.670Z",
+          "scope": "TWO-HOST DEPLOYMENT READBACK; not a Ledger badge"
+        },
+        "blockNumber": "71010669",
+        "blockHash": "0x5aa7ba08f6f410d47d034509a68aee483110bd1162360bccc41563739412b85e",
+        "assets": [
+          {
+            "symbol": "USDC",
+            "address": "0x3600000000000000000000000000000000000000",
+            "domain": {
+              "symbol": "USDC",
+              "address": "0x3600000000000000000000000000000000000000",
+              "name": "USDC",
+              "version": "2",
+              "decimals": 6,
+              "chainId": 5042002
+            },
+            "blockNumber": "71010670",
+            "blockHash": "0x6421c922570328da711737a82e1a9c48f96fdfd890dcc3059223becdeff4b0ad"
+          },
+          {
+            "symbol": "EURC",
+            "address": "0x89B50855Aa3bE2F677cD6303Cec089B5F319D72a",
+            "domain": {
+              "symbol": "EURC",
+              "address": "0x89B50855Aa3bE2F677cD6303Cec089B5F319D72a",
+              "name": "EURC",
+              "version": "2",
+              "decimals": 6,
+              "chainId": 5042002
+            },
+            "blockNumber": "71010674",
+            "blockHash": "0x6d6a6bdb7d005f2d1cc90c1760dc90d9a50319b61500dcd9263307d069b372e6"
+          }
+        ],
+        "gas": "205880",
+        "fee": "40000000000",
+        "chainVerified": false
+      }
+    }
+  ]
+}

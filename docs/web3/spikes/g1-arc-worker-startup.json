@@ -1,0 +1,91 @@
+{
+  "at": "2026-11-06T10:24:36.206Z",
+  "scope": "READ-ONLY STARTUP CHECK; no signing, broadcasting or worker polling",
+  "deployment": {
+    "contract": "0xe339B15Aa54596B4752923d981DAC30B7A569F82",
+    "creationTx": "0x69d3bbc0f5428c25827e314f83121a4dcef954a69413d754e8b3adf629737448"
+  },
+  "checks": [
+    {
+      "id": "retained fixture and worker startup",
+      "status": "PASS-READ-ONLY",
+      "scope": "READS ONLY; no jobs polled, signed or broadcast"
+    }
+  ],
+  "complete": false,
+  "ceilings": {
+    "gasUSDC": "0.55",
+    "drippedUSDC": "0.12",
+    "drippedEURC": "0.12",
+    "transactionsPerRole": 64
+  },
+  "preflight": {
+    "ok": true,
+    "scope": "READS AND UNSIGNED SIMULATION ONLY",
+    "deployment": {
+      "chainId": 5042002,
+      "contract": "0xe339B15Aa54596B4752923d981DAC30B7A569F82",
+      "runtimeCodeHash": "0x8583a77dd812bf10ef0c4c76da5dd3b9446f25ba3ec4bce38d18b7f9d27be279",
+      "blockNumber": 71010272,
+      "assets": [
+        {
+          "symbol": "USDC",
+          "address": "0x3600000000000000000000000000000000000000"
+        },
+        {
+          "symbol": "EURC",
+          "address": "0x89B50855Aa3bE2F677cD6303Cec089B5F319D72a"
+        }
+      ],
+      "explorer": "https://explorer.testnet.arc.io"
+    },
+    "blockNumber": "71014092",
+    "blockHash": "0x9669af32cf69112c733bc97d5517fa7468b970f74cb2509a2ff0542908d66a03",
+    "assets": [
+      {
+        "symbol": "USDC",
+        "address": "0x3600000000000000000000000000000000000000",
+        "domain": {
+          "symbol": "USDC",
+          "address": "0x3600000000000000000000000000000000000000",
+          "chainId": 5042002,
+          "name": "USDC",
+          "version": "2",
+          "decimals": 6
+        },
+        "blockNumber": "71014094",
+        "blockHash": "0x8a57df81c070c0950abcb395f29682675023c42ed47494e1557a3bf9b07a4e75"
+      },
+      {
+        "symbol": "EURC",
+        "address": "0x89B50855Aa3bE2F677cD6303Cec089B5F319D72a",
+        "domain": {
+          "symbol": "EURC",
+          "address": "0x89B50855Aa3bE2F677cD6303Cec089B5F319D72a",
+          "chainId": 5042002,
+          "name": "EURC",
+          "version": "2",
+          "decimals": 6
+        },
+        "blockNumber": "71014098",
+        "blockHash": "0x088e7e171b4bc528c83391a582bb19fad0657c9d1bc21e6510258597343ccd7d"
+      }
+    ],
+    "gas": "205880",
+    "fee": "40000000000",
+    "chainVerified": false,
+    "attempts": [
+      {
+        "host": "rpc.testnet.arc.io",
+        "ok": true,
+        "blockNumber": "71014092"
+      },
+      {
+        "host": "rpc.testnet.arc.network",
+        "ok": true,
+        "blockNumber": "71014104"
+      }
+    ]
+  },
+  "startupReady": true
+}

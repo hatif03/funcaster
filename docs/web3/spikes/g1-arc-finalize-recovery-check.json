@@ -1,0 +1,28 @@
+{
+  "at": "2026-11-06T12:26:21.627Z",
+  "scope": "KEYLESS READS ONLY; no signing, broadcasting, worker polling or private journal edits",
+  "complete": false,
+  "hosts": [
+    {
+      "host": "rpc.testnet.arc.io",
+      "gasWei": {
+        "relayer": "108200200000000000",
+        "oracle": "8597520000000000"
+      }
+    },
+    {
+      "host": "rpc.testnet.arc.network",
+      "gasWei": {
+        "relayer": "108200200000000000",
+        "oracle": "8597520000000000"
+      }
+    }
+  ],
+  "proof": {
+    "state": "confirmed",
+    "hash": "0xc65301ea3be89b42376a8550f58c541b7227a5ed31db1477bbaa8966ee919ae7",
+    "blockNumber": "71027830",
+    "blockHash": "0x2c9b912da9c4f0f4faa0b56ff9e4f5009db6ed63f638b67e39848b12728e9621",
+    "costWei": "1840760000000000"
+  }
+}

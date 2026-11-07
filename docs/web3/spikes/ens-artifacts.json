@@ -1,0 +1,29 @@
+{
+  "commit": "07e55a056f5b6a9c90119f501bdd05714e67dddd",
+  "artifacts": [
+    {
+      "name": "ETHRegistry",
+      "address": "0xd4ebcbbdf463c9c45784603db0ddd499bc44a8b4",
+      "url": "https://raw.githubusercontent.com/ensdomains/contracts-v2/07e55a056f5b6a9c90119f501bdd05714e67dddd/contracts/deployments/sepolia/ETHRegistry.json",
+      "sha256": "d8f3b9d68cbd8346468972692a3f37edc6cbe4ea962e0c0718a161d5a6f74766"
+    },
+    {
+      "name": "VerifiableFactory",
+      "address": "0xda70306c98e97ece36f997a21368e53298572991",
+      "url": "https://raw.githubusercontent.com/ensdomains/contracts-v2/07e55a056f5b6a9c90119f501bdd05714e67dddd/contracts/deployments/sepolia/VerifiableFactory.json",
+      "sha256": "0ea73700424533a3527f85e3c98804b58a1829821ac59d81187568aa7c134550"
+    },
+    {
+      "name": "UserRegistryImpl",
+      "address": "0x9bd8a88719068d09ecee662f36c0e3856708366a",
+      "url": "https://raw.githubusercontent.com/ensdomains/contracts-v2/07e55a056f5b6a9c90119f501bdd05714e67dddd/contracts/deployments/sepolia/UserRegistryImpl.json",
+      "sha256": "33093b6a6d32d1d1525d92af4fd3bbeed14b5ccda84b27e61e0a80c193c4a528"
+    },
+    {
+      "name": "PermissionedResolverImpl",
+      "address": "0x115eb53f0c60696633855f90b138178fb40b2b2c",
+      "url": "https://raw.githubusercontent.com/ensdomains/contracts-v2/07e55a056f5b6a9c90119f501bdd05714e67dddd/contracts/deployments/sepolia/PermissionedResolverImpl.json",
+      "sha256": "2e24a831e9180f9b5051dc8ac07afc2b2bc504a63a289ef9e1fcbfff07bc8486"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "at": "2026-11-06T20:57:45.732Z",
+  "scope": "Scratch only, public anonymous reads; not an approved production migration",
+  "sdk": "1.0.1",
+  "viem": "2.57.14",
+  "ensjs": "5.2.7",
+  "checks": [
+    {
+      "id": "creator-scoped anonymous read",
+      "status": "PASS-READ",
+      "count": 0,
+      "block": "263253"
+    },
+    {
+      "id": "ENS same-process read",
+      "status": "PASS-READ",
+      "chainId": 11155111,
+      "address": null
+    }
+  ],
+  "chainId": 7794095,
+  "balanceWei": "0"
+}

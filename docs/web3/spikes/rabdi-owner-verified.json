@@ -1,0 +1,486 @@
+{
+  "at": "2026-11-06T21:21:44.163Z",
+  "scope": "INDEPENDENT PUBLIC READS; no wallet or secret",
+  "chainId": 7794095,
+  "provider": "https://rpc.rabdi.db-chain.testnet.arkiv.network",
+  "run": "k0_1793913415990",
+  "receipts": [
+    {
+      "id": "typed fixtures",
+      "hash": "0xbf38cb6da4fc50cb9015888ac7e4c1a5820d61757c652fa91e8fdac9a9af4e8d",
+      "block": "263830",
+      "blockHash": "0x15fbac2e2ff0160db7f32247b432d2cddd7d7c708a91c381e7ce16f19f16121d",
+      "gasCost": "2019995000000000",
+      "events": [
+        {
+          "event": "EntityCreated",
+          "args": {
+            "entityKey": "0x7f4bcd627af17dbd4125d9071f3008eaf4b85cdc3d97c3bae81e33017092fa1e",
+            "owner": "0xE581E56c592Ab9D6d3D234168EE9a89032273c00",
+            "expiresAt": "265630",
+            "creationFlags": 1
+          }
+        },
+        {
+          "event": "EntityCreated",
+          "args": {
+            "entityKey": "0xcddc20132d5921b0c58f1374904d673a61213f6dfed0d37baedd0b35fc0887be",
+            "owner": "0xE581E56c592Ab9D6d3D234168EE9a89032273c00",
+            "expiresAt": "265630",
+            "creationFlags": 1
+          }
+        },
+        {
+          "event": "EntityCreated",
+          "args": {
+            "entityKey": "0x1727eae1dd2b052a70664b5f9a93c360d4789c7c86383146b18b77c9f74a40dd",
+            "owner": "0xE581E56c592Ab9D6d3D234168EE9a89032273c00",
+            "expiresAt": "265630",
+            "creationFlags": 1
+          }
+        },
+        {
+          "event": "EntityCreated",
+          "args": {
+            "entityKey": "0xc93bf04be78647cea13585dede12700d704a34df804d7b7616417fa26796211d",
+            "owner": "0xE581E56c592Ab9D6d3D234168EE9a89032273c00",
+            "expiresAt": "265630",
+            "creationFlags": 0
+          }
+        },
+        {
+          "event": "EntityCreated",
+          "args": {
+            "entityKey": "0xc2e15149458056b5f093ef95dca03a77d040b85b6d6256e6e9c69f23ef41b272",
+            "owner": "0xE581E56c592Ab9D6d3D234168EE9a89032273c00",
+            "expiresAt": "265630",
+            "creationFlags": 2
+          }
+        },
+        {
+          "event": "EntityCreated",
+          "args": {
+            "entityKey": "0x1d72711dd884c5041d87591363c3b78541db6e50c427f78958b85076011a012d",
+            "owner": "0xE581E56c592Ab9D6d3D234168EE9a89032273c00",
+            "expiresAt": "265630",
+            "creationFlags": 0
+          }
+        },
+        {
+          "event": "EntityCreated",
+          "args": {
+            "entityKey": "0xa2662775ff86f5571c36d6dcb73e19516c66fdb3224b0dd503d57bc4acffdb8b",
+            "owner": "0xE581E56c592Ab9D6d3D234168EE9a89032273c00",
+            "expiresAt": "265630",
+            "creationFlags": 0
+          }
+        },
+        {
+          "event": "EntityCreated",
+          "args": {
+            "entityKey": "0x1b069d6d8b3cb2bae410700ce2aa53859369cabe4268ba524de8caca8c957ca7",
+            "owner": "0xE581E56c592Ab9D6d3D234168EE9a89032273c00",
+            "expiresAt": "265630",
+            "creationFlags": 0
+          }
+        },
+        {
+          "event": "EntityCreated",
+          "args": {
+            "entityKey": "0x9f4d9364a66a79f9d28c7f19b6da920027a76d30cc584e68eafa03061580ca2a",
+            "owner": "0xE581E56c592Ab9D6d3D234168EE9a89032273c00",
+            "expiresAt": "265630",
+            "creationFlags": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "mutable patch",
+      "hash": "0x5c40f4140ab3be79927b77e72e0bbd7ab23a6a7375fb4a00d076e7f3dde751fa",
+      "block": "263834",
+      "blockHash": "0xe3450c6f53cbbe465fde444512481feb884265d92558ecdba98a6638797f6ccd",
+      "gasCost": "54101000000000",
+      "events": [
+        {
+          "event": "EntityPatched",
+          "args": {
+            "entityKey": "0xc93bf04be78647cea13585dede12700d704a34df804d7b7616417fa26796211d",
+            "owner": "0xE581E56c592Ab9D6d3D234168EE9a89032273c00"
+          }
+        }
+      ]
+    },
+    {
+      "id": "readonly owner extends",
+      "hash": "0x6d3b779e786a9ad252db40a137bbb207addc4742e807a8deda518e567ee9994d",
+      "block": "263837",
+      "blockHash": "0xf33e84280c39b12aab17c11d647aaae66cb1b2b184f735fea294f8e176da6bfa",
+      "gasCost": "42900000000000",
+      "events": [
+        {
+          "event": "ExpiryExtended",
+          "args": {
+            "entityKey": "0x7f4bcd627af17dbd4125d9071f3008eaf4b85cdc3d97c3bae81e33017092fa1e",
+            "owner": "0xE581E56c592Ab9D6d3D234168EE9a89032273c00",
+            "expiresAt": "265930"
+          }
+        }
+      ]
+    },
+    {
+      "id": "profile transfer",
+      "hash": "0x948dbd5d363fb98f90d0e07e99a69ab4bab3994a7444fd2bd8fdb4e1abecbaad",
+      "block": "263842",
+      "blockHash": "0x0faf0174172aa2d8e94cb974198f745bdaa5c27119665ba191211ba73382912e",
+      "gasCost": "43102000000000",
+      "events": [
+        {
+          "event": "OwnershipTransferred",
+          "args": {
+            "entityKey": "0xc2e15149458056b5f093ef95dca03a77d040b85b6d6256e6e9c69f23ef41b272",
+            "previousOwner": "0xE581E56c592Ab9D6d3D234168EE9a89032273c00",
+            "newOwner": "0xA98d5EB3cb1D0427F348f0130732243bB8bbc747"
+          }
+        }
+      ]
+    },
+    {
+      "id": "permissionless extension after transfer",
+      "hash": "0xca02d7d62fada71e854bb9fb247adb17f400e6403b4e3c52de2d70c1340c053d",
+      "block": "263847",
+      "blockHash": "0x0e45e0d773567b09b92264f6a615ab098400c6e186140d9dbd33c7f8d7afaf8e",
+      "gasCost": "40896000000000",
+      "events": [
+        {
+          "event": "ExpiryExtended",
+          "args": {
+            "entityKey": "0xc2e15149458056b5f093ef95dca03a77d040b85b6d6256e6e9c69f23ef41b272",
+            "owner": "0xA98d5EB3cb1D0427F348f0130732243bB8bbc747",
+            "expiresAt": "265930"
+          }
+        }
+      ]
+    },
+    {
+      "id": "readonly owner deletes disposable fixture",
+      "hash": "0x5d2da015d60fc5ba9f0dc99e2ee22e7eeb75de89495783c443e85abbaae51ee7",
+      "block": "263851",
+      "blockHash": "0x9f38f78f14cc18810acf2698af8e0a5f307864ef465832322b3b3cc89fd232d5",
+      "gasCost": "181136000000000",
+      "events": [
+        {
+          "event": "EntityDeleted",
+          "args": {
+            "entityKey": "0x7f4bcd627af17dbd4125d9071f3008eaf4b85cdc3d97c3bae81e33017092fa1e",
+            "owner": "0xE581E56c592Ab9D6d3D234168EE9a89032273c00"
+          }
+        }
+      ]
+    }
+  ],
+  "rows": [
+    {
+      "key": "0xcddc20132d5921b0c58f1374904d673a61213f6dfed0d37baedd0b35fc0887be",
+      "ordinal": 1,
+      "creator": "0xE581E56c592Ab9D6d3D234168EE9a89032273c00",
+      "owner": "0xE581E56c592Ab9D6d3D234168EE9a89032273c00",
+      "expiresAt": "265630",
+      "flags": {
+        "readonly": true,
+        "permissionlessExtension": false,
+        "raw": 1
+      },
+      "validated": true
+    },
+    {
+      "key": "0x1727eae1dd2b052a70664b5f9a93c360d4789c7c86383146b18b77c9f74a40dd",
+      "ordinal": 2,
+      "creator": "0xE581E56c592Ab9D6d3D234168EE9a89032273c00",
+      "owner": "0xE581E56c592Ab9D6d3D234168EE9a89032273c00",
+      "expiresAt": "265630",
+      "flags": {
+        "readonly": true,
+        "permissionlessExtension": false,
+        "raw": 1
+      },
+      "validated": true
+    },
+    {
+      "key": "0xc93bf04be78647cea13585dede12700d704a34df804d7b7616417fa26796211d",
+      "ordinal": 3,
+      "creator": "0xE581E56c592Ab9D6d3D234168EE9a89032273c00",
+      "owner": "0xE581E56c592Ab9D6d3D234168EE9a89032273c00",
+      "expiresAt": "265630",
+      "flags": {
+        "readonly": false,
+        "permissionlessExtension": false,
+        "raw": 0
+      },
+      "validated": true
+    },
+    {
+      "key": "0xc2e15149458056b5f093ef95dca03a77d040b85b6d6256e6e9c69f23ef41b272",
+      "ordinal": 4,
+      "creator": "0xE581E56c592Ab9D6d3D234168EE9a89032273c00",
+      "owner": "0xA98d5EB3cb1D0427F348f0130732243bB8bbc747",
+      "expiresAt": "265930",
+      "flags": {
+        "readonly": false,
+        "permissionlessExtension": true,
+        "raw": 2
+      },
+      "validated": true
+    },
+    {
+      "key": "0x1d72711dd884c5041d87591363c3b78541db6e50c427f78958b85076011a012d",
+      "ordinal": 5,
+      "creator": "0xE581E56c592Ab9D6d3D234168EE9a89032273c00",
+      "owner": "0xE581E56c592Ab9D6d3D234168EE9a89032273c00",
+      "expiresAt": "265630",
+      "flags": {
+        "readonly": false,
+        "permissionlessExtension": false,
+        "raw": 0
+      },
+      "validated": true
+    },
+    {
+      "key": "0xa2662775ff86f5571c36d6dcb73e19516c66fdb3224b0dd503d57bc4acffdb8b",
+      "ordinal": 6,
+      "creator": "0xE581E56c592Ab9D6d3D234168EE9a89032273c00",
+      "owner": "0xE581E56c592Ab9D6d3D234168EE9a89032273c00",
+      "expiresAt": "265630",
+      "flags": {
+        "readonly": false,
+        "permissionlessExtension": false,
+        "raw": 0
+      },
+      "validated": true
+    },
+    {
+      "key": "0x1b069d6d8b3cb2bae410700ce2aa53859369cabe4268ba524de8caca8c957ca7",
+      "ordinal": 7,
+      "creator": "0xE581E56c592Ab9D6d3D234168EE9a89032273c00",
+      "owner": "0xE581E56c592Ab9D6d3D234168EE9a89032273c00",
+      "expiresAt": "265630",
+      "flags": {
+        "readonly": false,
+        "permissionlessExtension": false,
+        "raw": 0
+      },
+      "validated": true
+    },
+    {
+      "key": "0x9f4d9364a66a79f9d28c7f19b6da920027a76d30cc584e68eafa03061580ca2a",
+      "ordinal": 8,
+      "creator": "0xE581E56c592Ab9D6d3D234168EE9a89032273c00",
+      "owner": "0xE581E56c592Ab9D6d3D234168EE9a89032273c00",
+      "expiresAt": "265630",
+      "flags": {
+        "readonly": false,
+        "permissionlessExtension": false,
+        "raw": 0
+      },
+      "validated": true
+    }
+  ],
+  "predicates": [
+    {
+      "field": "label",
+      "type": "str",
+      "operator": "eq",
+      "count": 1,
+      "block": "263974",
+      "status": "PASS-READ"
+    },
+    {
+      "field": "label",
+      "type": "str",
+      "operator": "gt",
+      "count": 6,
+      "block": "263974",
+      "status": "PASS-READ"
+    },
+    {
+      "field": "label",
+      "type": "str",
+      "operator": "lt",
+      "count": 1,
+      "block": "263975",
+      "status": "PASS-READ"
+    },
+    {
+      "field": "ordinal",
+      "type": "i32",
+      "operator": "eq",
+      "count": 1,
+      "block": "263975",
+      "status": "PASS-READ"
+    },
+    {
+      "field": "ordinal",
+      "type": "i32",
+      "operator": "gt",
+      "count": 7,
+      "block": "263975",
+      "status": "PASS-READ"
+    },
+    {
+      "field": "ordinal",
+      "type": "i32",
+      "operator": "lt",
+      "count": 0,
+      "block": "263975",
+      "status": "PASS-READ"
+    },
+    {
+      "field": "at",
+      "type": "u64",
+      "operator": "eq",
+      "count": 1,
+      "block": "263975",
+      "status": "PASS-READ"
+    },
+    {
+      "field": "at",
+      "type": "u64",
+      "operator": "gt",
+      "count": 7,
+      "block": "263975",
+      "status": "PASS-READ"
+    },
+    {
+      "field": "at",
+      "type": "u64",
+      "operator": "lt",
+      "count": 0,
+      "block": "263976",
+      "status": "PASS-READ"
+    },
+    {
+      "field": "amount",
+      "type": "u256",
+      "operator": "eq",
+      "count": 1,
+      "block": "263976",
+      "status": "PASS-READ"
+    },
+    {
+      "field": "amount",
+      "type": "u256",
+      "operator": "gt",
+      "count": 7,
+      "block": "263976",
+      "status": "PASS-READ"
+    },
+    {
+      "field": "amount",
+      "type": "u256",
+      "operator": "lt",
+      "count": 0,
+      "block": "263976",
+      "status": "PASS-READ"
+    },
+    {
+      "field": "rating",
+      "type": "dec",
+      "operator": "eq",
+      "count": 8,
+      "block": "263976",
+      "status": "PASS-READ"
+    },
+    {
+      "field": "rating",
+      "type": "dec",
+      "operator": "gt",
+      "count": 0,
+      "block": "263976",
+      "status": "PASS-READ"
+    },
+    {
+      "field": "rating",
+      "type": "dec",
+      "operator": "lt",
+      "count": 0,
+      "block": "263976",
+      "status": "PASS-READ"
+    },
+    {
+      "field": "active",
+      "type": "bool",
+      "operator": "eq",
+      "count": 8,
+      "block": "263976",
+      "status": "PASS-READ"
+    },
+    {
+      "field": "active",
+      "type": "bool",
+      "operator": "gt",
+      "count": 0,
+      "block": "263977",
+      "status": "PASS-READ"
+    },
+    {
+      "field": "active",
+      "type": "bool",
+      "operator": "lt",
+      "count": 0,
+      "block": "263977",
+      "status": "PASS-READ"
+    },
+    {
+      "field": "who",
+      "type": "addr",
+      "operator": "eq",
+      "count": 8,
+      "block": "263977",
+      "status": "PASS-READ"
+    },
+    {
+      "field": "who",
+      "type": "addr",
+      "operator": "gt",
+      "count": 0,
+      "block": "263977",
+      "status": "PASS-READ"
+    },
+    {
+      "field": "who",
+      "type": "addr",
+      "operator": "lt",
+      "count": 0,
+      "block": "263977",
+      "status": "PASS-READ"
+    },
+    {
+      "field": "related",
+      "type": "key",
+      "operator": "eq",
+      "count": 8,
+      "block": "263977",
+      "status": "PASS-READ"
+    },
+    {
+      "field": "related",
+      "type": "key",
+      "operator": "gt",
+      "count": 0,
+      "block": "263977",
+      "status": "PASS-READ"
+    },
+    {
+      "field": "related",
+      "type": "key",
+      "operator": "lt",
+      "count": 0,
+      "block": "263978",
+      "status": "PASS-READ"
+    }
+  ],
+  "totalGasTGLM": "0.00238213",
+  "ownerDeletionVerified": true,
+  "balanceTGLM": "9.99761787",
+  "limit": "One public RPC provider. Receipt and row verification is independent of the owner process, not a two-provider ledger certification. Boundary/cost/expiry/volume/forgery checks remain."
+}

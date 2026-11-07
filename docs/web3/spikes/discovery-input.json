@@ -1,0 +1,11 @@
+{
+  "sources": [
+    "https://docs.ens.domains/learn/deployments/",
+    "https://github.com/ensdomains/contracts-v2/blob/07e55a056f5b6a9c90119f501bdd05714e67dddd/contracts/deployments/sepolia/ETHRegistrar.json",
+    "viem@2.57.14 sepolia chain metadata",
+    "docs/plans/web3/build-guide/03-arc-guide.md"
+  ],
+  "ensAbiUrl": "https://raw.githubusercontent.com/ensdomains/contracts-v2/07e55a056f5b6a9c90119f501bdd05714e67dddd/contracts/deployments/sepolia/ETHRegistrar.json",
+  "ensRegistrar": "0xf633e7fc17e2bbe0d0965d18ec1821dcb754a3d3",
+  "candidates": ["chonks", "chonksplay"]
+}

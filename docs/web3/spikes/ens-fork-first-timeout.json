@@ -1,0 +1,23 @@
+{
+  "scope": "LOCAL FORK ONLY — not live-chain evidence",
+  "at": "2026-11-06T10:51:46.503Z",
+  "fork": {
+    "chainId": 11155111,
+    "block": 12040400,
+    "sourceCommit": "07e55a056f5b6a9c90119f501bdd05714e67dddd"
+  },
+  "sdk": "ensjs 5.2.7 / viem 2.57.14 / Anvil 1.7.1",
+  "checks": [
+    {
+      "id": "S-ENS-2 addresses",
+      "status": "PASS-LOCAL",
+      "detail": "ensjs deployment addresses equal pinned official Sepolia artifacts"
+    }
+  ],
+  "operations": [],
+  "ok": false,
+  "error": {
+    "name": "WaitForTransactionReceiptTimeoutError",
+    "message": "Timed out while waiting for transaction with hash \"0x752d7d99740013a14bfff55a48bc5ee85b3a555efda8cb87f8ce0f0fd7cc8231\" to be confirmed."
+  }
+}

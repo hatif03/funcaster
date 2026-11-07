@@ -1,0 +1,16 @@
+{
+  "at": "2026-11-06T00:11:55.898Z",
+  "scope": "PUBLIC READS ONLY; NO NEW TRANSACTIONS SINCE PARTIAL RECONCILIATION",
+  "entries": 74,
+  "latest": 80,
+  "pending": 80,
+  "lastId": "scores 1180",
+  "lastHash": "0xf6114c458b2ff1a83923035b57cf1cbcf050c80944c1d0f95ae9702d304c4a53",
+  "lastStatus": "success",
+  "ownerError": {
+    "method": "eth_getBlockByNumber",
+    "cause": "ConnectTimeoutError",
+    "stage": "unsigned preflight",
+    "fixed": "bounded allowlisted read retries now recognize Node/Undici connection, header, body and socket timeouts"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "scope": "Real Chromium / simulated RPC and authority responses",
+  "layouts": [
+    {
+      "id": "players",
+      "width": 1280,
+      "height": 720,
+      "w": 550,
+      "scroll": 550
+    },
+    {
+      "id": "invite",
+      "width": 1280,
+      "height": 720,
+      "w": 510,
+      "scroll": 510
+    },
+    {
+      "id": "records",
+      "width": 1280,
+      "height": 720,
+      "w": 510,
+      "scroll": 510
+    },
+    {
+      "id": "players",
+      "width": 800,
+      "height": 600,
+      "w": 550,
+      "scroll": 550
+    },
+    {
+      "id": "invite",
+      "width": 800,
+      "height": 600,
+      "w": 512,
+      "scroll": 512
+    },
+    {
+      "id": "records",
+      "width": 800,
+      "height": 600,
+      "w": 512,
+      "scroll": 512
+    }
+  ],
+  "checks": [
+    "long seat names",
+    "authority fallback text",
+    "table name in Invite",
+    "history from RPC response with explicit unverified label",
+    "phone lookup failure and code fallback",
+    "three phone viewports",
+    "revocation closes admin dialog"
+  ],
+  "unverified": [
+    "public chain execution",
+    "physical sensors",
+    "HTTPS staging"
+  ]
+}

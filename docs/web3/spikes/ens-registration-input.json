@@ -1,0 +1,18 @@
+{
+  "chainId": 11155111,
+  "rpcUrl": "https://11155111.rpc.thirdweb.com",
+  "pinnedCommit": "07e55a056f5b6a9c90119f501bdd05714e67dddd",
+  "label": "chonks",
+  "owner": "0x04b0970f4a58caa9E58C5aDBBF7eB402339264a5",
+  "durationSeconds": 31536000,
+  "resolver": "0x0000000000000000000000000000000000000000",
+  "subregistry": "0x0000000000000000000000000000000000000000",
+  "maxMockTokenUnits": "10000000",
+  "maxGasCostWei": "10000000000000000",
+  "contracts": {
+    "ETHRegistrar": "0xf633e7fc17e2bbe0d0965d18ec1821dcb754a3d3",
+    "ETHRegistry": "0xd4ebcbbdf463c9c45784603db0ddd499bc44a8b4",
+    "MockUSDC": "0x240b0316df57887dbbe58b586508b19e633a14aa",
+    "StandardRentPriceOracle": "0x8196665d4ca7488b6474a9ec8e7d2719fb42263a"
+  }
+}

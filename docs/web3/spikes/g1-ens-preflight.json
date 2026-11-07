@@ -1,0 +1,130 @@
+{
+  "ok": true,
+  "at": "2026-11-06T05:52:46.238Z",
+  "scope": "ENS READ PREREQUISITES ONLY — no transactions or provider enablement",
+  "chainId": 11155111,
+  "sourceCommit": "07e55a056f5b6a9c90119f501bdd05714e67dddd",
+  "deployments": [
+    {
+      "name": "RootRegistry",
+      "pinned": "0xb458d6a3a77919449d03e7a6903c26827c1ec43f",
+      "configured": "0xb458d6a3a77919449d03e7a6903c26827c1ec43f",
+      "official": "0xb458d6a3a77919449d03e7a6903c26827c1ec43f",
+      "source": "pinned official artifact (not exposed by ensjs)",
+      "status": "PASS"
+    },
+    {
+      "name": "ETHRegistry",
+      "pinned": "0xd4ebcbbdf463c9c45784603db0ddd499bc44a8b4",
+      "configured": "0xD4eBcbBdF463C9c45784603Db0dDD499BC44A8B4",
+      "official": "0xd4ebcbbdf463c9c45784603db0ddd499bc44a8b4",
+      "source": "ensjs 5.2.7",
+      "status": "PASS"
+    },
+    {
+      "name": "VerifiableFactory",
+      "pinned": "0xda70306c98e97ece36f997a21368e53298572991",
+      "configured": "0xDa70306C98E97eCe36F997a21368e53298572991",
+      "official": "0xda70306c98e97ece36f997a21368e53298572991",
+      "source": "ensjs 5.2.7",
+      "status": "PASS"
+    },
+    {
+      "name": "UserRegistryImpl",
+      "pinned": "0x9bd8a88719068d09ecee662f36c0e3856708366a",
+      "configured": "0x9BD8a88719068D09ecee662f36C0E3856708366a",
+      "official": "0x9bd8a88719068d09ecee662f36c0e3856708366a",
+      "source": "ensjs 5.2.7",
+      "status": "PASS"
+    },
+    {
+      "name": "PermissionedResolverImpl",
+      "pinned": "0x115eb53f0c60696633855f90b138178fb40b2b2c",
+      "configured": "0x115eb53F0c60696633855F90b138178Fb40b2b2C",
+      "official": "0x115eb53f0c60696633855f90b138178fb40b2b2c",
+      "source": "ensjs 5.2.7",
+      "status": "PASS"
+    },
+    {
+      "name": "UniversalHelper",
+      "pinned": "0xd453e5bdb62cc3bea84341b1e306319c8ffd7dfe",
+      "configured": "0xd453e5Bdb62CC3beA84341B1e306319C8Ffd7DFe",
+      "official": "0xd453e5bdb62cc3bea84341b1e306319c8ffd7dfe",
+      "source": "ensjs 5.2.7",
+      "status": "PASS"
+    }
+  ],
+  "docs": {
+    "url": "https://docs.ens.domains/learn/deployments/",
+    "sha256": "06c3ddafbfd6bf30d85d0575f732a7f8e8a307eddf1fececde921270faf76d01"
+  },
+  "roles": [
+    {
+      "name": "parent registry",
+      "address": "0x03dB3cdE1139CE7aBa50E6176ee28E1eBECC77CD",
+      "bitmap": "23694882055805708026345164039296315886211329",
+      "status": "PASS"
+    },
+    {
+      "name": "play registry",
+      "address": "0x15E729A01519A22a726D2C829285781a3DEEb0Cb",
+      "bitmap": "23694882055805708026345164039296315886211329",
+      "status": "PASS"
+    },
+    {
+      "name": "play resolver",
+      "address": "0x8FB3Bc94532Ff13C75d84201D72E7A0A77Bf9439",
+      "bitmap": "5784800237655953878877368326340059594769",
+      "status": "PASS"
+    }
+  ],
+  "proof": {
+    "name": "play.funcaster.eth",
+    "parent": "funcaster.eth",
+    "chainId": 11155111,
+    "blockNumber": "12074622",
+    "blockHash": "0x54bda17402a6a0796eb9faf77ea5e22791196dc9169f6bd73bb8fa4ef65988ce",
+    "chainTime": "1793944356",
+    "expiresAt": "1825064832",
+    "nodes": [
+      {
+        "name": "funcaster.eth",
+        "label": "chonks",
+        "registry": "0xD4eBcbBdF463C9c45784603Db0dDD499BC44A8B4",
+        "subregistry": "0x03dB3cdE1139CE7aBa50E6176ee28E1eBECC77CD",
+        "resolver": "0x0000000000000000000000000000000000000000",
+        "owner": "0x04b0970f4a58caa9E58C5aDBBF7eB402339264a5",
+        "expiresAt": "1825064832",
+        "resource": "92307351419498138517360877870304868669031256202096391105364751017170824069120"
+      },
+      {
+        "name": "play.funcaster.eth",
+        "label": "play",
+        "registry": "0x03dB3cdE1139CE7aBa50E6176ee28E1eBECC77CD",
+        "subregistry": "0x15E729A01519A22a726D2C829285781a3DEEb0Cb",
+        "resolver": "0x8FB3Bc94532Ff13C75d84201D72E7A0A77Bf9439",
+        "owner": "0x04b0970f4a58caa9E58C5aDBBF7eB402339264a5",
+        "expiresAt": "1825064832",
+        "resource": "11810116879505903530736657589356320261972650652842837891999921560363020058624"
+      }
+    ],
+    "leaf": {
+      "name": "play.funcaster.eth",
+      "label": "play",
+      "registry": "0x03dB3cdE1139CE7aBa50E6176ee28E1eBECC77CD",
+      "subregistry": "0x15E729A01519A22a726D2C829285781a3DEEb0Cb",
+      "resolver": "0x8FB3Bc94532Ff13C75d84201D72E7A0A77Bf9439",
+      "owner": "0x04b0970f4a58caa9E58C5aDBBF7eB402339264a5",
+      "expiresAt": "1825064832",
+      "resource": "11810116879505903530736657589356320261972650652842837891999921560363020058624"
+    }
+  },
+  "pending": [
+    "E3 warm pool and party lifecycle",
+    "E4 seat lifecycle",
+    "E5 live host enforcement",
+    "E6 records / join / pot roster"
+  ],
+  "rpcHost": "ethereum-sepolia-rpc.publicnode.com",
+  "attempts": []
+}

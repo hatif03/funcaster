@@ -1,0 +1,21 @@
+{
+  "at": "2026-11-06T22:53:41.684Z",
+  "scope": "LIVE GATEWAY upload/read/re-upload; one injected missing-read response",
+  "gateway": "https://api.gateway.ethswarm.org",
+  "bytes": 1536,
+  "immediate": {
+    "reference": "e08c7a3293e3d66a1e70fc1493e10551a265cc3ba585394588422929f1d033dc",
+    "status": "available",
+    "sha256": "dd5c307a6b8c358a5ef09f7d22078a93c52a610b0eb1fcc93222a9da3613377a"
+  },
+  "recovered": {
+    "reference": "e08c7a3293e3d66a1e70fc1493e10551a265cc3ba585394588422929f1d033dc",
+    "status": "reuploaded",
+    "sha256": "dd5c307a6b8c358a5ef09f7d22078a93c52a610b0eb1fcc93222a9da3613377a"
+  },
+  "injectedMissingRead": true,
+  "paidStamp": false,
+  "claim": "Content-addressed; retrievable while the gateway retains it or a running console keeper restores it. No permanent-storage guarantee.",
+  "limits": "No stress test of the shared public gateway. 429/5xx stop without retries; retry only via the worker outbox.",
+  "originalRetentionCohortUnchanged": true
+}

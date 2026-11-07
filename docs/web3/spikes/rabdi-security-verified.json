@@ -1,0 +1,69 @@
+{
+  "at": "2026-11-06T00:08:12.782Z",
+  "scope": "INDEPENDENT PUBLIC READS OF SURVIVING FIXTURES",
+  "run": "g0_1793922055013",
+  "costs": [
+    {
+      "ordinal": 1,
+      "key": "0xc29e3dff9677a02fcde589cf861f671d9c7694ee2d40b62081a76e1cf783a02f",
+      "columns": 4,
+      "bytes": 1000,
+      "creator": "0xE581E56c592Ab9D6d3D234168EE9a89032273c00",
+      "payloadMatches": true,
+      "expiresAt": "1564154"
+    },
+    {
+      "ordinal": 2,
+      "key": "0x37dfce7bdafd3219e0ee611e40e21ad30a6a0fe8f8cdfb37e490f18896d6a988",
+      "columns": 4,
+      "bytes": 1000,
+      "creator": "0xE581E56c592Ab9D6d3D234168EE9a89032273c00",
+      "payloadMatches": true,
+      "expiresAt": "8044161"
+    },
+    {
+      "ordinal": 7,
+      "key": "0x972c5542ad61b88c53bfd7f38476d7db86e1b8beca09373a8eb3a13b57ef9276",
+      "columns": 15,
+      "bytes": 1000,
+      "creator": "0xE581E56c592Ab9D6d3D234168EE9a89032273c00",
+      "payloadMatches": true,
+      "expiresAt": "1564186"
+    },
+    {
+      "ordinal": 8,
+      "key": "0x57d62d071710fadac0f83e30a80d8a67f2ecc83ea4fba65ebe06a9ac4d4af41f",
+      "columns": 30,
+      "bytes": 1000,
+      "creator": "0xE581E56c592Ab9D6d3D234168EE9a89032273c00",
+      "payloadMatches": true,
+      "expiresAt": "1564190"
+    },
+    {
+      "ordinal": 9,
+      "key": "0x3e8875ffd5038386a7ba30867b9ec4c7bb3eb6504497e9dab577dd5308518029",
+      "columns": 31,
+      "bytes": 1000,
+      "creator": "0xE581E56c592Ab9D6d3D234168EE9a89032273c00",
+      "payloadMatches": true,
+      "expiresAt": "8044196"
+    }
+  ],
+  "readonlyTransfer": {
+    "key": "0x08755208974086f72cba48176a71048a264ed20ba416a7cce138c76b8615c23f",
+    "owner": "0xA98d5EB3cb1D0427F348f0130732243bB8bbc747",
+    "creator": "0xE581E56c592Ab9D6d3D234168EE9a89032273c00",
+    "readonly": true
+  },
+  "atomicity": {
+    "baselineLabelUnchanged": true,
+    "failedCreateAbsent": true,
+    "queryBlock": "268968",
+    "mintNonceAtFailure": "Owner-time observation only; subsequent creates advanced it"
+  },
+  "ordered": {
+    "created": "0x5c762d1ff0d5d9304bec1afbe64d845eb0fa96b7f68ce0787ee142aade62623d",
+    "baseline": "0xeada3866bf5939a535dd92755b219dce956b6ef483ef6f82b5406b0d2dba978e",
+    "expiresAt": "270305"
+  }
+}

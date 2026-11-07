@@ -1,0 +1,31 @@
+{
+  "version": "0.0.0",
+  "name": "chonks-rabdi-k0",
+  "dependencies": {
+    "@arkiv-network/sdk": {
+      "version": "1.0.1",
+      "resolved": "https://registry.npmjs.org/@arkiv-network/sdk/-/sdk-1.0.1.tgz",
+      "overridden": false,
+      "dependencies": {
+        "viem": {
+          "version": "2.57.14"
+        }
+      }
+    },
+    "@ensdomains/ensjs": {
+      "version": "5.2.7",
+      "resolved": "https://registry.npmjs.org/@ensdomains/ensjs/-/ensjs-5.2.7.tgz",
+      "overridden": false,
+      "dependencies": {
+        "viem": {
+          "version": "2.57.14"
+        }
+      }
+    },
+    "viem": {
+      "version": "2.57.14",
+      "resolved": "https://registry.npmjs.org/viem/-/viem-2.57.14.tgz",
+      "overridden": false
+    }
+  }
+}

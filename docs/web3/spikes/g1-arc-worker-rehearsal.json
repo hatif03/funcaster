@@ -1,0 +1,609 @@
+{
+  "at": "2026-11-06T12:16:20.603Z",
+  "scope": "LOCAL ARC FORK ONLY; no public broadcasts or role keys",
+  "sourceBlock": "71027280",
+  "artifactSha256": "55604efffcd8e41d2e15f986e970c410a2bc8644ef94986d42c32ad0762db58b",
+  "checks": [
+    {
+      "id": "bounded owner deployment and no-send rerun",
+      "status": "PASS-LOCAL",
+      "tx": "0xdbb423eb8c6d3daebd980a3801ff49c783697576b85def496baf15247c8c277c",
+      "costWei": "63594520000000000",
+      "ceilingUSDC": "0.1",
+      "detail": "Production deployment runner; exact Studio payload, zero priority, durable no-resend journal"
+    },
+    {
+      "id": "deployment and asset preflight",
+      "status": "PASS-LOCAL",
+      "detail": "Actual reviewed bytecode and both token domains; unsigned create simulation"
+    },
+    {
+      "id": "usdc bankroll seat 1",
+      "status": "PASS-LOCAL",
+      "tx": "0x8b621978179a399e087402d33dd01a3c5726eb3cb4d41814d583f3055c2965a7",
+      "amount": "60000"
+    },
+    {
+      "id": "usdc bankroll seat 2",
+      "status": "PASS-LOCAL",
+      "tx": "0x61994c952d2cd28cf16c369818093b4a76dcd83f982fcee4d5e6e4fdeb22a04a",
+      "amount": "60000"
+    },
+    {
+      "id": "post-effect restart",
+      "status": "PASS-LOCAL",
+      "potId": "0x271d7980ea220626c1f5496a69cdd872797069420d3b9a0c8622690670f41e0d",
+      "detail": "Real worker/role journals reopened; existing create reconciled"
+    },
+    {
+      "id": "usdc blocked recipient isolation",
+      "status": "PASS-LOCAL",
+      "potId": "0x271d7980ea220626c1f5496a69cdd872797069420d3b9a0c8622690670f41e0d",
+      "detail": "Worker left blocked seat claimable and paid the other seat; unblocking permits recovery"
+    },
+    {
+      "id": "usdc cooperative",
+      "status": "PASS-LOCAL",
+      "potId": "0x271d7980ea220626c1f5496a69cdd872797069420d3b9a0c8622690670f41e0d",
+      "state": "Settled",
+      "blockNumber": "71027294",
+      "blockHash": "0xc424e19924a55b2bc373c9e8f86a7924bd0f8774de9008f77511fe9f3809799b",
+      "claimables": [
+        "0",
+        "0"
+      ],
+      "scope": "SCRIPTED WORKER JOBS; synthetic canonical relay-result fixture, not gameplay acceptance"
+    },
+    {
+      "id": "usdc refund",
+      "status": "PASS-LOCAL",
+      "potId": "0x33fdba0ec00dac3bdf69a11a560b6c706d276c93d50579c04dde4a798eb8fa00",
+      "state": "Refunded",
+      "blockNumber": "71027301",
+      "blockHash": "0xc550d1d7aa39e13d6334591e133356e7964eec80a311fb76cc17bf82d5717174",
+      "claimables": [
+        "0",
+        "0"
+      ],
+      "scope": "SCRIPTED WORKER JOBS; synthetic canonical relay-result fixture, not gameplay acceptance"
+    },
+    {
+      "id": "usdc contest",
+      "status": "PASS-LOCAL",
+      "potId": "0x54198a7d7210be148d7724e860346e4a7ef5de86903507269a3645fc66dce05c",
+      "state": "Refunded",
+      "blockNumber": "71027311",
+      "blockHash": "0x1a58b4517f7c140f33ecbecc7790fb79a8c34e302e028832da3f616c316893b5",
+      "claimables": [
+        "0",
+        "0"
+      ],
+      "scope": "SCRIPTED WORKER JOBS; synthetic canonical relay-result fixture, not gameplay acceptance"
+    },
+    {
+      "id": "usdc finalize",
+      "status": "PASS-LOCAL",
+      "potId": "0x09831729acac953b4b9a1ee829c2bccd9e31dacd8660fbfeb9bd698d1d240692",
+      "state": "Settled",
+      "blockNumber": "71027320",
+      "blockHash": "0xa38976f0e1b8ba941d5b2f1eecc1998d158020787feb22b7b21b564ea081339b",
+      "claimables": [
+        "0",
+        "0"
+      ],
+      "scope": "SCRIPTED WORKER JOBS; synthetic canonical relay-result fixture, not gameplay acceptance"
+    },
+    {
+      "id": "eurc bankroll seat 1",
+      "status": "PASS-LOCAL",
+      "tx": "0x00332afceddaece8f3ada0a5828a393031d45b2acf25fa90f659b50e7f6b506c",
+      "amount": "60000"
+    },
+    {
+      "id": "eurc bankroll seat 2",
+      "status": "PASS-LOCAL",
+      "tx": "0x9dd089fc30a5dc2838362070926c6f8a0bdd2e9340106efc09512f10f18f5a4f",
+      "amount": "60000"
+    },
+    {
+      "id": "eurc blocked recipient isolation",
+      "status": "PASS-LOCAL",
+      "potId": "0x1cd507ba50a43923b3e8fe9b4aafa80437fb58155679755c893c5adc9617355b",
+      "detail": "Worker left blocked seat claimable and paid the other seat; unblocking permits recovery"
+    },
+    {
+      "id": "eurc cooperative",
+      "status": "PASS-LOCAL",
+      "potId": "0x1cd507ba50a43923b3e8fe9b4aafa80437fb58155679755c893c5adc9617355b",
+      "state": "Settled",
+      "blockNumber": "71027331",
+      "blockHash": "0x42b39665d9cb5aa92d97a2c7158df3076596c9b09feb934ea3fd2886c6266894",
+      "claimables": [
+        "0",
+        "0"
+      ],
+      "scope": "SCRIPTED WORKER JOBS; synthetic canonical relay-result fixture, not gameplay acceptance"
+    },
+    {
+      "id": "eurc refund",
+      "status": "PASS-LOCAL",
+      "potId": "0x569e47596855aaee39474a2aa2f9c5959ef4c9c3b55c61edad369287d490ab60",
+      "state": "Refunded",
+      "blockNumber": "71027336",
+      "blockHash": "0x007bf1b4e44a68316ffe72e25e287d1c2ffb9d5bb5f913f08a4e0f4350095399",
+      "claimables": [
+        "0",
+        "0"
+      ],
+      "scope": "SCRIPTED WORKER JOBS; synthetic canonical relay-result fixture, not gameplay acceptance"
+    },
+    {
+      "id": "eurc contest",
+      "status": "PASS-LOCAL",
+      "potId": "0x90e3ba837e3ac17be3bb3951c6953911d3efa83711bb4ca1c4dc3e79d37e1e9d",
+      "state": "Refunded",
+      "blockNumber": "71027346",
+      "blockHash": "0x8c9d9d6b57c1ef6caa8d022ba5d1a007959f28df77ad260e47188f42c22515a8",
+      "claimables": [
+        "0",
+        "0"
+      ],
+      "scope": "SCRIPTED WORKER JOBS; synthetic canonical relay-result fixture, not gameplay acceptance"
+    },
+    {
+      "id": "eurc finalize",
+      "status": "PASS-LOCAL",
+      "potId": "0x0c6d4f1f4d4bd07a2f6c4e7eae6620acd3a70e1af941b2b3f903dabdbdd4efd0",
+      "state": "Settled",
+      "blockNumber": "71027360",
+      "blockHash": "0xe9d1c5442a6890fb07e90fa23e36087f9b625d4c619548037743144d27428837",
+      "claimables": [
+        "0",
+        "0"
+      ]
+    },
+    {
+      "id": "owner exact-hash finalization recovery",
+      "status": "PASS-LOCAL",
+      "hash": "0x69054e5613e20db12065ce883f087337c168fbb9d9da72c3f99d3a54463d6884",
+      "detail": "Transport loss after admission reproduced; normal worker sends nothing; explicit owner runner reconstructs the identical hash once and its rerun is read-only"
+    },
+    {
+      "id": "journal-confirmed remaining claims",
+      "status": "PASS-LOCAL",
+      "detail": "Only the final EURC claims resume; 50 relayer and 4 oracle admissions, with canonical success journals and paid claims"
+    },
+    {
+      "id": "delayed recovery receipt and claims",
+      "status": "PASS-LOCAL",
+      "detail": "Two temporary noncanonical transaction readbacks after a mined refund; bounded outcome polling finishes claims without another refund send"
+    },
+    {
+      "id": "complete scenario rerun",
+      "status": "PASS-LOCAL",
+      "detail": "Stored intents, signature payloads and results replay without another transaction"
+    },
+    {
+      "id": "all pot funds conserved and claimed",
+      "status": "PASS-LOCAL",
+      "transactions": 54,
+      "gasPriority": "0",
+      "feeFloorGwei": "20",
+      "contractBalances": {
+        "USDC": "0",
+        "EURC": "0"
+      }
+    }
+  ],
+  "deployment": {
+    "contract": "0xf306c4ffc73538592ab8ab0fc93b87a299048676",
+    "runtimeCodeHash": "0x571f0fc1909d5c165e7dcf7604b5603f019967b332fc13051fe556f26b667644",
+    "blockNumber": 71027281,
+    "assets": [
+      {
+        "symbol": "USDC",
+        "address": "0x3600000000000000000000000000000000000000",
+        "name": "USDC",
+        "version": "2",
+        "decimals": 6
+      },
+      {
+        "symbol": "EURC",
+        "address": "0x89B50855Aa3bE2F677cD6303Cec089B5F319D72a",
+        "name": "EURC",
+        "version": "2",
+        "decimals": 6
+      }
+    ],
+    "chainId": 31337,
+    "explorer": "http://127.0.0.1"
+  },
+  "preflight": {
+    "ok": true,
+    "scope": "READS AND UNSIGNED SIMULATION ONLY",
+    "deployment": {
+      "contract": "0xf306c4ffc73538592ab8ab0fc93b87a299048676",
+      "runtimeCodeHash": "0x571f0fc1909d5c165e7dcf7604b5603f019967b332fc13051fe556f26b667644",
+      "blockNumber": 71027281,
+      "assets": [
+        {
+          "symbol": "USDC",
+          "address": "0x3600000000000000000000000000000000000000",
+          "name": "USDC",
+          "version": "2",
+          "decimals": 6
+        },
+        {
+          "symbol": "EURC",
+          "address": "0x89B50855Aa3bE2F677cD6303Cec089B5F319D72a",
+          "name": "EURC",
+          "version": "2",
+          "decimals": 6
+        }
+      ],
+      "chainId": 31337,
+      "explorer": "http://127.0.0.1"
+    },
+    "blockNumber": "71027283",
+    "blockHash": "0x9aac38c5be1e84e499867950f2de70a002c32c257d6b66db5d8abd68e01fd905",
+    "assets": [
+      {
+        "symbol": "USDC",
+        "address": "0x3600000000000000000000000000000000000000",
+        "domain": {
+          "symbol": "USDC",
+          "address": "0x3600000000000000000000000000000000000000",
+          "name": "USDC",
+          "version": "2",
+          "decimals": 6,
+          "chainId": 31337
+        },
+        "blockNumber": "71027283",
+        "blockHash": "0x9aac38c5be1e84e499867950f2de70a002c32c257d6b66db5d8abd68e01fd905"
+      },
+      {
+        "symbol": "EURC",
+        "address": "0x89B50855Aa3bE2F677cD6303Cec089B5F319D72a",
+        "domain": {
+          "symbol": "EURC",
+          "address": "0x89B50855Aa3bE2F677cD6303Cec089B5F319D72a",
+          "name": "EURC",
+          "version": "2",
+          "decimals": 6,
+          "chainId": 31337
+        },
+        "blockNumber": "71027283",
+        "blockHash": "0x9aac38c5be1e84e499867950f2de70a002c32c257d6b66db5d8abd68e01fd905"
+      }
+    ],
+    "gas": "203101",
+    "fee": "40000000000",
+    "chainVerified": false
+  },
+  "transactions": [
+    {
+      "role": "relayer",
+      "hash": "0x8b621978179a399e087402d33dd01a3c5726eb3cb4d41814d583f3055c2965a7",
+      "blockNumber": "71027284",
+      "costWei": "1478760000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x61994c952d2cd28cf16c369818093b4a76dcd83f982fcee4d5e6e4fdeb22a04a",
+      "blockNumber": "71027285",
+      "costWei": "1478760000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0xb1b3a154116175a550d6be85e51de67427f9f85efbbdc0af732a1170a9719a91",
+      "blockNumber": "71027286",
+      "costWei": "4468180000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x090773809d542369a80da2702764c5cee8ed88909115c5df79002f4730bfc9c2",
+      "blockNumber": "71027287",
+      "costWei": "2515300000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x63286b65363ea40e986f296f2391e29a37a1656184a545c4393ae4ff98d19ea0",
+      "blockNumber": "71027288",
+      "costWei": "3039100000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x442cfa050ade56da735cb4e4291aa9c192f7615aec48f14d061fca1d64d8c6bd",
+      "blockNumber": "71027291",
+      "costWei": "2191680000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x566f1416812361d1583c833438ee50cf88a338f402823d8fe0aa07c34b86c828",
+      "blockNumber": "71027292",
+      "costWei": "1239080000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x85630e9f3ac33daa7fc458ddb6d23613801ae3e678ad7cb9be4c6b014f726666",
+      "blockNumber": "71027294",
+      "costWei": "1239080000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x607a916bab61f2679cf7662b7fa750c5b6d6080534618a3fb5ba5b11c5acf993",
+      "blockNumber": "71027295",
+      "costWei": "4467940000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x51b51beaef764586fcd0329bc528ebb1c548e66cc0645fac6683d989af001da1",
+      "blockNumber": "71027296",
+      "costWei": "2514820000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x93a4370dcaa71673a7fd3768200b1cffba10d45aea1f327fdc0b35e00d211e06",
+      "blockNumber": "71027298",
+      "costWei": "1216580000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x1399038f2f8f22d7ce97d667dceb9cc5a6392a16c7484dd703c2edb33560a36a",
+      "blockNumber": "71027301",
+      "costWei": "1242100000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x710630f1f43deeca42225a29763b943c1439060aab6c023457f05d979264b97f",
+      "blockNumber": "71027302",
+      "costWei": "4468180000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0xe593756efcf536b70e84122470970b8506202e5235dbf3576e2368786809507a",
+      "blockNumber": "71027303",
+      "costWei": "2514900000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0xa574b8d07c6b640c9a0cef50c52ff043f842244b67c86415f9f486ce24fde52f",
+      "blockNumber": "71027304",
+      "costWei": "3038940000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0xb83d08ac6a1e3dc5cd212c1d23217e91a75429a536294425090763b55621ea70",
+      "blockNumber": "71027307",
+      "costWei": "896440000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0xf2db5c6e5b9891723ac32c4b143d0b6e8c91fb62476ea9f0bc76889b1078dfd0",
+      "blockNumber": "71027308",
+      "costWei": "1671120000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x7c829d1caa02c8925f0570e4cde099cf2dc080f0979e8d8c13379a48dc1bd82c",
+      "blockNumber": "71027309",
+      "costWei": "1242340000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x62815ec00f7f45cb8972f1fe4017dd785be3d34253eda1adb1825a64cf4a2ae9",
+      "blockNumber": "71027310",
+      "costWei": "1242340000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x69872c9ecf1f420b2ca97e32970be168c4fc746328914e2845fc823899612eb9",
+      "blockNumber": "71027312",
+      "costWei": "4468180000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0xb1d25a47caa8d2e9d17240a89d1f45f72ffaf56d465cd997483e134aa23f509c",
+      "blockNumber": "71027313",
+      "costWei": "2515060000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x3c35458db66b92fd83451777b19c62d278b52ab06616e1db916ac6ce56111858",
+      "blockNumber": "71027314",
+      "costWei": "3038860000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0xf3f08397aecd8eccdef2c3f96e2bca70a8bdd31d4bcb2f481961e7b02c283a7f",
+      "blockNumber": "71027318",
+      "costWei": "1840760000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x3dcd8c03e8c5b23b22a2fde15e991c27c5ad7ee262495f87cb0c496f451f3ba1",
+      "blockNumber": "71027319",
+      "costWei": "1239080000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0xfc1732ce46b0a5ddc82ef03870aef686eef1f269866659aee900da7501d9cdfb",
+      "blockNumber": "71027320",
+      "costWei": "1239080000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x00332afceddaece8f3ada0a5828a393031d45b2acf25fa90f659b50e7f6b506c",
+      "blockNumber": "71027321",
+      "costWei": "1242940000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x9dd089fc30a5dc2838362070926c6f8a0bdd2e9340106efc09512f10f18f5a4f",
+      "blockNumber": "71027322",
+      "costWei": "1242940000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x3386d029a2d548243735fd7deab58bf79c01d655dad461276aa9a6b411e15f11",
+      "blockNumber": "71027323",
+      "costWei": "4472740000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x4751e2a09006da09bc299d3102b5030d77d9841b3b84d60ad3a5085795eacac1",
+      "blockNumber": "71027324",
+      "costWei": "2781480000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x9d52e267dc292e072b38b6ab009487f16980fa58d8e633bda22ed10722c5a118",
+      "blockNumber": "71027325",
+      "costWei": "2963760000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x84e99811ef9a4503f2929de42d2d640259887b608d9054d3d8b27bd50536a1fa",
+      "blockNumber": "71027328",
+      "costWei": "2191680000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x422844e9f0b43795c1852424815ba992639eb37270c4e36fa693e2f08249cc12",
+      "blockNumber": "71027329",
+      "costWei": "1121260000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x2279178ff425038f3b405ecc40232e081439a7f405dde8eeb88dd83991cc0ac1",
+      "blockNumber": "71027331",
+      "costWei": "1025260000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x0f23c61552a28c97b53beb9eac4243337b6cd0a59fa667208bc8a4c01ec98615",
+      "blockNumber": "71027332",
+      "costWei": "4472740000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0xde2ac2d4d0b773c16eb3b89ac9701c05cea5325b694ccc3daaf3943f842154f4",
+      "blockNumber": "71027333",
+      "costWei": "2781880000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0xc633cf0ceda690f063475b23431a1def1ab9955cf8975ce1225b2150a7fed71c",
+      "blockNumber": "71027335",
+      "costWei": "1216820000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x499b087a6e8c7ba0d36dcc1d3e9fdfeda15b1a3f0425c567a3a6fb64351758ab",
+      "blockNumber": "71027336",
+      "costWei": "1028520000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x897a6ac4abd43f2c1697f22abf0782cac3247fa3ccfeb3edae145c2fa753c2d4",
+      "blockNumber": "71027337",
+      "costWei": "4472740000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x11996947efaea7e3bd37a818e98d515ce3202970ff4ae35636a9937c251c93c4",
+      "blockNumber": "71027338",
+      "costWei": "2781480000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0xaa9d2ca760d84e366ff27d8482fb1e3921ce7d0cf98f40dc9c64df53e9b4fedb",
+      "blockNumber": "71027339",
+      "costWei": "2963760000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x21ae76a4744c7c1b44ddcc6b4a91e9e88a2b5c68f6fbe968b2bbdf614f8d1a20",
+      "blockNumber": "71027342",
+      "costWei": "896440000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0xdee61f804a50fb2b0210febd758ae010aefb97cb7ed5b87c4df225fd3666dca1",
+      "blockNumber": "71027343",
+      "costWei": "1671120000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0xbfcbf4314009049fb26e4a48234c05cd7e13b62641a53b1bee22620b1a2fe425",
+      "blockNumber": "71027344",
+      "costWei": "1124520000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0xc7bcfd27f0fa5120f92de5062114c55b0371db2ac6c29bb57e5d06d15b49b010",
+      "blockNumber": "71027345",
+      "costWei": "1028520000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0xc5b6bfb4270de83cfed8aec6a0fdf2f614f575e00f78b38b9fcde43a78eb19a1",
+      "blockNumber": "71027347",
+      "costWei": "4472740000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0xa2f42e1fe9d5c8c0d276460b4900e07242ae544a406198d16fe128e007c6039e",
+      "blockNumber": "71027348",
+      "costWei": "2781880000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0xca7d20c8eaab49059a1c9c82ca3f2def71082d23451d2071b0cfac56abc1e7f6",
+      "blockNumber": "71027349",
+      "costWei": "2963280000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x69054e5613e20db12065ce883f087337c168fbb9d9da72c3f99d3a54463d6884",
+      "blockNumber": "71027358",
+      "costWei": "1840760000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0xa3dd7228ac73132738235621aacee902d439d8a2a5ddcfe9269ed54fce286a06",
+      "blockNumber": "71027359",
+      "costWei": "1121260000000000"
+    },
+    {
+      "role": "relayer",
+      "hash": "0x2017a0bb7424802c5553f4ebacb5ac0648fdb8f29e8a1a13662cd26517f0bbc2",
+      "blockNumber": "71027360",
+      "costWei": "1025260000000000"
+    },
+    {
+      "role": "oracle",
+      "hash": "0x11531ce50c6209acd3b412d622c58541032165a0a64472c3958ca3630828c3d8",
+      "blockNumber": "71027306",
+      "costWei": "2149500000000000"
+    },
+    {
+      "role": "oracle",
+      "hash": "0x786a9aed57eab76150e5fce26552ae618187aba878ded5f9d9e473300487cc66",
+      "blockNumber": "71027316",
+      "costWei": "2149500000000000"
+    },
+    {
+      "role": "oracle",
+      "hash": "0x21cb2c1642d55f531506ccf78df0f2c598c2ec9f5d2542dbcec834cd245b14eb",
+      "blockNumber": "71027341",
+      "costWei": "2149500000000000"
+    },
+    {
+      "role": "oracle",
+      "hash": "0xb72e12a463fd7c1a128ac137084450cbdff221b1c3d8d49586dfe32891fe45a8",
+      "blockNumber": "71027351",
+      "costWei": "2149500000000000"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "scope": "One owner-authorized recovery of the exact final EURC admission; no replacement or fee change",
+  "chainId": 5042002,
+  "contract": "0xe339B15Aa54596B4752923d981DAC30B7A569F82",
+  "potId": "0xa12af9e9f03fdd2002438081a75c8ef3a23f9c8d9d29519edcd295eaf2fc1174",
+  "hash": "0xc65301ea3be89b42376a8550f58c541b7227a5ed31db1477bbaa8966ee919ae7",
+  "nonce": 52,
+  "gas": "111584",
+  "maxFeePerGas": "40000000000",
+  "dataHash": "0x7da5828a1d665fbfef51e42731aa8c889d6f618225cae1f7e5cb86d16a702513"
+}

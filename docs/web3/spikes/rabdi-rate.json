@@ -1,0 +1,39 @@
+{
+  "at": "2026-11-06T23:01:15.635Z",
+  "scope": "PUBLIC READS ONLY; 32-query safety ceiling",
+  "rounds": [
+    {
+      "concurrency": 1,
+      "successes": 8,
+      "failures": [],
+      "elapsedMs": 1926.607875,
+      "successfulQueriesPerSecond": 4.1523758434756735
+    },
+    {
+      "concurrency": 2,
+      "successes": 8,
+      "failures": [],
+      "elapsedMs": 867.588,
+      "successfulQueriesPerSecond": 9.220966633932235
+    },
+    {
+      "concurrency": 4,
+      "successes": 8,
+      "failures": [],
+      "elapsedMs": 474.05379200000016,
+      "successfulQueriesPerSecond": 16.875721985575844
+    },
+    {
+      "concurrency": 8,
+      "successes": 8,
+      "failures": [],
+      "elapsedMs": 314.52066700000023,
+      "successfulQueriesPerSecond": 25.435530441629115
+    }
+  ],
+  "conclusion": "No 429 observed within the safety ceiling. This is a measured lower bound, not a published provider rate limit.",
+  "pageLimitError": {
+    "name": "Error",
+    "message": "limit 101 exceeds the node maximum of 100. Page through the results with an offset instead."
+  }
+}

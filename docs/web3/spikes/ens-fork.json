@@ -1,0 +1,155 @@
+{
+  "scope": "LOCAL FORK ONLY — not live-chain evidence",
+  "at": "2026-11-06T10:55:28.741Z",
+  "fork": {
+    "chainId": 11155111,
+    "block": 12040400,
+    "sourceCommit": "07e55a056f5b6a9c90119f501bdd05714e67dddd"
+  },
+  "sdk": "ensjs 5.2.7 / viem 2.57.14 / Anvil 1.7.1",
+  "checks": [
+    {
+      "id": "S-ENS-2 addresses",
+      "status": "PASS-LOCAL",
+      "detail": "ensjs deployment addresses equal pinned official Sepolia artifacts"
+    },
+    {
+      "id": "VE-01 bootstrap",
+      "status": "PASS-LOCAL",
+      "detail": "Local parent/play/party registries linked; registrar root roles verified. Live bootstrap still absent."
+    },
+    {
+      "id": "S-ENS-2 helpers",
+      "status": "PASS-LOCAL",
+      "detail": "deployVerifiableProxy/createSubname/setRecords generated successful local calls; Universal Resolver reads match"
+    },
+    {
+      "id": "S-ENS-3 seat cannot write",
+      "status": "PASS-LOCAL",
+      "detail": "Contract revert observed on local fork"
+    },
+    {
+      "id": "S-ENS-3 seat cannot transfer",
+      "status": "PASS-LOCAL",
+      "detail": "Contract revert observed on local fork"
+    },
+    {
+      "id": "S-ENS-4 revoked host cannot kick",
+      "status": "PASS-LOCAL",
+      "detail": "Contract revert observed on local fork"
+    },
+    {
+      "id": "host cannot mint",
+      "status": "PASS-LOCAL",
+      "detail": "Contract revert observed on local fork"
+    },
+    {
+      "id": "host cannot write other record",
+      "status": "PASS-LOCAL",
+      "detail": "Contract revert observed on local fork"
+    },
+    {
+      "id": "host cannot grant itself roles",
+      "status": "PASS-LOCAL",
+      "detail": "Contract revert observed on local fork"
+    },
+    {
+      "id": "S-ENS-5 revoked host cannot control",
+      "status": "PASS-LOCAL",
+      "detail": "Contract revert observed on local fork"
+    },
+    {
+      "id": "expiry",
+      "status": "PASS-LOCAL",
+      "detail": "Seat stops resolving after party expiry, using chain time"
+    },
+    {
+      "id": "S-ENS-6 gas",
+      "status": "PASS-LOCAL",
+      "detail": "Gas recorded per local fork operation; live inclusion latency and daily budget remain unverified"
+    }
+  ],
+  "operations": [
+    {
+      "label": "deploy registry",
+      "gasUsed": "201534",
+      "localElapsedMs": 8
+    },
+    {
+      "label": "deploy registry",
+      "gasUsed": "201534",
+      "localElapsedMs": 1075
+    },
+    {
+      "label": "deploy registry",
+      "gasUsed": "201534",
+      "localElapsedMs": 1018
+    },
+    {
+      "label": "deploy resolver",
+      "gasUsed": "177542",
+      "localElapsedMs": 1376
+    },
+    {
+      "label": "link parent",
+      "gasUsed": "57532",
+      "localElapsedMs": 1773
+    },
+    {
+      "label": "register play",
+      "gasUsed": "167561",
+      "localElapsedMs": 5739
+    },
+    {
+      "label": "register party",
+      "gasUsed": "192379",
+      "localElapsedMs": 1069
+    },
+    {
+      "label": "mint soulbound seat",
+      "gasUsed": "102510",
+      "localElapsedMs": 1081
+    },
+    {
+      "label": "seat records",
+      "gasUsed": "154321",
+      "localElapsedMs": 723
+    },
+    {
+      "label": "grant host kick",
+      "gasUsed": "63073",
+      "localElapsedMs": 700
+    },
+    {
+      "label": "host kicks seat",
+      "gasUsed": "72650",
+      "localElapsedMs": 620
+    },
+    {
+      "label": "revoke host kick",
+      "gasUsed": "40950",
+      "localElapsedMs": 623
+    },
+    {
+      "label": "remint seat",
+      "gasUsed": "85410",
+      "localElapsedMs": 702
+    },
+    {
+      "label": "grant control",
+      "gasUsed": "87260",
+      "localElapsedMs": 627
+    },
+    {
+      "label": "host sets control",
+      "gasUsed": "97364",
+      "localElapsedMs": 706
+    },
+    {
+      "label": "revoke control",
+      "gasUsed": "38327",
+      "localElapsedMs": 680
+    }
+  ],
+  "ok": true
+}

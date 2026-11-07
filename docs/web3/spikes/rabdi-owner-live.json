@@ -1,0 +1,198 @@
+{
+  "at": "2026-11-06T21:16:55.958Z",
+  "scope": "OWNER EXECUTED LIVE RABDI K0 PHASE 1",
+  "sdk": "1.0.1",
+  "chainId": 7794095,
+  "owner": "0xE581E56c592Ab9D6d3D234168EE9a89032273c00",
+  "balanceWei": "10000000000000000000",
+  "balanceTGLM": "10",
+  "budgetTGLM": "0.5",
+  "singleCreate": {
+    "estimate": "248754",
+    "gas": "1000000",
+    "gasPrice": "1000000000",
+    "maxCostWei": "1000000000000000"
+  },
+  "checks": [
+    {
+      "id": "VK-01/create; VK-02/typed round trips",
+      "status": "PASS-LIVE",
+      "count": 9
+    },
+    {
+      "id": "VK-08/server ordering and filtered count subset",
+      "status": "PASS-LIVE",
+      "block": "263832",
+      "count": 9
+    },
+    {
+      "id": "VK-04 readonly patch denied",
+      "status": "PASS-UNSIGNED",
+      "errorName": "ReadOnlyEntity"
+    },
+    {
+      "id": "VK-05 former owner patch denied",
+      "status": "PASS-UNSIGNED",
+      "errorName": "NotOwner"
+    },
+    {
+      "id": "VK-04/05 owner operations, creator immutability, ownership query, permissionless extension",
+      "status": "PASS-LIVE"
+    }
+  ],
+  "operations": [
+    {
+      "id": "typed fixtures",
+      "to": "0x4400000000000000000000000000000000000044",
+      "dataHash": "0x3e9b74675fcd0576e45f0ed1544ae516943ad6319cb1405ecbdd26ad3a1d4e2e",
+      "createCount": 9,
+      "estimate": "2037194",
+      "gas": "4200000",
+      "gasPrice": "1000000000",
+      "maxCost": "4200000000000000",
+      "nonce": 0,
+      "hash": "0xbf38cb6da4fc50cb9015888ac7e4c1a5820d61757c652fa91e8fdac9a9af4e8d",
+      "status": "success",
+      "result": {
+        "txHash": "0xbf38cb6da4fc50cb9015888ac7e4c1a5820d61757c652fa91e8fdac9a9af4e8d",
+        "createdEntities": [
+          "0x7f4bcd627af17dbd4125d9071f3008eaf4b85cdc3d97c3bae81e33017092fa1e",
+          "0xcddc20132d5921b0c58f1374904d673a61213f6dfed0d37baedd0b35fc0887be",
+          "0x1727eae1dd2b052a70664b5f9a93c360d4789c7c86383146b18b77c9f74a40dd",
+          "0xc93bf04be78647cea13585dede12700d704a34df804d7b7616417fa26796211d",
+          "0xc2e15149458056b5f093ef95dca03a77d040b85b6d6256e6e9c69f23ef41b272",
+          "0x1d72711dd884c5041d87591363c3b78541db6e50c427f78958b85076011a012d",
+          "0xa2662775ff86f5571c36d6dcb73e19516c66fdb3224b0dd503d57bc4acffdb8b",
+          "0x1b069d6d8b3cb2bae410700ce2aa53859369cabe4268ba524de8caca8c957ca7",
+          "0x9f4d9364a66a79f9d28c7f19b6da920027a76d30cc584e68eafa03061580ca2a"
+        ]
+      },
+      "blockNumber": "263830",
+      "gasUsed": "2019995",
+      "gasCost": "2019995000000000"
+    },
+    {
+      "id": "mutable patch",
+      "to": "0x4400000000000000000000000000000000000044",
+      "dataHash": "0x8bdb235e9d3b6f0557fffcebad238c773e1121ac1d1503fbfd324cf04ba49193",
+      "createCount": 0,
+      "estimate": "54899",
+      "gas": "1000000",
+      "gasPrice": "1000000000",
+      "maxCost": "1000000000000000",
+      "nonce": 1,
+      "hash": "0x5c40f4140ab3be79927b77e72e0bbd7ab23a6a7375fb4a00d076e7f3dde751fa",
+      "status": "success",
+      "result": {
+        "txHash": "0x5c40f4140ab3be79927b77e72e0bbd7ab23a6a7375fb4a00d076e7f3dde751fa",
+        "createdEntities": []
+      },
+      "blockNumber": "263834",
+      "gasUsed": "54101",
+      "gasCost": "54101000000000"
+    },
+    {
+      "id": "readonly owner extends",
+      "to": "0x4400000000000000000000000000000000000044",
+      "dataHash": "0xaa534c5da7ed28ecf3d61ebe36312615490496dab15995c4c02bf9ccc458f7f6",
+      "createCount": 0,
+      "estimate": "43276",
+      "gas": "1000000",
+      "gasPrice": "1000000000",
+      "maxCost": "1000000000000000",
+      "nonce": 2,
+      "hash": "0x6d3b779e786a9ad252db40a137bbb207addc4742e807a8deda518e567ee9994d",
+      "status": "success",
+      "result": {
+        "txHash": "0x6d3b779e786a9ad252db40a137bbb207addc4742e807a8deda518e567ee9994d",
+        "createdEntities": []
+      },
+      "blockNumber": "263837",
+      "gasUsed": "42900",
+      "gasCost": "42900000000000"
+    },
+    {
+      "id": "profile transfer",
+      "to": "0x4400000000000000000000000000000000000044",
+      "dataHash": "0xd941d4fc17ab3ba699521cacc24e709a3d5481718aa07c3314f48056ac895f89",
+      "createCount": 0,
+      "estimate": "43478",
+      "gas": "1000000",
+      "gasPrice": "1000000000",
+      "maxCost": "1000000000000000",
+      "nonce": 3,
+      "hash": "0x948dbd5d363fb98f90d0e07e99a69ab4bab3994a7444fd2bd8fdb4e1abecbaad",
+      "status": "success",
+      "result": {
+        "txHash": "0x948dbd5d363fb98f90d0e07e99a69ab4bab3994a7444fd2bd8fdb4e1abecbaad",
+        "createdEntities": []
+      },
+      "blockNumber": "263842",
+      "gasUsed": "43102",
+      "gasCost": "43102000000000"
+    },
+    {
+      "id": "permissionless extension after transfer",
+      "to": "0x4400000000000000000000000000000000000044",
+      "dataHash": "0xbcd168db24c1d99d6268b3f11da0aa123dd5c6ba3a68cca3e04d5f4d1d7c3eeb",
+      "createCount": 0,
+      "estimate": "41268",
+      "gas": "1000000",
+      "gasPrice": "1000000000",
+      "maxCost": "1000000000000000",
+      "nonce": 4,
+      "hash": "0xca02d7d62fada71e854bb9fb247adb17f400e6403b4e3c52de2d70c1340c053d",
+      "status": "success",
+      "result": {
+        "txHash": "0xca02d7d62fada71e854bb9fb247adb17f400e6403b4e3c52de2d70c1340c053d",
+        "createdEntities": []
+      },
+      "blockNumber": "263847",
+      "gasUsed": "40896",
+      "gasCost": "40896000000000"
+    },
+    {
+      "id": "readonly owner deletes disposable fixture",
+      "to": "0x4400000000000000000000000000000000000044",
+      "dataHash": "0x6fd1af53b11a1e83f5adea199499f264db3848ae911539004dca6aa334c1166b",
+      "createCount": 0,
+      "estimate": "183741",
+      "gas": "1000000",
+      "gasPrice": "1000000000",
+      "maxCost": "1000000000000000",
+      "nonce": 5,
+      "hash": "0x5d2da015d60fc5ba9f0dc99e2ee22e7eeb75de89495783c443e85abbaae51ee7",
+      "status": "success",
+      "result": {
+        "txHash": "0x5d2da015d60fc5ba9f0dc99e2ee22e7eeb75de89495783c443e85abbaae51ee7",
+        "createdEntities": []
+      },
+      "blockNumber": "263851",
+      "gasUsed": "181136",
+      "gasCost": "181136000000000"
+    }
+  ],
+  "run": "k0_1793913415990",
+  "entities": [
+    "0x7f4bcd627af17dbd4125d9071f3008eaf4b85cdc3d97c3bae81e33017092fa1e",
+    "0xcddc20132d5921b0c58f1374904d673a61213f6dfed0d37baedd0b35fc0887be",
+    "0x1727eae1dd2b052a70664b5f9a93c360d4789c7c86383146b18b77c9f74a40dd",
+    "0xc93bf04be78647cea13585dede12700d704a34df804d7b7616417fa26796211d",
+    "0xc2e15149458056b5f093ef95dca03a77d040b85b6d6256e6e9c69f23ef41b272",
+    "0x1d72711dd884c5041d87591363c3b78541db6e50c427f78958b85076011a012d",
+    "0xa2662775ff86f5571c36d6dcb73e19516c66fdb3224b0dd503d57bc4acffdb8b",
+    "0x1b069d6d8b3cb2bae410700ce2aa53859369cabe4268ba524de8caca8c957ca7",
+    "0x9f4d9364a66a79f9d28c7f19b6da920027a76d30cc584e68eafa03061580ca2a"
+  ],
+  "remaining": [
+    "typed eq/gt/lt matrix",
+    "size and attribute boundary writes",
+    "failed-last-operation atomicity receipt",
+    "ten-case cost table",
+    "2000-row paging and bounded rate measurements",
+    "60-second expiry observations",
+    "copied namespace/third-signer forgery",
+    "Swarm retention and full cross-SDK/Hall build"
+  ],
+  "totalGasTGLM": "0.00238213"
+}

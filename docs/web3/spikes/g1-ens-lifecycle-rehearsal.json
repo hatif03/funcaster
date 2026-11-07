@@ -1,0 +1,299 @@
+{
+  "at": "2026-11-06T07:15:09.168Z",
+  "scope": "LOCAL FORK ONLY — no public transactions",
+  "chainId": 31337,
+  "sourceChainId": 11155111,
+  "sourceBlock": "12075026",
+  "checks": [
+    {
+      "id": "warm pool",
+      "result": "PASS-LOCAL",
+      "detail": "Two unique deployed registry/resolver pairs"
+    },
+    {
+      "id": "party open",
+      "result": "PASS-LOCAL",
+      "detail": "Three warm transactions; canonical namespace and Universal Resolver text readback"
+    },
+    {
+      "id": "restart",
+      "result": "PASS-LOCAL",
+      "detail": "Zero writes on reopened durable party"
+    },
+    {
+      "id": "pool reuse",
+      "result": "PASS-LOCAL",
+      "detail": "Next party consumes an unused pre-deployed pair; refill creates one replacement"
+    },
+    {
+      "id": "seat mint",
+      "result": "PASS-LOCAL",
+      "detail": "Soulbound seat resolves to the bound phone address"
+    },
+    {
+      "id": "seat cannot write",
+      "result": "PASS-LOCAL",
+      "detail": "Contract revert; transport failures do not count as denial"
+    },
+    {
+      "id": "seat cannot transfer",
+      "result": "PASS-LOCAL",
+      "detail": "Contract revert; transport failures do not count as denial"
+    },
+    {
+      "id": "host can control and kick",
+      "result": "PASS-LOCAL",
+      "detail": "Scoped roles, canonical seat admission and genuine eth_call permissions pass"
+    },
+    {
+      "id": "host cannot mint",
+      "result": "PASS-LOCAL",
+      "detail": "Contract revert; transport failures do not count as denial"
+    },
+    {
+      "id": "host cannot grant itself roles",
+      "result": "PASS-LOCAL",
+      "detail": "Contract revert; transport failures do not count as denial"
+    },
+    {
+      "id": "host cannot write another record",
+      "result": "PASS-LOCAL",
+      "detail": "Contract revert; transport failures do not count as denial"
+    },
+    {
+      "id": "host cannot control another party",
+      "result": "PASS-LOCAL",
+      "detail": "Contract revert; transport failures do not count as denial"
+    },
+    {
+      "id": "host cannot transfer its seat",
+      "result": "PASS-LOCAL",
+      "detail": "Contract revert; transport failures do not count as denial"
+    },
+    {
+      "id": "record bundle",
+      "result": "PASS-LOCAL",
+      "detail": "Party result and seat last-match bundle is written through the deployed resolver"
+    },
+    {
+      "id": "canonical join, roster and history",
+      "result": "PASS-LOCAL",
+      "detail": "Join reads HTTPS origin/code; roster resolves the phone at one block; TextUpdated logs contain the result"
+    },
+    {
+      "id": "revoked host cannot control",
+      "result": "PASS-LOCAL",
+      "detail": "Contract revert; transport failures do not count as denial"
+    },
+    {
+      "id": "seat release",
+      "result": "PASS-LOCAL",
+      "detail": "Clear resolver bundle before unregister; new binding can reuse the label; repeat release sends nothing"
+    },
+    {
+      "id": "wildcard cleanup after external revoke",
+      "result": "PASS-LOCAL",
+      "detail": "Unregister alone retains the old address; canonical admission rejects it; release clears it without a second unregister"
+    },
+    {
+      "id": "party end",
+      "result": "PASS-LOCAL",
+      "detail": "Canonical registry walk refuses the ended party; raw wildcard resolution is not an admission proof"
+    },
+    {
+      "id": "expiry",
+      "result": "PASS-LOCAL",
+      "detail": "Chain-time expiry blocks canonical admission and new seats even if raw resolution returns an ancestor address"
+    },
+    {
+      "id": "history survives table closure",
+      "result": "PASS-LOCAL",
+      "detail": "Ended names cannot admit joins, but the canonical creation receipt still locates immutable result logs"
+    }
+  ],
+  "operations": [
+    {
+      "id": "pair:949e6ecf-2f29-4092-a72d-e4d452d08bde:0:registry",
+      "functionName": "deployProxy",
+      "localHash": "0x10a4ded3749d23878d85d6515f71bd3feb7d30d24fa0d37b708a26042c8fb435",
+      "gasUsed": "201894"
+    },
+    {
+      "id": "pair:949e6ecf-2f29-4092-a72d-e4d452d08bde:0:resolver",
+      "functionName": "deployProxy",
+      "localHash": "0x09e5a426eb2f338fb3e7ba734eb6cbc9df5853c12443ba849e962c799979aa4f",
+      "gasUsed": "177902"
+    },
+    {
+      "id": "pair:949e6ecf-2f29-4092-a72d-e4d452d08bde:1:registry",
+      "functionName": "deployProxy",
+      "localHash": "0xb11107753d3eeaa50994436dd40b605de8a92ea1db079111489d0137f78e633d",
+      "gasUsed": "201894"
+    },
+    {
+      "id": "pair:949e6ecf-2f29-4092-a72d-e4d452d08bde:1:resolver",
+      "functionName": "deployProxy",
+      "localHash": "0x4c3c81476c98e79a47101d972f106d4fab0c5e61ac44f1ceb51af5d8764e51ac",
+      "gasUsed": "177902"
+    },
+    {
+      "id": "party:1771c2af443f369a58c190809153edb0a7222a43714c46d72464bb3bfc2a4c96:parent",
+      "functionName": "setParent",
+      "localHash": "0x931f2e6b53b28c1f24d7936ff4fbc16cff518580f0c84c5af89bfc377c468a4d",
+      "gasUsed": "80843"
+    },
+    {
+      "id": "party:1771c2af443f369a58c190809153edb0a7222a43714c46d72464bb3bfc2a4c96:records",
+      "functionName": "multicall",
+      "localHash": "0x62b7a5060458d826fa4234b003a702dc65e88fb9a46fea886a048e0b07826383",
+      "gasUsed": "230222"
+    },
+    {
+      "id": "party:1771c2af443f369a58c190809153edb0a7222a43714c46d72464bb3bfc2a4c96:register",
+      "functionName": "register",
+      "localHash": "0xb6c779f9230b4d195cb662fb9a97dc620de89a021ded7302a9afff1a1836c11a",
+      "gasUsed": "192487"
+    },
+    {
+      "id": "pair:949e6ecf-2f29-4092-a72d-e4d452d08bde:2:registry",
+      "functionName": "deployProxy",
+      "localHash": "0xadeb32d537589e8c61c2153190fbce8c0b366d039a6f5271d266154cbc51df87",
+      "gasUsed": "201894"
+    },
+    {
+      "id": "pair:949e6ecf-2f29-4092-a72d-e4d452d08bde:2:resolver",
+      "functionName": "deployProxy",
+      "localHash": "0xd70529928ffd919d4c2297d220d7eeac2a080e968652a02ef5ad0c6392c1dbce",
+      "gasUsed": "177902"
+    },
+    {
+      "id": "party:573787fc489351f70ce608bc62b15a34bda447bc93616128674d19680547fd68:parent",
+      "functionName": "setParent",
+      "localHash": "0xbf6ca81200eb80f43e818bfda331a5a1496aabce34dbcd8ba7765e80ace91db2",
+      "gasUsed": "80855"
+    },
+    {
+      "id": "party:573787fc489351f70ce608bc62b15a34bda447bc93616128674d19680547fd68:records",
+      "functionName": "multicall",
+      "localHash": "0x1b6666782e67d10a1c2bdcaa571affca70af9a6552a07f417a0a78b1e492ab89",
+      "gasUsed": "231152"
+    },
+    {
+      "id": "party:573787fc489351f70ce608bc62b15a34bda447bc93616128674d19680547fd68:register",
+      "functionName": "register",
+      "localHash": "0x59e66ae6b60ae490235971275f146832e1eff17b9ea0cebe4a69f691b59964a5",
+      "gasUsed": "192499"
+    },
+    {
+      "id": "seat:1771c2af443f369a58c190809153edb0a7222a43714c46d72464bb3bfc2a4c96:5362983273b9b410fb43d99ecfc38b0eecd44123a67b5b371ddfc7637da798b1:register",
+      "functionName": "register",
+      "localHash": "0xa5e90d6efe2cef5554b650d69439be60b807cb6dbd068f3b9d74d1c2322bb8bd",
+      "gasUsed": "125125"
+    },
+    {
+      "id": "seat:1771c2af443f369a58c190809153edb0a7222a43714c46d72464bb3bfc2a4c96:5362983273b9b410fb43d99ecfc38b0eecd44123a67b5b371ddfc7637da798b1:records",
+      "functionName": "multicall",
+      "localHash": "0x14b75b99970d44476d760b990c19b41bdc8d48900490b1f0bec80aad22b94eb3",
+      "gasUsed": "183112"
+    },
+    {
+      "id": "grant:1771c2af443f369a58c190809153edb0a7222a43714c46d72464bb3bfc2a4c96:33c93e5405dfeaad427cf37bac11a62bb869a4439caa02238674a39ad87d4744:kick",
+      "functionName": "grantRootRoles",
+      "localHash": "0x68662d6d2bf21cd234e5809e4350db60e1c16fd0827d47109aee8864f325bf83",
+      "gasUsed": "63073"
+    },
+    {
+      "id": "grant:1771c2af443f369a58c190809153edb0a7222a43714c46d72464bb3bfc2a4c96:33c93e5405dfeaad427cf37bac11a62bb869a4439caa02238674a39ad87d4744:control",
+      "functionName": "grantSetterRoles",
+      "localHash": "0xae7f545d0729b2aaca61ec48760acaadc925427759516b7d4111eb56ceb6199e",
+      "gasUsed": "87632"
+    },
+    {
+      "id": "grant:1771c2af443f369a58c190809153edb0a7222a43714c46d72464bb3bfc2a4c96:33c93e5405dfeaad427cf37bac11a62bb869a4439caa02238674a39ad87d4744:record",
+      "functionName": "multicall",
+      "localHash": "0x7094ad78b16384b5b3de32b7f8303a485d050941849b5a74203d2abb60ffe99f",
+      "gasUsed": "118575"
+    },
+    {
+      "id": "record:1771c2af443f369a58c190809153edb0a7222a43714c46d72464bb3bfc2a4c96:3d1d003c1a8a63efc16859f419cebe683be8bae6e461b32073421826e4d26871",
+      "functionName": "multicall",
+      "localHash": "0x38007020dc9dcbe05a9736063114140fa2f6ff8f07b0a31b13665f17ebd4c717",
+      "gasUsed": "227146"
+    },
+    {
+      "id": "revoke:1771c2af443f369a58c190809153edb0a7222a43714c46d72464bb3bfc2a4c96:33c93e5405dfeaad427cf37bac11a62bb869a4439caa02238674a39ad87d4744:record",
+      "functionName": "multicall",
+      "localHash": "0x59ba5139e7287371abe6eb30547208012a1be320f862f105ebf68e8bb44a7801",
+      "gasUsed": "52769"
+    },
+    {
+      "id": "revoke:1771c2af443f369a58c190809153edb0a7222a43714c46d72464bb3bfc2a4c96:33c93e5405dfeaad427cf37bac11a62bb869a4439caa02238674a39ad87d4744:control",
+      "functionName": "revokeRoles",
+      "localHash": "0x7617b11a0e3ee6649b38ca972d0b9c75c7f17a8532a620c4843003cd77e83158",
+      "gasUsed": "38327"
+    },
+    {
+      "id": "revoke:1771c2af443f369a58c190809153edb0a7222a43714c46d72464bb3bfc2a4c96:33c93e5405dfeaad427cf37bac11a62bb869a4439caa02238674a39ad87d4744:kick",
+      "functionName": "revokeRootRoles",
+      "localHash": "0xcda609a6f6d92246ae51da1f50972b5f10bc4c15e1df08e8e6947c4c701cf498",
+      "gasUsed": "40950"
+    },
+    {
+      "id": "seat:1771c2af443f369a58c190809153edb0a7222a43714c46d72464bb3bfc2a4c96:5362983273b9b410fb43d99ecfc38b0eecd44123a67b5b371ddfc7637da798b1:clear",
+      "functionName": "multicall",
+      "localHash": "0xd5fde9dd4a3c86a65b2ff060d7517ad26922ebe1e5a210bf0c8494c63aa3094e",
+      "gasUsed": "96968"
+    },
+    {
+      "id": "seat:1771c2af443f369a58c190809153edb0a7222a43714c46d72464bb3bfc2a4c96:5362983273b9b410fb43d99ecfc38b0eecd44123a67b5b371ddfc7637da798b1:release",
+      "functionName": "unregister",
+      "localHash": "0x3e9c354ed457b4cb8443e174bfa1c9f92a1585654c86b4f637b5fd7e21ed9f1a",
+      "gasUsed": "72698"
+    },
+    {
+      "id": "seat:1771c2af443f369a58c190809153edb0a7222a43714c46d72464bb3bfc2a4c96:f980d52ecee576ca779799449eee278edbe01dd698d6d860d3fb662ad3309c78:register",
+      "functionName": "register",
+      "localHash": "0x5942cf6490f83f5eff90fdd2a9c9503323e88d31a1f5cbdbb02203e165a8d0bd",
+      "gasUsed": "85386"
+    },
+    {
+      "id": "seat:1771c2af443f369a58c190809153edb0a7222a43714c46d72464bb3bfc2a4c96:f980d52ecee576ca779799449eee278edbe01dd698d6d860d3fb662ad3309c78:records",
+      "functionName": "multicall",
+      "localHash": "0xc95ccad1d023b91f9367996a6d46064e042fc3a439883923ff18fb916196a9c5",
+      "gasUsed": "138073"
+    },
+    {
+      "id": "seat:1771c2af443f369a58c190809153edb0a7222a43714c46d72464bb3bfc2a4c96:09235a1feddaff467fcb95e5087c33aef51de5d5f711fc3a97a1cd99c75ff9f7:register",
+      "functionName": "register",
+      "localHash": "0x55d1106a2f119262b2695ccc815b24ea8a5cf0f74e8ab7fbdbfbb1da37bf580b",
+      "gasUsed": "125125"
+    },
+    {
+      "id": "seat:1771c2af443f369a58c190809153edb0a7222a43714c46d72464bb3bfc2a4c96:09235a1feddaff467fcb95e5087c33aef51de5d5f711fc3a97a1cd99c75ff9f7:records",
+      "functionName": "multicall",
+      "localHash": "0x1feb9ae7f919886867584b128afc6df1b518a92e1842df984a7358b5b3d7c13f",
+      "gasUsed": "183112"
+    },
+    {
+      "id": "rehearsal:direct-kick",
+      "functionName": "unregister",
+      "localHash": "0x53f734d56d4e5242d16284df959f4e9bef3c5a1bf484ea2763e4387eae92d888",
+      "gasUsed": "72698"
+    },
+    {
+      "id": "seat:1771c2af443f369a58c190809153edb0a7222a43714c46d72464bb3bfc2a4c96:09235a1feddaff467fcb95e5087c33aef51de5d5f711fc3a97a1cd99c75ff9f7:clear",
+      "functionName": "multicall",
+      "localHash": "0x8e5df28b8e96e8f7b746505369f4fbff18f527515b6526d98b2451b5f9a919b8",
+      "gasUsed": "88722"
+    },
+    {
+      "id": "party:573787fc489351f70ce608bc62b15a34bda447bc93616128674d19680547fd68:end",
+      "functionName": "unregister",
+      "localHash": "0x9cc30508a300f4ecb31e042833804789270f5db3e45719683c52ff922b03ce42",
+      "gasUsed": "53323"
+    }
+  ],
+  "warmOpenTransactions": 3,
+  "expiredRawAddress": null,
+  "ok": true
+}

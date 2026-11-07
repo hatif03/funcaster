@@ -1,0 +1,26 @@
+{
+  "date": "2026-11-06",
+  "timezone": "Asia/Kolkata",
+  "scope": "Read-only and local credential validation; no public transactions",
+  "arc": {
+    "chainId": 5042002,
+    "block": "70917748",
+    "relayer": "0x81DdeD7eE7753791cEaF24Ab6Cb1694d1F39A008",
+    "USDC": "20",
+    "EURC": "0",
+    "otherExistingRoleUSDCBalances": "0 for all other 13 addresses"
+  },
+  "keys": {
+    "existingRoles": 14,
+    "distinctAddresses": 14,
+    "allDerivedAddressesMatchInventory": true,
+    "permissions": "0600",
+    "newKeysGenerated": 0,
+    "backup": "Owner password-manager backup still unverified"
+  },
+  "studio": {
+    "appId": "3e018243-4be8-4b94-a488-1f69c9401fae",
+    "webUrl": "https://studio.arc.io/app/3e018243-4be8-4b94-a488-1f69c9401fae",
+    "deployments": []
+  }
+}

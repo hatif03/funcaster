@@ -1,0 +1,78 @@
+{
+  "at": "2026-11-06T08:25:10.563Z",
+  "scope": "Actual unconfigured production dist served through relay router, Chromium, external requests forbidden",
+  "cases": [
+    {
+      "width": 320,
+      "height": 568,
+      "id": "pot-unconfigured",
+      "status": "PASS"
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "id": "create-unconfigured",
+      "status": "PASS"
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "id": "about-page",
+      "status": "PASS"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "id": "pot-unconfigured",
+      "status": "PASS"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "id": "create-unconfigured",
+      "status": "PASS"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "id": "about-page",
+      "status": "PASS"
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "id": "pot-unconfigured",
+      "status": "PASS"
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "id": "create-unconfigured",
+      "status": "PASS"
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "id": "about-page",
+      "status": "PASS"
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "id": "pot-unconfigured",
+      "status": "PASS"
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "id": "create-unconfigured",
+      "status": "PASS"
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "id": "about-page",
+      "status": "PASS"
+    }
+  ]
+}

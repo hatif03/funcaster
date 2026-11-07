@@ -1,0 +1,144 @@
+{
+  "at": "2026-11-06T21:00:44.187Z",
+  "scope": "Independent public RPC reads after owner execution",
+  "parent": "funcaster.eth",
+  "owner": "0x04b0970f4a58caa9E58C5aDBBF7eB402339264a5",
+  "endpoints": [
+    {
+      "rpc": "https://ethereum-sepolia-rpc.publicnode.com",
+      "receipts": [
+        {
+          "id": "deploy:funcaster.eth",
+          "hash": "0xf2c442bd4522b6139a386efd4fba5948e360f15010911661ad97d9992352432d",
+          "blockNumber": "12071988",
+          "canonical": true,
+          "status": "success",
+          "from": "0x04b0970f4a58caa9e58c5adbbf7eb402339264a5",
+          "to": "0xda70306c98e97ece36f997a21368e53298572991"
+        },
+        {
+          "id": "deploy:play.funcaster.eth",
+          "hash": "0x2b2a7627806c0d25061d5fcecae87bdb2b3d935bd1cff272536ba2b94b0766a0",
+          "blockNumber": "12071989",
+          "canonical": true,
+          "status": "success",
+          "from": "0x04b0970f4a58caa9e58c5adbbf7eb402339264a5",
+          "to": "0xda70306c98e97ece36f997a21368e53298572991"
+        },
+        {
+          "id": "deploy:play.funcaster.eth:resolver",
+          "hash": "0x91ad45c75f42e82ed3acb744db76c6fdb01bfeba62baf0a4f0ada50c3d3112db",
+          "blockNumber": "12071990",
+          "canonical": true,
+          "status": "success",
+          "from": "0x04b0970f4a58caa9e58c5adbbf7eb402339264a5",
+          "to": "0xda70306c98e97ece36f997a21368e53298572991"
+        },
+        {
+          "id": "canonical:chonks",
+          "hash": "0xb000e6a85cd8729cb78698aae9c18e452e5856f5740a88d0644d0d7c924b4101",
+          "blockNumber": "12071991",
+          "canonical": true,
+          "status": "success",
+          "from": "0x04b0970f4a58caa9e58c5adbbf7eb402339264a5",
+          "to": "0x03db3cde1139ce7aba50e6176ee28e1ebecc77cd"
+        },
+        {
+          "id": "canonical:play",
+          "hash": "0xf08f59d476650f945165cc15d0a1b6712d8daf3ad2d76c3b04b31ea5494d7537",
+          "blockNumber": "12071992",
+          "canonical": true,
+          "status": "success",
+          "from": "0x04b0970f4a58caa9e58c5adbbf7eb402339264a5",
+          "to": "0x15e729a01519a22a726d2c829285781a3deeb0cb"
+        },
+        {
+          "id": "link:chonks",
+          "hash": "0xdb81fe68c4868b7a048235f426f789feffea5fc8f148cedf91bc923b6a63966c",
+          "blockNumber": "12071993",
+          "canonical": true,
+          "status": "success",
+          "from": "0x04b0970f4a58caa9e58c5adbbf7eb402339264a5",
+          "to": "0xd4ebcbbdf463c9c45784603db0ddd499bc44a8b4"
+        },
+        {
+          "id": "register:play",
+          "hash": "0x53d226e16601f4f6db1700411ca9110d1b15a9726662623eec64f580d7dd3fc4",
+          "blockNumber": "12071994",
+          "canonical": true,
+          "status": "success",
+          "from": "0x04b0970f4a58caa9e58c5adbbf7eb402339264a5",
+          "to": "0x03db3cde1139ce7aba50e6176ee28e1ebecc77cd"
+        }
+      ]
+    },
+    {
+      "rpc": "https://11155111.rpc.thirdweb.com",
+      "receipts": [
+        {
+          "id": "deploy:funcaster.eth",
+          "hash": "0xf2c442bd4522b6139a386efd4fba5948e360f15010911661ad97d9992352432d",
+          "blockNumber": "12071988",
+          "canonical": true,
+          "status": "success",
+          "from": "0x04b0970f4a58caa9e58c5adbbf7eb402339264a5",
+          "to": "0xda70306c98e97ece36f997a21368e53298572991"
+        },
+        {
+          "id": "deploy:play.funcaster.eth",
+          "hash": "0x2b2a7627806c0d25061d5fcecae87bdb2b3d935bd1cff272536ba2b94b0766a0",
+          "blockNumber": "12071989",
+          "canonical": true,
+          "status": "success",
+          "from": "0x04b0970f4a58caa9e58c5adbbf7eb402339264a5",
+          "to": "0xda70306c98e97ece36f997a21368e53298572991"
+        },
+        {
+          "id": "deploy:play.funcaster.eth:resolver",
+          "hash": "0x91ad45c75f42e82ed3acb744db76c6fdb01bfeba62baf0a4f0ada50c3d3112db",
+          "blockNumber": "12071990",
+          "canonical": true,
+          "status": "success",
+          "from": "0x04b0970f4a58caa9e58c5adbbf7eb402339264a5",
+          "to": "0xda70306c98e97ece36f997a21368e53298572991"
+        },
+        {
+          "id": "canonical:chonks",
+          "hash": "0xb000e6a85cd8729cb78698aae9c18e452e5856f5740a88d0644d0d7c924b4101",
+          "blockNumber": "12071991",
+          "canonical": true,
+          "status": "success",
+          "from": "0x04b0970f4a58caa9e58c5adbbf7eb402339264a5",
+          "to": "0x03db3cde1139ce7aba50e6176ee28e1ebecc77cd"
+        },
+        {
+          "id": "canonical:play",
+          "hash": "0xf08f59d476650f945165cc15d0a1b6712d8daf3ad2d76c3b04b31ea5494d7537",
+          "blockNumber": "12071992",
+          "canonical": true,
+          "status": "success",
+          "from": "0x04b0970f4a58caa9e58c5adbbf7eb402339264a5",
+          "to": "0x15e729a01519a22a726d2c829285781a3deeb0cb"
+        },
+        {
+          "id": "link:chonks",
+          "hash": "0xdb81fe68c4868b7a048235f426f789feffea5fc8f148cedf91bc923b6a63966c",
+          "blockNumber": "12071993",
+          "canonical": true,
+          "status": "success",
+          "from": "0x04b0970f4a58caa9e58c5adbbf7eb402339264a5",
+          "to": "0xd4ebcbbdf463c9c45784603db0ddd499bc44a8b4"
+        },
+        {
+          "id": "register:play",
+          "hash": "0x53d226e16601f4f6db1700411ca9110d1b15a9726662623eec64f580d7dd3fc4",
+          "blockNumber": "12071994",
+          "canonical": true,
+          "status": "success",
+          "from": "0x04b0970f4a58caa9e58c5adbbf7eb402339264a5",
+          "to": "0x03db3cde1139ce7aba50e6176ee28e1ebecc77cd"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "at": "2026-11-06T10:26:56.691Z",
+  "chainId": 11155111,
+  "name": "funcaster.eth",
+  "owner": "0x04b0970f4a58caa9E58C5aDBBF7eB402339264a5",
+  "contracts": {
+    "ETHRegistrar": "0xf633e7fc17e2bbe0d0965d18ec1821dcb754a3d3",
+    "ETHRegistry": "0xd4ebcbbdf463c9c45784603db0ddd499bc44a8b4",
+    "MockUSDC": "0x240b0316df57887dbbe58b586508b19e633a14aa",
+    "StandardRentPriceOracle": "0x8196665d4ca7488b6474a9ec8e7d2719fb42263a"
+  },
+  "pinnedCommit": "07e55a056f5b6a9c90119f501bdd05714e67dddd",
+  "status": "REGISTERED",
+  "transactions": [
+    {
+      "functionName": "mint",
+      "hash": "0x8f89e9da7a6c63c00c6825489b05b6fb8ef71b46bba0dda83a4cd0e19ca3b059",
+      "status": "success",
+      "blockNumber": "12040373",
+      "gasUsed": "140589",
+      "effectiveGasPrice": "17",
+      "gasCostWei": "2390013"
+    },
+    {
+      "functionName": "approve",
+      "hash": "0x9a8ae96e49bf55c100042c822cb660cc9857f0b605a9d04365b6192664d23da3",
+      "status": "success",
+      "blockNumber": "12040375",
+      "gasUsed": "128274",
+      "effectiveGasPrice": "17",
+      "gasCostWei": "2180658"
+    },
+    {
+      "functionName": "commit",
+      "hash": "0x00d865a545ed2fbe8372c9a1d3e330acf2b3449fde95192416c56f6b87ad795d",
+      "status": "success",
+      "blockNumber": "12040378",
+      "gasUsed": "127458",
+      "effectiveGasPrice": "17",
+      "gasCostWei": "2166786"
+    },
+    {
+      "functionName": "register",
+      "hash": "0xfde4cb5c70062b1dda668345d593654f3402b23a225df2cf8501963d79ef0022",
+      "status": "success",
+      "blockNumber": "12040400",
+      "gasUsed": "652578",
+      "effectiveGasPrice": "17",
+      "gasCostWei": "11093826"
+    }
+  ],
+  "startBalanceWei": "769999999993262543",
+  "mockTokenPrice": "8000021",
+  "durationSeconds": 31536000,
+  "tokenId": "92307351419498138517360877870304868669031256202096391105364751017170824069120",
+  "resource": "92307351419498138517360877870304868669031256202096391105364751017170824069120",
+  "expiryUnix": "1825064832",
+  "expiryUTC": "2027-11-01T10:27:12.000Z",
+  "ownerRoles": "97409655027181761882228017414928043058140282880",
+  "expectedRolesMatch": true,
+  "unrelatedKeyDeniedResolverRole": true,
+  "resolver": "0x0000000000000000000000000000000000000000",
+  "subregistry": "0x0000000000000000000000000000000000000000",
+  "balanceAfterWei": "769999999982168717",
+  "mockTokenBalanceAfter": "0",
+  "allowanceAfter": "0",
+  "totalGasCostWei": "17831283"
+}

@@ -1,0 +1,45 @@
+{
+  "at": "2026-11-06T21:19:00.384Z",
+  "scope": "APPROVED SDK MIGRATION: PUBLIC READS ONLY",
+  "versions": {
+    "arkiv": "1.0.1",
+    "viem": "2.57.14",
+    "ensjs": "5.2.7"
+  },
+  "chainId": 7794095,
+  "checks": [
+    {
+      "id": "creator/schema-scoped eq, ordering, count",
+      "status": "PASS-READ",
+      "validatedRows": 8,
+      "total": "8",
+      "block": "263890"
+    },
+    {
+      "id": "creator/schema-scoped gt, ordering, count",
+      "status": "PASS-READ",
+      "validatedRows": 8,
+      "total": "8",
+      "block": "263890"
+    },
+    {
+      "id": "creator/schema-scoped lt, ordering, count",
+      "status": "PASS-READ",
+      "validatedRows": 8,
+      "total": "8",
+      "block": "263890"
+    },
+    {
+      "id": "ENS same-process read",
+      "status": "PASS-READ",
+      "address": null,
+      "note": "Null is expected until an addr record is configured; this is not full VX-08 resolution/write acceptance."
+    },
+    {
+      "id": "Arc same-process read",
+      "status": "PASS-READ",
+      "block": "70921467"
+    }
+  ],
+  "balanceWei": "9997617870000000000"
+}

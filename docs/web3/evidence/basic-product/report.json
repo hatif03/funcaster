@@ -1,0 +1,9 @@
+{
+  "mode": "mock",
+  "checks": [
+    "Two real phone identities; host listing opens, start gate holds and close refunds",
+    "Signed phone challenge offered; public directory does not leak join code",
+    "Live / Hall / Predictions / Creator pages at desktop and 320px phone; no overflow or script errors"
+  ],
+  "publicTransactions": 0
+}

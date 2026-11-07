@@ -1,0 +1,12 @@
+{
+  "at": "2026-11-06T23:05:20.328Z",
+  "scope": "LOCAL FORK ONLY; no role keys or upstream sends",
+  "forkBlock": "12072611",
+  "name": "play.funcaster.eth",
+  "resolver": "0x8FB3Bc94532Ff13C75d84201D72E7A0A77Bf9439",
+  "before": null,
+  "resolved": "0xE581E56c592Ab9D6d3D234168EE9a89032273c00",
+  "dataHash": "0xf02468bbbe5f6653311ef0177b2f0556d79404e14273ac80cd96f9d0d07d8ec0",
+  "gasUsed": "112080",
+  "status": "PASS-LOCAL"
+}

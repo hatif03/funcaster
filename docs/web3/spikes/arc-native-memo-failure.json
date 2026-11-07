@@ -1,0 +1,128 @@
+{
+  "at": "2026-11-06T10:58:01.942Z",
+  "scope": "LOCAL ARC FORK ONLY; no role keys or public-chain broadcasts",
+  "forkBlock": "70168479",
+  "release": "circlefin/arc-foundry v0.8.0-2",
+  "checks": [
+    {
+      "id": "USDC local domain",
+      "status": "PASS-LOCAL",
+      "detail": "Domain recalculated for disposable chain 31337"
+    },
+    {
+      "id": "USDC authorization cannot replay",
+      "status": "PASS-LOCAL",
+      "detail": "EVM revert in local simulator"
+    },
+    {
+      "id": "USDC gasless receive",
+      "status": "PASS-LOCAL",
+      "detail": {
+        "remainingMinorUnits": "50000",
+        "nativeBalanceWei": "50000000000000000",
+        "logEmitters": [
+          "0x3600000000000000000000000000000000000000",
+          "0xfffffffffffffffffffffffffffffffffffffffe"
+        ]
+      }
+    },
+    {
+      "id": "USDC insufficient balance",
+      "status": "PASS-LOCAL",
+      "detail": "EVM revert in local simulator"
+    },
+    {
+      "id": "USDC exact drain",
+      "status": "OBSERVED-LOCAL",
+      "detail": "Cannot clear balance of empty account"
+    },
+    {
+      "id": "EURC local domain",
+      "status": "PASS-LOCAL",
+      "detail": "Domain recalculated for disposable chain 31337"
+    },
+    {
+      "id": "EURC authorization cannot replay",
+      "status": "PASS-LOCAL",
+      "detail": "EVM revert in local simulator"
+    },
+    {
+      "id": "EURC gasless receive",
+      "status": "PASS-LOCAL",
+      "detail": {
+        "remainingMinorUnits": "50000",
+        "nativeBalanceWei": "0",
+        "logEmitters": [
+          "0x89b50855aa3be2f677cd6303cec089b5f319d72a"
+        ]
+      }
+    },
+    {
+      "id": "EURC insufficient balance",
+      "status": "PASS-LOCAL",
+      "detail": "EVM revert in local simulator"
+    },
+    {
+      "id": "EURC exact drain",
+      "status": "OBSERVED-LOCAL",
+      "detail": "Simulation succeeds; do not assume a live safety guarantee"
+    },
+    {
+      "id": "S-ARC-3 EURC zero native",
+      "status": "PASS-LOCAL",
+      "detail": "Sponsored transfer succeeds while signer remains at zero native USDC"
+    },
+    {
+      "id": "USDC blocklisted recipient",
+      "status": "PASS-LOCAL",
+      "detail": "EVM revert in local simulator"
+    }
+  ],
+  "operations": [
+    {
+      "label": "USDC sponsored authorization",
+      "gasUsed": "87544",
+      "feeWei": "1838424000000000"
+    },
+    {
+      "label": "configure local EURC minter",
+      "gasUsed": "79245",
+      "feeWei": "1664145000000000"
+    },
+    {
+      "label": "local EURC mint",
+      "gasUsed": "72603",
+      "feeWei": "1524663000000000"
+    },
+    {
+      "label": "EURC sponsored authorization",
+      "gasUsed": "103251",
+      "feeWei": "2168271000000000"
+    },
+    {
+      "label": "local EURC mint",
+      "gasUsed": "72603",
+      "feeWei": "1524663000000000"
+    },
+    {
+      "label": "local EURC mint",
+      "gasUsed": "72603",
+      "feeWei": "1524663000000000"
+    },
+    {
+      "label": "local EURC mint",
+      "gasUsed": "72603",
+      "feeWei": "1524663000000000"
+    },
+    {
+      "label": "EURC zero-native transfer authorization",
+      "gasUsed": "86156",
+      "feeWei": "1809276000000000"
+    }
+  ],
+  "ok": false,
+  "error": {
+    "name": "ContractFunctionExecutionError",
+    "message": "The contract function \"memo\" reverted."
+  }
+}

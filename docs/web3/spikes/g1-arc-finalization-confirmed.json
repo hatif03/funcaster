@@ -1,0 +1,40 @@
+{
+  "at": "2026-11-06T12:24:52.903Z",
+  "scope": "KEYLESS TWO-HOST RECONCILIATION OF OWNER-SENT FINALIZATION; network writes and signing forbidden; only existing local receipt metadata updated",
+  "originalFailure": {
+    "code": "INVALID_PROOF",
+    "failedPredicate": "not recorded by original runner"
+  },
+  "proof": {
+    "state": "confirmed",
+    "hash": "0xc65301ea3be89b42376a8550f58c541b7227a5ed31db1477bbaa8966ee919ae7",
+    "blockNumber": "71027830",
+    "blockHash": "0x2c9b912da9c4f0f4faa0b56ff9e4f5009db6ed63f638b67e39848b12728e9621",
+    "costWei": "1840760000000000"
+  },
+  "hosts": [
+    {
+      "host": "rpc.testnet.arc.io",
+      "state": "Settled",
+      "blockNumber": "71028273",
+      "blockHash": "0x30a48a61f693adb5435ac9406a8df20dc60274fa307d3aa2dc7bc8d425ebb1e6",
+      "claimables": [
+        "1400",
+        "600"
+      ]
+    },
+    {
+      "host": "rpc.testnet.arc.network",
+      "state": "Settled",
+      "blockNumber": "71028273",
+      "blockHash": "0x30a48a61f693adb5435ac9406a8df20dc60274fa307d3aa2dc7bc8d425ebb1e6",
+      "claimables": [
+        "1400",
+        "600"
+      ]
+    }
+  ],
+  "reads": 32,
+  "remaining": "Two EURC claims; public A4 acceptance and final whole-run audit remain pending",
+  "complete": false
+}

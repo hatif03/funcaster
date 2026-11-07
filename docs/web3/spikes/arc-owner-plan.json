@@ -1,0 +1,18 @@
+{
+  "at": "2026-11-06T20:58:43.536Z",
+  "scope": "PUBLIC READS ONLY",
+  "chainId": 5042002,
+  "donor": "0x81DdeD7eE7753791cEaF24Ab6Cb1694d1F39A008",
+  "sender": "0xd910Fb008F7F9A63f20e575aC394A47aCcb7bc91",
+  "asset": "0x3600000000000000000000000000000000000000",
+  "value": "1000",
+  "retainedFloor": "50000",
+  "maxTotalCostNative": "200000000000000000",
+  "before": {
+    "donor": "20000000",
+    "sender": "0",
+    "authorizationUsed": false
+  },
+  "operations": [],
+  "plannedTopUp": "51000"
+}
