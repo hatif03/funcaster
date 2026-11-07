@@ -19,7 +19,7 @@ It builds on the audit findings in [controller-stress-tests.md](controller-stres
 
 ```
         +-----------------------------+
-        |  [ROOF LAMP]  funcaster.       |   roof lamp: four seat-shape bulbs
+        |  [ROOF LAMP]  chonks.       |   roof lamp: four seat-shape bulbs
         |   (o)  (^)  (#)  (*)        |   your bulb lights in your colour;
         |   ^lit = you                |   the lamp also shows link quality
         +-----------------------------+
@@ -55,7 +55,7 @@ It builds on the audit findings in [controller-stress-tests.md](controller-stres
 
 ```
 +-----------------------------------------------------------------------+
-| (o)(^)(#)(*)  funcaster.    < steering meter: LEFT ---o--- RIGHT >  [menu]|
+| (o)(^)(#)(*)  chonks.    < steering meter: LEFT ---o--- RIGHT >  [menu]|
 |-----------------------------------------------------------------------|
 |  +-------------+     +----------------+     +-----------------------+ |
 |  |   BRAKE     |     |  BOOST  x3     |     |      ACCELERATE       | |
@@ -129,7 +129,7 @@ Content window background is `--night-900` with `--cream` text (16.1:1). All tok
 | A, B, +, -, Home, 1, 2 labels and arrangement | Contextual **words** on the primary; small back and hold-menu circles; no +/- pair, no house icon, no numbered 1/2 |
 | Four identical blue player LEDs | A roof lamp with four **shaped** bulbs in colours (circle, triangle, square, diamond) |
 | Speaker grille on the face | None |
-| Brand mark on the body | "funcaster." wordmark in our own type |
+| Brand mark on the body | "chonks." wordmark in our own type |
 | Wrist-strap lug | A decorative checker band instead |
 | Grey and white only | Seat colour as the identity accent on every skin |
 

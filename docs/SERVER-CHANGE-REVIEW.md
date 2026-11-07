@@ -1,6 +1,6 @@
 # Approved server changes
 
-The user explicitly approved this scope on 6 November 2026 after the original automatic review requested confirmation. The implementation is in this tree. No deployment has occurred.
+The user explicitly approved this scope on 6 November 2026 after the original automatic review requested confirmation. The implementation is now on `codex/arcade-launch-plan` and draft PR #2. No merge or deployment has occurred.
 
 ## Concrete next implementation
 
@@ -11,4 +11,4 @@ The user explicitly approved this scope on 6 November 2026 after the original au
 
 These changes let authorized phones start/pause/end games and change who occupies seats or receives a result. Incorrect checks could grant control to another player or interrupt a live room; incorrect ranking could penalize someone who briefly disconnects. Implement and review each numbered area separately, with opt-in feature flags and existing four-phone tests retained. Delivery is by PR only, without merging or deploying.
 
-Prepared but unexecuted source is retained locally in `/private/tmp/arcade.cjs` and `/private/tmp/funcaster-arcade-install.py`. It is a proposal, not validated production code; it must be reviewed and split before application. This document does not itself grant approval.
+Prepared but unexecuted source is retained locally in `/private/tmp/arcade.cjs` and `/private/tmp/chonks-arcade-install.py`. It is a proposal, not validated production code; it must be reviewed and split before application. This document does not itself grant approval.

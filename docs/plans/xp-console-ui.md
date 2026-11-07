@@ -1,8 +1,8 @@
-# Funcaster OS: the whole console as a Windows-XP-style desktop
+# Funcaster: the whole console as a Windows-XP-style desktop
 
-> **Superseded in part, 6 November 2026 (later).** The detailed implementation is in the [build specification](build/README.md); where this document disagrees, that folder wins. Changes: the app **keeps the name Funcaster** (the shell is "Funcaster OS") and the mascot is a **cat, Caster**; the default skin is **Luna blue**; the **legacy dashboard is kept** at `/?shell=classic` as a safety net; **1280 by 720 is 1x** (not 1920 by 1080); the focus ring is a **double white and black ring** (the orange ring failed contrast); there is **no seed or practice option**; the supplied Windows asset pack is **used as supplied** (the public-build licence gate is withdrawn); the phone chassis is the **previous controller face with a skin change** and the **previous pointer is retained**. See [build/README.md](build/README.md) section 3 for the full list.
+> **Superseded in part, 6 November 2026 (later).** The detailed implementation is in the [build specification](build/README.md); where this document disagrees, that folder wins. Changes: the app **keeps the name Funcaster** (the shell is "Funcaster") and the mascot is a **cat, Chonk**; the default skin is **Luna blue**; the **legacy dashboard is kept** at `/?shell=classic` as a safety net; **1280 by 720 is 1x** (not 1920 by 1080); the focus ring is a **double white and black ring** (the orange ring failed contrast); there is **no seed or practice option**; the supplied Windows asset pack is **used as supplied** (the public-build licence gate is withdrawn); the phone chassis is the **previous controller face with a skin change** and the **previous pointer is retained**. See [build/README.md](build/README.md) section 3 for the full list.
 
-Status: plan, 6 November 2026. Nothing here is built. This is the interface plan for the new direction the owner set on 6 November. It replaces the "Funcaster Arcade neon" direction in [visual-direction.md](visual-direction.md) for the shell, the TV screens and the menus; games keep their own in-game art. Companion documents: [phone-controller-v2.md](phone-controller-v2.md) (the remote that steers this), [xp-assets-and-licensing.md](xp-assets-and-licensing.md) (what we may ship, the mascot, the 13 game backdrops), and the [North star in plan.md](../../plan.md#north-star-and-direction-6-november-2026).
+Status: plan, 6 November 2026. Nothing here is built. This is the interface plan for the new direction the owner set on 6 November. It replaces the "Bombay Arcade neon" direction in [visual-direction.md](visual-direction.md) for the shell, the TV screens and the menus; games keep their own in-game art. Companion documents: [phone-controller-v2.md](phone-controller-v2.md) (the remote that steers this), [xp-assets-and-licensing.md](xp-assets-and-licensing.md) (what we may ship, the mascot, the 13 game backdrops), and the [North star in plan.md](../../plan.md#north-star-and-direction-6-november-2026).
 
 **Read this first if you are another agent.** Section 1 states what the owner wants and why, in their words. Section 14 says what is fixed and what you are free to improve. The evidence for every problem named here is in section 2 and comes from reading the shipped code on 6 November, not from running it.
 
@@ -48,11 +48,11 @@ From a code audit of `public/index.html` (the TV page), `public/party/host.js` (
 
 The audit also records what is **already good and must be kept**: the server protocol, the option schema in `core/catalog.js` (`optionSchema`, `matchSetup`), the start gates (`startReason`), delegation to a phone with a TV veto, Party and Kiosk modes, remote screens, and the hold-to-confirm pattern. **The shell is a new client of the existing server**; it changes no game and, in its first stages, no server code.
 
-## 3. The concept: Funcaster OS
+## 3. The concept: Funcaster
 
 The console becomes a tiny operating system whose desktop is the lobby. Each XP idea is given a job that already exists in the product.
 
-| XP idea | In Funcaster OS | Replaces |
+| XP idea | In Funcaster | Replaces |
 | --- | --- | --- |
 | **Desktop** with a wallpaper | The lobby. Wallpaper: `mumbai-pixelated` | The hero, the card grid |
 | **Desktop icons** | The 13 games, plus My Games, Invite, Recycle Bin, Help | The game-card grid |
@@ -69,7 +69,7 @@ The console becomes a tiny operating system whose desktop is the lobby. Each XP 
 | **Balloon notifications** | Toasts: "Priya joined", "Dev is ready", "Remote screen connected" | The toast |
 | **Task Manager** | **Diagnostics**: latency, build id, frame rate, per-seat device tier | The self-test link |
 | **Recycle Bin** | **Removed players** (restore a removed player; the 10-minute ban list) | The `x` button with no undo |
-| **The helper character** | **Caster**, our mascot ([xp-assets-and-licensing.md](xp-assets-and-licensing.md) section 4) | Nothing |
+| **The helper character** | **Chonk**, our mascot ([xp-assets-and-licensing.md](xp-assets-and-licensing.md) section 4) | Nothing |
 | **Screensaver** | **Attract mode** (the desktop dims, the mascot sleeps, the Mumbai wallpaper animates, "Scan to play" appears) | Idle reset |
 | **Shut Down** | **End room** (and Back to Lobby, Restart game) | The Back buttons |
 | **Boot screen and chime** | Opening animation and the start-up sound | Nothing |
@@ -99,7 +99,7 @@ Sizes are at the 1x design size of 1920 by 1080; the shell scales ([section 8](#
 
 ```text
 +----------------------------------------------------------------------------------+
-|[Kart][Time ][Cloud]                                                       (Caster)|
+|[Kart][Time ][Cloud]                                                       (Chonk)|
 |[Rush ][Trial][Cruise]      Mumbai pixel wallpaper                    ( mascot    |
 |[Golf][Slice][Table ]       (icons sit over road and sea,              standing   |
 |[    ][Dojo ][Tennis]        the Gateway, dome and tower stay clear)   bottom-right)|
@@ -166,7 +166,7 @@ Rules for this window:
 
 ```text
 +--------------------------------------------------+
-| Caster  ·  Room KQ7F2P            3 of 4 players  |
+| Chonk  ·  Room KQ7F2P            3 of 4 players  |
 +----------------------+---------------------------+
 | ▸ Kart Rush          | My Games                  |
 | ▸ Pocket Greens      | Players                   |
@@ -424,7 +424,7 @@ Today is 6 November; Devcon starts on **6 November, 13 days away**. This is a lo
 | **U10 Asset swap (the licence gate)** | Replace every `assets/source/winxp` role with original or licensed files; run the guard test; **required before any public deployment** | assets | M | **Yes for any public URL** |
 | **U11 Later** | A computer (keyboard) seat; Funcaster Remote as an installed app; desktop widgets; theming for creator events | U5 | M | No |
 
-**The cut line for 6 November:** U0 to U4, the light version of U5 and U6, the P0 mascot and sound, **and U10 if the instance is public**. If time runs out, the order of sacrifice is U6 polish, then U5's extra windows, then the mascot; never U1 (the options problem) or U10.
+**The cut line 6 November:** U0 to U4, the light version of U5 and U6, the P0 mascot and sound, **and U10 if the instance is public**. If time runs out, the order of sacrifice is U6 polish, then U5's extra windows, then the mascot; never U1 (the options problem) or U10.
 
 **Parallel work (suggested):** one person or agent on the shell (U0, U2, U4, U5), one on the phone (C0 to C4), one on assets ([xp-assets-and-licensing.md](xp-assets-and-licensing.md) section 7). The three meet at U3.
 
@@ -447,6 +447,6 @@ Today is 6 November; Devcon starts on **6 November, 13 days away**. This is a lo
 
 **Fixed (owner decisions, do not reverse without asking):** the console becomes a Windows-XP-style desktop; the wallpaper is `mumbai-pixelated`; there is a mascot and a backdrop per game; Game Properties is a small window opened from a game icon and it holds every pre-game option; the dashboard is fullscreen; games adapt to the screen; everything is operable from the phone; **nothing from `assets/source/winxp` ships publicly**; the server protocol and games are not rewritten for the shell.
 
-**Open for you to improve:** the exact tab split in section 5.1; the wording of labels; the Start menu contents; whether the Recycle Bin metaphor earns its place; the mascot's final design (section 4 of the assets document recommends Caster the street cat but the owner has not chosen); the skin set; how Kiosk attract mode behaves; the boot sequence; and anything the real-TV rehearsal shows to be unreadable. **Measure before you decide:** this plan's sizes and scroll estimates come from reading code; replace them with measurements.
+**Open for you to improve:** the exact tab split in section 5.1; the wording of labels; the Start menu contents; whether the Recycle Bin metaphor earns its place; the mascot's final design (section 4 of the assets document recommends Chonk the street cat but the owner has not chosen); the skin set; how Kiosk attract mode behaves; the boot sequence; and anything the real-TV rehearsal shows to be unreadable. **Measure before you decide:** this plan's sizes and scroll estimates come from reading code; replace them with measurements.
 
-**Decisions I need from the owner:** the mascot (A, B or C in the assets document); the default skin (Luna or Classic); whether Kiosk mode keeps the boot animation; whether to keep the legacy dashboard reachable after launch; and who owns asset production for 6 November.
+**Decisions I need from the owner:** the mascot (A, B or C in the assets document); the default skin (Luna or Classic); whether Kiosk mode keeps the boot animation; whether to keep the legacy dashboard reachable after launch; and who owns asset production 6 November.

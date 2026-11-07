@@ -98,13 +98,13 @@ The shell's game window for the server games contains:
 | Rule | Detail |
 | --- | --- |
 | **Tag the frames** | The `postMessage` check accepts a message only if `event.source` is one of the game iframes; the shell tags its frames with `data-game-frame` and checks that. |
-| **`funcaster:home` must not end a round on its own** | The games send it on **B or Esc** (via `goHome`) and on their home link; `host.js` turns it straight into `lobby`, ending the round for everyone. **The shell shows the pause menu instead** (Resume, End game for everyone: confirm) while a round is running; only in the results or lobby phases does it return to the desktop. |
+| **`chonks:home` must not end a round on its own** | The games send it on **B or Esc** (via `goHome`) and on their home link; `host.js` turns it straight into `lobby`, ending the round for everyone. **The shell shows the pause menu instead** (Resume, End game for everyone: confirm) while a round is running; only in the results or lobby phases does it return to the desktop. |
 | **Pointer shield** | While a window is being dragged, or the pointer is over a game frame, a transparent overlay above the iframes captures events, because the games use `cursor: none` and capture pointer events themselves. |
 | **No fullscreen from inside** | Block `F` in Kart Rush (above). The shell's own fullscreen covers the whole page. |
 | **Keys the games own** | Space, Enter (A), B, Esc (home), C and R (recentre), left and right arrows (sensitivity, `preventDefault`), D (debug); Kart Rush also uses Z, X, Shift, Space, F, C. The shell binds none of these while a game has focus. |
 | **Gamepad** | The shell's gamepad poller is off while a game runs; the existing one clicks host buttons during games. |
-| **Loading overlay** | Hidden on `funcaster:loaded`; if it never arrives within 20 s show "This game is taking a while" with Retry (re-create the frame) and Back. |
-| **View errors** | `funcaster:error {message}` shows a message box and then `lobby`. |
+| **Loading overlay** | Hidden on `chonks:loaded`; if it never arrives within 20 s show "This game is taking a while" with Retry (re-create the frame) and Back. |
+| **View errors** | `chonks:error {message}` shows a message box and then `lobby`. |
 
 ## 8. The viewport matrix and the test
 
@@ -124,7 +124,7 @@ The shell's game window for the server games contains:
 
 ### 8.2 What each run checks
 
-For every game and viewport, once with 1 view and once with the maximum views the game supports: load; wait for `funcaster:loaded`; then assert (a) no horizontal or vertical scrollbar in the document or any overflow container; (b) no element wider than the viewport; (c) the canvas box fills its letterboxed rectangle; (d) the smallest computed font among visible text nodes is at least 16 px at 1080p-equivalent (scaled by `viewport / 1080`); (e) no `NaN` in camera or canvas dimensions (console clean of errors); (f) screenshot saved for human review.
+For every game and viewport, once with 1 view and once with the maximum views the game supports: load; wait for `chonks:loaded`; then assert (a) no horizontal or vertical scrollbar in the document or any overflow container; (b) no element wider than the viewport; (c) the canvas box fills its letterboxed rectangle; (d) the smallest computed font among visible text nodes is at least 16 px at 1080p-equivalent (scaled by `viewport / 1080`); (e) no `NaN` in camera or canvas dimensions (console clean of errors); (f) screenshot saved for human review.
 
 ### 8.3 How to run it without phones
 

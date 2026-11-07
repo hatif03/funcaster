@@ -2,7 +2,7 @@
 
 > **Superseded in part, 6 November 2026 (later).** The implementation spec is [build/06](build/06-phone-remote-and-pointer.md). Changes: the chassis is **the previous controller face (`classic-controller.html`) with a skin change**, not a new design; the default skin is **`luna`** (blue, matches the shell; the owner does not want the white remote as default) with the wordmark **funcaster**, and the previous white remote is the optional `cream` skin; the **previous pointer (`core/pointer.js`) is retained** and fed by a new raw-sample stream; the app keeps the name **Funcaster**. The one-tap gate, the capability probe, the tiers and the postures in this document stand and are specified in code terms in build/06.
 
-Status: plan, 6 November 2026. Nothing here is built. It answers owner requests 1, 3 and 4 from 6 November: *go fullscreen immediately, make the remote universal again (like the previous controller or a classic remote, with our branding), and map Android and iPhone sensors properly.* It builds on the audit of the shipped phone (`public/controller.html`, `public/party/phone.js`) and on a sourced capability study. Companion docs: [xp-console-ui.md](xp-console-ui.md) (the TV interface the phone steers), [xp-assets-and-licensing.md](xp-assets-and-licensing.md), [controller-design.md](controller-design.md) (superseded in part, see section 12), [controller-stress-tests.md](controller-stress-tests.md).
+Status: plan, 6 November 2026. Nothing here is built. It answers owner requests 1, 3 and 4 6 November: *go fullscreen immediately, make the remote universal again (like the previous controller or a classic remote, with our branding), and map Android and iPhone sensors properly.* It builds on the audit of the shipped phone (`public/controller.html`, `public/party/phone.js`) and on a sourced capability study. Companion docs: [xp-console-ui.md](xp-console-ui.md) (the TV interface the phone steers), [xp-assets-and-licensing.md](xp-assets-and-licensing.md), [controller-design.md](controller-design.md) (superseded in part, see section 12), [controller-stress-tests.md](controller-stress-tests.md).
 
 ## 1. What the owner asked, and the short answer
 
@@ -83,7 +83,7 @@ On iPhone (and anywhere the lock fails) the player may have the system rotation 
 ```text
         (O) power / link lamp          ● ▲ ■ ◆   seat lamps (yours lit)
    +--------------------------------+
-   |            FUNCASTER              |  wordmark (our brand, not the original's)
+   |            CHONKS              |  wordmark (our brand, not the original's)
    |   +------------------------+   |
    |   |   context window       |   |  game name, meters, guess box,
    |   |   (changes per game)   |   |  captions for A / B / 1 / 2
@@ -102,7 +102,7 @@ On iPhone (and anywhere the lock fails) the player may have the system rotation 
 
 ```text
    +------------------------------------------------------------------+
-   | ● ▲ ■ ◆   FUNCASTER     [ context window: steering meter, boost ]   |
+   | ● ▲ ■ ◆   CHONKS     [ context window: steering meter, boost ]   |
    |   [ ^ ]                                                          |
    | [<] [.] [>]   ( - ) ( ⌂ ) ( + )          ( 1 )   ( A )   ( 2 )   |
    |   [ v ]                                                          |
@@ -130,7 +130,7 @@ In the sideways posture **1, A and 2 are the three racing pedals, enlarged**: 1 
 
 ### 4.5 Skins and branding
 
-The remote is **ours**: our name, our proportions, our colours. Default skin **"Funcaster Cream"**: warm white body, kaali-peeli (black and taxi-yellow) accent ring on the lamp strip and A button, the seat colours on the lamps. Skins that already exist in the code (**Taxi**, **City Bus**, **Local**) are kept as paint jobs, and a **"Luna"** skin (the console's blue and green) matches the XP interface. The wordmark is "FUNCASTER" in the console's logo face. Buttons carry letters and numerals only; **no Nintendo marks, names, fonts or logos**, and the product never calls anything "Wii".
+The remote is **ours**: our name, our proportions, our colours. Default skin **"Funcaster Cream"**: warm white body, kaali-peeli (black and taxi-yellow) accent ring on the lamp strip and A button, the seat colours on the lamps. Skins that already exist in the code (**Taxi**, **City Bus**, **Local**) are kept as paint jobs, and a **"Luna"** skin (the console's blue and green) matches the XP interface. The wordmark is "CHONKS" in the console's logo face. Buttons carry letters and numerals only; **no Nintendo marks, names, fonts or logos**, and the product never calls anything "Wii".
 
 ## 5. Per-game mapping
 
@@ -230,7 +230,7 @@ Requirement from the owner: *"I cannot control everything from my controller."* 
 
 ## 10. Implementation plan
 
-| Step | What | Depends on | Size | For 6 November? |
+| Step | What | Depends on | Size | 6 November? |
 | --- | --- | --- | --- | --- |
 | **C0** | Fix the cheap defects: lock the page and add the global touch guard, one theme colour, manifest start URL and orientation, readable text and 48 px targets, the in-app browser list, the wheel-in-portrait hint, the visual-feedback decoupling | none | S | **Yes** |
 | **C1** | **The gate:** one "Tap to start" tap that runs permission, audio, wake lock, fullscreen, orientation lock and the probe, in order, never disabled | C0 | M | **Yes** |

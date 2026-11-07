@@ -1,6 +1,6 @@
 # A retro-futuristic Mumbai: the visual, sound and asset plan
 
-> **Superseded in part, 6 November 2026.** The owner moved the whole console to a Windows-XP-style desktop over a pixel-art Mumbai wallpaper. For the shell, menus, TV screens, mascot and backdrops, see [xp-console-ui.md](xp-console-ui.md) and [xp-assets-and-licensing.md](xp-assets-and-licensing.md). The neon "Funcaster Arcade, 2099" concept in this file no longer governs the shell; its font, sound and licence rules, and the in-game art guidance, still apply where they do not conflict.
+> **Superseded in part, 6 November 2026.** The owner moved the whole console to a Windows-XP-style desktop over a pixel-art Mumbai wallpaper. For the shell, menus, TV screens, mascot and backdrops, see [xp-console-ui.md](xp-console-ui.md) and [xp-assets-and-licensing.md](xp-assets-and-licensing.md). The neon "Bombay Arcade, 2099" concept in this file no longer governs the shell; its font, sound and licence rules, and the in-game art guidance, still apply where they do not conflict.
 
 Status: plan, 6 November 2026. Based on a read of the current UI code (`public/index.html`, `public/party/*`, `public/controller.html`, per-game HUDs), research into how Devcon 8 and ETHGlobal Mumbai use Mumbai in their branding, what is documented about Mumbattan in *Across the Spider-Verse*, and a licence and technique survey for retro assets. I did not see any rendered screen; descriptions of the current look come from the CSS and markup. Colour suggestions are mine and are labelled as such.
 
@@ -23,7 +23,7 @@ Pieces worth keeping: the original inline-SVG game covers (`public/party/art.js`
 
 ### 2.1 Devcon 8 India (devcon.org/en)
 
-Verified from the page and its CSS (research agent; date not recorded):
+Verified from the page and its CSS (research agent, 13 Oct 2026):
 - **Hero art:** a night-time illustrated collage of the Gateway of India in front of a huge glowing cyan moon, a teal mandala and a Mughal-style border frame, a sky gradient from orange through magenta and violet to indigo, floating Ethereum diamonds, and two anime-style characters with a fox and a cat. Mood: "Infinite Garden", mystical, dreamy, bioluminescent. **It is not street-level Mumbai**: only the Gateway and a bridge and skyline silhouette appear; no vehicles.
 - **Fonts:** Poppins (body, OFL), a self-hosted display serif "Chloe" (licence unverified, assume commercial), Inter as fallback.
 - **Colours from its CSS:** `#160b2b` (header dark), `#221144` and `#1a0d33` (deep purples), `#7235ed` (primary violet), `#e55066` (coral), `#0fadcf` (cyan), `#fee506` (yellow), `#00b3a4` (teal), `#88c43f` (green), a pastel gradient `#ffdc8b → #f7d9d4 → #ffb8e3`.
@@ -46,7 +46,7 @@ Verified from the page and its CSS (research agent; date not recorded):
 
 Thin results. Indofuturist work exists (Antariksha Studio's *Antariksha Sanchar* and *Elsewhere in India*) but not set in Mumbai. I found **no Mumbai pixel-art or synthwave arcade game**; that may be an open niche, but it is only "not found in a few searches". A manual search of itch.io for "Mumbai" and "Bombay" would settle it before we commit.
 
-## 3. The concept: "Funcaster Arcade, 2099"
+## 3. The concept: "Bombay Arcade, 2099"
 
 **One line:** the console is a neon-lit Bombay arcade parlour from a future that kept all its Art Deco, taxis and trains: pixel-sharp, CRT-glowing, street level.
 
@@ -186,7 +186,7 @@ LOBBY                                   RESULTS
 
 ## 7. The controller
 
-> **Decided 6 November 2026:** the owner does not want a literal copy; the controller is an **original design that resembles a classic remote, matches our design system and fits our use case**. The full build spec is [controller-design.md](controller-design.md) (anatomy, contexts, skins, tokens, feedback, a how-this-differs checklist, implementation steps). The text below is the earlier reasoning and the three starter skins.
+> **6 November 2026:** the owner does not want a literal copy; the controller is an **original design that resembles a classic remote, matches our design system and fits our use case**. The full build spec is [controller-design.md](controller-design.md) (anatomy, contexts, skins, tokens, feedback, a how-this-differs checklist, implementation steps). The text below is the earlier reasoning and the three starter skins.
 
 **The ask:** a controller that looks like a classic motion remote, with colour. **The tension to settle first:** the classic motion remote's industrial design (the slim white slab, A button, D-pad, +/- and Home cluster, numbered 1/2 buttons, four player LEDs) is Nintendo's, and the earlier plan flagged copying it as a trade-dress risk and removed it. I am not a lawyer. My recommendation, so you get the feel without the copy:
 
@@ -198,7 +198,7 @@ LOBBY                                   RESULTS
 ```
  Portrait pointer layout                    Landscape wheel layout
 +------------------------+                +---------------------------------------------+
-|  funcaster.   (o) (^)(#)(*)|  player lamps  |  <-- steering meter -->           [crown]   |
+|  chonks.   (o) (^)(#)(*)|  player lamps  |  <-- steering meter -->           [crown]   |
 |  +------------------+  |                |  [ BRAKE ]   [ BOOST x3 ]   [  ACCELERATE ] |
 |  |                  |  |                |   (kaali)       (marigold)        (seat paint)|
 |  |   aim / swing    |  |                +---------------------------------------------+
@@ -261,7 +261,7 @@ A theme is a set of tokens, sprites, a music track and HUD frame. Games keep the
 | A07 | **Hind** or **Mukta** | Devanagari + Latin | WOFF2 + `OFL.txt` | `public/fonts/` | Source | Devanagari body |
 | A08 | **Poiret One** or **Limelight** | Latin | WOFF2 + `OFL.txt` | `public/fonts/` | Source | Deco headings and logo |
 | A09 | **Bungee** | Latin | WOFF2 + `OFL.txt` | `public/fonts/` | Source | Neon signage |
-| A10 | **Wordmark and logo** | "funcaster." in the new style; mark; one-colour and neon variants; readable at 64 px | SVG master + PNG 512 and 1024 | `assets/brand/logo-wordmark.svg`, `logo-mark.svg` | You | Text kept as outlines |
+| A10 | **Wordmark and logo** | "chonks." in the new style; mark; one-colour and neon variants; readable at 64 px | SVG master + PNG 512 and 1024 | `assets/brand/logo-wordmark.svg`, `logo-mark.svg` | You | Text kept as outlines |
 | A11 | **Favicon and app icons** | One master | SVG favicon; PNG 192, 512, 180 (apple-touch), maskable 512 | `public/icons/` | You (from A10) | |
 | A12 | **Social and share image** | 1200x630, under 300 KB | PNG/JPG | `public/og-default.png` | You | |
 
@@ -322,7 +322,7 @@ A01, A02-A09 (fonts), A10 (wordmark), B01, B02, B03, B04, C01, C02, C06. Everyth
 
 | ID | Question | Recommendation |
 | --- | --- | --- |
-| V-1 | ~~**Controller look:** original "classic-remote-inspired" or a literal classic motion remote~~ **Decided: original design resembling a classic remote, our own, matching the design system** | See [controller-design.md](controller-design.md) |
+| V-1 | ~~**Controller look:** original "classic-remote-inspired" or a literal classic motion remote~~ **Decided (13 Oct): original design resembling a classic remote, our own, matching the design system** | See [controller-design.md](controller-design.md) |
 | V-2 | **Pixel art or smooth vector** for the shell | Pixel for UI and sprites; low-poly pixelated 3D; vector only for the logo |
 | V-3 | **A mascot?** The name suggests chunky characters; none exists yet | Optional; decide after V1 |
 | V-4 | **Languages** | English plus Hinglish labels now; Hindi and Marathi strings behind a string table later |

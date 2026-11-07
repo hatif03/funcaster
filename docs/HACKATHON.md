@@ -34,7 +34,7 @@ Kart Rush lets every phone choose and confirm an original driver; the host picks
 
 ## Host controls and extra screens
 
-Make it your party contains three playlists, volume, gentle effects, the self-test link and a **private display invite**. Displays can follow one player, two players or everyone. They receive snapshots and cannot inject scores, input or feedback. Keep the main host open. Revocable host-phone controls and PIN-protected Kiosk administration are implemented. Normal visitors have no match-level powers. The TV remains the room owner; automatic TV replacement is not enabled. Remote play is available with `FUNCASTER_REMOTE_VIEWS=1` and TV room opt-in; see [NETWORKING.md](NETWORKING.md).
+Make it your party contains three playlists, volume, gentle effects, the self-test link and a **private display invite**. Displays can follow one player, two players or everyone. They receive snapshots and cannot inject scores, input or feedback. Keep the main host open. Revocable host-phone controls and PIN-protected Kiosk administration are implemented. Normal visitors have no match-level powers. The TV remains the room owner; automatic TV replacement is not enabled. Remote play is available with `CHONKS_REMOTE_VIEWS=1` and TV room opt-in; see [NETWORKING.md](NETWORKING.md).
 
 The host can pause/resume, return to the lobby, remove a player, replay, choose another game and download a round record. Completed rounds also remain in Make it your party → Recent rounds, so exporting is not limited to the 12-second results screen. Setup is frozen during play. Series standings award 4/3/2/1 points by rank, including tied ranks; free drawing does not add competitive points. Device nicknames and personal bests stay on that phone.
 

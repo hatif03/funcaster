@@ -4,7 +4,7 @@ The TV retains room ownership. Four phones play, with further visitors waiting i
 
 ## Screens and authority
 
-Displays initially receive read-only invites. With `FUNCASTER_REMOTE_VIEWS=1`, the TV can opt a Party room into remote play (off by default; unavailable in Kiosk). Each display shows its own phone QR. Ready phones pair to a screen. Independent games offer a random grant valid for exactly that room, seat, view and round; the TV cannot also report that view. Expired, revoked and wrong-seat grants are rejected. Reloading an independent run cannot restart it; the original JavaScript instance can reconnect for ten seconds, then that view forfeits.
+Displays initially receive read-only invites. With `CHONKS_REMOTE_VIEWS=1`, the TV can opt a Party room into remote play (off by default; unavailable in Kiosk). Each display shows its own phone QR. Ready phones pair to a screen. Independent games offer a random grant valid for exactly that room, seat, view and round; the TV cannot also report that view. Expired, revoked and wrong-seat grants are rejected. Reloading an independent run cannot restart it; the original JavaScript instance can reconnect for ten seconds, then that view forfeits.
 
 Online **Kart Rush, Table Tennis and Foam Fencers** use one server-owned rules instance whenever an active seat is paired to a remote screen. Phones send calibrated inputs and bounded actions. The server samples at 60 Hz and advances physics twice at 120 Hz per sample. Screens only render snapshots: neither the TV game iframe nor a remote viewer may upload state, score, feedback or a replay for these rounds. The TV still selects, starts, pauses and administers the room. This implements online play without requiring client engines to agree on physics calculations.
 

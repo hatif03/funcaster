@@ -66,7 +66,7 @@ The right answer to "who runs the room" is different when five friends share a s
 | Kick, lock, end match | VIP (hold to confirm) | **Staff only** (PIN) |
 | Waiting players | Spectator seats | A visible **"next up"** queue; promoted automatically |
 | Idle | The room stays until the host tab closes | Attract mode returns after 60 s with no phones; state resets |
-| Remote screens (`remoteScreens` setting) | `invite` by default: the host can invite a friend on another screen ([plan.md §5h.5](../../plan-history.md#5h5-pairing-how-a-remote-friend-joins)) | `off` by default (decided 6 November). Staff can switch it on per room with the PIN; changing the default later is a one-line change. Switching it on for a public booth first needs H5a (rate limits, invite hygiene) |
+| Remote screens (`remoteScreens` setting) | `invite` by default: the host can invite a friend on another screen ([plan.md §5h.5](../../plan-history.md#5h5-pairing-how-a-remote-friend-joins)) | `off` by default (6 November). Staff can switch it on per room with the PIN; changing the default later is a one-line change. Switching it on for a public booth first needs H5a (rate limits, invite hygiene) |
 
 **Why Kiosk matters for the hackathon.** The goal is to make people come and play. Every extra step ("who is the host?", "pick a game", "press start") loses a passer-by. In Kiosk mode a person scans, swings and is playing within about 20 seconds with no decision to make. The detailed event plan is [hackathon-floor-plan.md](hackathon-floor-plan.md).
 
@@ -103,7 +103,7 @@ The host phone looks like every other phone with one addition: a small **crown**
 ```
  Lobby (host phone)                          Host sheet (opened by tapping the crown)
 +--------------------------------+          +--------------------------------+
-| funcaster.        [crown] Priya   |          | HOST                    [close]|
+| chonks.        [crown] Priya   |          | HOST                    [close]|
 |                                |          |  Game        Kart Rush  [change]|
 |   YOU'RE READY                 |          |  Players     Auto (3 ready)    |
 |                                |          |  CPU racers  0   [-] [+]       |

@@ -1,6 +1,8 @@
+> Historical arcade milestone. Current merged-main architecture is [ARCHITECTURE.md](../ARCHITECTURE.md); current release work is [plan.md](../plan.md).
+
 # Arcade launch implementation — 6 November 2026
 
-This ledger describes the code in this tree. No deployment is authorized. It supersedes the old audits and approval-blocked notes in the historical plan.
+Branch: `codex/arcade-launch-plan`, based on main `086d9b2`. Delivery: [PR #2](https://github.com/hatif03/web3-multiplayer-games/pull/2). No merge or deployment is authorized. This dated ledger supersedes the old audits and approval-blocked notes in the historical plan.
 
 ## Implemented
 
@@ -12,7 +14,7 @@ This ledger describes the code in this tree. No deployment is authorized. It sup
 | Kiosk | Six-digit staff PIN with room/IP attempt limits, staff lock, room lock/remove, ten-second ready countdown, queue rotation, playlist, idle reset, event counters and persistent bounded leaderboards. Atomic event storage excludes controller inputs and credentials. |
 | Hardening and local setup | Origin/payload/room/access-attempt limits, trusted loopback proxy handling, explicit LAN IP choice, pure Node certificate generation and cross-platform launcher. |
 | Controller | Gentle calibrated landscape wheel; Brake left / Boost centre / Accelerate right, three boosts and eight-second cooldown; adaptive input pacing, brief boost preservation, touch fallback, hold-to-recenter/leave, larger controls, skins, reduced effects and host/staff panels. |
-| Visual and sound | Original Funcaster Arcade skyline and route menu, seat badges and controller skins, shared game HUD, original vector game art, local WOFF2 fonts/licences, synthesized audio cues/fallbacks, app icons, palette, wordmark, share image and Credits page. |
+| Visual and sound | Original Bombay Arcade skyline and route menu, seat badges and controller skins, shared game HUD, original vector game art, local WOFF2 fonts/licences, synthesized audio cues/fallbacks, app icons, palette, wordmark, share image and Credits page. |
 | Kart Rush | Small-grid item odds/CPU pacing, idle assistance, configurable field/laps, per-seat HUD, first-finisher 30-second window and deterministic logic-log checking. Online rounds use server-owned rules with paired per-seat cameras, phone driver selection, shared start/recovery and verified input journals. |
 | Pocket Greens | Aim latch/address/release and stroke sequence IDs; previous-hole honours; 30/45/60/90-second turns and ready-golf option; seeded tees/pins/wind; CPU skill; stroke/match/skins/closest/scramble modes; four-player match best-ball pairs; verified replay; stroke-driven remote flight with snapshot reconciliation. |
 | Slice Dojo | Shared Co-op lives/fatal bomb, seat scaling, Battle and independent same-seed Race, three-second countdown, bounded timestamp mapping and swept-hit arbitration, per-mode bests/stats, opt-in helper blade, acknowledged replay chunks. |

@@ -1,6 +1,6 @@
 # XP direction: assets, licensing, mascot and game backgrounds
 
-> **Superseded in part, 6 November 2026 (later).** The owner decided to **use the supplied Windows pack as supplied, without further questions**, and **keeps the name Funcaster with a cat mascot, Caster**. Section 1's licence gate, the two-build rule and the guard test are **no longer required**; the facts in that section (what the pack contains and who made it) remain true. The implementation of the asset work, with exact coordinates and scripts, is now in the [build specification](build/README.md), especially [build/02](build/02-theme-and-assets.md) and [build/01](build/01-brand-and-rename.md). This document remains the brief for **later production art**: custom mascot sheets and the 13 game backdrops.
+> **Superseded in part, 6 November 2026 (later).** The owner decided to **use the supplied Windows pack as supplied, without further questions**, and **keeps the name Funcaster with a cat mascot, Chonk**. Section 1's licence gate, the two-build rule and the guard test are **no longer required**; the facts in that section (what the pack contains and who made it) remain true. The implementation of the asset work, with exact coordinates and scripts, is now in the [build specification](build/README.md), especially [build/02](build/02-theme-and-assets.md) and [build/01](build/01-brand-and-rename.md). This document remains the brief for **later production art**: custom mascot sheets and the 13 game backdrops.
 
 Status: plan, 6 November 2026. Companion to [xp-console-ui.md](xp-console-ui.md) (the interface), [phone-controller-v2.md](phone-controller-v2.md) (the phone) and the [North star in plan.md](../../plan.md#north-star-and-direction-6-november-2026). This file answers three questions for the person adding assets: **what is in `assets/source/` and what may we ship**, **what do we still need to make**, and **what are the mascot and the 13 game backdrops**.
 
@@ -50,7 +50,7 @@ This costs little: a role-to-file manifest is how the UI should be built anyway 
 
 Format notes: **PNG sprite sheets with a small JSON atlas** (or SVG where the art is vector), WebP for large backdrops, **OGG and MP3** for audio (WAV only for sources). Pixel art is shown with `image-rendering: pixelated` at integer scales. The first-load budget for the whole shell is **under 3 MB**; backdrops load lazily.
 
-**Priority.** P0 = needed for the 6 November event; P1 = needed for a complete release; P2 = later.
+**Priority.** P0 = needed for 6 November event; P1 = needed for a complete release; P2 = later.
 
 ### 2.1 Interface art
 
@@ -101,19 +101,19 @@ A **blur or darken layer is not needed**; keep icon labels readable with the XP-
 
 The Mumbai wallpaper looks machine-generated. Before it ships: record the tool, the prompt, the date and the tool's terms; confirm commercial use is allowed; do not let a generated image depict a real person or a real trademark (the Taj hotel is a landmark building, which is normally fine for a stylised illustration, but avoid readable signage or brand logos, and avoid anything that looks like a real private residence); and keep the layered source so it can be edited. The same rules apply to every generated backdrop and to the mascot sheet.
 
-## 4. The mascot: Caster
+## 4. The mascot: Chonk
 
 The owner asked for a mascot for the whole app. The XP precedent is **the helper character** (the paperclip), which is also the strongest nostalgia lever the interface has. **Rule one: we copy its role and its animation format, not its design.**
 
-### 4.1 Recommendation: Caster, the street cat in kaali-peeli patches
+### 4.1 Recommendation: Chonk, the street cat in kaali-peeli patches
 
 | Option | Idea | For | Against |
 | --- | --- | --- | --- |
-| **A. Caster the street cat (recommended)** | A round, chubby Mumbai street cat with **black and taxi-yellow patches** (the kaali-peeli palette), a small **tiffin carrier** on its back whose four tiers are the four seat colours | The name "Funcaster" already means a chubby cat; desktop pets have a long tradition; the patches tie to the palette; the tiffin ties to the four seats and the funcasterwala relay story | Cats are common mascots, so the drawing must be distinctive |
+| **A. Chonk the street cat (recommended)** | A round, chubby Mumbai street cat with **black and taxi-yellow patches** (the kaali-peeli palette), a small **tiffin carrier** on its back whose four tiers are the four seat colours | The name "Funcaster" already means a chubby cat; desktop pets have a long tradition; the patches tie to the palette; the tiffin ties to the four seats and the chonkswala relay story | Cats are common mascots, so the drawing must be distinctive |
 | B. Tiffin creature | A four-tier tiffin carrier with a face, arms and a handle that works as an antenna | Strong link to seats and the relay | Harder to animate expressively |
 | C. Vada-pav character | A friendly vada-pav | Instantly Mumbai | Narrow, less able to act |
 
-**Personality:** helpful, a bit lazy, easily delighted. It sleeps when nothing is happening, perks up when a phone joins, and points at things. **It must never nag.** The paperclip was disliked for interrupting; Caster speaks only on events the user caused, can be dismissed with one click, and is **off by default in Kiosk mode** except in attract mode, where it is the star.
+**Personality:** helpful, a bit lazy, easily delighted. It sleeps when nothing is happening, perks up when a phone joins, and points at things. **It must never nag.** The paperclip was disliked for interrupting; Chonk speaks only on events the user caused, can be dismissed with one click, and is **off by default in Kiosk mode** except in attract mode, where it is the star.
 
 ### 4.2 Format and animation list
 
@@ -159,7 +159,7 @@ Each game has a **backdrop** used in three places: the **game properties window*
 | **Cloud Cruise** | An aerial view of the sea link and the harbour at midday, with rings floating over the water | Bright sky and aqua sea |
 | **Pocket Greens** | The Oval Maidan on a Sunday: cricket nets, the Gothic university tower, a flag on the green | Fresh green, old stone |
 | **Slice Dojo** | Crawford Market fruit stalls, mangoes and coconuts in the air | Saturated fruit colours |
-| **Table Tennis** | A chai funcaster with a table-tennis table beside steaming glasses of cutting chai | Warm browns, steam |
+| **Table Tennis** | A chai chonks with a table-tennis table beside steaming glasses of cutting chai | Warm browns, steam |
 | **Foam Fencers** | The Dhobi Ghat's rows of colourful laundry with two foam-sword fencers on the wash stones | Bright washed colours |
 | **Shooting Range** | A Juhu Beach funfair stall, balloons and prizes | Carnival red and white |
 | **Alien Attack** | The skyline at night with a friendly saucer above the sea link | Deep blue, neon |
@@ -180,7 +180,7 @@ assets/os/
   sounds/*.ogg|*.mp3
   fonts/                   OFL fonts and their licence files
   wallpaper/mumbai-1920.webp (day, dusk, night) and layer sprites
-  mascot/caster-<animation>.png, caster.json
+  mascot/chonk-<animation>.png, chonk.json
   games/<slug>-backdrop.webp, <slug>-header.webp, <slug>-icon.png
   boot/                    logo, progress art
 ```
@@ -189,4 +189,4 @@ assets/os/
 
 ## 7. The shopping list in order of urgency
 
-**By 6 November (needed to build and rehearse for 6 November):** the cleaned 1920 x 1080 wallpaper (section 2.6); 13 game icons at 32 and 48 px and 13 header crops (placeholders allowed: a flat colour with the game's name); the Caster mascot in `idle`, `watch-front`, `point-down`, `check`, `weird`, `sleep`; the eight P0 sounds; six message and folder icons; the TV pointers. Everything else can follow after the event.
+**By 6 November (needed to build and rehearse 6 November):** the cleaned 1920 x 1080 wallpaper (section 2.6); 13 game icons at 32 and 48 px and 13 header crops (placeholders allowed: a flat colour with the game's name); the Chonk mascot in `idle`, `watch-front`, `point-down`, `check`, `weird`, `sleep`; the eight P0 sounds; six message and folder icons; the TV pointers. Everything else can follow after the event.

@@ -15,7 +15,7 @@ Part of the [build specification](README.md). Status: plan, 6 November 2026. **O
 | `Frame/UI Theme.png` | 1024 by 1024 sprite sheet, 131 labelled roles | Window frames, title bars, title-bar buttons, push buttons, check boxes, scrollbars, task buttons, the Start button (section 4) |
 | `Icons/WinIcons_{16,32,48}.png` | 48 px: 20 by 20 cells; 32 px: 23 by 22; 16 px: 23 by 23; origin 0,0, no gaps; most icons come as a triplet (dithered, smooth with dark shadow, smooth with white halo): **use the smooth one** | System and shell icons (section 5); **none of the 13 games has a matching icon** |
 | `Cursor/` | 216 PNG, 32 by 32, **no hotspots recorded**, non-3d sets are pure white on transparent (invisible on light UI) | Cursors with computed hotspots and generated black outlines (section 6) |
-| `Clip/sheets` and `Clip/ase` | 25 animations, 240 by 240 frames, **12 to 145 frames each, per-frame timing 60 to 2,110 ms**, a yellow paper sheet inside each frame | The helper character until Caster's art exists ([01](01-brand-and-rename.md) section 2.3) |
+| `Clip/sheets` and `Clip/ase` | 25 animations, 240 by 240 frames, **12 to 145 frames each, per-frame timing 60 to 2,110 ms**, a yellow paper sheet inside each frame | The helper character until Chonk's art exists ([01](01-brand-and-rename.md) section 2.3) |
 | `Sounds/` | 30 PCM WAV (1.78 MB), mostly 22.05 kHz mono; three byte-identical pairs; peaks from minus 0.2 to minus 24 dBFS | The cue set (section 8), gain-normalised |
 | `Fonts/` | `tahoma.ttf` (2,036 glyphs, Regular only), `framdit.ttf` (Franklin Gothic Medium Italic, the Start button face) | UI text and the wordmark (section 9) |
 | `Wallpapers/` | 21 PNG, 800 by 600 | **Not used.** The Mumbai wallpaper replaces them |
@@ -330,7 +330,7 @@ pyftsubset framdit.ttf --unicodes=U+0020-007E,U+00A0-00FF --flavor=woff2 --outpu
 | White on title bar (mid `#0370ff` 4.41, dark `#0050e1` 6.49, bottom `#0043cf` 7.77, top `#4198ff` only 2.93) | **title text is 20 px or larger with the 1 px dark shadow, so it is "large text" (3:1) and the shadow secures it** | |
 | White on the inactive title `#7994de` | **2.96:1 fails**: inactive title text is black (7.1:1) | |
 | White on **task button** `#4085f5` (3.56), hover `#559df8` (**2.78 fails**), active `#164dbc` (7.44) | Task labels are **20 px bold-weight look with a 1 px dark shadow** (large text); the **hover state does not lighten the sprite** (use an inner 2 px white outline instead) | |
-| White on the **Start button** green `#45b845` | **2.56:1 fails** at body size: the label "funcaster" is 26 px with a 2 px dark-green shadow (large text and a strong outline); fallback if it reads poorly in the rehearsal: black text (8.2:1) | |
+| White on the **Start button** green `#45b845` | **2.56:1 fails** at body size: the label "chonks" is 26 px with a 2 px dark-green shadow (large text and a strong outline); fallback if it reads poorly in the rehearsal: black text (8.2:1) | |
 | Group legend `#0046d5` on the face | 6.34:1 | |
 | **Previous focus colour `#ff9f1c`** on the face | **1.76:1 fails** (needs 3:1 for UI components) | **Replaced by the double ring** (white 2 px then black 3 px): visible on cream, blue and the wallpaper |
 | Ink on seat colours (peeli 11.7, magenta 6.1, cyan 11.9, marigold 10.2) | pass | labels on seat chips are dark ink |
@@ -356,22 +356,22 @@ Python 3 with Pillow and numpy (both were present on this machine for the indexi
 
 ## 13. Where every asset lives now, and the CraftPix packs
 
-### 13.1 The move (done 6 November 2026; nothing deleted, nothing committed)
+### 13.1 The move (6 November 2026; nothing deleted, nothing committed)
 
 The owner asked for everything in `supply/` to be moved to an appropriate place. The repository already had a convention for this: its `.gitignore` says *"Asset source archives and alternate packs stay local"* and ignores `/assets/*` apart from an explicit whitelist. So raw sources go under `assets/source/`, small reference images under `docs/references/`, and generated, shippable output under `assets/os/`. **Update, same day:** the owner then asked for the assets to be **committed to GitHub** so the teammate has them, so `.gitignore` whitelists `!/assets/source/` and `!/assets/os/`, the server blocks `/assets/source` from being served, and `.dockerignore` excludes it from the image.
 
 | Was | Now | In git? |
 | --- | --- | --- |
-| `supply/WinXp/` (the NullTale Windows pack: Clip, Cursor, Fonts, Frame, Icons, Logo, Misc, Sounds, Wallpapers, the `.url`) | `assets/source/winxp/` | Yes (committed 6 November) |
-| `supply/mumbai-pixelated.png` | `assets/source/wallpaper/mumbai-pixelated.png` | Yes (committed 6 November) |
-| `supply/craftpix-net-*.zip` (10 packs, kept as zips for provenance) | `assets/source/craftpix/` | Yes (committed 6 November) |
+| `supply/WinXp/` (the NullTale Windows pack: Clip, Cursor, Fonts, Frame, Icons, Logo, Misc, Sounds, Wallpapers, the `.url`) | `assets/source/winxp/` | Yes (6 November) |
+| `supply/mumbai-pixelated.png` | `assets/source/wallpaper/mumbai-pixelated.png` | Yes (6 November) |
+| `supply/craftpix-net-*.zip` (10 packs, kept as zips for provenance) | `assets/source/craftpix/` | Yes (6 November) |
 | `supply/xp1.jpg` to `xp4.jpg` (the reference screenshots) | `docs/references/ui/` | Yes, when committed (4 files, 6 to 11 KB) |
 | (generated by `prepare.py`) | `assets/os/**` (UI sprites, icons, cursors, sounds, fonts, wallpaper, mascot, pets, avatars, theme manifest) | Yes, when the owner asks for the commit |
 | `supply/` | removed (it was empty) | |
 
 Every path in this folder and in `plan.md`, `CLAUDE.md` and `AGENTS.md` was updated to these locations. `scripts/os-assets/prepare.py` reads only from `assets/source/` and writes only to `assets/os/`; it extracts any zip it needs into `assets/source/craftpix/_extracted/<pack>/` (ignored).
 
-### 13.2 What the ten CraftPix packs contain (measured 6 November) and the verdict
+### 13.2 What the ten CraftPix packs contain (6 November) and the verdict
 
 Each zip contains a `license.txt` or `Licens.txt` that holds **only the address** `https://craftpix.net/file-licenses/`; the terms themselves were not available to read, the owner has since confirmed that the licences allow free use (recorded in the credits as "CraftPix free-asset licence; owner confirmed free use"). Each zip also holds promotional coupon files and a font note (Future Millennium, Digital Disco, Dimbo from dafont); **those fonts are not shipped**.
 

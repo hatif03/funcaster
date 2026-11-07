@@ -2,7 +2,7 @@ import json
 import numpy as np
 from PIL import Image
 from scipy import ndimage
-imgp = r'D:/funcaster/assets/source/winxp/Frame/UI Theme.png'
+imgp = r'D:/web3-multiplayer-games/assets/source/winxp/Frame/UI Theme.png'
 im = Image.open(imgp).convert('RGBA')
 px = np.array(im)
 S = {}

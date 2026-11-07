@@ -6,10 +6,10 @@ Status: plan, 6 November 2026. Owner's goal: run the game at the hackathon and *
 
 ## 1. What we know and what we do not
 
-**Known (checked 6 November 2026):**
+**Known (6 November 2026):**
 - **Devcon 8 India:** 3-6 November 2026, Jio World Centre, BKC, Mumbai (devcon.org).
 - **ETHGlobal Mumbai:** hackathon, 5-6 November 2026, "36 hours"; submission deadline **6 November 2026, 09:00 IST** (ethglobal.com/events/mumbai and the details page). Finalist judging is 7 minutes (4 demo, 3 questions); partner prizes are judged from the written submission; the demo video is optional but encouraged.
-- ETHIndia is reported for 6 November (a search summary, unconfirmed).
+- ETHIndia is reported 6 November (a search summary, unconfirmed).
 
 **Unknown, to confirm with the organisers before building a booth plan around it:** where exactly the hackathon floor is relative to Devcon; whether teams get tables, screens, power and a wired network; Wi-Fi quality and client isolation; whether public play with attendees is allowed in the hacking area or only at an expo or side event; noise and sound rules; opening hours; who may touch whose equipment. **First task: email the organisers with these questions** (and ask whether a public demo area exists outside the hacking floor).
 
@@ -86,7 +86,7 @@ Avoid long formats (a six-hole golf round, a three-lap race) in Kiosk rotation. 
 | **Offline resilience** | The game must still run if the internet drops: LAN mode keeps working; assets are local | existing behaviour |
 | **A dress rehearsal** | A full run of the booth with strangers in a similar space before the event | controller stress plan L5 |
 
-**Hosting recommendation (6 November):** a hosted relay on one small VM in a Mumbai-area region with automatic HTTPS and a real domain as the primary; a booth-laptop offline fallback on a real hostname with a real certificate; the tunnel for emergencies only. Full detail, code changes and the region-by-measurement method are in [plan.md §5h.14.1](../../plan-history.md#5h141-hosting). Time check: Devcon starts 6 November, **21 days after 6 November**; stand up a staging instance this week and freeze the build on 6 November.
+**Hosting recommendation (6 November):** a hosted relay on one small VM in a Mumbai-area region with automatic HTTPS and a real domain as the primary; a booth-laptop offline fallback on a real hostname with a real certificate; the tunnel for emergencies only. Full detail, code changes and the region-by-measurement method are in [plan.md §5h.14.1](../../plan-history.md#5h141-hosting). Time check: Devcon 6 November, **21 days 6 November**; stand up a staging instance this week and freeze the build on 6 November.
 
 **The hosting decision cannot wait.** The audit found the Dockerfile and a share-tunnel script but no deployed instance. A stable URL, a domain and an account are needed well before the event; the temporary tunnel changes address every time and is not a plan for a booth.
 

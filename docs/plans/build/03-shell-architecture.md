@@ -1,4 +1,4 @@
-# Build 03: the shell (Funcaster OS), module by module
+# Build 03: the shell (Funcaster), module by module
 
 Part of the [build specification](README.md). Status: plan, 6 November 2026. This is the implementation spec for the new TV client, `public/os/`. It is grounded in a read of `public/party/host.js`, `server/arcade.cjs`, `server/party.cjs`, `core/catalog.js`, `server.js` and the dashboard audit. Visual tokens and sprites are in [02-theme-and-assets.md](02-theme-and-assets.md); the option window is in [04-game-properties.md](04-game-properties.md); the phone, including pointer streaming, is in [06-phone-remote-and-pointer.md](06-phone-remote-and-pointer.md).
 
@@ -23,7 +23,7 @@ public/os/
   strings.js            all copy (English), keyed; Hinglish variants later
   util/h.js             h(tag, props, ...children) DOM builder; on(), cx(), clamp(), sleep()
   util/store.js         createStore(): get(), set(patch), subscribe(selector, fn)
-  util/storage.js       read and write funcaster.<k> (settings; the legacy keys are read as they are)
+  util/storage.js       read and write chonks.<k> (settings; the legacy keys are read as they are)
   session.js            socket, host handshake, reclaim, state feed, host.cmd client, pairing fetch, reconnect UI hooks
   scale.js              --ui and --unit computation; TV scale; safe area; fullscreen
   theme/
@@ -75,15 +75,15 @@ Rule: **a window module exports `open(ctx)` that returns `{ el, update(state), d
 ```js
 const socket = io('/party', { transports: ['websocket', 'polling'] });
 socket.on('connect', () => {
-  const saved = recall('funcaster.host');                    // sessionStorage {code, token, displayToken}
+  const saved = recall('chonks.host');                    // sessionStorage {code, token, displayToken}
   socket.emit('host', { ...(saved || {}), buildId, arcade: true }, (ans) => {
-    if (ans.error) { forget('funcaster.host'); /* retry once without saved; show the error */ }
-    else { remember('funcaster.host', ans); pairingFor(ans.code); }
+    if (ans.error) { forget('chonks.host'); /* retry once without saved; show the error */ }
+    else { remember('chonks.host', ans); pairingFor(ans.code); }
   });
 });
 ```
 
-- **`sessionStorage["funcaster.host"]` must keep the legacy key and shape** `{code, token, displayToken}`: the game iframes read the host token from that exact key (`core/net.js:161`). This is a hard compatibility rule (the key is one of the identifiers that never change, see [01](01-brand-and-rename.md) section 3).
+- **`sessionStorage["chonks.host"]` must keep the legacy key and shape** `{code, token, displayToken}`: the game iframes read the host token from that exact key (`core/net.js:161`). This is a hard compatibility rule (the key is one of the identifiers that never change, see [01](01-brand-and-rename.md) section 3).
 - `buildId` comes from `import { buildId } from '/build.js'`. An answer of `{update:true}` means the page is stale: show the "Reload to update" message box and reload on confirm.
 - Error acks to handle with plain-language messages: "Too many new parties. Try again in a minute.", "The party server is busy. Please try again.", "This tab has already joined.", "Too many connection attempts. Wait a minute, then reload.", "Session expired. Start a new party." (clear saved and create a fresh room).
 - `arcade: true` is sent on creation so the room has arcade state (the shell needs `operatingMode`, `options`, `leaderboard`, `startReason`); it is ignored on reclaim.
@@ -102,7 +102,7 @@ socket.on('connect', () => {
 | `cmd(name, args)` | `host.cmd {seq, cmd, args}` | `seq` is a strictly increasing integer from 1, per tab; replies `{ok}` or `{error}`; handles "Give it a moment." (rate 5 per second) |
 | `start()` | `host.cmd {cmd:'start'}` | returns the real reason on failure (doc 04) |
 | `pause()`, `lobby()`, `remove(slot)`, `nextPlayer()`, `extend()` | raw events or `host.cmd` | **All destructive ones go through a message box first** |
-| `record(matchId)` | `record {matchId}` with `socket.timeout(5000)` | returns `{result, replay}`; saved as a JSON download named `funcaster-<matchId>.json` |
+| `record(matchId)` | `record {matchId}` with `socket.timeout(5000)` | returns `{result, replay}`; saved as a JSON download named `chonks-<matchId>.json` |
 | `arcadeConfigure(opts)` | `arcade.configure` | Kiosk and Party switch; needs the 6-digit PIN to enter Kiosk |
 | `hostAssign(slot\|null)` | `host.assign` | grants or revokes the phone host |
 | `remoteConfigure(bool)`, `assignSeat`, `revokeView` | as named | only when `state.remoteViews !== undefined` |
@@ -308,7 +308,7 @@ function play(name, { loop = false, then = 'idle' } = {}) {
 
 (A blank frame leaves the previous image on screen for its duration; at the end the engine returns to `idle`.) One element, one active animation, a queue of at most 2; `prefers-reduced-motion` and Gentle effects show only the first frame of the requested animation for 1.5 s and then `idle`'s first frame. The whole sprite is 240 px wide at 1x and drawn with `image-rendering: auto` (the sheet is smooth artwork, not pixel art), at `calc(180 * var(--px))` so it is 75% of its native size and does not crowd windows.
 
-### 11.2 Vocabulary (the 25 names the pack uses; Caster uses the same)
+### 11.2 Vocabulary (the 25 names the pack uses; Chonk uses the same)
 
 `airplane`, `check`, `cool`, `eyes`, `idle`, `leave`, `listen`, `music`, `noted`, `office`, `point down`, `point left`, `point right`, `point up`, `read`, `showel` (sic, the supplied file name), `sleep`, `spyglass`, `think`, `tired`, `wakeup`, `watch front`, `watch left`, `watch right`, `weird`.
 
@@ -319,11 +319,11 @@ function play(name, { loop = false, then = 'idle' } = {}) {
 | Boot finished | `wakeup`, then `idle` | none | Once per session |
 | Idle 20 s | `idle` variants every 8 to 14 s (random `watch left/right/front`) | none | |
 | Pointer moves over the desktop | `watch left/right` following the cursor's x | none | Eyes only; throttled to 4 per second |
-| A phone joins | `check` | "{Name} joined" | Caster's chai level rises one notch (Caster skin; the stand-in helper has no meter) |
+| A phone joins | `check` | "{Name} joined" | Chonk's chai level rises one notch (Chonk skin; the stand-in helper has no meter) |
 | A phone becomes ready | `check` | none | |
 | Game Properties opens | `point left` toward the window | "Pick how you want to play" | **First open of each session only** |
 | Start disabled | `think` | the `startReason` | When Start is pressed while disabled |
-| Loading a game | `airplane` (loop) | none | Until `funcaster:loaded` |
+| Loading a game | `airplane` (loop) | none | Until `chonks:loaded` |
 | Win or record | `cool` | "{Name} takes it!" | In the results window |
 | Error or disconnect | `weird` | the message summary | With the message box |
 | Room reconnecting | `tired` | none | |
@@ -380,7 +380,7 @@ Dims 25%, the mascot sleeps, a floating window "Scan to play" holds a large QR, 
 
 - **Cue bus:** `cue(name)` plays a short sound through one `AudioContext` created on the first user gesture (Press any key). Cues are decoded once and cached as `AudioBuffer`s.
 - **Names:** `startup`, `shutdown`, `logon`, `click`, `open`, `close`, `minimise`, `restore`, `menu`, `ding`, `notify`, `balloon`, `error`, `warning`, `edge`, `joined`, `left`, `countdown`, `go`, `win`, `lose`. The mapping to files is in [02](02-theme-and-assets.md) section 6.
-- **Mixer:** master volume (0 to 100, default 70) in `funcaster.volume` (the legacy `funcaster.party-volume` is read as the default), applied to a `GainNode`; a mute toggle in the tray; **the volume slider governs all shell audio**, fixing the old page where it scaled only the beep. The games keep their own audio.
+- **Mixer:** master volume (0 to 100, default 70) in `chonks.volume` (the legacy `chonks.party-volume` is read as the default), applied to a `GainNode`; a mute toggle in the tray; **the volume slider governs all shell audio**, fixing the old page where it scaled only the beep. The games keep their own audio.
 - **Gentle effects** removes the startup chime and animation sounds except `error`.
 - **Formats:** keep the WAVs as supplied (small), or convert to OGG for size; the loader picks by `canPlayType`.
 
@@ -396,7 +396,7 @@ This is the one place where the old logic is **extracted, not rewritten**, from 
 - **Layout:** the wrap's `data-views` is the local count; CSS grid 1 column for 1, 2 columns for 2, a 2 by 2 grid for 3 or 4 (copied from `party.css:1361-1376`, rewritten with `--px`). Each independent frame gets a player-name badge in the seat colour.
 - **No local views:** show the note "{Name} is playing on {Label}" (the remote case).
 - **Iframes** use `allow="autoplay; fullscreen"`.
-- **postMessage, same-origin only, source must be one of our iframes:** `funcaster:loaded` hides the loading window; `funcaster:home` emits `lobby` (open the pause menu instead if a round is running, then confirm); `funcaster:error` shows a message box with the message and emits `lobby` on OK.
+- **postMessage, same-origin only, source must be one of our iframes:** `chonks:loaded` hides the loading window; `chonks:home` emits `lobby` (open the pause menu instead if a round is running, then confirm); `chonks:error` shows a message box with the message and emits `lobby` on OK.
 
 ### 14.2 Arena games (phases practice, countdown, playing, results)
 
@@ -418,13 +418,13 @@ The server moves the phase to `results`; the shell opens the **Results window** 
 | **Players** | 560 by 420 | Four seat rows (shape, colour, name, status chip: ready, joined, away, dnf; device tier chip; connection), per-row actions (Make host, Remove with a message box, Restore from the Recycle Bin), the waiting queue note, `Lock new joins` check box (`host.cmd lock`), the Next player button, and Add-a-computer-seat later |
 | **Invite a friend** | 520 by 560 | The QR (min 240 design px), the room code in 48 px, the link with Copy, a "Open a second screen" link (`/screen?room&key`), the remote-screen section when `remoteViews !== undefined`, a typed code field for pairing retry |
 | **Playlists** | 480 by 380 | The three presets (quick, sports, race) plus Kiosk's list, the current queue, Run (emits `setup {playlist}` then `select`); reads `state.playlist`/`playlistIndex` (fixing the write-only dropdown) |
-| **Records** | 520 by 400 | Recent rounds from `funcaster.records.<code>`, verification labels, Save |
+| **Records** | 520 by 400 | Recent rounds from `chonks.records.<code>`, verification labels, Save |
 | **Settings** | 560 by 440 | Sound (volume, mute), TV scale (auto, 1, 1.25, 1.5, 2), safe area, Gentle effects, skin (Luna, Classic), mascot on or off, pointer speed, Kiosk and Party mode (PIN-gated), remote screens switch, diagnostics link |
 | **My Games** | 640 by 460 | Explorer style: the task pane (Playlists, Records, Leaderboard, Random game) and an icon view of the 13 games with last scores and the leaderboard for the selected game |
 | **Diagnostics** | 560 by 420 | Per-seat latency and device tier (from the `device` object), build id, room age, `GET /api/health`, the self-test link |
 | **Recycle Bin** | 480 by 320 | Removed players and the ban timer; Restore |
 | **Help and Rules** | 640 by 480 | How to join, the universal remote map, the game list with `verb` and `detail` |
-| **Loading** | 420 by 220 | The game's header image, the mascot `airplane`, a progress bar (indeterminate; completes on `funcaster:loaded`; remote gate text from `startReason`/`gate`) |
+| **Loading** | 420 by 220 | The game's header image, the mascot `airplane`, a progress bar (indeterminate; completes on `chonks:loaded`; remote gate text from `startReason`/`gate`) |
 | **Message box** | 420 by auto | Icon, text, 1 to 3 buttons, default and cancel |
 | **Attract / Scan to play** | 640 by 520 | Section 12.5 |
 | **Staff** | 480 by 420 | Kiosk and staff controls: enter PIN, pin a game, skip, pause, lock, kick, mode switch; event counters from `host.cmd stats` |
@@ -442,7 +442,7 @@ The server moves the phase to `results`; the shell opens the **Results window** 
 
 - `server.js` serves `public/os/index.html` at `/` by default after the shell is accepted; until then `/` stays the old page and the shell is at `/os`.
 - The old page is reachable at **`/?shell=classic`** (and `/classic-dashboard`) at all times. It is **not linked** from the shell UI except the Staff window ("Switch to classic dashboard").
-- Server change (tiny, outside the bundle hash): `app.get('/', ...)` chooses the file by query and environment `FUNCASTER_SHELL` (`os` or `classic`).
+- Server change (tiny, outside the bundle hash): `app.get('/', ...)` chooses the file by query and environment `CHONKS_SHELL` (`os` or `classic`).
 - Keep the legacy page frozen (bug fixes only). Remove it two weeks after the event if nothing needed it.
 
 ## 18. Performance and robustness

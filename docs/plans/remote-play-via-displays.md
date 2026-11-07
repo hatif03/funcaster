@@ -20,7 +20,7 @@ Abbreviations: `P` = `server/party.cjs`; `H` = `public/party/host.js`; `D` = `pu
 
 | # | Actor | Event | Effect |
 | --- | --- | --- | --- |
-| 1 | Host tab | `host` | `buildId` check, mints `hostToken` and `displayToken`; stored in `sessionStorage funcaster.host` |
+| 1 | Host tab | `host` | `buildId` check, mints `hostToken` and `displayToken`; stored in `sessionStorage chonks.host` |
 | 2 | Phones | `join`, `ready` | Per-phone token |
 | 3 | Host | `start` | `closeScreen` kicks every screen and viewer; `roundId++`; `active` set; phase `classic`, `endsAt` = now + 120 s |
 | 4 | Host page | on `state` | One iframe per active seat: `/games/<g>/?party=<code>&round=<id>&view=<i>` (no token in URL) |
@@ -35,7 +35,7 @@ Tokens today: `hostToken` (room owner, also held by host iframes), `displayToken
 
 ## 3. Assumptions that the host page owns the views
 
-Host.js creates and owns every iframe, once per round, with no per-view lifecycle (H:213-250). Iframes authenticate with the host token from shared tab storage (`net.js:119-127`). Only host frames are trusted for `funcaster:home`/`funcaster:error` (H:450-464). `screen` accepts only `hostToken`, and a later registrant **displaces** the earlier (P:500-501): a reconnecting host iframe would kick a remote screen. `start()` and `enterLobby` call `closeScreen`. View indexes are `room.active.indexOf(slot)` and change between rounds. `display` has no `buildId` check or identity, and the 8-display cap counts sockets (P:410-422). The display page makes read-only iframes (`authority = !params.has("display")`).
+Host.js creates and owns every iframe, once per round, with no per-view lifecycle (H:213-250). Iframes authenticate with the host token from shared tab storage (`net.js:119-127`). Only host frames are trusted for `chonks:home`/`chonks:error` (H:450-464). `screen` accepts only `hostToken`, and a later registrant **displaces** the earlier (P:500-501): a reconnecting host iframe would kick a remote screen. `start()` and `enterLobby` call `closeScreen`. View indexes are `room.active.indexOf(slot)` and change between rounds. `display` has no `buildId` check or identity, and the 8-display cap counts sockets (P:410-422). The display page makes read-only iframes (`authority = !params.has("display")`).
 
 ## 4. Design
 
@@ -52,7 +52,7 @@ Stored at `room.views[view] = { id, secret, slot, roundId, game, ref, exp, state
 | `exp` | min(round end, mint + 12 min) |
 | `state` | `offered`, `accepted`, `registered`, `lost`, `revoked` |
 
-The token is **never** in `state`, a URL or a QR. It travels only over the chosen display's socket as `view-offer`; `display.js` stores it in `sessionStorage "funcaster.view."+code`, which the same-tab iframe shares.
+The token is **never** in `state`, a URL or a QR. It travels only over the chosen display's socket as `view-offer`; `display.js` stores it in `sessionStorage "chonks.view."+code`, which the same-tab iframe shares.
 
 ### 4.2 Socket events (all behind `remoteViews` flag, default off)
 
@@ -92,12 +92,12 @@ The token is **never** in `state`, a URL or a QR. It travels only over the chose
 ### 4.5 Host page
 
 - `index.html` (inside `.party-extras`): a "Remote screens" list and a per-seat dropdown ("This screen / Screen A / ..."), shown only when `state.remoteViews` and the game is independent.
-- `host.js`: refactor 213-250 so each view has its own lifecycle keyed `${game}:${round}:${view}:${where}`; spawn an iframe only for `where==="host"`; placeholder card "Peach is playing on Screen A" with **Bring back here** (`revoke-view`); `wrap.dataset.views` set to the local view count; `funcaster:home`/`funcaster:error` only from host-owned iframes.
+- `host.js`: refactor 213-250 so each view has its own lifecycle keyed `${game}:${round}:${view}:${where}`; spawn an iframe only for `where==="host"`; placeholder card "Peach is playing on Screen A" with **Bring back here** (`revoke-view`); `wrap.dataset.views` set to the local view count; `chonks:home`/`chonks:error` only from host-owned iframes.
 
 ### 4.6 Display page
 
 - On `view-offer`, show a card: "You're Peach: play Slice Dojo on this screen" with **Play on this screen** / **Not now**.
-- Accept (the click is the user gesture): store the token, `view-accept`, request fullscreen and `wakeLock.request("screen")` (the display page has none today), and create `<iframe src="/games/<g>/?party=<code>&round=<id>&view=<v>&play=1">` in a fixed 16:9 letterbox. Hide the "Show" selector while playing. **Ignore `funcaster:home`** so a remote can never send the host to the lobby. Handle `view-revoked`.
+- Accept (the click is the user gesture): store the token, `view-accept`, request fullscreen and `wakeLock.request("screen")` (the display page has none today), and create `<iframe src="/games/<g>/?party=<code>&round=<id>&view=<v>&play=1">` in a fixed 16:9 letterbox. Hide the "Show" selector while playing. **Ignore `chonks:home`** so a remote can never send the host to the lobby. Handle `view-revoked`.
 - `core/net.js` (the only shared change, about 4 lines): when `params.has("play")`, send `viewToken` from `sessionStorage` and keep `authority = true`; add the optional `replay-chunk` ack/retransmit. Game folders need no change.
 - Use `transports: ["websocket","polling"]` on the display socket, as `net.js` does.
 
@@ -159,7 +159,7 @@ Today: phone → server (half RTT) + tick wait (0-33 ms, average 16) + server �
 12. **Core unit:** extract a pure `registrationPayload(params, storage)` from `net.js` and test it.
 13. **Browser e2e:** host context, display context and a mock phone: offer card, accept, fullscreen, play-through.
 
-## 9. Milestones (flag `remoteViews`, env `FUNCASTER_REMOTE_VIEWS=1`, default off)
+## 9. Milestones (flag `remoteViews`, env `CHONKS_REMOTE_VIEWS=1`, default off)
 
 | M | Content | Size |
 | --- | --- | --- |
@@ -183,8 +183,8 @@ Not hackathon-critical: Kiosk mode (host plan K1-K3) and room hardening (H5a) co
 
 ## 11. Open questions for the owner
 
-1. ~~**Kart Rush**~~ **Decided 6 November:** excluded from *this* design (view tokens). Remote Kart Rush uses server-sequenced lockstep instead, in [plan.md §5h.6a](../../plan-history.md#5h6a-kart-rush-remote-server-sequenced-lockstep-decided-6-november).
-2. ~~**Mid-round disconnect**~~ **Decided 6 November:** a forfeit with a penalty after the grace period (last place, or a loss in a two-seat match), per [plan.md §5h.7a](../../plan-history.md#5h7a-leaving-a-match-the-standard-rule-decided-6-november). Restart on the host screen is not offered.
+1. ~~**Kart Rush**~~ **6 November:** excluded from *this* design (view tokens). Remote Kart Rush uses server-sequenced lockstep instead, in [plan.md §5h.6a](../../plan-history.md#5h6a-kart-rush-remote-server-sequenced-lockstep-decided-6-november-2026).
+2. ~~**Mid-round disconnect**~~ **6 November:** a forfeit with a penalty after the grace period (last place, or a loss in a two-seat match), per [plan.md §5h.7a](../../plan-history.md#5h7a-leaving-a-match-the-standard-rule-decided-6-november-2026). Restart on the host screen is not offered.
 3. A declined or revoked seat: fall back to a host iframe automatically (recommended), or ask the host?
 4. Is a fixed 16:9 letterbox on the remote acceptable?
 5. Label rounds that include remote seats in the results UI and records (`result.views`)?

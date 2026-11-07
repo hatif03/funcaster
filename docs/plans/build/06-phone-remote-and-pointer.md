@@ -10,7 +10,7 @@ Part of the [build specification](README.md). Status: plan, 6 November 2026. It 
 | **Chassis = the previous controller face, re-skinned** | The white slab, cross D-pad, A, B trigger, minus, home, plus, 1, 2, speaker grille, power lamp and seat LEDs from `classic-controller.html` become the universal remote. Brand, colours and proportions are ours; nothing else changes (the owner: "you basically give it a skin change"). |
 | **One remote for every game** | The remote never changes; games assign meanings (captions) and the context window shows the one thing that changes. Per-game mapping stays as in [phone-controller-v2.md](../phone-controller-v2.md) section 5. |
 | **One-tap gate, capability probe, four tiers** | As in v2 sections 3 and 7, specified in code terms below. |
-| **Name** | Wordmark "funcaster" ([01](01-brand-and-rename.md)). |
+| **Name** | Wordmark "chonks" ([01](01-brand-and-rename.md)). |
 | **Default skin** | **`luna`**: a Luna-blue body with white buttons and a green Home button, matching the shell. **Not white** (owner, 6 November). The previous white remote is kept only as the `cream` option, alongside `taxi` and `classic`. |
 
 ## 2. Reuse map: previous controller to new chassis
@@ -35,7 +35,7 @@ Facts from the audit of `classic-controller.html` (348 lines): lines 10 to 266 a
  <div id="remote" class="remote asleep">
   <div id="row-top">
     <button id="power" aria-label="Link status"></button>
-    <div id="brand">funcaster</div>
+    <div id="brand">chonks</div>
     <div id="seat-lamp" class="leds" aria-label="Your seat">
       <i data-seat="0"></i><i data-seat="1"></i><i data-seat="2"></i><i data-seat="3"></i>
     </div>
@@ -92,7 +92,7 @@ Facts from the audit of `classic-controller.html` (348 lines): lines 10 to 266 a
 | `--lamp-on` | `#45c1ff` | `#ffd84a` | `#ffffff` | `#00ff00` |
 | `--gate-btn` | `#2f7de1` | `#0a58d6` | `#111111` | `#000080` |
 
-The wordmark is the text node `funcaster` in the supplied Franklin Gothic Medium Italic (`@font-face` to `assets/os/fonts/framdit.ttf` converted to WOFF2). The existing in-code skins (taxi, bus, local) map to `taxi`, `luna` (bus) and `classic` (local) so a saved preference keeps working: map the old `remote-skin` values once.
+The wordmark is the text node `chonks` in the supplied Franklin Gothic Medium Italic (`@font-face` to `assets/os/fonts/framdit.ttf` converted to WOFF2). The existing in-code skins (taxi, bus, local) map to `taxi`, `luna` (bus) and `classic` (local) so a saved preference keeps working: map the old `remote-skin` values once.
 
 ## 4. Postures, captions, and button roles
 
@@ -351,7 +351,7 @@ All in `server/party.cjs` (outside the bundle hash) unless noted.
 3. A `device` event: `{platform, tier, gyro, hz, haptics, fullscreen, standalone, touchMax, inApp, secure}` sanitised to enums and bounded numbers, stored on the player and exposed in `players[].device` inside `view()`; **never** forwarded to other phones.
 4. Optional: accept `?pointer=1` on `/controller` for tests.
 5. `server.js`: the `/` route switch and `/remote` page later; `/api/health` unchanged.
-6. Environment: `FUNCASTER_REMOTE_VIEWS` first, then `FUNCASTER_REMOTE_VIEWS`.
+6. Environment: `CHONKS_REMOTE_VIEWS` first, then `CHONKS_REMOTE_VIEWS`.
 
 ## 9. Haptics, audio, feedback
 
