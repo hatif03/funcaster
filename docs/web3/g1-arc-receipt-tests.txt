@@ -1,0 +1,178 @@
+TAP version 13
+# Subtest: public acceptance requires exact owner flags before reading env, keys, files or RPC
+ok 1 - public acceptance requires exact owner flags before reading env, keys, files or RPC
+  ---
+  duration_ms: 0.846167
+  type: 'test'
+  ...
+# Subtest: startup-only acceptance opens the provider without polling, signing, broadcasting or claiming public completion
+ok 2 - startup-only acceptance opens the provider without polling, signing, broadcasting or claiming public completion
+  ---
+  duration_ms: 0.146417
+  type: 'test'
+  ...
+# Subtest: acceptance reports the innermost startup phase and safe RPC cause chain
+ok 3 - acceptance reports the innermost startup phase and safe RPC cause chain
+  ---
+  duration_ms: 0.458167
+  type: 'test'
+  ...
+# Subtest: diagnostics distinguish stale proofs and worker locks without exporting arbitrary error fields
+ok 4 - diagnostics distinguish stale proofs and worker locks without exporting arbitrary error fields
+  ---
+  duration_ms: 0.222875
+  type: 'test'
+  ...
+# Subtest: phase diagnostics preserve frozen failures and worker-step identities
+ok 5 - phase diagnostics preserve frozen failures and worker-step identities
+  ---
+  duration_ms: 0.166875
+  type: 'test'
+  ...
+# Subtest: deployment pinner refuses another chain or a transaction that is not exact contract creation
+ok 6 - deployment pinner refuses another chain or a transaction that is not exact contract creation
+  ---
+  duration_ms: 0.455584
+  type: 'test'
+  ...
+# Subtest: acceptance waits through worker backoff and an absent receipt file without duplicating an effect
+ok 7 - acceptance waits through worker backoff and an absent receipt file without duplicating an effect
+  ---
+  duration_ms: 44.131334
+  type: 'test'
+  ...
+# Subtest: acceptance waiting is bounded and preserves a pending step identity
+ok 8 - acceptance waiting is bounded and preserves a pending step identity
+  ---
+  duration_ms: 0.89825
+  type: 'test'
+  ...
+# Subtest: idle recovery waits past a mined transition until delayed pull claims are paid
+ok 9 - idle recovery waits past a mined transition until delayed pull claims are paid
+  ---
+  duration_ms: 21.2825
+  type: 'test'
+  ...
+# Subtest: recovery read outages can retry but canonical proof failures and wrong terminal states stop
+ok 10 - recovery read outages can retry but canonical proof failures and wrong terminal states stop
+  ---
+  duration_ms: 0.32525
+  type: 'test'
+  ...
+# Subtest: unpaid recovery has a bounded wait and retains its actionable step
+ok 11 - unpaid recovery has a bounded wait and retains its actionable step
+  ---
+  duration_ms: 0.1215
+  type: 'test'
+  ...
+# Subtest: owner recovery requires exact flags before file, env or RPC access
+ok 12 - owner recovery requires exact flags before file, env or RPC access
+  ---
+  duration_ms: 0.884458
+  type: 'test'
+  ...
+# Subtest: keyless recovery check simulates without signing, dispatching or writing a marker
+ok 13 - keyless recovery check simulates without signing, dispatching or writing a marker
+  ---
+  duration_ms: 22.28275
+  type: 'test'
+  ...
+# Subtest: finalization recovery binds immutable intent and the original total gas ceiling
+ok 14 - finalization recovery binds immutable intent and the original total gas ceiling
+  ---
+  duration_ms: 6.1055
+  type: 'test'
+  ...
+# Subtest: transport outages never count as transaction absence
+ok 15 - transport outages never count as transaction absence
+  ---
+  duration_ms: 5.604584
+  type: 'test'
+  ...
+# Subtest: unused nonce, fresh canonical block, retained floor and exact gas are required on both hosts
+ok 16 - unused nonce, fresh canonical block, retained floor and exact gas are required on both hosts
+  ---
+  duration_ms: 19.480584
+  type: 'test'
+  ...
+# Subtest: pending or disagreeing hosts never sign; a canonically mined hash is read-only recovery
+ok 17 - pending or disagreeing hosts never sign; a canonically mined hash is read-only recovery
+  ---
+  duration_ms: 8.446458
+  type: 'test'
+  ...
+# Subtest: owner recovery dispatches the identical signed hash exactly once and stores no signed bytes
+ok 18 - owner recovery dispatches the identical signed hash exactly once and stores no signed bytes
+  ---
+  duration_ms: 24.629167
+  type: 'test'
+  ...
+# Subtest: uncertain dispatch leaves a durable barrier even when both RPCs still report absence
+ok 19 - uncertain dispatch leaves a durable barrier even when both RPCs still report absence
+  ---
+  duration_ms: 18.97375
+  type: 'test'
+  ...
+# Subtest: kill or a different deterministic signature cannot dispatch or leave a recovery marker
+ok 20 - kill or a different deterministic signature cannot dispatch or leave a recovery marker
+  ---
+  duration_ms: 2.641792
+  type: 'test'
+  ...
+# Subtest: owner recovery refuses a reverted original transaction and never reprices
+ok 21 - owner recovery refuses a reverted original transaction and never reprices
+  ---
+  duration_ms: 2.160208
+  type: 'test'
+  ...
+# Subtest: claims completion waits for canonical journals after balances reach zero
+ok 22 - claims completion waits for canonical journals after balances reach zero
+  ---
+  duration_ms: 36.881583
+  type: 'test'
+  ...
+# Subtest: recovery diagnostics contain only allowlisted codes
+ok 23 - recovery diagnostics contain only allowlisted codes
+  ---
+  duration_ms: 0.085583
+  type: 'test'
+  ...
+# Subtest: post-dispatch proof failure records named checks and later reconciles without signing or sending
+ok 24 - post-dispatch proof failure records named checks and later reconciles without signing or sending
+  ---
+  duration_ms: 23.797083
+  type: 'test'
+  ...
+# Subtest: recovery proof diagnostics discard untrusted fields, values and duplicates
+ok 25 - recovery proof diagnostics discard untrusted fields, values and duplicates
+  ---
+  duration_ms: 0.102458
+  type: 'test'
+  ...
+# Subtest: recovery shares the original limits even if environment settings try to raise them
+ok 26 - recovery shares the original limits even if environment settings try to raise them
+  ---
+  duration_ms: 1.467042
+  type: 'test'
+  ...
+# Subtest: retained recovery rejects another checkpoint, incomplete old pot, altered admission or extra transaction
+ok 27 - retained recovery rejects another checkpoint, incomplete old pot, altered admission or extra transaction
+  ---
+  duration_ms: 0.774709
+  type: 'test'
+  ...
+# Subtest: receipt timeout is bounded and its write-ahead marker still forbids a second dispatch
+ok 28 - receipt timeout is bounded and its write-ahead marker still forbids a second dispatch
+  ---
+  duration_ms: 13.056292
+  type: 'test'
+  ...
+1..28
+# tests 28
+# suites 0
+# pass 28
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 326.954166

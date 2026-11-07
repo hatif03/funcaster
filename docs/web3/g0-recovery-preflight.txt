@@ -1,0 +1,188 @@
+G0 ceilings across restarts: 2 test GLM (including up to 0.02 to second writer), 0.005 SepETH, 0.2 test USDC gas, and 0.051 test EURC. Synthetic records only. No production feature is enabled.
+{
+  "at": "2026-11-06T00:11:21.310Z",
+  "scope": "PUBLIC READS ONLY",
+  "chainId": 5042002,
+  "donor": "0x81DdeD7eE7753791cEaF24Ab6Cb1694d1F39A008",
+  "sender": "0x7a66B9dD5eED3F3fB4B5f82619f8f0A8112CF08E",
+  "asset": "0x89B50855Aa3bE2F677cD6303Cec089B5F319D72a",
+  "symbol": "EURC",
+  "value": "1000",
+  "retainedFloor": "50000",
+  "maxTotalCostNative": "200000000000000000",
+  "before": {
+    "donor": "20000000",
+    "sender": "0",
+    "authorizationUsed": false
+  },
+  "operations": [],
+  "plannedTopUp": "51000"
+}
+
+Rabdi: no access key, so requests go to the public endpoint, which is heavily rate limited. Get a free key at https://hub.arkiv.network/access-keys and pass it as rabdi({ accessKey }).
+{
+  "at": "2026-11-06T00:11:25.082Z",
+  "scope": "PUBLIC READS + UNSIGNED ESTIMATE",
+  "name": "play.funcaster.eth",
+  "resolver": "0x8FB3Bc94532Ff13C75d84201D72E7A0A77Bf9439",
+  "registrar": "0x04b0970f4a58caa9E58C5aDBBF7eB402339264a5",
+  "console": "0xE581E56c592Ab9D6d3D234168EE9a89032273c00",
+  "existing": null,
+  "estimate": "384834",
+  "maxGasWei": "461800013854000",
+  "operations": [],
+  "dataHash": "0xf02468bbbe5f6653311ef0177b2f0556d79404e14273ac80cd96f9d0d07d8ec0"
+}
+
+Rabdi: no access key, so requests go to the public endpoint, which is heavily rate limited. Get a free key at https://hub.arkiv.network/access-keys and pass it as rabdi({ accessKey }).
+{
+  "at": "2026-11-06T00:11:52.514Z",
+  "scope": "PUBLIC READS AND UNSIGNED ESTIMATES ONLY",
+  "chainId": 7794095,
+  "budgetTGLM": "2",
+  "secondaryTopupTGLM": "0.02",
+  "balanceTGLM": "9.788699744",
+  "cases": [
+    {
+      "ordinal": 0,
+      "size": 1000,
+      "columns": 4,
+      "seconds": 90,
+      "status": "PASS-UNSIGNED",
+      "estimate": "154442",
+      "gas": "1000000",
+      "maxGasTGLM": "0.001",
+      "calldataBytes": 2372
+    },
+    {
+      "ordinal": 1,
+      "size": 1000,
+      "columns": 4,
+      "seconds": 2592000,
+      "status": "PASS-UNSIGNED",
+      "estimate": "210625",
+      "gas": "1000000",
+      "maxGasTGLM": "0.001",
+      "calldataBytes": 2372
+    },
+    {
+      "ordinal": 2,
+      "size": 1000,
+      "columns": 4,
+      "seconds": 15552000,
+      "status": "PASS-UNSIGNED",
+      "estimate": "485390",
+      "gas": "1000000",
+      "maxGasTGLM": "0.001",
+      "calldataBytes": 2372
+    },
+    {
+      "ordinal": 3,
+      "size": 64000,
+      "columns": 4,
+      "seconds": 90,
+      "status": "PASS-UNSIGNED",
+      "estimate": "2619546",
+      "gas": "5239092",
+      "maxGasTGLM": "0.005239092",
+      "calldataBytes": 65348
+    },
+    {
+      "ordinal": 4,
+      "size": 128000,
+      "columns": 4,
+      "seconds": 90,
+      "status": "PASS-UNSIGNED",
+      "estimate": "5199995",
+      "gas": "10399990",
+      "maxGasTGLM": "0.01039999",
+      "calldataBytes": 129348
+    },
+    {
+      "ordinal": 5,
+      "size": 129000,
+      "columns": 4,
+      "seconds": 90,
+      "status": "PASS-UNSIGNED",
+      "estimate": "5240586",
+      "gas": "10481172",
+      "maxGasTGLM": "0.010481172",
+      "calldataBytes": 130372
+    },
+    {
+      "ordinal": 6,
+      "size": 131072,
+      "columns": 4,
+      "seconds": 90,
+      "status": "FAIL-FIXED",
+      "httpStatus": 413,
+      "error": "HTTP 413: RPC request too large",
+      "fallbackSize": 32000,
+      "fallback": "Application payload cap 120000 bytes with a 256000-byte serialized-request ceiling; larger data goes to Swarm or batches are split. Measure a 32000-byte replacement cost case."
+    },
+    {
+      "ordinal": 7,
+      "size": 1000,
+      "columns": 15,
+      "seconds": 2592000,
+      "status": "PASS-UNSIGNED",
+      "estimate": "346026",
+      "gas": "1000000",
+      "maxGasTGLM": "0.001",
+      "calldataBytes": 4484
+    },
+    {
+      "ordinal": 8,
+      "size": 1000,
+      "columns": 30,
+      "seconds": 2592000,
+      "status": "PASS-UNSIGNED",
+      "estimate": "531207",
+      "gas": "1062414",
+      "maxGasTGLM": "0.001062414",
+      "calldataBytes": 7364
+    },
+    {
+      "ordinal": 9,
+      "size": 1000,
+      "columns": 31,
+      "seconds": 15552000,
+      "status": "PASS-UNSIGNED",
+      "estimate": "1254401",
+      "gas": "2508802",
+      "maxGasTGLM": "0.002508802",
+      "calldataBytes": 7556
+    }
+  ],
+  "volume": {
+    "rows": 2000,
+    "batch": 20,
+    "batches": 100,
+    "estimate": "3148175",
+    "maxGasTGLM": "0.86"
+  },
+  "boundaries": [
+    {
+      "id": "33-byte attribute",
+      "message": "Invalid attribute name \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\": the name is 33 bytes long. Names must be 1-32 bytes, start with a letter, and contain only A-Z, a-z, 0-9, \".\", \"-\" or \"_\". Names are case-sensitive.",
+      "layer": "SDK 1.0.1 validation before RPC"
+    },
+    {
+      "id": "129-byte string",
+      "message": "Invalid str value \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa...\": 129 UTF-8 bytes exceeds the 128-byte limit on a str. Store the long form in a bytes column and keep a short, queryable key here.",
+      "layer": "SDK 1.0.1 validation before RPC"
+    },
+    {
+      "id": "32 user columns plus schema tag",
+      "message": "An entity may carry at most 32 attributes, got 33. A named schema's tag counts as one of them, so it may declare at most 31 columns.",
+      "layer": "SDK 1.0.1 validation before RPC"
+    },
+    {
+      "id": "131073 aggregate bytes",
+      "message": "Invalid bytes value \"<131073 bytes>\": 131073 bytes exceeds the 131072-byte limit on a bytes value. Split it across several entities, or store the bulk elsewhere and keep a reference.",
+      "layer": "SDK 1.0.1 validation before RPC"
+    }
+  ]
+}
+
+All unsigned prerequisites passed; owner --apply execution is still required.

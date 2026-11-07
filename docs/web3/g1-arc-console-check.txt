@@ -1,0 +1,9 @@
+$ vitest run && tsc --noEmit
+
+ RUN  v5.1.0 /Users/raihankhan/Documents/Projects/web3-multiplayer-games/integrations/arc/pot-console
+
+
+ Test Files  15 passed (15)
+      Tests  219 passed (219)
+   Start at  13:54:42
+   Duration  1.31s (import 50%, environment 32%, tests 14%, transform 3%, worker 1%)

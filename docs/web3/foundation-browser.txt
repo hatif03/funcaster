@@ -1,0 +1,3 @@
+PASS off: browser phone joins, touch ready, signer absent, three viewports. Evidence: /Users/raihankhan/Documents/Projects/web3-multiplayer-games/.local/os-evidence/web3-off-2026-11-06T09-05-35-703Z
+PASS mock queue promotion: early challenge binds after seat assignment.
+PASS mock: browser phone joins, touch ready, signer bound, three viewports. Evidence: /Users/raihankhan/Documents/Projects/web3-multiplayer-games/.local/os-evidence/web3-mock-2026-11-06T09-05-42-768Z

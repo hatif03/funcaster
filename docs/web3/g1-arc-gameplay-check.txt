@@ -1,0 +1,15 @@
+6 November 2026 — A5/A6 focused verification
+
+npm run check: PASS
+catalog:check: PASS
+validate:games: PASS
+unit: 313 passed, 0 failed
+party: 117 passed, 0 failed (both partner-off parity gates included)
+os: 168 passed, 0 failed (initial-size budget included)
+web3: 239 passed, 0 failed
+TOTAL: 837 passed, 0 failed
+
+Final receipt-caching follow-up: 8 focused room/parity tests passed.
+Chromium: two actual phone pages, signed consent, locked start gate, real replay-verified Star Catch, five-second agreements, cooperative settlement and both claims — PASS in explicit MOCK mode.
+Final card fit: both consent buttons visible without scrolling, portrait 320x568 and landscape 844x390 — PASS.
+No public transaction or live activation.

@@ -1,0 +1,228 @@
+
+> chonks-rabdi-k0@0.0.0 test
+> node --test *.test.mjs
+
+TAP version 13
+# Rabdi: no access key, so requests go to the public endpoint, which is heavily rate limited. Get a free key at https://hub.arkiv.network/access-keys and pass it as rabdi({ accessKey }).
+# Subtest: combined owner command is read-only by default and requires exact testnet confirmation
+ok 1 - combined owner command is read-only by default and requires exact testnet confirmation
+  ---
+  duration_ms: 1.157
+  type: 'test'
+  ...
+# Subtest: ENS read failover refuses every signing or broadcast route before forwarding
+ok 2 - ENS read failover refuses every signing or broadcast route before forwarding
+  ---
+  duration_ms: 0.0815
+  type: 'test'
+  ...
+# Subtest: final runner requires its own exact owner confirmation
+ok 3 - final runner requires its own exact owner confirmation
+  ---
+  duration_ms: 0.380458
+  type: 'test'
+  ...
+# Subtest: aggregate budget includes both gas and the second-writer top-up
+ok 4 - aggregate budget includes both gas and the second-writer top-up
+  ---
+  duration_ms: 0.096125
+  type: 'test'
+  ...
+# Subtest: ten real cost shapes and 20-row batch encode without a signing method
+ok 5 - ten real cost shapes and 20-row batch encode without a signing method
+  ---
+  duration_ms: 17.484958
+  type: 'test'
+  ...
+# Subtest: native top-up signature is bound to the exact value and journalled before send
+ok 6 - native top-up signature is bound to the exact value and journalled before send
+  ---
+  duration_ms: 0.417833
+  type: 'test'
+  ...
+# Subtest: Hall trusts creator plus immutable validated payload, never a copied namespace or high score
+ok 7 - Hall trusts creator plus immutable validated payload, never a copied namespace or high score
+  ---
+  duration_ms: 0.1645
+  type: 'test'
+  ...
+# Subtest: cache immediately returns stale data and deduplicates refresh; failures retain labelled data
+ok 8 - cache immediately returns stale data and deduplicates refresh; failures retain labelled data
+  ---
+  duration_ms: 1.880208
+  type: 'test'
+  ...
+# Subtest: bounded keyset walk rejects malformed, backwards and overlapping pages
+ok 9 - bounded keyset walk rejects malformed, backwards and overlapping pages
+  ---
+  duration_ms: 0.636084
+  type: 'test'
+  ...
+# Rabdi: no access key, so requests go to the public endpoint, which is heavily rate limited. Get a free key at https://hub.arkiv.network/access-keys and pass it as rabdi({ accessKey }).
+# Subtest: K0 is read-only by default and requires exact owner confirmation
+ok 10 - K0 is read-only by default and requires exact owner confirmation
+  ---
+  duration_ms: 3.768958
+  type: 'test'
+  ...
+# Subtest: SDK executes only read methods until unsigned calldata capture
+ok 11 - SDK executes only read methods until unsigned calldata capture
+  ---
+  duration_ms: 4.112167
+  type: 'test'
+  ...
+# Subtest: wrong network is rejected before batch preparation
+ok 12 - wrong network is rejected before batch preparation
+  ---
+  duration_ms: 0.209583
+  type: 'test'
+  ...
+# Subtest: gas caps account for batch size and reject oversized batches
+ok 13 - gas caps account for batch size and reject oversized batches
+  ---
+  duration_ms: 0.08675
+  type: 'test'
+  ...
+# Subtest: aggregate spend and recovery balance are checked before signing
+ok 14 - aggregate spend and recovery balance are checked before signing
+  ---
+  duration_ms: 0.094542
+  type: 'test'
+  ...
+# Subtest: Swarm reference rejects encrypted references and malformed hex
+ok 15 - Swarm reference rejects encrypted references and malformed hex
+  ---
+  duration_ms: 0.234416
+  type: 'test'
+  ...
+# Subtest: SDK 1.0.1 validates schema names, string bytes, named-column count, and bytes bounds
+ok 16 - SDK 1.0.1 validates schema names, string bytes, named-column count, and bytes bounds
+  ---
+  duration_ms: 6.636375
+  type: 'test'
+  ...
+# Subtest: combined bytes limit is checked before any RPC or signature
+ok 17 - combined bytes limit is checked before any RPC or signature
+  ---
+  duration_ms: 0.77125
+  type: 'test'
+  ...
+# Subtest: Node connection timeout nested beneath fetch and viem wrappers retries reads but never sends
+ok 18 - Node connection timeout nested beneath fetch and viem wrappers retries reads but never sends
+  ---
+  duration_ms: 1.605
+  type: 'test'
+  ...
+# Subtest: Node header, body and socket timeouts are bounded retryable read errors
+ok 19 - Node header, body and socket timeouts are bounded retryable read errors
+  ---
+  duration_ms: 0.272416
+  type: 'test'
+  ...
+# Subtest: transient public reads and simulations recover after bounded backoff
+ok 20 - transient public reads and simulations recover after bounded backoff
+  ---
+  duration_ms: 0.132583
+  type: 'test'
+  ...
+# Subtest: read retry exhaustion reports method and attempts without leaking request data
+ok 21 - read retry exhaustion reports method and attempts without leaking request data
+  ---
+  duration_ms: 0.182292
+  type: 'test'
+  ...
+# Subtest: broadcast, signing and unknown methods never retry even on transient errors
+ok 22 - broadcast, signing and unknown methods never retry even on transient errors
+  ---
+  duration_ms: 0.203167
+  type: 'test'
+  ...
+# Subtest: Rabdi head-only state errors are deterministic and never retried
+ok 23 - Rabdi head-only state errors are deterministic and never retried
+  ---
+  duration_ms: 0.078292
+  type: 'test'
+  ...
+# Subtest: validation, request size, contract reverts and unknown failures stop immediately
+ok 24 - validation, request size, contract reverts and unknown failures stop immediately
+  ---
+  duration_ms: 0.339459
+  type: 'test'
+  ...
+# Rabdi: no access key, so requests go to the public endpoint, which is heavily rate limited. Get a free key at https://hub.arkiv.network/access-keys and pass it as rabdi({ accessKey }).
+# Subtest: partial reconciliation accepts only matching public receipts and exact funding ceiling
+ok 25 - partial reconciliation accepts only matching public receipts and exact funding ceiling
+  ---
+  duration_ms: 1.170625
+  type: 'test'
+  ...
+# Subtest: reconciliation rejects changed chain, nonce, calldata, fees, canonical block and outcomes
+ok 26 - reconciliation rejects changed chain, nonce, calldata, fees, canonical block and outcomes
+  ---
+  duration_ms: 3.781666
+  type: 'test'
+  ...
+# Subtest: duplicate journal ids and hashes cannot be counted as independent receipts
+ok 27 - duplicate journal ids and hashes cannot be counted as independent receipts
+  ---
+  duration_ms: 0.343
+  type: 'test'
+  ...
+# Subtest: head-only RPC limitation labels historical balance evidence without skipping receipt or observed-delta checks
+ok 28 - head-only RPC limitation labels historical balance evidence without skipping receipt or observed-delta checks
+  ---
+  duration_ms: 0.304166
+  type: 'test'
+  ...
+# Subtest: post-send observation uses head state and rejects pending nonces or unaccounted balance movement
+ok 29 - post-send observation uses head state and rejects pending nonces or unaccounted balance movement
+  ---
+  duration_ms: 0.155084
+  type: 'test'
+  ...
+# Rabdi: no access key, so requests go to the public endpoint, which is heavily rate limited. Get a free key at https://hub.arkiv.network/access-keys and pass it as rabdi({ accessKey }).
+# Subtest: durable admission precedes any broadcast; repeated sends and signatures are refused
+ok 30 - durable admission precedes any broadcast; repeated sends and signatures are refused
+  ---
+  duration_ms: 1.618917
+  type: 'test'
+  ...
+# Subtest: a journal failure prevents broadcast and does not permit a fresh signature
+ok 31 - a journal failure prevents broadcast and does not permit a fresh signature
+  ---
+  duration_ms: 0.56725
+  type: 'test'
+  ...
+# Subtest: signing is bound to chain, nonce, gas, fee, target, value and exact prepared calldata
+ok 32 - signing is bound to chain, nonce, gas, fee, target, value and exact prepared calldata
+  ---
+  duration_ms: 3.766833
+  type: 'test'
+  ...
+# Subtest: wallet RPC alternatives and a different signed byte string are blocked
+ok 33 - wallet RPC alternatives and a different signed byte string are blocked
+  ---
+  duration_ms: 0.262208
+  type: 'test'
+  ...
+# Subtest: keeper repairs missing content once and checks the content address and retrieved bytes
+ok 34 - keeper repairs missing content once and checks the content address and retrieved bytes
+  ---
+  duration_ms: 14.551083
+  type: 'test'
+  ...
+# Subtest: keeper refuses changed hashes, changed references, encrypted references and outage retries
+ok 35 - keeper refuses changed hashes, changed references, encrypted references and outage retries
+  ---
+  duration_ms: 3.534834
+  type: 'test'
+  ...
+1..35
+# tests 35
+# suites 0
+# pass 35
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 307.287167

@@ -1,0 +1,25 @@
+{
+  "at": "2026-11-06T12:59:28.984Z",
+  "mode": "MOCK",
+  "checks": [
+    "phone consent at 320/390px",
+    "confirmed funding start gate",
+    "real game verified result",
+    "five-second agreement",
+    "cooperative settlement and both claims"
+  ],
+  "screens": [
+    "evidence/arc-gameplay/desktop.png",
+    "evidence/arc-gameplay/phone-portrait.png",
+    "evidence/arc-gameplay/phone-landscape.png",
+    "evidence/arc-gameplay/phone-paid.png"
+  ],
+  "errors": [],
+  "viewports": [
+    "1280x720 desktop",
+    "320x568 phone",
+    "390x844 phone",
+    "844x390 landscape"
+  ],
+  "layoutFollowup": "Final shorter consent copy: both buttons visible without scrolling at 320x568 (420px content/client) and 844x390 (324px content/client). Layout fixtures, no transactions."
+}

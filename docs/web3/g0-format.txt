@@ -1,0 +1,6 @@
+
+> funcaster@0.2.0 format:check
+> prettier --check core/catalog.js core/state.js server/party.cjs server/records.cjs public/party/host.js public/party/phone.js "public/os/**/*.{js,mjs,css,html,json}" "tests/os/*.mjs" public/party/phone-page.js public/party/phone-page.css public/controller.webmanifest tests/party/phone-remote.test.cjs public/party/remote.js public/party/remote.test.mjs public/party/remote.css public/party/remote-skins.css public/controller.html server/shell-input.cjs server/shell-routes.cjs server/public-assets.cjs tests/party/pointer.test.cjs tests/party/shell-routes.test.cjs games/mario-kart/race-menu.js games/mario-kart/race-menu.test.mjs games/mario-kart/multiview.test.mjs public/party/phone-capabilities.js public/party/phone-pointer.js core/pixel-budget.js core/pixel-budget.test.mjs scripts/os-assets/initial-files.mjs tests/party/phone-text.test.cjs tests/party/results-hold.test.cjs scripts/launch-kiosk.cjs public/party/phone-audio.js tests/party/end-room.test.cjs tests/party/restore-player.test.cjs server/arcade.cjs core/render-scale.js core/render-scale.test.mjs "server/web3/*.cjs" "integrations/shared/*.mjs" "scripts/web3-*.mjs" "tests/web3/*.{cjs,mjs}" "tests/party/web3-*.test.cjs" public/web3/phone-identity.js
+
+Checking formatting...
+All matched files use Prettier code style!

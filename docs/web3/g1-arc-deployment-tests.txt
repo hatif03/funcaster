@@ -1,0 +1,106 @@
+TAP version 13
+# Subtest: public acceptance requires exact owner flags before reading env, keys, files or RPC
+ok 1 - public acceptance requires exact owner flags before reading env, keys, files or RPC
+  ---
+  duration_ms: 0.739458
+  type: 'test'
+  ...
+# Subtest: deployment pinner refuses another chain or a transaction that is not exact contract creation
+ok 2 - deployment pinner refuses another chain or a transaction that is not exact contract creation
+  ---
+  duration_ms: 0.184334
+  type: 'test'
+  ...
+# Subtest: acceptance waits through worker backoff and an absent receipt file without duplicating an effect
+ok 3 - acceptance waits through worker backoff and an absent receipt file without duplicating an effect
+  ---
+  duration_ms: 39.24725
+  type: 'test'
+  ...
+# Subtest: acceptance waiting is bounded and preserves a pending step identity
+ok 4 - acceptance waiting is bounded and preserves a pending step identity
+  ---
+  duration_ms: 0.832667
+  type: 'test'
+  ...
+# Subtest: owner deploy accepts only exact check/apply modes before env or file access
+ok 5 - owner deploy accepts only exact check/apply modes before env or file access
+  ---
+  duration_ms: 0.696792
+  type: 'test'
+  ...
+# Subtest: reviewed artifact pins compiler, optimizer, bytecode and ordered constructor payload
+ok 6 - reviewed artifact pins compiler, optimizer, bytecode and ordered constructor payload
+  ---
+  duration_ms: 1.225375
+  type: 'test'
+  ...
+# Subtest: unsigned preflight includes margin, quote, exact nonce, fee floor and retained balance
+ok 7 - unsigned preflight includes margin, quote, exact nonce, fee floor and retained balance
+  ---
+  duration_ms: 4.670125
+  type: 'test'
+  ...
+# Subtest: fee, gas and retained-balance limits stop before a signature
+ok 8 - fee, gas and retained-balance limits stop before a signature
+  ---
+  duration_ms: 6.01525
+  type: 'test'
+  ...
+# Subtest: wrong chain, pending nonce, stale block, reorg and occupied address stop deployment
+ok 9 - wrong chain, pending nonce, stale block, reorg and occupied address stop deployment
+  ---
+  duration_ms: 10.591083
+  type: 'test'
+  ...
+# Subtest: successful direct creation is canonical, bounded and replayed without signing
+ok 10 - successful direct creation is canonical, bounded and replayed without signing
+  ---
+  duration_ms: 21.877375
+  type: 'test'
+  ...
+# Subtest: post-send receipt timeout recovers the admitted hash without another send
+ok 11 - post-send receipt timeout recovers the admitted hash without another send
+  ---
+  duration_ms: 12.956125
+  type: 'test'
+  ...
+# Subtest: uncertain or canonically reverted creation cannot be resent
+ok 12 - uncertain or canonically reverted creation cannot be resent
+  ---
+  duration_ms: 18.304916
+  type: 'test'
+  ...
+# Subtest: signed recipient, nonce, fee or owner substitution cannot be broadcast
+ok 13 - signed recipient, nonce, fee or owner substitution cannot be broadcast
+  ---
+  duration_ms: 6.736
+  type: 'test'
+  ...
+# Subtest: kill after admission preserves a no-resend journal
+ok 14 - kill after admission preserves a no-resend journal
+  ---
+  duration_ms: 8.073791
+  type: 'test'
+  ...
+# Subtest: receipt reorg, wrong calldata, excess gas and wrong address never verify
+ok 15 - receipt reorg, wrong calldata, excess gas and wrong address never verify
+  ---
+  duration_ms: 30.281125
+  type: 'test'
+  ...
+# Subtest: two owner processes cannot admit the same deployment concurrently
+ok 16 - two owner processes cannot admit the same deployment concurrently
+  ---
+  duration_ms: 13.389
+  type: 'test'
+  ...
+1..16
+# tests 16
+# suites 0
+# pass 16
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 272.718583

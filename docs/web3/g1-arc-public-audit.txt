@@ -1,0 +1,2 @@
+PASS read-only receipt and state audit: rpc.testnet.arc.io
+PASS read-only receipt and state audit: rpc.testnet.arc.network

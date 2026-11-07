@@ -1,0 +1,137 @@
+TAP version 13
+# Subtest: public acceptance requires exact owner flags before reading env, keys, files or RPC
+ok 1 - public acceptance requires exact owner flags before reading env, keys, files or RPC
+  ---
+  duration_ms: 0.789042
+  type: 'test'
+  ...
+# Subtest: startup-only acceptance opens the provider without polling, signing, broadcasting or claiming public completion
+ok 2 - startup-only acceptance opens the provider without polling, signing, broadcasting or claiming public completion
+  ---
+  duration_ms: 0.127834
+  type: 'test'
+  ...
+# Subtest: acceptance reports the innermost startup phase and safe RPC cause chain
+ok 3 - acceptance reports the innermost startup phase and safe RPC cause chain
+  ---
+  duration_ms: 0.398083
+  type: 'test'
+  ...
+# Subtest: diagnostics distinguish stale proofs and worker locks without exporting arbitrary error fields
+ok 4 - diagnostics distinguish stale proofs and worker locks without exporting arbitrary error fields
+  ---
+  duration_ms: 0.162084
+  type: 'test'
+  ...
+# Subtest: phase diagnostics preserve frozen failures and worker-step identities
+ok 5 - phase diagnostics preserve frozen failures and worker-step identities
+  ---
+  duration_ms: 0.108667
+  type: 'test'
+  ...
+# Subtest: deployment pinner refuses another chain or a transaction that is not exact contract creation
+ok 6 - deployment pinner refuses another chain or a transaction that is not exact contract creation
+  ---
+  duration_ms: 0.172208
+  type: 'test'
+  ...
+# Subtest: acceptance waits through worker backoff and an absent receipt file without duplicating an effect
+ok 7 - acceptance waits through worker backoff and an absent receipt file without duplicating an effect
+  ---
+  duration_ms: 42.380125
+  type: 'test'
+  ...
+# Subtest: acceptance waiting is bounded and preserves a pending step identity
+ok 8 - acceptance waiting is bounded and preserves a pending step identity
+  ---
+  duration_ms: 0.765875
+  type: 'test'
+  ...
+# Subtest: live provider never implicitly activates in mock mode or silently ignores an unimplemented Memo setting
+ok 9 - live provider never implicitly activates in mock mode or silently ignores an unimplemented Memo setting
+  ---
+  duration_ms: 0.535375
+  type: 'test'
+  ...
+# Subtest: live deployment and limits require exact pins, separate roles and bounded six-decimal budgets
+ok 10 - live deployment and limits require exact pins, separate roles and bounded six-decimal budgets
+  ---
+  duration_ms: 1.814667
+  type: 'test'
+  ...
+# Subtest: logs use inclusive 9,999-block chunks and retry -32014 with smaller bounded requests
+ok 11 - logs use inclusive 9,999-block chunks and retry -32014 with smaller bounded requests
+  ---
+  duration_ms: 0.541542
+  type: 'test'
+  ...
+# Subtest: log reader rejects foreign emitters, removed logs and out-of-range responses
+ok 12 - log reader rejects foreign emitters, removed logs and out-of-range responses
+  ---
+  duration_ms: 0.096833
+  type: 'test'
+  ...
+# Subtest: keyless preflight checks both asset domains, code pin, constants, balances and unsigned create
+    # Subtest: exhausted rate-limit reads may fall back to the other independently verified host
+    ok 1 - exhausted rate-limit reads may fall back to the other independently verified host
+      ---
+      duration_ms: 1.168042
+      type: 'test'
+      ...
+    # Subtest: wrong-network and mismatched-code proofs cannot be hidden by host fallback
+    ok 2 - wrong-network and mismatched-code proofs cannot be hidden by host fallback
+      ---
+      duration_ms: 0.241709
+      type: 'test'
+      ...
+    1..2
+ok 13 - keyless preflight checks both asset domains, code pin, constants, balances and unsigned create
+  ---
+  duration_ms: 4.519917
+  type: 'test'
+  ...
+# Subtest: read RPC retries transient rate limits with bounded backoff and preserves request options
+ok 14 - read RPC retries transient rate limits with bounded backoff and preserves request options
+  ---
+  duration_ms: 0.679
+  type: 'test'
+  ...
+# Subtest: read retry exhaustion retains method and attempts without a request body
+ok 15 - read retry exhaustion retains method and attempts without a request body
+  ---
+  duration_ms: 0.289875
+  type: 'test'
+  ...
+# Subtest: transaction submission, signatures, filters and unknown RPC methods are never retried
+ok 16 - transaction submission, signatures, filters and unknown RPC methods are never retried
+  ---
+  duration_ms: 0.176958
+  type: 'test'
+  ...
+# Subtest: read retries respect Retry-After, stop on excessive server delay and ignore deterministic failures
+ok 17 - read retries respect Retry-After, stop on excessive server delay and ignore deterministic failures
+  ---
+  duration_ms: 6.7375
+  type: 'test'
+  ...
+# Subtest: an aborted read never starts another request
+ok 18 - an aborted read never starts another request
+  ---
+  duration_ms: 0.08525
+  type: 'test'
+  ...
+# Subtest: real viem transport retries reads but never hides a retry of a rejected send
+ok 19 - real viem transport retries reads but never hides a retry of a rejected send
+  ---
+  duration_ms: 5.326708
+  type: 'test'
+  ...
+1..19
+# tests 21
+# suites 0
+# pass 21
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 180.494333

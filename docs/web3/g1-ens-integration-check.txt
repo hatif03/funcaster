@@ -1,0 +1,4412 @@
+
+> funcaster@0.2.0 check
+> npm run catalog:check && npm run validate:games && npm run test:unit && npm run test:party && npm run test:os && npm run web3:test
+
+
+> funcaster@0.2.0 catalog:check
+> node scripts/sync-manifests.mjs --check
+
+Catalog agrees across 13 games.
+
+> funcaster@0.2.0 validate:games
+> node scripts/validate-games.mjs
+
+✓ chonks.alien-attack@1.1.0 · 6 files · e1a996b952a8
+✓ chonks.bubble-burst@1.1.0 · 2 files · 0a23a5a81bcc
+✓ chonks.drawing@1.1.0 · 5 files · b777ef2c3019
+✓ chonks.slice-dojo@1.1.0 · 9 files · cdc7d268ae97
+✓ chonks.pocket-greens@1.1.0 · 11 files · fa169fa27b2a
+✓ chonks.cloud-cruise@1.1.0 · 6 files · 5520456bd94b
+✓ chonks.time-trial@1.1.0 · 6 files · 3d6aed28c3f3
+✓ chonks.kart-rush@1.1.0 · 181 files · 68f89da97e7f
+✓ chonks.neon-drift@1.1.0 · 2 files · d5afa9ca49d6
+✓ chonks.shooting-range@1.1.0 · 6 files · 4b5ed6df4c1e
+✓ chonks.star-catch@1.1.0 · 2 files · 52391b41c18b
+✓ chonks.foam-fencers@1.1.0 · 6 files · aef2529fd169
+✓ chonks.table-tennis@1.1.0 · 6 files · 2fdbd4623cdf
+
+> funcaster@0.2.0 test:unit
+> node --test "core/**/*.test.mjs" "games/**/*.test.mjs" "tests/kart-prototype/*.test.mjs"
+
+TAP version 13
+# Subtest: bundle hash covers nested assets and ignores filesystem iteration order
+ok 1 - bundle hash covers nested assets and ignores filesystem iteration order
+  ---
+  duration_ms: 4.58875
+  type: 'test'
+  ...
+# Subtest: bundle validation rejects nested symlinks, secrets and over-budget content
+ok 2 - bundle validation rejects nested symlinks, secrets and over-budget content
+  ---
+  duration_ms: 1.573667
+  type: 'test'
+  ...
+# Subtest: quaternion decoding matches Euler decoding exactly
+ok 3 - quaternion decoding matches Euler decoding exactly
+  ---
+  duration_ms: 0.671167
+  type: 'test'
+  ...
+# Subtest: a spec-convention phone earns trust and tracks tightly
+ok 4 - a spec-convention phone earns trust and tracks tightly
+  ---
+  duration_ms: 10.35275
+  type: 'test'
+  ...
+# Subtest: THE BUG: a phone reporting gyro on swapped axes still aims straight
+ok 5 - THE BUG: a phone reporting gyro on swapped axes still aims straight
+  ---
+  duration_ms: 8.416875
+  type: 'test'
+  ...
+# Subtest: a rad/s phone is learned: per-axis scale ≈ 57.3
+ok 6 - a rad/s phone is learned: per-axis scale ≈ 57.3
+  ---
+  duration_ms: 7.355083
+  type: 'test'
+  ...
+# Subtest: a mirrored-convention phone is learned and tracks the right way
+ok 7 - a mirrored-convention phone is learned and tracks the right way
+  ---
+  duration_ms: 6.037084
+  type: 'test'
+  ...
+# Subtest: an unlearnable gyro is never trusted, and directions stay correct
+ok 8 - an unlearnable gyro is never trusted, and directions stay correct
+  ---
+  duration_ms: 4.511833
+  type: 'test'
+  ...
+# Subtest: no gyro at all still points the right way
+ok 9 - no gyro at all still points the right way
+  ---
+  duration_ms: 3.015083
+  type: 'test'
+  ...
+# Subtest: a vertical swing is vertical in flat, upright and landscape grips
+ok 10 - a vertical swing is vertical in flat, upright and landscape grips
+  ---
+  duration_ms: 10.814958
+  type: 'test'
+  ...
+# Subtest: upright grip yaw tracks like flat grip yaw
+ok 11 - upright grip yaw tracks like flat grip yaw
+  ---
+  duration_ms: 4.892
+  type: 'test'
+  ...
+# Subtest: realistic orientation lag does not slow the cursor
+ok 12 - realistic orientation lag does not slow the cursor
+  ---
+  duration_ms: 7.382041
+  type: 'test'
+  ...
+# Subtest: absurd orientation lag degrades to correct-but-soft, never wrong
+ok 13 - absurd orientation lag degrades to correct-but-soft, never wrong
+  ---
+  duration_ms: 2.466875
+  type: 'test'
+  ...
+# Subtest: the cursor is rock-still at rest
+ok 14 - the cursor is rock-still at rest
+  ---
+  duration_ms: 1.316958
+  type: 'test'
+  ...
+# Subtest: stillness never corrupts the learned map
+ok 15 - stillness never corrupts the learned map
+  ---
+  duration_ms: 11.778667
+  type: 'test'
+  ...
+# Subtest: recentre snaps to the middle and stays
+ok 16 - recentre snaps to the middle and stays
+  ---
+  duration_ms: 2.285333
+  type: 'test'
+  ...
+# Subtest: when packets stop, the cursor freezes instead of coasting
+ok 17 - when packets stop, the cursor freezes instead of coasting
+  ---
+  duration_ms: 1.30025
+  type: 'test'
+  ...
+# Subtest: an over-swing past the edge comes back to centre
+ok 18 - an over-swing past the edge comes back to centre
+  ---
+  duration_ms: 5.565041
+  type: 'test'
+  ...
+# Subtest: drift from a huge clamped swing heals while the hand is still
+ok 19 - drift from a huge clamped swing heals while the hand is still
+  ---
+  duration_ms: 5.010042
+  type: 'test'
+  ...
+# Subtest: a held aim is never dragged — healing targets the pose, not the centre
+ok 20 - a held aim is never dragged — healing targets the pose, not the centre
+  ---
+  duration_ms: 6.465875
+  type: 'test'
+  ...
+# Subtest: clamp loss is repaid mid-play — gentle aiming, no stillness required
+ok 21 - clamp loss is repaid mid-play — gentle aiming, no stillness required
+  ---
+  duration_ms: 5.307042
+  type: 'test'
+  ...
+# Subtest: display lead cuts tracking delay during swings, and only during swings
+ok 22 - display lead cuts tracking delay during swings, and only during swings
+  ---
+  duration_ms: 8.186
+  type: 'test'
+  ...
+# Subtest: display lead does not shimmer: noisy gyro, smooth cursor
+ok 23 - display lead does not shimmer: noisy gyro, smooth cursor
+  ---
+  duration_ms: 14.203459
+  type: 'test'
+  ...
+# Subtest: the default pointer speed is the rebased 20°-per-screen (old 150%)
+ok 24 - the default pointer speed is the rebased 20°-per-screen (old 150%)
+  ---
+  duration_ms: 0.0665
+  type: 'test'
+  ...
+# Subtest: phone identity survives a new tab; host credentials do not
+ok 25 - phone identity survives a new tab; host credentials do not
+  ---
+  duration_ms: 0.790291
+  type: 'test'
+  ...
+# Subtest: player records expire and migrate tab storage without exposing owner keys
+ok 26 - player records expire and migrate tab storage without exposing owner keys
+  ---
+  duration_ms: 0.173166
+  type: 'test'
+  ...
+# Subtest: expiry applies in the originating tab, including when storage is disabled
+ok 27 - expiry applies in the originating tab, including when storage is disabled
+  ---
+  duration_ms: 1.106209
+  type: 'test'
+  ...
+# Subtest: deterministic functions agree with native values within the racing domain
+ok 28 - deterministic functions agree with native values within the racing domain
+  ---
+  duration_ms: 5.658042
+  type: 'test'
+  ...
+# Subtest: a fast horizontal slash is one swing with the right direction
+ok 29 - a fast horizontal slash is one swing with the right direction
+  ---
+  duration_ms: 1.145
+  type: 'test'
+  ...
+# Subtest: a slow wide wave is not a swing
+ok 30 - a slow wide wave is not a swing
+  ---
+  duration_ms: 0.237417
+  type: 'test'
+  ...
+# Subtest: a fast but tiny jerk is not a swing
+ok 31 - a fast but tiny jerk is not a swing
+  ---
+  duration_ms: 0.088792
+  type: 'test'
+  ...
+# Subtest: a held fast rotation times out as a gesture, not a swing
+ok 32 - a held fast rotation times out as a gesture, not a swing
+  ---
+  duration_ms: 0.129208
+  type: 'test'
+  ...
+# Subtest: two separated slashes are two swings
+ok 33 - two separated slashes are two swings
+  ---
+  duration_ms: 0.311958
+  type: 'test'
+  ...
+# Subtest: lineDiff treats a blade and its flip as the same line
+ok 34 - lineDiff treats a blade and its flip as the same line
+  ---
+  duration_ms: 0.114166
+  type: 'test'
+  ...
+# Subtest: gripTilt matches the physical tilt, numerically pinned
+ok 35 - gripTilt matches the physical tilt, numerically pinned
+  ---
+  duration_ms: 0.3105
+  type: 'test'
+  ...
+# Subtest: gripTilt pitch works in the upright grip via beam selection
+ok 36 - gripTilt pitch works in the upright grip via beam selection
+  ---
+  duration_ms: 0.140583
+  type: 'test'
+  ...
+# Subtest: idle heartbeat stays under stale-input cutoff without streaming at full rate
+ok 37 - idle heartbeat stays under stale-input cutoff without streaming at full rate
+  ---
+  duration_ms: 0.435625
+  type: 'test'
+  ...
+# Subtest: a busy transport never queues obsolete inputs
+ok 38 - a busy transport never queues obsolete inputs
+  ---
+  duration_ms: 0.071542
+  type: 'test'
+  ...
+# Subtest: pedal release bypasses pacing so a brake or accelerator cannot linger
+ok 39 - pedal release bypasses pacing so a brake or accelerator cannot linger
+  ---
+  duration_ms: 0.726625
+  type: 'test'
+  ...
+# Subtest: a brief boost survives transport backpressure exactly once
+ok 40 - a brief boost survives transport backpressure exactly once
+  ---
+  duration_ms: 0.177
+  type: 'test'
+  ...
+# Subtest: human tennis alternates serve and wins by two
+ok 41 - human tennis alternates serve and wins by two
+  ---
+  duration_ms: 0.43125
+  type: 'test'
+  ...
+# Subtest: simultaneous deciding fencing hits go to sudden death
+ok 42 - simultaneous deciding fencing hits go to sudden death
+  ---
+  duration_ms: 0.265375
+  type: 'test'
+  ...
+# Subtest: SDK clocks are invariant across render rates; paused input does not advance the game
+ok 43 - SDK clocks are invariant across render rates; paused input does not advance the game
+  ---
+  duration_ms: 0.658875
+  type: 'test'
+  ...
+# Subtest: SDK sends exactly one immutable result and releases a game exactly once
+ok 44 - SDK sends exactly one immutable result and releases a game exactly once
+  ---
+  duration_ms: 0.22975
+  type: 'test'
+  ...
+# Subtest: two races catch up hash-equal after reordered and duplicated sequenced frames, without skipping missing ticks
+ok 45 - two races catch up hash-equal after reordered and duplicated sequenced frames, without skipping missing ticks
+  ---
+  duration_ms: 706.457291
+  type: 'test'
+  ...
+# Subtest: stale phone input becomes autopilot and buffered frames cannot alias later input
+ok 46 - stale phone input becomes autopilot and buffered frames cannot alias later input
+  ---
+  duration_ms: 0.180916
+  type: 'test'
+  ...
+# Subtest: existing high aiming preferences cannot override the gentler racing default
+ok 47 - existing high aiming preferences cannot override the gentler racing default
+  ---
+  duration_ms: 0.363916
+  type: 'test'
+  ...
+# Subtest: racing and aiming settings persist independently across refresh, game switches and reset
+ok 48 - racing and aiming settings persist independently across refresh, game switches and reset
+  ---
+  duration_ms: 0.120334
+  type: 'test'
+  ...
+# Subtest: invalid saved sensitivity falls back safely; valid values stay inside the racing range
+ok 49 - invalid saved sensitivity falls back safely; valid values stay inside the racing range
+  ---
+  duration_ms: 0.072584
+  type: 'test'
+  ...
+# Subtest: controllers work when phone preference storage is absent or blocked
+ok 50 - controllers work when phone preference storage is absent or blocked
+  ---
+  duration_ms: 0.070166
+  type: 'test'
+  ...
+# Subtest: neutral grip is measured and held still noise stays at zero
+ok 51 - neutral grip is measured and held still noise stays at zero
+  ---
+  duration_ms: 1.694125
+  type: 'test'
+  ...
+# Subtest: small tilt is responsive, sensitivity can be adjusted, and values stay bounded
+ok 52 - small tilt is responsive, sensitivity can be adjusted, and values stay bounded
+  ---
+  duration_ms: 1.681584
+  type: 'test'
+  ...
+# Subtest: calibration remains neutral across yaw wrap and upright grips
+ok 53 - calibration remains neutral across yaw wrap and upright grips
+  ---
+  duration_ms: 1.567291
+  type: 'test'
+  ...
+# Subtest: portrait and landscape transform into screen-relative control axes
+ok 54 - portrait and landscape transform into screen-relative control axes
+  ---
+  duration_ms: 0.369666
+  type: 'test'
+  ...
+# Subtest: invalid samples never finish calibration or poison the next valid sample
+ok 55 - invalid samples never finish calibration or poison the next valid sample
+  ---
+  duration_ms: 0.297833
+  type: 'test'
+  ...
+# Subtest: a low but consistent sensor rate can calibrate
+ok 56 - a low but consistent sensor rate can calibrate
+  ---
+  duration_ms: 0.177375
+  type: 'test'
+  ...
+# Subtest: recenter measures a new grip and flicks have a cooldown
+ok 57 - recenter measures a new grip and flicks have a cooldown
+  ---
+  duration_ms: 0.376833
+  type: 'test'
+  ...
+# Subtest: all nine screens stay within single and split budgets at low and high device densities
+ok 58 - all nine screens stay within single and split budgets at low and high device densities
+  ---
+  duration_ms: 1.74025
+  type: 'test'
+  ...
+# Subtest: only a valid count of independent views selects the split budget
+ok 59 - only a valid count of independent views selects the split budget
+  ---
+  duration_ms: 0.226667
+  type: 'test'
+  ...
+# Subtest: hidden and malformed viewport sizes stay finite and recover; invalid budgets fail explicitly
+ok 60 - hidden and malformed viewport sizes stay finite and recover; invalid budgets fail explicitly
+  ---
+  duration_ms: 0.335708
+  type: 'test'
+  ...
+# Subtest: a stable canvas allocates once, changes only needed dimensions and survives hide/restore
+ok 61 - a stable canvas allocates once, changes only needed dimensions and survives hide/restore
+  ---
+  duration_ms: 0.580041
+  type: 'test'
+  ...
+# Subtest: all manifest contracts and minimum-human rules agree
+ok 62 - all manifest contracts and minimum-human rules agree
+  ---
+  duration_ms: 2.335958
+  type: 'test'
+  ...
+# Subtest: snapshot round-trip preserves existing rule prototypes and blocks prototype keys
+ok 63 - snapshot round-trip preserves existing rule prototypes and blocks prototype keys
+  ---
+  duration_ms: 0.784708
+  type: 'test'
+  ...
+# Subtest: three and four viewport layouts cover integer pixel boundaries without overlap
+ok 64 - three and four viewport layouts cover integer pixel boundaries without overlap
+  ---
+  duration_ms: 0.549459
+  type: 'test'
+  ...
+# Subtest: canonical hashes ignore object order and replay detects score tampering
+ok 65 - canonical hashes ignore object order and replay detects score tampering
+  ---
+  duration_ms: 35.276958
+  type: 'test'
+  ...
+# Subtest: game storage namespaces prevent collisions and limit payload size
+ok 66 - game storage namespaces prevent collisions and limit payload size
+  ---
+  duration_ms: 0.444583
+  type: 'test'
+  ...
+# Subtest: the fixed-step contract produces identical ticks across frame rates
+ok 67 - the fixed-step contract produces identical ticks across frame rates
+  ---
+  duration_ms: 0.397833
+  type: 'test'
+  ...
+# Subtest: two-human racing stays deterministic across different render schedules
+ok 68 - two-human racing stays deterministic across different render schedules
+  ---
+  duration_ms: 85.252125
+  type: 'test'
+  ...
+# Subtest: catalog aliases preserve view routing before and after match setup
+ok 69 - catalog aliases preserve view routing before and after match setup
+  ---
+  duration_ms: 0.268333
+  type: 'test'
+  ...
+# Subtest: wheel accepts both landscape grips and gentle clockwise roll steers right
+ok 70 - wheel accepts both landscape grips and gentle clockwise roll steers right
+  ---
+  duration_ms: 7.776583
+  type: 'test'
+  ...
+# Subtest: wheel rejects movement during calibration, noise and invalid quaternions; sensitivity and recenter work
+ok 71 - wheel rejects movement during calibration, noise and invalid quaternions; sensitivity and recenter work
+  ---
+  duration_ms: 0.632292
+  type: 'test'
+  ...
+# Subtest: default steering preserves fine corrections and reaches full lock without a large rotation
+ok 72 - default steering preserves fine corrections and reaches full lock without a large rotation
+  ---
+  duration_ms: 3.247583
+  type: 'test'
+  ...
+# Subtest: wheel smooths sudden motion, reverses promptly and responds consistently across sensor rates
+ok 73 - wheel smooths sudden motion, reverses promptly and responds consistently across sensor rates
+  ---
+  duration_ms: 2.325084
+  type: 'test'
+  ...
+# Subtest: racing sensitivity has bounded defaults and keeps full steering available at gentler settings
+ok 74 - racing sensitivity has bounded defaults and keeps full steering available at gentler settings
+  ---
+  duration_ms: 0.435417
+  type: 'test'
+  ...
+# Subtest: pedals support two thumbs, brake takes priority, cancellation and focus loss release everything
+ok 75 - pedals support two thumbs, brake takes priority, cancellation and focus loss release everything
+  ---
+  duration_ms: 0.78975
+  type: 'test'
+  ...
+# Subtest: classic pointer uses calibrated coordinates without stale gyro extrapolation
+ok 76 - classic pointer uses calibrated coordinates without stale gyro extrapolation
+  ---
+  duration_ms: 0.887541
+  type: 'test'
+  ...
+# Subtest: camera partitions cover odd-sized, portrait and hidden surfaces without overlap or NaN
+ok 77 - camera partitions cover odd-sized, portrait and hidden surfaces without overlap or NaN
+  ---
+  duration_ms: 1.43325
+  type: 'test'
+  ...
+# Subtest: canvas artwork grows with height and local normalised symbols stay isotropic
+ok 78 - canvas artwork grows with height and local normalised symbols stay isotropic
+  ---
+  duration_ms: 0.733958
+  type: 'test'
+  ...
+# Subtest: snapshot interpolation preserves scores and wraps angles; stale peers freeze
+ok 79 - snapshot interpolation preserves scores and wraps angles; stale peers freeze
+  ---
+  duration_ms: 0.456083
+  type: 'test'
+  ...
+# Subtest: cut arbitration uses first circle entry, including tangents and stationary segments
+ok 80 - cut arbitration uses first circle entry, including tangents and stationary segments
+  ---
+  duration_ms: 0.073166
+  type: 'test'
+  ...
+# Subtest: tray: captured pose reads zero; rolls read as exact deltas; flips agree
+ok 81 - tray: captured pose reads zero; rolls read as exact deltas; flips agree
+  ---
+  duration_ms: 1.54375
+  type: 'test'
+  ...
+# Subtest: shape: tremor inside the deadzone is zero, full lock is preserved
+ok 82 - shape: tremor inside the deadzone is zero, full lock is preserved
+  ---
+  duration_ms: 0.317292
+  type: 'test'
+  ...
+# Subtest: filter: a standing 3° bias heals to zero output
+ok 83 - filter: a standing 3° bias heals to zero output
+  ---
+  duration_ms: 0.343125
+  type: 'test'
+  ...
+# Subtest: filter: an intentional hard steer is never eaten
+ok 84 - filter: an intentional hard steer is never eaten
+  ---
+  duration_ms: 0.197667
+  type: 'test'
+  ...
+# Subtest: filter: drift heals, then a swing passes through at full strength
+ok 85 - filter: drift heals, then a swing passes through at full strength
+  ---
+  duration_ms: 2.396791
+  type: 'test'
+  ...
+# Subtest: steering: bank strafes proportionally, saturates, and the lane clamps
+ok 86 - steering: bank strafes proportionally, saturates, and the lane clamps
+  ---
+  duration_ms: 2.152125
+  type: 'test'
+  ...
+# Subtest: a bolt dead ahead kills the saucer and scores KILL_POINTS
+ok 87 - a bolt dead ahead kills the saucer and scores KILL_POINTS
+  ---
+  duration_ms: 0.420584
+  type: 'test'
+  ...
+# Subtest: a bolt misses a saucer parked off to the side
+ok 88 - a bolt misses a saucer parked off to the side
+  ---
+  duration_ms: 0.159083
+  type: 'test'
+  ...
+# Subtest: the trigger has a cooldown
+ok 89 - the trigger has a cooldown
+  ---
+  duration_ms: 0.215875
+  type: 'test'
+  ...
+# Subtest: a ramming saucer costs a life, and the mercy window blocks a double hit
+ok 90 - a ramming saucer costs a life, and the mercy window blocks a double hit
+  ---
+  duration_ms: 1.463625
+  type: 'test'
+  ...
+# Subtest: an alien bolt on your column hits; a dodge clears it
+ok 91 - an alien bolt on your column hits; a dodge clears it
+  ---
+  duration_ms: 0.320792
+  type: 'test'
+  ...
+# Subtest: saucers open fire only inside range, on their own discipline
+ok 92 - saucers open fire only inside range, on their own discipline
+  ---
+  duration_ms: 0.339833
+  type: 'test'
+  ...
+# Subtest: three hits end the run with score = kills·100 + distance
+ok 93 - three hits end the run with score = kills·100 + distance
+  ---
+  duration_ms: 0.080875
+  type: 'test'
+  ...
+# Subtest: waves ramp: spawn gaps shrink toward the floor over time
+ok 94 - waves ramp: spawn gaps shrink toward the floor over time
+  ---
+  duration_ms: 19.760667
+  type: 'test'
+  ...
+# Subtest: A restarts a finished run from zero
+ok 95 - A restarts a finished run from zero
+  ---
+  duration_ms: 0.166083
+  type: 'test'
+  ...
+# Subtest: fmtMs renders minutes and tenths
+ok 96 - fmtMs renders minutes and tenths
+  ---
+  duration_ms: 0.098292
+  type: 'test'
+  ...
+# Subtest: D1: a fast swing paints a continuous stroke with no gaps
+ok 97 - D1: a fast swing paints a continuous stroke with no gaps
+  ---
+  duration_ms: 1.82775
+  type: 'test'
+  ...
+# Subtest: D1: a tap still leaves a visible dot
+ok 98 - D1: a tap still leaves a visible dot
+  ---
+  duration_ms: 0.133042
+  type: 'test'
+  ...
+# Subtest: D2: the toolbar offers 10 colors, 3 sizes, eraser and clear
+ok 99 - D2: the toolbar offers 10 colors, 3 sizes, eraser and clear
+  ---
+  duration_ms: 0.206792
+  type: 'test'
+  ...
+# Subtest: D2: pointing at each button picks exactly that tool
+ok 100 - D2: pointing at each button picks exactly that tool
+  ---
+  duration_ms: 0.0715
+  type: 'test'
+  ...
+# Subtest: D2: color, size, eraser and clear all take effect
+ok 101 - D2: color, size, eraser and clear all take effect
+  ---
+  duration_ms: 0.167417
+  type: 'test'
+  ...
+# Subtest: D2: pressing A over the toolbar operates it and never paints
+ok 102 - D2: pressing A over the toolbar operates it and never paints
+  ---
+  duration_ms: 0.054625
+  type: 'test'
+  ...
+# Subtest: D3: release lifts the pen, the next press starts a fresh stroke
+ok 103 - D3: release lifts the pen, the next press starts a fresh stroke
+  ---
+  duration_ms: 0.116625
+  type: 'test'
+  ...
+# Subtest: earlier blade sample wins regardless of seat insertion order
+ok 104 - earlier blade sample wins regardless of seat insertion order
+  ---
+  duration_ms: 0.93025
+  type: 'test'
+  ...
+# Subtest: equal-time hits rotate by round-local fruit order, independent of other games
+ok 105 - equal-time hits rotate by round-local fruit order, independent of other games
+  ---
+  duration_ms: 0.529041
+  type: 'test'
+  ...
+# Subtest: co-op scales spawn rate, shares misses and stops on a bomb
+ok 106 - co-op scales spawn rate, shares misses and stops on a bomb
+  ---
+  duration_ms: 1.475875
+  type: 'test'
+  ...
+# Subtest: battle penalties keep the board alive and countdown has no misses
+ok 107 - battle penalties keep the board alive and countdown has no misses
+  ---
+  duration_ms: 0.366209
+  type: 'test'
+  ...
+# Subtest: a fast slash slices the fruit into two halves with juice
+ok 108 - a fast slash slices the fruit into two halves with juice
+  ---
+  duration_ms: 1.184875
+  type: 'test'
+  ...
+# Subtest: a slow drag through a fruit does not slice it
+ok 109 - a slow drag through a fruit does not slice it
+  ---
+  duration_ms: 0.139625
+  type: 'test'
+  ...
+# Subtest: a fast slash that misses does not slice
+ok 110 - a fast slash that misses does not slice
+  ---
+  duration_ms: 0.075833
+  type: 'test'
+  ...
+# Subtest: slicing two fruits in one swipe pays a combo bonus
+ok 111 - slicing two fruits in one swipe pays a combo bonus
+  ---
+  duration_ms: 1.345792
+  type: 'test'
+  ...
+# Subtest: slicing a bomb ends the game
+ok 112 - slicing a bomb ends the game
+  ---
+  duration_ms: 0.583417
+  type: 'test'
+  ...
+# Subtest: a bomb that falls off the bottom costs nothing
+ok 113 - a bomb that falls off the bottom costs nothing
+  ---
+  duration_ms: 0.144958
+  type: 'test'
+  ...
+# Subtest: a fruit that falls off the bottom costs a life
+ok 114 - a fruit that falls off the bottom costs a life
+  ---
+  duration_ms: 0.105833
+  type: 'test'
+  ...
+# Subtest: losing the last life ends the game
+ok 115 - losing the last life ends the game
+  ---
+  duration_ms: 0.185291
+  type: 'test'
+  ...
+# Subtest: practice: dropped fruit never costs a life or ends the run
+ok 116 - practice: dropped fruit never costs a life or ends the run
+  ---
+  duration_ms: 0.553875
+  type: 'test'
+  ...
+# Subtest: practice: a bomb explodes and costs points, not the run
+ok 117 - practice: a bomb explodes and costs points, not the run
+  ---
+  duration_ms: 0.6905
+  type: 'test'
+  ...
+# Subtest: practice: bomb penalty never takes the score negative
+ok 118 - practice: bomb penalty never takes the score negative
+  ---
+  duration_ms: 0.291166
+  type: 'test'
+  ...
+# Subtest: a critical slice pays +10 and is flagged in the event
+ok 119 - a critical slice pays +10 and is flagged in the event
+  ---
+  duration_ms: 0.262916
+  type: 'test'
+  ...
+# Subtest: spawning emits a launch event (the throw sound hook)
+ok 120 - spawning emits a launch event (the throw sound hook)
+  ---
+  duration_ms: 0.783125
+  type: 'test'
+  ...
+# Subtest: two players slicing at once keep separate scores and combos
+ok 121 - two players slicing at once keep separate scores and combos
+  ---
+  duration_ms: 0.983125
+  type: 'test'
+  ...
+# Subtest: each slice event carries the slot that cut it
+ok 122 - each slice event carries the slot that cut it
+  ---
+  duration_ms: 0.195917
+  type: 'test'
+  ...
+# Subtest: a slot that goes quiet stops slicing — no ghost blade
+ok 123 - a slot that goes quiet stops slicing — no ghost blade
+  ---
+  duration_ms: 0.126541
+  type: 'test'
+  ...
+# Subtest: start() resets every known player's score but keeps their slot
+ok 124 - start() resets every known player's score but keeps their slot
+  ---
+  duration_ms: 0.208041
+  type: 'test'
+  ...
+# Subtest: practice: a bomb costs both the shared total and the popping player
+ok 125 - practice: a bomb costs both the shared total and the popping player
+  ---
+  duration_ms: 0.167542
+  type: 'test'
+  ...
+# Subtest: the shared life pool costs everyone, regardless of who is playing
+ok 126 - the shared life pool costs everyone, regardless of who is playing
+  ---
+  duration_ms: 0.067667
+  type: 'test'
+  ...
+# Subtest: a 300ms-late stroke fast-forwards to the same ball as the authority without changing the event
+ok 127 - a 300ms-late stroke fast-forwards to the same ball as the authority without changing the event
+  ---
+  duration_ms: 1.977083
+  type: 'test'
+  ...
+# Subtest: address latches aim, release is idempotent, and another seat cannot strike
+ok 128 - address latches aim, release is idempotent, and another seat cannot strike
+  ---
+  duration_ms: 0.597417
+  type: 'test'
+  ...
+# Subtest: seeded courses reproduce tees, pin, bounds and wind
+ok 129 - seeded courses reproduce tees, pin, bounds and wind
+  ---
+  duration_ms: 0.534833
+  type: 'test'
+  ...
+# Subtest: match and skins score wins; tied skins carry
+ok 130 - match and skins score wins; tied skins carry
+  ---
+  duration_ms: 0.220333
+  type: 'test'
+  ...
+# Subtest: all golf modes complete with four idle players and seeded wind
+ok 131 - all golf modes complete with four idle players and seeded wind
+  ---
+  duration_ms: 41.262
+  type: 'test'
+  ...
+# Subtest: four-player match play uses opposing best-ball pairs and shares team points
+ok 132 - four-player match play uses opposing best-ball pairs and shares team points
+  ---
+  duration_ms: 0.221334
+  type: 'test'
+  ...
+# Subtest: honours use the previous hole, not the total
+ok 133 - honours use the previous hole, not the total
+  ---
+  duration_ms: 0.494042
+  type: 'test'
+  ...
+# Subtest: an idle connected golfer gets a timed automatic shot
+ok 134 - an idle connected golfer gets a timed automatic shot
+  ---
+  duration_ms: 0.3385
+  type: 'test'
+  ...
+# Subtest: a repeated stroke sequence cannot hit the ball again
+ok 135 - a repeated stroke sequence cannot hit the ball again
+  ---
+  duration_ms: 0.078375
+  type: 'test'
+  ...
+# Subtest: the terrain is deterministic and gentle
+ok 136 - the terrain is deterministic and gentle
+  ---
+  duration_ms: 0.423208
+  type: 'test'
+  ...
+# Subtest: club selection follows remaining distance
+ok 137 - club selection follows remaining distance
+  ---
+  duration_ms: 0.093917
+  type: 'test'
+  ...
+# Subtest: a full-power drive flies a plausible distance down the hole line
+ok 138 - a full-power drive flies a plausible distance down the hole line
+  ---
+  duration_ms: 4.321667
+  type: 'test'
+  ...
+# Subtest: the green is landable — the phase-3 headline bar
+ok 139 - the green is landable — the phase-3 headline bar
+  ---
+  duration_ms: 4.936833
+  type: 'test'
+  ...
+# Subtest: a putt rolls out and the cup captures a slow ball
+ok 140 - a putt rolls out and the cup captures a slow ball
+  ---
+  duration_ms: 2.820458
+  type: 'test'
+  ...
+# Subtest: a whole hole is completable, strokes counted
+ok 141 - a whole hole is completable, strokes counted
+  ---
+  duration_ms: 2.932292
+  type: 'test'
+  ...
+# Subtest: golf accepts only the current player's shot and never double-hits a moving ball
+ok 142 - golf accepts only the current player's shot and never double-hits a moving ball
+  ---
+  duration_ms: 10.360209
+  type: 'test'
+  ...
+# Subtest: golf resets each golfer per hole, caps strokes and produces a cumulative scorecard
+ok 143 - golf resets each golfer per hole, caps strokes and produces a cumulative scorecard
+  ---
+  duration_ms: 0.441292
+  type: 'test'
+  ...
+# Subtest: a disconnected golfer gets a grace period and then a safe automatic shot
+ok 144 - a disconnected golfer gets a grace period and then a safe automatic shot
+  ---
+  duration_ms: 0.845791
+  type: 'test'
+  ...
+# Subtest: seeded CPU golfers take bounded turns without phone input
+ok 145 - seeded CPU golfers take bounded turns without phone input
+  ---
+  duration_ms: 20.313667
+  type: 'test'
+  ...
+# Subtest: the island is deterministic, has a peak, and falls into the sea
+ok 146 - the island is deterministic, has a peak, and falls into the sea
+  ---
+  duration_ms: 0.863125
+  type: 'test'
+  ...
+# Subtest: i-points sit above ground, inside the world, none duplicated
+ok 147 - i-points sit above ground, inside the world, none duplicated
+  ---
+  duration_ms: 0.45
+  type: 'test'
+  ...
+# Subtest: banking turns; level tilt flies straight and holds altitude
+ok 148 - banking turns; level tilt flies straight and holds altitude
+  ---
+  duration_ms: 2.231041
+  type: 'test'
+  ...
+# Subtest: terrain and world edges push back instead of crashing
+ok 149 - terrain and world edges push back instead of crashing
+  ---
+  duration_ms: 55.597167
+  type: 'test'
+  ...
+# Subtest: all 20 i-points are collectible — the island tour is flyable
+ok 150 - all 20 i-points are collectible — the island tour is flyable
+  ---
+  duration_ms: 19.747041
+  type: 'test'
+  ...
+# Subtest: the circuit is closed, deterministic, and bends both ways
+ok 151 - the circuit is closed, deterministic, and bends both ways
+  ---
+  duration_ms: 0.662791
+  type: 'test'
+  ...
+# Subtest: tilt steers: bank right curves the kart right, straight goes straight
+ok 152 - tilt steers: bank right curves the kart right, straight goes straight
+  ---
+  duration_ms: 7.525083
+  type: 'test'
+  ...
+# Subtest: grass is slow: off the track the kart drops to crawl speed
+ok 153 - grass is slow: off the track the kart drops to crawl speed
+  ---
+  duration_ms: 0.462417
+  type: 'test'
+  ...
+# Subtest: three laps: checkpoints in order, lap times recorded, race completes
+ok 154 - three laps: checkpoints in order, lap times recorded, race completes
+  ---
+  duration_ms: 10.771708
+  type: 'test'
+  ...
+# Subtest: the ghost is the best lap, replayable at any time offset
+ok 155 - the ghost is the best lap, replayable at any time offset
+  ---
+  duration_ms: 5.9065
+  type: 'test'
+  ...
+# Subtest: tDiff wraps: the shortest way from 0.98 to 0.02 is forward
+ok 156 - tDiff wraps: the shortest way from 0.98 to 0.02 is forward
+  ---
+  duration_ms: 0.074583
+  type: 'test'
+  ...
+# Subtest: Time Trial nitro requires gas, releases between uses and keeps three-use stock
+ok 157 - Time Trial nitro requires gas, releases between uses and keeps three-use stock
+  ---
+  duration_ms: 7.595375
+  type: 'test'
+  ...
+# Subtest: a wall between kart and chase eye pulls the camera to the kart side
+ok 158 - a wall between kart and chase eye pulls the camera to the kart side
+  ---
+  duration_ms: 3.395125
+  type: 'test'
+  ...
+# Subtest: a nearby wall outside the view segment does not move the camera
+ok 159 - a nearby wall outside the view segment does not move the camera
+  ---
+  duration_ms: 0.578458
+  type: 'test'
+  ...
+# Subtest: an angled thin wall uses its oriented face rather than its broad-phase box
+ok 160 - an angled thin wall uses its oriented face rather than its broad-phase box
+  ---
+  duration_ms: 0.955417
+  type: 'test'
+  ...
+# Subtest: collision snapshots survive removal of source meshes for scenery batching
+ok 161 - collision snapshots survive removal of source meshes for scenery batching
+  ---
+  duration_ms: 0.588208
+  type: 'test'
+  ...
+# Subtest: nearby rail moves the eye to a clear side instead of inside the driver
+ok 162 - nearby rail moves the eye to a clear side instead of inside the driver
+  ---
+  duration_ms: 1.891708
+  type: 'test'
+  ...
+# Subtest: unobstructed chase eye remains exact
+ok 163 - unobstructed chase eye remains exact
+  ---
+  duration_ms: 0.300333
+  type: 'test'
+  ...
+# Subtest: an overlapping rail never pulls the eye into the head when its top remains visible
+ok 164 - an overlapping rail never pulls the eye into the head when its top remains visible
+  ---
+  duration_ms: 0.206667
+  type: 'test'
+  ...
+# Subtest: translation compensation preserves the driver to view-axis angle
+ok 165 - translation compensation preserves the driver to view-axis angle
+  ---
+  duration_ms: 0.143667
+  type: 'test'
+  ...
+# Subtest: a brief alternate clear view does not teleport the camera
+ok 166 - a brief alternate clear view does not teleport the camera
+  ---
+  duration_ms: 0.126333
+  type: 'test'
+  ...
+# Subtest: rear impact conserves equal-mass momentum and separates at 40% of closing speed
+ok 167 - rear impact conserves equal-mass momentum and separates at 40% of closing speed
+  ---
+  duration_ms: 0.822083
+  type: 'test'
+  ...
+# Subtest: separating bodies get no second kick while overlap resolves
+ok 168 - separating bodies get no second kick while overlap resolves
+  ---
+  duration_ms: 0.886375
+  type: 'test'
+  ...
+# Subtest: side swipe redirects motion sideways without steering the player
+ok 169 - side swipe redirects motion sideways without steering the player
+  ---
+  duration_ms: 0.165042
+  type: 'test'
+  ...
+# Subtest: vertical bank transfers lateral momentum in world Y, not a horizontal approximation
+ok 170 - vertical bank transfers lateral momentum in world Y, not a horizontal approximation
+  ---
+  duration_ms: 0.18475
+  type: 'test'
+  ...
+# Subtest: rendered head center excludes the sibling body and follows cached head motion
+ok 171 - rendered head center excludes the sibling body and follows cached head motion
+  ---
+  duration_ms: 3.420167
+  type: 'test'
+  ...
+# Subtest: generated head geometry supplies its center through model scale
+ok 172 - generated head geometry supplies its center through model scale
+  ---
+  duration_ms: 1.340542
+  type: 'test'
+  ...
+# Subtest: models without a usable head retain their existing fallback anchor
+ok 173 - models without a usable head retain their existing fallback anchor
+  ---
+  duration_ms: 0.101041
+  type: 'test'
+  ...
+# Subtest: steady glide preserves its descent angle and integrates actual height
+ok 174 - steady glide preserves its descent angle and integrates actual height
+  ---
+  duration_ms: 0.357208
+  type: 'test'
+  ...
+# Subtest: lift arrests a steep dive without reversing vertical motion
+ok 175 - lift arrests a steep dive without reversing vertical motion
+  ---
+  duration_ms: 0.13675
+  type: 'test'
+  ...
+# Subtest: measured launch height gives a sustained glide instead of a short fall
+ok 176 - measured launch height gives a sustained glide instead of a short fall
+  ---
+  duration_ms: 0.143
+  type: 'test'
+  ...
+# Subtest: descent result does not depend on render cadence
+ok 177 - descent result does not depend on render cadence
+  ---
+  duration_ms: 0.688042
+  type: 'test'
+  ...
+# Subtest: braking to zero still produces a finite descending flight
+ok 178 - braking to zero still produces a finite descending flight
+  ---
+  duration_ms: 0.218375
+  type: 'test'
+  ...
+# Subtest: canopy stays deployed at touchdown, then closes continuously and pauses with race time
+ok 179 - canopy stays deployed at touchdown, then closes continuously and pauses with race time
+  ---
+  duration_ms: 0.375292
+  type: 'test'
+  ...
+# Subtest: interrupted deployment closes from its actual width and a new launch restarts it
+ok 180 - interrupted deployment closes from its actual width and a new launch restarts it
+  ---
+  duration_ms: 0.105709
+  type: 'test'
+  ...
+# Subtest: both landscape grips honor the device-pinned east-end-down sign
+ok 181 - both landscape grips honor the device-pinned east-end-down sign
+  ---
+  duration_ms: 1.244417
+  type: 'test'
+  ...
+# Subtest: one tilted/moving countdown sample never becomes a permanent wrong neutral
+ok 182 - one tilted/moving countdown sample never becomes a permanent wrong neutral
+  ---
+  duration_ms: 3.2805
+  type: 'test'
+  ...
+# Subtest: invalid samples cannot contaminate steering; idle/stale input becomes neutral
+ok 183 - invalid samples cannot contaminate steering; idle/stale input becomes neutral
+  ---
+  duration_ms: 0.184333
+  type: 'test'
+  ...
+# Subtest: multi-touch holds, individual release, snapshots, and stale holds
+ok 184 - multi-touch holds, individual release, snapshots, and stale holds
+  ---
+  duration_ms: 0.214
+  type: 'test'
+  ...
+# Subtest: holding a real corner is never slowly mistaken for sensor bias
+ok 185 - holding a real corner is never slowly mistaken for sensor bias
+  ---
+  duration_ms: 9.857542
+  type: 'test'
+  ...
+# Subtest: invert preference reverses direction, reset requires fresh stable neutral
+ok 186 - invert preference reverses direction, reset requires fresh stable neutral
+  ---
+  duration_ms: 0.192292
+  type: 'test'
+  ...
+# Subtest: all simulation events have sound slots and registered synth fallbacks
+ok 187 - all simulation events have sound slots and registered synth fallbacks
+  ---
+  duration_ms: 0.335125
+  type: 'test'
+  ...
+# Subtest: eight model specifications have distinct silhouettes, named wheel pivots and finite dimensions
+ok 188 - eight model specifications have distinct silhouettes, named wheel pivots and finite dimensions
+  ---
+  duration_ms: 1.207584
+  type: 'test'
+  ...
+# Subtest: Mario Kart uses A for drift and right for items, with separate brake and gas
+ok 189 - Mario Kart uses A for drift and right for items, with separate brake and gas
+  ---
+  duration_ms: 0.312833
+  type: 'test'
+  ...
+# Subtest: finished chassis rear contact starts before the old circular threshold
+ok 190 - finished chassis rear contact starts before the old circular threshold
+  ---
+  duration_ms: 0.748
+  type: 'test'
+  ...
+# Subtest: parallel karts can pass with a gap wider than their measured 2.498m bodies
+ok 191 - parallel karts can pass with a gap wider than their measured 2.498m bodies
+  ---
+  duration_ms: 0.281542
+  type: 'test'
+  ...
+# Subtest: contact follows the heading and diagonal drift silhouette
+ok 192 - contact follows the heading and diagonal drift silhouette
+  ---
+  duration_ms: 0.106584
+  type: 'test'
+  ...
+# Subtest: crossing road layers and vertically separated flight do not collide
+ok 193 - crossing road layers and vertically separated flight do not collide
+  ---
+  duration_ms: 0.04375
+  type: 'test'
+  ...
+# Subtest: banked neighbors collide using their surface footprint, not world height alone
+ok 194 - banked neighbors collide using their surface footprint, not world height alone
+  ---
+  duration_ms: 0.098792
+  type: 'test'
+  ...
+# Subtest: pack solver clears independently measured body rectangles and retains steering
+ok 195 - pack solver clears independently measured body rectangles and retains steering
+  ---
+  duration_ms: 5.961125
+  type: 'test'
+  ...
+# Subtest: a centre still inside the road is corrected before the body crosses the wall
+ok 196 - a centre still inside the road is corrected before the body crosses the wall
+  ---
+  duration_ms: 0.448375
+  type: 'test'
+  ...
+# Subtest: wall clearance uses physical width on a near-vertical road
+ok 197 - wall clearance uses physical width on a near-vertical road
+  ---
+  duration_ms: 0.14525
+  type: 'test'
+  ...
+# Subtest: the forward corners see a narrowing before the centre gets there
+ok 198 - the forward corners see a narrowing before the centre gets there
+  ---
+  duration_ms: 0.090084
+  type: 'test'
+  ...
+# Subtest: flat hover tires reserve more width and a central racer is untouched
+ok 199 - flat hover tires reserve more width and a central racer is untouched
+  ---
+  duration_ms: 0.327167
+  type: 'test'
+  ...
+# Subtest: last place item distribution adapts to a two-driver grid
+ok 200 - last place item distribution adapts to a two-driver grid
+  ---
+  duration_ms: 0.555417
+  type: 'test'
+  ...
+# Subtest: a connected idle rival cannot hold the finishing race forever
+ok 201 - a connected idle rival cannot hold the finishing race forever
+  ---
+  duration_ms: 28.251083
+  type: 'test'
+  ...
+# Subtest: course length independently equals the polyline perimeter and projection closes at seam
+ok 202 - course length independently equals the polyline perimeter and projection closes at seam
+  ---
+  duration_ms: 0.789083
+  type: 'test'
+  ...
+# Subtest: track offset is perpendicular to tangent; banked elevation follows geometry
+ok 203 - track offset is perpendicular to tangent; banked elevation follows geometry
+  ---
+  duration_ms: 0.20725
+  type: 'test'
+  ...
+# Subtest: zero steering is a straight world-space line; no uncommanded yaw
+ok 204 - zero steering is a straight world-space line; no uncommanded yaw
+  ---
+  duration_ms: 25.519416
+  type: 'test'
+  ...
+# Subtest: acceleration, coasting, brake and controlled reverse have distinct effects
+ok 205 - acceleration, coasting, brake and controlled reverse have distinct effects
+  ---
+  duration_ms: 34.412375
+  type: 'test'
+  ...
+# Subtest: coins monotonically improve top speed and cap at ten
+ok 206 - coins monotonically improve top speed and cap at ten
+  ---
+  duration_ms: 2.745042
+  type: 'test'
+  ...
+# Subtest: off-road loses speed, mushroom crosses grass at racing speed
+ok 207 - off-road loses speed, mushroom crosses grass at racing speed
+  ---
+  duration_ms: 18.218625
+  type: 'test'
+  ...
+# Subtest: walls contain the kart without reversing its heading or creating NaN
+ok 208 - walls contain the kart without reversing its heading or creating NaN
+  ---
+  duration_ms: 12.367708
+  type: 'test'
+  ...
+# Subtest: boost pads activate spatially, unrelated center lane does not
+ok 209 - boost pads activate spatially, unrelated center lane does not
+  ---
+  duration_ms: 7.959375
+  type: 'test'
+  ...
+# Subtest: fixed step yields same physical result for 30, 60, 144 Hz presentation
+ok 210 - fixed step yields same physical result for 30, 60, 144 Hz presentation
+  ---
+  duration_ms: 41.682125
+  type: 'test'
+  ...
+# Subtest: NaN/infinity steering and dropped frame are bounded
+ok 211 - NaN/infinity steering and dropped frame are bounded
+  ---
+  duration_ms: 2.029167
+  type: 'test'
+  ...
+# Subtest: rocket start rewards the second-light window and burns out early holding
+ok 212 - rocket start rewards the second-light window and burns out early holding
+  ---
+  duration_ms: 8.963667
+  type: 'test'
+  ...
+# Subtest: hop only starts on a fresh press; held drift charges three increasing tiers
+ok 213 - hop only starts on a fresh press; held drift charges three increasing tiers
+  ---
+  duration_ms: 13.777125
+  type: 'test'
+  ...
+# Subtest: item roulette is delayed, contains only supported items and favors recovery at back
+ok 214 - item roulette is delayed, contains only supported items and favors recovery at back
+  ---
+  duration_ms: 22.797917
+  type: 'test'
+  ...
+# Subtest: every usable item is consumed and produces its own mechanical effect
+ok 215 - every usable item is consumed and produces its own mechanical effect
+  ---
+  duration_ms: 10.974708
+  type: 'test'
+  ...
+# Subtest: banana placement is behind its owner and collides with an approaching racer
+ok 216 - banana placement is behind its owner and collides with an approaching racer
+  ---
+  duration_ms: 3.801208
+  type: 'test'
+  ...
+# Subtest: green shell ricochets and swept collision catches a crossing
+ok 217 - green shell ricochets and swept collision catches a crossing
+  ---
+  duration_ms: 1.950166
+  type: 'test'
+  ...
+# Subtest: red shell homes toward the nearest opponent ahead; blue targets leader
+ok 218 - red shell homes toward the nearest opponent ahead; blue targets leader
+  ---
+  duration_ms: 2.5135
+  type: 'test'
+  ...
+# Subtest: star prevents spin and collision immunity prevents repeat punishment
+ok 219 - star prevents spin and collision immunity prevents repeat punishment
+  ---
+  duration_ms: 21.490292
+  type: 'test'
+  ...
+# Subtest: anti-gravity enables only on marked section and contact grants spin boost
+ok 220 - anti-gravity enables only on marked section and contact grants spin boost
+  ---
+  duration_ms: 1.465958
+  type: 'test'
+  ...
+# Subtest: glider launches across the actual gap then lands on returning pavement
+ok 221 - glider launches across the actual gap then lands on returning pavement
+  ---
+  duration_ms: 16.099334
+  type: 'test'
+  ...
+# Subtest: finish line oscillation and reverse driving cannot manufacture laps
+ok 222 - finish line oscillation and reverse driving cannot manufacture laps
+  ---
+  duration_ms: 39.150959
+  type: 'test'
+  ...
+# Subtest: eight distinct racers finish three laps through all gates with deterministic standings
+ok 223 - eight distinct racers finish three laps through all gates with deterministic standings
+  ---
+  duration_ms: 665.796459
+  type: 'test'
+  ...
+# Subtest: CPU rubber band is bounded and does not teleport or finish without driving
+ok 224 - CPU rubber band is bounded and does not teleport or finish without driving
+  ---
+  duration_ms: 1.548458
+  type: 'test'
+  ...
+# Subtest: red and blue shells actually reach and spin their intended targets
+ok 225 - red and blue shells actually reach and spin their intended targets
+  ---
+  duration_ms: 6.635375
+  type: 'test'
+  ...
+# Subtest: race completion remains viable across different item and AI seeds
+ok 226 - race completion remains viable across different item and AI seeds
+  ---
+  duration_ms: 2846.493375
+  type: 'test'
+  ...
+# Subtest: a slow launch still deploys the glider; a novice cannot fall through the gap
+ok 227 - a slow launch still deploys the glider; a novice cannot fall through the gap
+  ---
+  duration_ms: 0.837583
+  type: 'test'
+  ...
+# Subtest: player starts eighth and malformed character choice retains all eight unique racers
+ok 228 - player starts eighth and malformed character choice retains all eight unique racers
+  ---
+  duration_ms: 0.125583
+  type: 'test'
+  ...
+# Subtest: results continue automatic driving without changing finish times or accepting player braking
+ok 229 - results continue automatic driving without changing finish times or accepting player braking
+  ---
+  duration_ms: 5.724292
+  type: 'test'
+  ...
+# Subtest: same mystery box becomes collectible again after one second
+ok 230 - same mystery box becomes collectible again after one second
+  ---
+  duration_ms: 4.737208
+  type: 'test'
+  ...
+# Subtest: shell launch events identify the exact projectile, including consecutive throws
+ok 231 - shell launch events identify the exact projectile, including consecutive throws
+  ---
+  duration_ms: 1.053625
+  type: 'test'
+  ...
+# Subtest: one-lap race finishes at eight gates and keeps driving after early results
+ok 232 - one-lap race finishes at eight gates and keeps driving after early results
+  ---
+  duration_ms: 180.666875
+  type: 'test'
+  ...
+# Subtest: racing defaults to humans only for two through four players, preserving solo CPUs
+ok 233 - racing defaults to humans only for two through four players, preserving solo CPUs
+  ---
+  duration_ms: 1.093875
+  type: 'test'
+  ...
+# Subtest: independent human inputs, boost supplies and reconnect autopilot
+ok 234 - independent human inputs, boost supplies and reconnect autopilot
+  ---
+  duration_ms: 17.344584
+  type: 'test'
+  ...
+# Subtest: one finisher cannot end another human's race
+ok 235 - one finisher cannot end another human's race
+  ---
+  duration_ms: 0.258667
+  type: 'test'
+  ...
+# Subtest: a chase camera survives a hidden frame and recovers its visible aspect
+ok 236 - a chase camera survives a hidden frame and recovers its visible aspect
+  ---
+  duration_ms: 4.1205
+  type: 'test'
+  ...
+# Subtest: one through four race views keep valid draw areas across hide and resize
+ok 237 - one through four race views keep valid draw areas across hide and resize
+  ---
+  duration_ms: 13.286542
+  type: 'test'
+  ...
+# Subtest: race quality multiplies native sharpness and respects the budget after a 4K resize
+ok 238 - race quality multiplies native sharpness and respects the budget after a 4K resize
+  ---
+  duration_ms: 27.286041
+  type: 'test'
+  ...
+# Subtest: one to four internal cameras each stay inside their pixel allowance
+ok 239 - one to four internal cameras each stay inside their pixel allowance
+  ---
+  duration_ms: 1.931917
+  type: 'test'
+  ...
+# Subtest: party wheel honors normalized steering and full pedal snapshots with stale-input failsafe
+ok 240 - party wheel honors normalized steering and full pedal snapshots with stale-input failsafe
+  ---
+  duration_ms: 0.499208
+  type: 'test'
+  ...
+# Subtest: nitro is an edge-triggered burst with an eight-second cooldown and brake priority
+ok 241 - nitro is an edge-triggered burst with an eight-second cooldown and brake priority
+  ---
+  duration_ms: 1.410667
+  type: 'test'
+  ...
+# Subtest: a race has three nitro uses; holding, invalid taps and reconnects cannot refill them
+ok 242 - a race has three nitro uses; holding, invalid taps and reconnects cannot refill them
+  ---
+  duration_ms: 28.635542
+  type: 'test'
+  ...
+# Subtest: party menu cannot override room laps or fullscreen, while driver confirmation starts the local view
+ok 243 - party menu cannot override room laps or fullscreen, while driver confirmation starts the local view
+  ---
+  duration_ms: 0.660958
+  type: 'test'
+  ...
+# Subtest: standalone keeps driver confirmation, lap choice, then Start, plus its fullscreen control
+ok 244 - standalone keeps driver confirmation, lap choice, then Start, plus its fullscreen control
+  ---
+  duration_ms: 0.089125
+  type: 'test'
+  ...
+# Subtest: party setup wins over a conflicting saved preference and an absent setup uses the room default
+ok 245 - party setup wins over a conflicting saved preference and an absent setup uses the room default
+  ---
+  duration_ms: 0.265958
+  type: 'test'
+  ...
+# Subtest: shell hit separates incoming impact, outgoing confirmation and self-hit
+ok 246 - shell hit separates incoming impact, outgoing confirmation and self-hit
+  ---
+  duration_ms: 0.819292
+  type: 'test'
+  ...
+# Subtest: distant owned shell confirms the hit without a nearby crash; other distant hits are silent
+ok 247 - distant owned shell confirms the hit without a nearby crash; other distant hits are silent
+  ---
+  duration_ms: 0.0715
+  type: 'test'
+  ...
+# Subtest: missing shell-specific samples retain the old audible crash for incoming shells
+ok 248 - missing shell-specific samples retain the old audible crash for incoming shells
+  ---
+  duration_ms: 0.146291
+  type: 'test'
+  ...
+# Subtest: inaudible suspended audio cannot hold the results screen indefinitely
+ok 249 - inaudible suspended audio cannot hold the results screen indefinitely
+  ---
+  duration_ms: 0.053
+  type: 'test'
+  ...
+# Subtest: results follow the short finish sample, independently of the longer placement fanfare
+ok 250 - results follow the short finish sample, independently of the longer placement fanfare
+  ---
+  duration_ms: 0.184541
+  type: 'test'
+  ...
+# Subtest: star activation preserves other instances and restores authored material state
+ok 251 - star activation preserves other instances and restores authored material state
+  ---
+  duration_ms: 2.867875
+  type: 'test'
+  ...
+# Subtest: star does not overwrite the source wheel emission controller
+ok 252 - star does not overwrite the source wheel emission controller
+  ---
+  duration_ms: 0.26375
+  type: 'test'
+  ...
+# Subtest: twinkles stay within the kart envelope and disappear when star ends
+ok 253 - twinkles stay within the kart envelope and disappear when star ends
+  ---
+  duration_ms: 0.80825
+  type: 'test'
+  ...
+# Subtest: hover updates preserve the composed star shader and isolate cloned tire uniforms
+ok 254 - hover updates preserve the composed star shader and isolate cloned tire uniforms
+  ---
+  duration_ms: 0.252792
+  type: 'test'
+  ...
+# Subtest: physical travel continues through an outside corner with a fixed nearest route vertex
+ok 255 - physical travel continues through an outside corner with a fixed nearest route vertex
+  ---
+  duration_ms: 13.219291
+  type: 'test'
+  ...
+# Subtest: triangle support matches an independently specified sloped plane
+ok 256 - triangle support matches an independently specified sloped plane
+  ---
+  duration_ms: 0.216583
+  type: 'test'
+  ...
+# Subtest: raised paint wins over its asphalt, while a separate deck stays separate
+ok 257 - raised paint wins over its asphalt, while a separate deck stays separate
+  ---
+  duration_ms: 0.1135
+  type: 'test'
+  ...
+# Subtest: road bounds join a narrow divider but preserve a separate road branch
+ok 258 - road bounds join a narrow divider but preserve a separate road branch
+  ---
+  duration_ms: 0.565708
+  type: 'test'
+  ...
+# Subtest: driving bounds stay on the centerline branch when a kart approaches an isolated strip
+ok 259 - driving bounds stay on the centerline branch when a kart approaches an isolated strip
+  ---
+  duration_ms: 0.251167
+  type: 'test'
+  ...
+# Subtest: 3D steering direction survives camber that passes vertical
+ok 260 - 3D steering direction survives camber that passes vertical
+  ---
+  duration_ms: 0.268584
+  type: 'test'
+  ...
+# Subtest: lateral metres retain their physical width on an 86-degree road
+ok 261 - lateral metres retain their physical width on an 86-degree road
+  ---
+  duration_ms: 6.903292
+  type: 'test'
+  ...
+# Subtest: straight input travels ten physical metres on flat and near-vertical planes
+ok 262 - straight input travels ten physical metres on flat and near-vertical planes
+  ---
+  duration_ms: 35.04075
+  type: 'test'
+  ...
+# Subtest: physical steering angle is unchanged by a steep bank
+ok 263 - physical steering angle is unchanged by a steep bank
+  ---
+  duration_ms: 4.940875
+  type: 'test'
+  ...
+# Subtest: surface contact separates actual chassis width along a tilted plane
+ok 264 - surface contact separates actual chassis width along a tilted plane
+  ---
+  duration_ms: 0.542875
+  type: 'test'
+  ...
+# Subtest: all actual road crossings have enough vertical clearance for karts and camera
+ok 265 - all actual road crossings have enough vertical clearance for karts and camera
+  ---
+  duration_ms: 7.874916
+  type: 'test'
+  ...
+# Subtest: a camera under the overpass stays with the lower road layer
+ok 266 - a camera under the overpass stays with the lower road layer
+  ---
+  duration_ms: 0.466125
+  type: 'test'
+  ...
+# Subtest: flight camera follows a measured 3-4-5 descent with perpendicular up
+ok 267 - flight camera follows a measured 3-4-5 descent with perpendicular up
+  ---
+  duration_ms: 0.400917
+  type: 'test'
+  ...
+# Subtest: airborne loss of forward speed keeps the chase eye behind the canopy
+ok 268 - airborne loss of forward speed keeps the chase eye behind the canopy
+  ---
+  duration_ms: 0.270459
+  type: 'test'
+  ...
+# Subtest: render frame is orthogonal and tangent to independently sampled pavement
+ok 269 - render frame is orthogonal and tangent to independently sampled pavement
+  ---
+  duration_ms: 3.374625
+  type: 'test'
+  ...
+# Subtest: chase camera stays above visible road, including climbing and banked shoulders
+ok 270 - chase camera stays above visible road, including climbing and banked shoulders
+  ---
+  duration_ms: 117.634958
+  type: 'test'
+  ...
+# Subtest: camera correction leaves off-track airspace alone and repairs underground view
+ok 271 - camera correction leaves off-track airspace alone and repairs underground view
+  ---
+  duration_ms: 0.640166
+  type: 'test'
+  ...
+# Subtest: landing interpolation stays above the ground plane
+ok 272 - landing interpolation stays above the ground plane
+  ---
+  duration_ms: 2.552292
+  type: 'test'
+  ...
+# Subtest: wheel support recovers a physical plane even when its shading normals are wrong
+ok 273 - wheel support recovers a physical plane even when its shading normals are wrong
+  ---
+  duration_ms: 1.026042
+  type: 'test'
+  ...
+# Subtest: a four centimetre bevel produces the axle-to-axle rise rather than its local slope
+ok 274 - a four centimetre bevel produces the axle-to-axle rise rather than its local slope
+  ---
+  duration_ms: 0.188208
+  type: 'test'
+  ...
+# Subtest: four wheel support keeps an inverted bank orientation
+ok 275 - four wheel support keeps an inverted bank orientation
+  ---
+  duration_ms: 0.897834
+  type: 'test'
+  ...
+# Subtest: missing wheel and a separate deck both retain the caller fallback
+ok 276 - missing wheel and a separate deck both retain the caller fallback
+  ---
+  duration_ms: 0.181666
+  type: 'test'
+  ...
+# Subtest: same target pays once, earlier shot wins regardless of seat order
+ok 277 - same target pays once, earlier shot wins regardless of seat order
+  ---
+  duration_ms: 1.536292
+  type: 'test'
+  ...
+# Subtest: ring claims are exclusive and dead ships can be revived by a teammate
+ok 278 - ring claims are exclusive and dead ships can be revived by a teammate
+  ---
+  duration_ms: 0.570833
+  type: 'test'
+  ...
+# Subtest: every shared mode ends within its cap and replays identical scores for four players
+ok 279 - every shared mode ends within its cap and replays identical scores for four players
+  ---
+  duration_ms: 170.901
+  type: 'test'
+  ...
+# Subtest: opt-in helpers participate without adding human result seats
+ok 280 - opt-in helpers participate without adding human result seats
+  ---
+  duration_ms: 51.405542
+  type: 'test'
+  ...
+# Subtest: S1: a shot inside the radius destroys the target, outside misses
+ok 281 - S1: a shot inside the radius destroys the target, outside misses
+  ---
+  duration_ms: 1.095875
+  type: 'test'
+  ...
+# Subtest: S2: normal targets are big and pay 10..30 by size
+ok 282 - S2: normal targets are big and pay 10..30 by size
+  ---
+  duration_ms: 0.395709
+  type: 'test'
+  ...
+# Subtest: S2: gold targets are small, drift on a sway, and pay GOLD_POINTS
+ok 283 - S2: gold targets are small, drift on a sway, and pay GOLD_POINTS
+  ---
+  duration_ms: 0.172459
+  type: 'test'
+  ...
+# Subtest: S2: shooting a bomb subtracts BOMB_PENALTY, floored at zero
+ok 284 - S2: shooting a bomb subtracts BOMB_PENALTY, floored at zero
+  ---
+  duration_ms: 0.106458
+  type: 'test'
+  ...
+# Subtest: placement: live targets never overlap, even with gold at full sway
+ok 285 - placement: live targets never overlap, even with gold at full sway
+  ---
+  duration_ms: 0.880792
+  type: 'test'
+  ...
+# Subtest: placement: every grid cell gets used over time
+ok 286 - placement: every grid cell gets used over time
+  ---
+  duration_ms: 0.339209
+  type: 'test'
+  ...
+# Subtest: S2: the spawn mix contains all three kinds in sane proportions
+ok 287 - S2: the spawn mix contains all three kinds in sane proportions
+  ---
+  duration_ms: 1.354041
+  type: 'test'
+  ...
+# Subtest: S3: the round ends at 60s with score, hits, bombs and accuracy
+ok 288 - S3: the round ends at 60s with score, hits, bombs and accuracy
+  ---
+  duration_ms: 1.192166
+  type: 'test'
+  ...
+# Subtest: S3: A restarts a finished round from zero
+ok 289 - S3: A restarts a finished round from zero
+  ---
+  duration_ms: 0.986541
+  type: 'test'
+  ...
+# Subtest: housekeeping: targets expire on TTL and the field never overfills
+ok 290 - housekeeping: targets expire on TTL and the field never overfills
+  ---
+  duration_ms: 1.103083
+  type: 'test'
+  ...
+# Subtest: shots after the buzzer do nothing
+ok 291 - shots after the buzzer do nothing
+  ---
+  duration_ms: 0.34575
+  type: 'test'
+  ...
+# Subtest: a swing around the AI guard scores; into the guard is parried
+ok 292 - a swing around the AI guard scores; into the guard is parried
+  ---
+  duration_ms: 0.58025
+  type: 'test'
+  ...
+# Subtest: the AI is open during windup and recover
+ok 293 - the AI is open during windup and recover
+  ---
+  duration_ms: 0.099791
+  type: 'test'
+  ...
+# Subtest: a perpendicular blade blocks; a parallel blade takes the hit
+ok 294 - a perpendicular blade blocks; a parallel blade takes the hit
+  ---
+  duration_ms: 0.193875
+  type: 'test'
+  ...
+# Subtest: a perpendicular blade mid-swing does not block
+ok 295 - a perpendicular blade mid-swing does not block
+  ---
+  duration_ms: 0.057708
+  type: 'test'
+  ...
+# Subtest: a match is completable to a player win
+ok 296 - a match is completable to a player win
+  ---
+  duration_ms: 0.137916
+  type: 'test'
+  ...
+# Subtest: a match is completable to a loss, driven only by the AI clock
+ok 297 - a match is completable to a loss, driven only by the AI clock
+  ---
+  duration_ms: 0.154708
+  type: 'test'
+  ...
+# Subtest: the sword basis is orthonormal and tracks attitude 1:1
+ok 298 - the sword basis is orthonormal and tracks attitude 1:1
+  ---
+  duration_ms: 0.182834
+  type: 'test'
+  ...
+# Subtest: bladeScreenAngle reads the blade line in screen space
+ok 299 - bladeScreenAngle reads the blade line in screen space
+  ---
+  duration_ms: 0.05125
+  type: 'test'
+  ...
+# Subtest: human opponent has a bounded strike window and separate guard
+ok 300 - human opponent has a bounded strike window and separate guard
+  ---
+  duration_ms: 0.769583
+  type: 'test'
+  ...
+# Subtest: simultaneous human attacks resolve equally without first-seat advantage
+ok 301 - simultaneous human attacks resolve equally without first-seat advantage
+  ---
+  duration_ms: 0.341667
+  type: 'test'
+  ...
+# Subtest: a serve clears the net and lands on the far side
+ok 302 - a serve clears the net and lands on the far side
+  ---
+  duration_ms: 0.731916
+  type: 'test'
+  ...
+# Subtest: a tracked return clears the net back to the AI half
+ok 303 - a tracked return clears the net back to the AI half
+  ---
+  duration_ms: 0.706916
+  type: 'test'
+  ...
+# Subtest: a rally is sustainable — the phase-3 headline bar
+ok 304 - a rally is sustainable — the phase-3 headline bar
+  ---
+  duration_ms: 2.963042
+  type: 'test'
+  ...
+# Subtest: a paddle nowhere near the ball loses the point
+ok 305 - a paddle nowhere near the ball loses the point
+  ---
+  duration_ms: 0.353375
+  type: 'test'
+  ...
+# Subtest: the game ends at 11 with a winner
+ok 306 - the game ends at 11 with a winner
+  ---
+  duration_ms: 0.137542
+  type: 'test'
+  ...
+# Subtest: geometry sanity: hit planes bracket the table
+ok 307 - geometry sanity: hit planes bracket the table
+  ---
+  duration_ms: 0.040834
+  type: 'test'
+  ...
+# Subtest: opposing humans own independent paddle positions
+ok 308 - opposing humans own independent paddle positions
+  ---
+  duration_ms: 1.241417
+  type: 'test'
+  ...
+# Subtest: oval is continuous at straights, curves and closing seam
+ok 309 - oval is continuous at straights, curves and closing seam
+  ---
+  duration_ms: 0.798583
+  type: 'test'
+  ...
+# Subtest: gas moves forward, steering changes trajectory, brake reduces speed
+ok 310 - gas moves forward, steering changes trajectory, brake reduces speed
+  ---
+  duration_ms: 1.711708
+  type: 'test'
+  ...
+# Subtest: holding drift builds charge; releasing it adds speed
+ok 311 - holding drift builds charge; releasing it adds speed
+  ---
+  duration_ms: 1.000416
+  type: 'test'
+  ...
+# Subtest: frame rate does not change acceleration or path and reset clears charged inputs
+ok 312 - frame rate does not change acceleration or path and reset clears charged inputs
+  ---
+  duration_ms: 2.164
+  type: 'test'
+  ...
+# Subtest: driving up the ramp launches, preserves pace, glides and lands continuously
+ok 313 - driving up the ramp launches, preserves pace, glides and lands continuously
+  ---
+  duration_ms: 1.625209
+  type: 'test'
+  ...
+1..313
+# tests 313
+# suites 0
+# pass 313
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4379.009083
+
+> funcaster@0.2.0 test:party
+> node --test tests/party/*.test.cjs
+
+TAP version 13
+# Subtest: a ready phone receives limited controls after TV consent window; owner credentials stay private
+ok 1 - a ready phone receives limited controls after TV consent window; owner credentials stay private
+  ---
+  duration_ms: 97.706
+  type: 'test'
+  ...
+# Subtest: TV veto cancels auto-grant; explicit leave revokes all grants
+ok 2 - TV veto cancels auto-grant; explicit leave revokes all grants
+  ---
+  duration_ms: 72.100625
+  type: 'test'
+  ...
+# Subtest: the fifth phone queues, reconnects in place, and is promoted without a rescan
+ok 3 - the fifth phone queues, reconnects in place, and is promoted without a rescan
+  ---
+  duration_ms: 75.455417
+  type: 'test'
+  ...
+# Subtest: room locks reject new spectators but allow existing player recovery
+ok 4 - room locks reject new spectators but allow existing player recovery
+  ---
+  duration_ms: 47.6255
+  type: 'test'
+  ...
+# Subtest: staff unlock is room-scoped, rate limited, and separately revocable
+ok 5 - staff unlock is room-scoped, rate limited, and separately revocable
+  ---
+  duration_ms: 47.150209
+  type: 'test'
+  ...
+# Subtest: kiosk waits ten seconds, then rotates the waiting visitor into the next game
+ok 6 - kiosk waits ten seconds, then rotates the waiting visitor into the next game
+  ---
+  duration_ms: 155.882083
+  type: 'test'
+  ...
+# Subtest: short drops recover; sustained drops forfeit without restarting the survivor
+ok 7 - short drops recover; sustained drops forfeit without restarting the survivor
+  ---
+  duration_ms: 129.02575
+  type: 'test'
+  ...
+# Subtest: host removal records no forfeiture and does not abandon a three-person round
+ok 8 - host removal records no forfeiture and does not abandon a three-person round
+  ---
+  duration_ms: 69.158834
+  type: 'test'
+  ...
+# Subtest: an away duel pauses during grace and forfeits after it, without switching to Solo
+ok 9 - an away duel pauses during grace and forfeits after it, without switching to Solo
+  ---
+  duration_ms: 105.17975
+  type: 'test'
+  ...
+# Subtest: declining an active phone grant revokes it immediately
+ok 10 - declining an active phone grant revokes it immediately
+  ---
+  duration_ms: 44.727875
+  type: 'test'
+  ...
+# Subtest: four phones retain identity through repeated reconnects over websocket
+ok 11 - four phones retain identity through repeated reconnects over websocket
+  ---
+  duration_ms: 236.178875
+  type: 'test'
+  ...
+# Subtest: four phones retain identity through repeated reconnects over polling
+ok 12 - four phones retain identity through repeated reconnects over polling
+  ---
+  duration_ms: 256.510333
+  type: 'test'
+  ...
+# Subtest: four-seat identity palette and room isolation remain stable
+ok 13 - four-seat identity palette and room isolation remain stable
+  ---
+  duration_ms: 30.506125
+  type: 'test'
+  ...
+# Subtest: creator versions are immutable, owned, hash pinned and require complete review
+ok 14 - creator versions are immutable, owned, hash pinned and require complete review
+  ---
+  duration_ms: 12.275292
+  type: 'test'
+  ...
+# Subtest: corrupt saved bundles cannot publish
+ok 15 - corrupt saved bundles cannot publish
+  ---
+  duration_ms: 2.196542
+  type: 'test'
+  ...
+# Subtest: public gallery serves only published versions in an opaque sandbox and withdraws immediately
+ok 16 - public gallery serves only published versions in an opaque sandbox and withdraws immediately
+  ---
+  duration_ms: 36.801667
+  type: 'test'
+  ...
+# Subtest: ending a room requires the actual TV host and an explicit confirmation
+ok 17 - ending a room requires the actual TV host and an explicit confirmation
+  ---
+  duration_ms: 79.248167
+  type: 'test'
+  ...
+# Subtest: confirmed shutdown acknowledges, records one no-contest, ends all members, and invalidates reclaim without touching another room
+ok 18 - confirmed shutdown acknowledges, records one no-contest, ends all members, and invalidates reclaim without touching another room
+  ---
+  duration_ms: 53.863583
+  type: 'test'
+  ...
+# Subtest: a superseded host socket cannot shut down the reclaimed room
+ok 19 - a superseded host socket cannot shut down the reclaimed room
+  ---
+  duration_ms: 9.359209
+  type: 'test'
+  ...
+# Subtest: ordinary host-loss expiry retains its grace period and uses the same final cleanup
+ok 20 - ordinary host-loss expiry retains its grace period and uses the same final cleanup
+  ---
+  duration_ms: 76.553042
+  type: 'test'
+  ...
+# Subtest: all three games support solo through four players with bounded independent state
+ok 21 - all three games support solo through four players with bounded independent state
+  ---
+  duration_ms: 142.583125
+  type: 'test'
+  ...
+# Subtest: equivalent input gives every player identical opportunities and scores
+ok 22 - equivalent input gives every player identical opportunities and scores
+  ---
+  duration_ms: 11.105417
+  type: 'test'
+  ...
+# Subtest: star catches reward and hazards penalize without negative scores
+ok 23 - star catches reward and hazards penalize without negative scores
+  ---
+  duration_ms: 0.133667
+  type: 'test'
+  ...
+# Subtest: stale/disconnected input cannot score while its lane coasts
+ok 24 - stale/disconnected input cannot score while its lane coasts
+  ---
+  duration_ms: 0.183541
+  type: 'test'
+  ...
+# Subtest: invalid game and player lists fail closed; ended rounds do not keep scoring
+ok 25 - invalid game and player lists fail closed; ended rounds do not keep scoring
+  ---
+  duration_ms: 0.133416
+  type: 'test'
+  ...
+# Subtest: Neon Drift pedals accelerate, brake, boost, and stop scoring with stale inputs
+ok 26 - Neon Drift pedals accelerate, brake, boost, and stop scoring with stale inputs
+  ---
+  duration_ms: 0.311042
+  type: 'test'
+  ...
+# Subtest: Neon Drift gives independent limited boosts and replenishes only for a new round
+ok 27 - Neon Drift gives independent limited boosts and replenishes only for a new round
+  ---
+  duration_ms: 1.888083
+  type: 'test'
+  ...
+# Subtest: event counters and filtered leaderboards persist without identities or raw inputs
+ok 28 - event counters and filtered leaderboards persist without identities or raw inputs
+  ---
+  duration_ms: 1.775583
+  type: 'test'
+  ...
+# Subtest: local TLS works without OpenSSL and covers selected network addresses
+ok 29 - local TLS works without OpenSSL and covers selected network addresses
+  ---
+  duration_ms: 146.625209
+  type: 'test'
+  ...
+# Subtest: Kart replay follows the fixed-step race and rejects tampered input
+ok 30 - Kart replay follows the fixed-step race and rejects tampered input
+  ---
+  duration_ms: 115.609083
+  type: 'test'
+  ...
+# Subtest: Golf replay accepts sequenced address and simulates flight; cannot reset or score directly
+ok 31 - Golf replay accepts sequenced address and simulates flight; cannot reset or score directly
+  ---
+  duration_ms: 5.042833
+  type: 'test'
+  ...
+# Subtest: all six games replay fixed steps, reject score injection and cannot restart
+ok 32 - all six games replay fixed steps, reject score injection and cannot restart
+  ---
+  duration_ms: 39.077584
+  type: 'test'
+  ...
+# Subtest: a complete shooting round with hits round-trips from two independent boards
+ok 33 - a complete shooting round with hits round-trips from two independent boards
+  ---
+  duration_ms: 38.946917
+  type: 'test'
+  ...
+# Subtest: phone page guard blocks accidental gestures while sheets retain scrolling
+ok 34 - phone page guard blocks accidental gestures while sheets retain scrolling
+  ---
+  duration_ms: 0.701209
+  type: 'test'
+  ...
+# Subtest: Android Back opens the party sheet, preserves history state, and is reload-idempotent
+ok 35 - Android Back opens the party sheet, preserves history state, and is reload-idempotent
+  ---
+  duration_ms: 0.357541
+  type: 'test'
+  ...
+# Subtest: visual and sound feedback survive disabled or unavailable vibration
+ok 36 - visual and sound feedback survive disabled or unavailable vibration
+  ---
+  duration_ms: 0.803083
+  type: 'test'
+  ...
+# Subtest: feedback waits for sticky user activation before vibration while visuals and sound stay independent
+ok 37 - feedback waits for sticky user activation before vibration while visuals and sound stay independent
+  ---
+  duration_ms: 0.289125
+  type: 'test'
+  ...
+# Subtest: in-app coaching covers the named browsers without mistaking native Safari or Chrome
+ok 38 - in-app coaching covers the named browsers without mistaking native Safari or Chrome
+  ---
+  duration_ms: 0.450334
+  type: 'test'
+  ...
+# Subtest: phone metadata launches a real room-code page and has exactly one browser theme
+ok 39 - phone metadata launches a real room-code page and has exactly one browser theme
+  ---
+  duration_ms: 2.3895
+  type: 'test'
+  ...
+# Subtest: remote paint jobs retain known preferences and default to Luna
+ok 40 - remote paint jobs retain known preferences and default to Luna
+  ---
+  duration_ms: 1.829834
+  type: 'test'
+  ...
+# Subtest: seat lamps retain four shapes through join, queue and promotion
+ok 41 - seat lamps retain four shapes through join, queue and promotion
+  ---
+  duration_ms: 3.73875
+  type: 'test'
+  ...
+# Subtest: remote scaffold preserves every statically queried phone control without duplicate IDs
+ok 42 - remote scaffold preserves every statically queried phone control without duplicate IDs
+  ---
+  duration_ms: 0.567125
+  type: 'test'
+  ...
+# Subtest: only the designated ready host phone receives a text prompt; response text is never relayed
+ok 43 - only the designated ready host phone receives a text prompt; response text is never relayed
+  ---
+  duration_ms: 40.161458
+  type: 'test'
+  ...
+# Subtest: players, delegated host phone, staff, waiting phones, displays, game views and outsiders are denied
+ok 44 - players, delegated host phone, staff, waiting phones, displays, game views and outsiders are denied
+  ---
+  duration_ms: 43.793958
+  type: 'test'
+  ...
+# Subtest: a pending grant, unready, away, disconnected or revoked host phone cannot be targeted
+ok 45 - a pending grant, unready, away, disconnected or revoked host phone cannot be targeted
+  ---
+  duration_ms: 30.946708
+  type: 'test'
+  ...
+# Subtest: malformed payloads, other fields, other games, active rounds and kiosk mode are rejected
+ok 46 - malformed payloads, other fields, other games, active rounds and kiosk mode are rejected
+  ---
+  duration_ms: 19.591
+  type: 'test'
+  ...
+# Subtest: pending prompts are exclusive and a changed grant invalidates a late acknowledgement
+ok 47 - pending prompts are exclusive and a changed grant invalidates a late acknowledgement
+  ---
+  duration_ms: 8.104833
+  type: 'test'
+  ...
+# Subtest: the previous TV socket cannot prompt after room reclaim
+ok 48 - the previous TV socket cannot prompt after room reclaim
+  ---
+  duration_ms: 4.744375
+  type: 'test'
+  ...
+# Subtest: phone errors are sanitized, prompts are rate limited, and an unanswered prompt times out
+ok 49 - phone errors are sanitized, prompts are rate limited, and an unanswered prompt times out
+  ---
+  duration_ms: 2028.590334
+  type: 'test'
+  ...
+# Subtest: pointer validation builds bounded fresh samples and rejects malformed/nonfinite shapes
+ok 50 - pointer validation builds bounded fresh samples and rejects malformed/nonfinite shapes
+  ---
+  duration_ms: 1.90625
+  type: 'test'
+  ...
+# Subtest: shell samples reach only the host using stable seats without requiring ready
+ok 51 - shell samples reach only the host using stable seats without requiring ready
+  ---
+  duration_ms: 40.266791
+  type: 'test'
+  ...
+# Subtest: pointer sequence is independent of game input, malformed/replayed samples do not relay, reconnect resets it
+ok 52 - pointer sequence is independent of game input, malformed/replayed samples do not relay, reconnect resets it
+  ---
+  duration_ms: 54.164916
+  type: 'test'
+  ...
+# Subtest: pointer and button streams have independent per-phone time floors
+ok 53 - pointer and button streams have independent per-phone time floors
+  ---
+  duration_ms: 1058.035625
+  type: 'test'
+  ...
+# Subtest: only the host toggles pointer mode; away, waiting and playing phones cannot drive it
+ok 54 - only the host toggles pointer mode; away, waiting and playing phones cannot drive it
+  ---
+  duration_ms: 14.675542
+  type: 'test'
+  ...
+# Subtest: screen and viewer receive no shell events in results; classic game input is retained
+ok 55 - screen and viewer receive no shell events in results; classic game input is retained
+  ---
+  duration_ms: 36.660666
+  type: 'test'
+  ...
+# Subtest: pointer mode clears on host loss and stays off when a host reclaims
+ok 56 - pointer mode clears on host loss and stays off when a host reclaims
+  ---
+  duration_ms: 5.180583
+  type: 'test'
+  ...
+# Subtest: device diagnostics are sanitized and sent to the host only, never other or queued phones
+ok 57 - device diagnostics are sanitized and sent to the host only, never other or queued phones
+  ---
+  duration_ms: 27.974208
+  type: 'test'
+  ...
+# Subtest: pairing is scoped, capacity bounded and grants contain no owner credential
+ok 58 - pairing is scoped, capacity bounded and grants contain no owner credential
+  ---
+  duration_ms: 54.246667
+  type: 'test'
+  ...
+# Subtest: independent views gate start, scope scores and recover without restarting
+ok 59 - independent views gate start, scope scores and recover without restarting
+  ---
+  duration_ms: 130.630417
+  type: 'test'
+  ...
+# Subtest: screen build mismatch cannot pair; Kiosk disables remote grants
+ok 60 - screen build mismatch cannot pair; Kiosk disables remote grants
+  ---
+  duration_ms: 27.877458
+  type: 'test'
+  ...
+# Subtest: remote loss forfeits after ten seconds and does not spawn a replacement run
+ok 61 - remote loss forfeits after ten seconds and does not spawn a replacement run
+  ---
+  duration_ms: 83.555
+  type: 'test'
+  ...
+# Subtest: invalid screen links cannot consume or replace a phone seat
+ok 62 - invalid screen links cannot consume or replace a phone seat
+  ---
+  duration_ms: 32.211375
+  type: 'test'
+  ...
+# Subtest: leaving clears screen binding so the next player can use that screen
+ok 63 - leaving clears screen binding so the next player can use that screen
+  ---
+  duration_ms: 48.19425
+  type: 'test'
+  ...
+# Subtest: only the TV receives safe removed-player handles and creation time
+ok 64 - only the TV receives safe removed-player handles and creation time
+  ---
+  duration_ms: 32.069667
+  type: 'test'
+  ...
+# Subtest: restore requires owner membership, exact confirmation, and cannot be delegated
+ok 65 - restore requires owner membership, exact confirmation, and cannot be delegated
+  ---
+  duration_ms: 25.099125
+  type: 'test'
+  ...
+# Subtest: restore removes only the ban, preserves occupied seats/outcomes and allows a fresh join
+ok 66 - restore removes only the ban, preserves occupied seats/outcomes and allows a fresh join
+  ---
+  duration_ms: 11.623791
+  type: 'test'
+  ...
+# Subtest: restore handles are room scoped and expire with the ten-minute timeout
+ok 67 - restore handles are room scoped and expire with the ten-minute timeout
+  ---
+  duration_ms: 28.870041
+  type: 'test'
+  ...
+# Subtest: a replaced TV's captured handler cannot restore a removal
+ok 68 - a replaced TV's captured handler cannot restore a removal
+  ---
+  duration_ms: 6.189792
+  type: 'test'
+  ...
+# Subtest: focused OS results freeze only the current party countdown and release the remaining duration
+ok 69 - focused OS results freeze only the current party countdown and release the remaining duration
+  ---
+  duration_ms: 193.940125
+  type: 'test'
+  ...
+# Subtest: results holds reject phones, bad rounds and malformed payloads and release on host loss
+ok 70 - results holds reject phones, bad rounds and malformed payloads and release on host loss
+  ---
+  duration_ms: 134.6885
+  type: 'test'
+  ...
+# Subtest: unmodified classic countdowns and kiosk results still auto-return
+ok 71 - unmodified classic countdowns and kiosk results still auto-return
+  ---
+  duration_ms: 105.689875
+  type: 'test'
+  ...
+# Subtest: four slots, overflow, reconnect identity, and room isolation
+ok 72 - four slots, overflow, reconnect identity, and room isolation
+  ---
+  duration_ms: 52.391417
+  type: 'test'
+  ...
+# Subtest: controller cannot start, switch, or impersonate the host; malformed tokens are safe
+ok 73 - controller cannot start, switch, or impersonate the host; malformed tokens are safe
+  ---
+  duration_ms: 26.269208
+  type: 'test'
+  ...
+# Subtest: practice admits ready late arrivals; round participants lock at countdown; rematch resets score
+ok 74 - practice admits ready late arrivals; round participants lock at countdown; rematch resets score
+  ---
+  duration_ms: 149.690458
+  type: 'test'
+  ...
+# Subtest: returning to lobby waits for a choice; selecting a game restarts the ready crew
+ok 75 - returning to lobby waits for a choice; selecting a game restarts the ready crew
+  ---
+  duration_ms: 86.926083
+  type: 'test'
+  ...
+# Subtest: stale inputs stop scoring and disconnected active slots cannot be stolen
+ok 76 - stale inputs stop scoring and disconnected active slots cannot be stolen
+  ---
+  duration_ms: 46.444542
+  type: 'test'
+  ...
+# Subtest: host disconnect pauses the clock and the same tab can reclaim the party
+ok 77 - host disconnect pauses the clock and the same tab can reclaim the party
+  ---
+  duration_ms: 44.854792
+  type: 'test'
+  ...
+# Subtest: classics use authenticated, isolated screens and map a nonzero party slot to the solo driver
+ok 78 - classics use authenticated, isolated screens and map a nonzero party slot to the solo driver
+  ---
+  duration_ms: 172.768541
+  type: 'test'
+  ...
+# Subtest: classic multiplayer admits ready phones and solo next-player rotates the active driver
+ok 79 - classic multiplayer admits ready phones and solo next-player rotates the active driver
+  ---
+  duration_ms: 235.78325
+  type: 'test'
+  ...
+# Subtest: a solo classic holds the current turn through a brief phone disconnect and refresh
+ok 80 - a solo classic holds the current turn through a brief phone disconnect and refresh
+  ---
+  duration_ms: 127.234042
+  type: 'test'
+  ...
+# Subtest: a phone reconnect preserves its remaining Neon Drift boosts and exposes them in room state
+ok 81 - a phone reconnect preserves its remaining Neon Drift boosts and exposes them in room state
+  ---
+  duration_ms: 68.043667
+  type: 'test'
+  ...
+# Subtest: multiplayer gates at two humans and freezes an independent four-seat race
+ok 82 - multiplayer gates at two humans and freezes an independent four-seat race
+  ---
+  duration_ms: 131.256208
+  type: 'test'
+  ...
+# Subtest: isolated view inputs and one final scoreboard after every challenge finishes
+ok 83 - isolated view inputs and one final scoreboard after every challenge finishes
+  ---
+  duration_ms: 91.93275
+  type: 'test'
+  ...
+# Subtest: read-only displays cannot act as screens, publish snapshots or finish rounds
+ok 84 - read-only displays cannot act as screens, publish snapshots or finish rounds
+  ---
+  duration_ms: 104.960208
+  type: 'test'
+  ...
+# Subtest: old builds are rejected and host pause freezes round time
+ok 85 - old builds are rejected and host pause freezes round time
+  ---
+  duration_ms: 102.738291
+  type: 'test'
+  ...
+# Subtest: four-player bracket goes through two semifinals and a final
+ok 86 - four-player bracket goes through two semifinals and a final
+  ---
+  duration_ms: 118.182666
+  type: 'test'
+  ...
+# Subtest: playlist advances and leaving play emits an abandoned record
+ok 87 - playlist advances and leaving play emits an abandoned record
+  ---
+  duration_ms: 127.083166
+  type: 'test'
+  ...
+# Subtest: host can pick the two duel players explicitly
+ok 88 - host can pick the two duel players explicitly
+  ---
+  duration_ms: 68.66725
+  type: 'test'
+  ...
+# Subtest: drawing sends the secret only to its drawer and accepts bounded guesses from other seats
+ok 89 - drawing sends the secret only to its drawer and accepts bounded guesses from other seats
+  ---
+  duration_ms: 71.833916
+  type: 'test'
+  ...
+# Subtest: Slice Dojo scores come from its checked cursor log and malformed replay calls cannot crash the room
+ok 90 - Slice Dojo scores come from its checked cursor log and malformed replay calls cannot crash the room
+  ---
+  duration_ms: 112.232083
+  type: 'test'
+  ...
+# Subtest: a shared bubble can be claimed once, with identical results for reversed seat order
+ok 91 - a shared bubble can be claimed once, with identical results for reversed seat order
+  ---
+  duration_ms: 0.921125
+  type: 'test'
+  ...
+# Subtest: slipstream rewards a nearby following active driver, never a stopped or braking one
+ok 92 - slipstream rewards a nearby following active driver, never a stopped or braking one
+  ---
+  duration_ms: 0.2515
+  type: 'test'
+  ...
+# Subtest: shared rounds reproduce scores and reject malformed journals
+ok 93 - shared rounds reproduce scores and reject malformed journals
+  ---
+  duration_ms: 140.17775
+  type: 'test'
+  ...
+# Subtest: online Kart waits for paired views; viewers cannot forge scores and reload resumes the same race
+ok 94 - online Kart waits for paired views; viewers cannot forge scores and reload resumes the same race
+  ---
+  duration_ms: 307.143791
+  type: 'test'
+  ...
+# Subtest: online duel uses server scores; host pause freezes simulation
+ok 95 - online duel uses server scores; host pause freezes simulation
+  ---
+  duration_ms: 350.604959
+  type: 'test'
+  ...
+# Subtest: four-player shared Kart completes a race and its journal replays
+ok 96 - four-player shared Kart completes a race and its journal replays
+  ---
+  duration_ms: 383.769416
+  type: 'test'
+  ...
+# Subtest: loss of the main game frame is bounded and ends without inventing a winner
+ok 97 - loss of the main game frame is bounded and ends without inventing a winner
+  ---
+  duration_ms: 140.147292
+  type: 'test'
+  ...
+# Subtest: a host pause freezes the main frame recovery deadline
+ok 98 - a host pause freezes the main frame recovery deadline
+  ---
+  duration_ms: 185.259833
+  type: 'test'
+  ...
+# Subtest: shell routes keep classic by default and apply only explicit os/classic overrides
+ok 99 - shell routes keep classic by default and apply only explicit os/classic overrides
+  ---
+  duration_ms: 50.703375
+  type: 'test'
+  ...
+# Subtest: supplied source assets stay private through encoded, case and traversal URL forms
+ok 100 - supplied source assets stay private through encoded, case and traversal URL forms
+  ---
+  duration_ms: 11.477875
+  type: 'test'
+  ...
+# Subtest: voting rejects spectators, self-votes and duplicates and always ends
+ok 101 - voting rejects spectators, self-votes and duplicates and always ends
+  ---
+  duration_ms: 0.36825
+  type: 'test'
+  ...
+# Subtest: draw-and-guess keeps prompts private, scores one guess per player, and rotates every drawer
+ok 102 - draw-and-guess keeps prompts private, scores one guess per player, and rotates every drawer
+  ---
+  duration_ms: 2.54525
+  type: 'test'
+  ...
+# Subtest: Hindi prompts remain private; bilingual aliases and five-attempt penalty work
+ok 103 - Hindi prompts remain private; bilingual aliases and five-attempt penalty work
+  ---
+  duration_ms: 0.348917
+  type: 'test'
+  ...
+# Subtest: custom words are bounded, filtered and never leaked through a public prompt
+ok 104 - custom words are bounded, filtered and never leaked through a public prompt
+  ---
+  duration_ms: 0.074458
+  type: 'test'
+  ...
+# Subtest: seeded slicing replay validates scores and rejects reorder, invalid ticks and forged scores
+ok 105 - seeded slicing replay validates scores and rejects reorder, invalid ticks and forged scores
+  ---
+  duration_ms: 12.130667
+  type: 'test'
+  ...
+# Subtest: malformed replay commands fail safely
+ok 106 - malformed replay commands fail safely
+  ---
+  duration_ms: 0.123458
+  type: 'test'
+  ...
+# Subtest: delegated commands are checked; TV and PIN staff controls bypass chain reads
+ok 107 - delegated commands are checked; TV and PIN staff controls bypass chain reads
+  ---
+  duration_ms: 61.658666
+  type: 'test'
+  ...
+# Subtest: a delayed permission answer cannot execute after TV revocation
+ok 108 - a delayed permission answer cannot execute after TV revocation
+  ---
+  duration_ms: 33.182291
+  type: 'test'
+  ...
+# Subtest: concurrent duplicates cannot execute a host command twice and live revocation closes the admin sheet
+ok 109 - concurrent duplicates cannot execute a host command twice and live revocation closes the admin sheet
+  ---
+  duration_ms: 52.290667
+  type: 'test'
+  ...
+# Subtest: a phone binds once; only short addresses are public and no key/token enters the state
+ok 110 - a phone binds once; only short addresses are public and no key/token enters the state
+  ---
+  duration_ms: 297.678167
+  type: 'test'
+  ...
+# Subtest: wrong signature, wrong seat, unknown fields and per-seat rate limit are rejected
+ok 111 - wrong signature, wrong seat, unknown fields and per-seat rate limit are rejected
+  ---
+  duration_ms: 20.877792
+  type: 'test'
+  ...
+# Subtest: expired nonce and a rotated seat token cannot reuse a prior signature
+ok 112 - expired nonce and a rotated seat token cannot reuse a prior signature
+  ---
+  duration_ms: 35.643209
+  type: 'test'
+  ...
+# Subtest: a stolen response for another room cannot bind and reconnect cannot change a bound identity
+ok 113 - a stolen response for another room cannot bind and reconnect cannot change a bound identity
+  ---
+  duration_ms: 20.119875
+  type: 'test'
+  ...
+# Subtest: name rules reject markup, invalid length, reserved labels and confusables
+ok 114 - name rules reject markup, invalid length, reserved labels and confusables
+  ---
+  duration_ms: 0.583292
+  type: 'test'
+  ...
+# Subtest: names update the view, collisions are stable, reconnect ack persists, leave resets and attempts are limited
+ok 115 - names update the view, collisions are stable, reconnect ack persists, leave resets and attempts are limited
+  ---
+  duration_ms: 298.569625
+  type: 'test'
+  ...
+# Subtest: PARTNERS=off is byte-identical to unchanged main state and socket event names
+ok 116 - PARTNERS=off is byte-identical to unchanged main state and socket event names
+  ---
+  duration_ms: 24.852917
+  type: 'test'
+  ...
+# Subtest: off, mock and on with a fake worker preserve result, hash and replayHash
+ok 117 - off, mock and on with a fake worker preserve result, hash and replayHash
+  ---
+  duration_ms: 4330.850041
+  type: 'test'
+  ...
+1..117
+# tests 117
+# suites 0
+# pass 117
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 5126.722083
+
+> funcaster@0.2.0 test:os
+> node --test "tests/os/*.test.mjs" "public/os/**/*.test.mjs" public/party/remote.test.mjs
+
+TAP version 13
+# Subtest: boot cannot skip asset or room readiness; any input skips only the decorative delay
+ok 1 - boot cannot skip asset or room readiness; any input skips only the decorative delay
+  ---
+  duration_ms: 0.303209
+  type: 'test'
+  ...
+# Subtest: boot cues once; attract wake preserves a 15-second grace even when demo attract stays true
+ok 2 - boot cues once; attract wake preserves a 15-second grace even when demo attract stays true
+  ---
+  duration_ms: 1.81975
+  type: 'test'
+  ...
+# Subtest: Who fullscreen uses the idempotent entry API and does not toggle an existing fullscreen session
+ok 3 - Who fullscreen uses the idempotent entry API and does not toggle an existing fullscreen session
+  ---
+  duration_ms: 0.347458
+  type: 'test'
+  ...
+# Subtest: recovery reloads a failed boot or stale build; only ended rooms create new parties
+ok 4 - recovery reloads a failed boot or stale build; only ended rooms create new parties
+  ---
+  duration_ms: 1.047791
+  type: 'test'
+  ...
+# Subtest: demo scenarios are deterministic and separate empty, ready and disconnected rooms
+ok 5 - demo scenarios are deterministic and separate empty, ready and disconnected rooms
+  ---
+  duration_ms: 1.415042
+  type: 'test'
+  ...
+# Subtest: playing demo has a real match setup and its snapshot draws finite geometry with the real renderer
+ok 6 - playing demo has a real match setup and its snapshot draws finite geometry with the real renderer
+  ---
+  duration_ms: 1.928917
+  type: 'test'
+  ...
+# Subtest: results preview records a completed round and labels the forfeiting seat without claiming replay verification
+ok 7 - results preview records a completed round and labels the forfeiting seat without claiming replay verification
+  ---
+  duration_ms: 0.193
+  type: 'test'
+  ...
+# Subtest: demo edits normalize options and replace restores the opening snapshot without residual fields
+ok 8 - demo edits normalize options and replace restores the opening snapshot without residual fields
+  ---
+  duration_ms: 0.434209
+  type: 'test'
+  ...
+# Subtest: frame subscribers receive the current demo snapshot, unsubscribe and destroy prevent late delivery
+ok 9 - frame subscribers receive the current demo snapshot, unsubscribe and destroy prevent late delivery
+  ---
+  duration_ms: 0.144083
+  type: 'test'
+  ...
+# Subtest: preview pause, results hold, desktop and reconnect actions remain entirely local
+ok 10 - preview pause, results hold, desktop and reconnect actions remain entirely local
+  ---
+  duration_ms: 0.252541
+  type: 'test'
+  ...
+# Subtest: live-only utility operations explain demo limitations rather than throwing or mutating state
+ok 11 - live-only utility operations explain demo limitations rather than throwing or mutating state
+  ---
+  duration_ms: 0.222125
+  type: 'test'
+  ...
+# Subtest: the fit map covers the shipped catalog and keeps server arenas out of iframes
+ok 12 - the fit map covers the shipped catalog and keeps server arenas out of iframes
+  ---
+  duration_ms: 0.662917
+  type: 'test'
+  ...
+# Subtest: all games stay centred and complete in all nine screens, at one and maximum views
+ok 13 - all games stay centred and complete in all nine screens, at one and maximum views
+  ---
+  duration_ms: 2.364208
+  type: 'test'
+  ...
+# Subtest: two views stack in a narrow box and split side by side at the 1.2 boundary
+ok 14 - two views stack in a narrow box and split side by side at the 1.2 boundary
+  ---
+  duration_ms: 0.188333
+  type: 'test'
+  ...
+# Subtest: hidden, malformed and offset containers cannot produce invalid frame dimensions
+ok 15 - hidden, malformed and offset containers cannot produce invalid frame dimensions
+  ---
+  duration_ms: 0.980541
+  type: 'test'
+  ...
+# Subtest: all13 shipped games have square crops and retain original game identifiers
+ok 16 - all13 shipped games have square crops and retain original game identifiers
+  ---
+  duration_ms: 1.353917
+  type: 'test'
+  ...
+# Subtest: spatial scoring prefers overlapping next rows and rejects the wrong half-plane
+ok 17 - spatial scoring prefers overlapping next rows and rejects the wrong half-plane
+  ---
+  duration_ms: 0.486292
+  type: 'test'
+  ...
+# Subtest: grid navigation stays in row or column and wraps only when requested
+ok 18 - grid navigation stays in row or column and wraps only when requested
+  ---
+  duration_ms: 0.61125
+  type: 'test'
+  ...
+# Subtest: tab strips wrap, segmented rows fall through to spatial neighbours
+ok 19 - tab strips wrap, segmented rows fall through to spatial neighbours
+  ---
+  duration_ms: 0.271167
+  type: 'test'
+  ...
+# Subtest: focus return uses the opener only if it remains eligible
+ok 20 - focus return uses the opener only if it remains eligible
+  ---
+  duration_ms: 0.216333
+  type: 'test'
+  ...
+# Subtest: shell pointers cancel their frame loop and reset stale cursor state for active games
+ok 21 - shell pointers cancel their frame loop and reset stale cursor state for active games
+  ---
+  duration_ms: 4.557917
+  type: 'test'
+  ...
+# Subtest: mounting in a game or losing the relay never schedules shell cursor rendering
+ok 22 - mounting in a game or losing the relay never schedules shell cursor rendering
+  ---
+  duration_ms: 0.399667
+  type: 'test'
+  ...
+# Subtest: touch samples wrap calibrated coordinates and retained Pointer ends within20px
+ok 23 - touch samples wrap calibrated coordinates and retained Pointer ends within20px
+  ---
+  duration_ms: 1.373958
+  type: 'test'
+  ...
+# Subtest: raw quaternion and rate packets retain their units, axes and separate per-seat Pointer
+ok 24 - raw quaternion and rate packets retain their units, axes and separate per-seat Pointer
+  ---
+  duration_ms: 0.665208
+  type: 'test'
+  ...
+# Subtest: cursor freezes and fades at the specified timeouts, invalid seats are ignored
+ok 25 - cursor freezes and fades at the specified timeouts, invalid seats are ignored
+  ---
+  duration_ms: 0.362958
+  type: 'test'
+  ...
+# Subtest: only the designated host or lowest ready seat steers; disconnected hosts do not keep control
+ok 26 - only the designated host or lowest ready seat steers; disconnected hosts do not keep control
+  ---
+  duration_ms: 0.196083
+  type: 'test'
+  ...
+# Subtest: magnetism chooses the nearest eligible edge within28px
+ok 27 - magnetism chooses the nearest eligible edge within28px
+  ---
+  duration_ms: 1.852125
+  type: 'test'
+  ...
+# Subtest: pointer assistance ignores scrolled-away targets while keyboard targets remain available
+ok 28 - pointer assistance ignores scrolled-away targets while keyboard targets remain available
+  ---
+  duration_ms: 0.246291
+  type: 'test'
+  ...
+# Subtest: magnetism clips partial targets through nested overflow boxes and excludes scrollbars
+ok 29 - magnetism clips partial targets through nested overflow boxes and excludes scrollbars
+  ---
+  duration_ms: 0.1615
+  type: 'test'
+  ...
+# Subtest: activity measures cumulative intentional movement and ignores jitter, stale samples and new seats
+ok 30 - activity measures cumulative intentional movement and ignores jitter, stale samples and new seats
+  ---
+  duration_ms: 0.260917
+  type: 'test'
+  ...
+# Subtest: cursor tips stay aligned across TV scales and the optional glove uses its original fractional hotspot
+ok 31 - cursor tips stay aligned across TV scales and the optional glove uses its original fractional hotspot
+  ---
+  duration_ms: 0.255916
+  type: 'test'
+  ...
+# Subtest: mounted pointers do not keep the party awake for stationary sensor delivery; movement and button presses do
+ok 32 - mounted pointers do not keep the party awake for stationary sensor delivery; movement and button presses do
+  ---
+  duration_ms: 5.802375
+  type: 'test'
+  ...
+# Subtest: shell is 1x at HD, 1.5x at Full HD, and preserves design viewport
+ok 33 - shell is 1x at HD, 1.5x at Full HD, and preserves design viewport
+  ---
+  duration_ms: 0.434625
+  type: 'test'
+  ...
+# Subtest: scale clamps, overscan and integer art scale are bounded
+ok 34 - scale clamps, overscan and integer art scale are bounded
+  ---
+  duration_ms: 0.395375
+  type: 'test'
+  ...
+# Subtest: mascot uses the source per-frame durations, holds empty frames, and lazily loads only requested sheets
+ok 35 - mascot uses the source per-frame durations, holds empty frames, and lazily loads only requested sheets
+  ---
+  duration_ms: 1.059417
+  type: 'test'
+  ...
+# Subtest: mascot queue stays at two and Gentle effects holds one frame before static idle
+ok 36 - mascot queue stays at two and Gentle effects holds one frame before static idle
+  ---
+  duration_ms: 0.935541
+  type: 'test'
+  ...
+# Subtest: in-flight sprite loads cannot render after hiding or teardown
+ok 37 - in-flight sprite loads cannot render after hiding or teardown
+  ---
+  duration_ms: 0.206333
+  type: 'test'
+  ...
+# Subtest: helper bubbles enforce cooldown/session limits and placement stays clear of the active window
+ok 38 - helper bubbles enforce cooldown/session limits and placement stays clear of the active window
+  ---
+  duration_ms: 0.310708
+  type: 'test'
+  ...
+# Subtest: all 25 approved helper animations are available with measured variable timing
+ok 39 - all 25 approved helper animations are available with measured variable timing
+  ---
+  duration_ms: 0.791417
+  type: 'test'
+  ...
+# Subtest: shell sound creates one context on a gesture, caches file aliases, and sends every cue through master volume
+ok 40 - shell sound creates one context on a gesture, caches file aliases, and sends every cue through master volume
+  ---
+  duration_ms: 0.577625
+  type: 'test'
+  ...
+# Subtest: Gentle effects suppresses startup/animation sound, keeps errors, and synths share the same mixer
+ok 41 - Gentle effects suppresses startup/animation sound, keeps errors, and synths share the same mixer
+  ---
+  duration_ms: 0.234875
+  type: 'test'
+  ...
+# Subtest: a timed music reaction lasts two seconds after its sheet is ready, even across a long source frame
+ok 42 - a timed music reaction lasts two seconds after its sheet is ready, even across a long source frame
+  ---
+  duration_ms: 0.127709
+  type: 'test'
+  ...
+# Subtest: mascot winner copy follows the server rank without inventing solo, tied or abandoned winners
+ok 43 - mascot winner copy follows the server rank without inventing solo, tied or abandoned winners
+  ---
+  duration_ms: 0.284625
+  type: 'test'
+  ...
+# Subtest: mascot media is deferred until visible activity and stale loading never keeps it over a game
+ok 44 - mascot media is deferred until visible activity and stale loading never keeps it over a game
+  ---
+  duration_ms: 1.675667
+  type: 'test'
+  ...
+# Subtest: mascot uses room transitions for join, disconnect, errors and a unique result once
+ok 45 - mascot uses room transitions for join, disconnect, errors and a unique result once
+  ---
+  duration_ms: 1.19675
+  type: 'test'
+  ...
+# Subtest: retained phone movement follows the desktop at 4Hz and phone buttons wake Chonk without cutting wakeup short
+ok 46 - retained phone movement follows the desktop at 4Hz and phone buttons wake Chonk without cutting wakeup short
+  ---
+  duration_ms: 1.532292
+  type: 'test'
+  ...
+# Subtest: mascot idle polling stops during games, loading, hidden tabs and kiosk attract while loading sheets still work
+ok 47 - mascot idle polling stops during games, loading, hidden tabs and kiosk attract while loading sheets still work
+  ---
+  duration_ms: 0.464167
+  type: 'test'
+  ...
+# Subtest: avatars stop scheduling and painting during every game phase, then resume without a catch-up jump
+ok 48 - avatars stop scheduling and painting during every game phase, then resume without a catch-up jump
+  ---
+  duration_ms: 1.921792
+  type: 'test'
+  ...
+# Subtest: an avatar descriptor arriving after the game starts cannot wake its animation loop
+ok 49 - an avatar descriptor arriving after the game starts cannot wake its animation loop
+  ---
+  duration_ms: 0.39875
+  type: 'test'
+  ...
+# Subtest: the desktop grid fits the supported design viewport and paginates short windows
+ok 50 - the desktop grid fits the supported design viewport and paginates short windows
+  ---
+  duration_ms: 0.349708
+  type: 'test'
+  ...
+# Subtest: ambient pets choose at most two distinct approved animals and use only idle/walk
+ok 51 - ambient pets choose at most two distinct approved animals and use only idle/walk
+  ---
+  duration_ms: 0.647042
+  type: 'test'
+  ...
+# Subtest: pets walk 40 design pixels per second, animate at 120ms, sit 2–6 seconds and turn at the edge
+ok 52 - pets walk 40 design pixels per second, animate at 120ms, sit 2–6 seconds and turn at the edge
+  ---
+  duration_ms: 0.1985
+  type: 'test'
+  ...
+# Subtest: paused or gentle pets stay static, clamp on resize, and do not jump after tab suspension
+ok 53 - paused or gentle pets stay static, clamp on resize, and do not jump after tab suspension
+  ---
+  duration_ms: 0.067792
+  type: 'test'
+  ...
+# Subtest: avatar seats stay fixed; only a winner runs, empty seats stay dim/static, and Gentle effects freezes frames
+ok 54 - avatar seats stay fixed; only a winner runs, empty seats stay dim/static, and Gentle effects freezes frames
+  ---
+  duration_ms: 0.161709
+  type: 'test'
+  ...
+# Subtest: selector subscriptions skip unrelated and shallow-equal changes; unsubscribe works
+ok 55 - selector subscriptions skip unrelated and shallow-equal changes; unsubscribe works
+  ---
+  duration_ms: 1.16025
+  type: 'test'
+  ...
+# Subtest: Funcaster settings keep legacy keys and migrate only new preferences
+ok 56 - Funcaster settings keep legacy keys and migrate only new preferences
+  ---
+  duration_ms: 0.590875
+  type: 'test'
+  ...
+# Subtest: storage survives blocked APIs and brand identifiers stay unchanged
+ok 57 - storage survives blocked APIs and brand identifiers stay unchanged
+  ---
+  duration_ms: 0.169625
+  type: 'test'
+  ...
+# Subtest: playlist presets resolve to working games and queued state rejects unknown entries
+ok 58 - playlist presets resolve to working games and queued state rejects unknown entries
+  ---
+  duration_ms: 1.394542
+  type: 'test'
+  ...
+# Subtest: four stable seat rows distinguish hosts, pending grants and outcomes
+ok 59 - four stable seat rows distinguish hosts, pending grants and outcomes
+  ---
+  duration_ms: 0.726833
+  type: 'test'
+  ...
+# Subtest: records use the classic room key, remain bounded, and treat corrupt stored data as empty
+ok 60 - records use the classic room key, remain bounded, and treat corrupt stored data as empty
+  ---
+  duration_ms: 0.530083
+  type: 'test'
+  ...
+# Subtest: invite URLs permit web links and never promote executable schemes or omit display credentials
+ok 61 - invite URLs permit web links and never promote executable schemes or omit display credentials
+  ---
+  duration_ms: 0.39575
+  type: 'test'
+  ...
+# Subtest: kiosk options explicitly require six digits; party never carries a PIN
+ok 62 - kiosk options explicitly require six digits; party never carries a PIN
+  ---
+  duration_ms: 0.278042
+  type: 'test'
+  ...
+# Subtest: Next player is available only between solo turns with two connected ready humans
+ok 63 - Next player is available only between solo turns with two connected ready humans
+  ---
+  duration_ms: 0.258083
+  type: 'test'
+  ...
+# Subtest: cancelling either shutdown confirmation keeps the room and screen without farewell cues
+ok 64 - cancelling either shutdown confirmation keeps the room and screen without farewell cues
+  ---
+  duration_ms: 1.609375
+  type: 'test'
+  ...
+# Subtest: intentional room shutdown suppresses recovery before ending and shows the final farewell
+ok 65 - intentional room shutdown suppresses recovery before ending and shows the final farewell
+  ---
+  duration_ms: 0.49725
+  type: 'test'
+  ...
+# Subtest: room shutdown errors restore recovery and leave the shutdown screen open
+ok 66 - room shutdown errors restore recovery and leave the shutdown screen open
+  ---
+  duration_ms: 0.4495
+  type: 'test'
+  ...
+# Subtest: Skip game confirms an active round, rotates the live playlist, then selects its new head
+ok 67 - Skip game confirms an active round, rotates the live playlist, then selects its new head
+  ---
+  duration_ms: 0.479042
+  type: 'test'
+  ...
+# Subtest: Skip cancellation, room replacement and failed setup never select another game
+ok 68 - Skip cancellation, room replacement and failed setup never select another game
+  ---
+  duration_ms: 0.515791
+  type: 'test'
+  ...
+# Subtest: window placement scales design sizes, reserves edges and clamps short/safe-area viewports
+ok 69 - window placement scales design sizes, reserves edges and clamps short/safe-area viewports
+  ---
+  duration_ms: 0.765375
+  type: 'test'
+  ...
+# Subtest: singleton windows retain maximised state and stable identity when reopened
+ok 70 - singleton windows retain maximised state and stable identity when reopened
+  ---
+  duration_ms: 0.246834
+  type: 'test'
+  ...
+# Subtest: one-tool replacement preserves pinned tools and the properties/player/invite exception
+ok 71 - one-tool replacement preserves pinned tools and the properties/player/invite exception
+  ---
+  duration_ms: 0.1015
+  type: 'test'
+  ...
+# Subtest: focus raises windows within its layer and returns to the remaining window on close
+ok 72 - focus raises windows within its layer and returns to the remaining window on close
+  ---
+  duration_ms: 2.211208
+  type: 'test'
+  ...
+# Subtest: modal scope blocks focusing a background tool and queued modal promises resolve in order
+ok 73 - modal scope blocks focusing a background tool and queued modal promises resolve in order
+  ---
+  duration_ms: 0.612834
+  type: 'test'
+  ...
+# Subtest: maximise, minimise, restore and resize preserve normal placement and full-screen games
+ok 74 - maximise, minimise, restore and resize preserve normal placement and full-screen games
+  ---
+  duration_ms: 0.285417
+  type: 'test'
+  ...
+# Subtest: normal windows recover manifest dimensions after hidden, small and scaled viewport changes
+ok 75 - normal windows recover manifest dimensions after hidden, small and scaled viewport changes
+  ---
+  duration_ms: 0.328208
+  type: 'test'
+  ...
+# Subtest: minimised and maximised windows retain fresh normal dimensions across viewport recovery
+ok 76 - minimised and maximised windows retain fresh normal dimensions across viewport recovery
+  ---
+  duration_ms: 0.494708
+  type: 'test'
+  ...
+# Subtest: drag placement survives a temporary small viewport without retaining its clipped size
+ok 77 - drag placement survives a temporary small viewport without retaining its clipped size
+  ---
+  duration_ms: 0.643458
+  type: 'test'
+  ...
+# Subtest: focus candidates exclude hidden Retry controls and invisible modal buttons
+ok 78 - focus candidates exclude hidden Retry controls and invisible modal buttons
+  ---
+  duration_ms: 0.737458
+  type: 'test'
+  ...
+# Subtest: window titles and optional icons update without replacing the window or its placement
+ok 79 - window titles and optional icons update without replacing the window or its placement
+  ---
+  duration_ms: 0.289916
+  type: 'test'
+  ...
+# Subtest: all 13 catalog games have a complete remote map in both postures
+ok 80 - all 13 catalog games have a complete remote map in both postures
+  ---
+  duration_ms: 1.115417
+  type: 'test'
+  ...
+# Subtest: racing uses the real three pedals in either grip and restores pointer layout in lobby
+ok 81 - racing uses the real three pedals in either grip and restores pointer layout in lobby
+  ---
+  duration_ms: 0.271333
+  type: 'test'
+  ...
+# Subtest: primary, golf cancel, drawing guess and inactive states use actual supported roles
+ok 82 - primary, golf cancel, drawing guess and inactive states use actual supported roles
+  ---
+  duration_ms: 0.77875
+  type: 'test'
+  ...
+# Subtest: shell roles remain safely disabled until the shell client is present
+ok 83 - shell roles remain safely disabled until the shell client is present
+  ---
+  duration_ms: 0.274708
+  type: 'test'
+  ...
+# Subtest: button painting updates captions, accessibility and idle state without removing controls
+ok 84 - button painting updates captions, accessibility and idle state without removing controls
+  ---
+  duration_ms: 0.50175
+  type: 'test'
+  ...
+# Subtest: Home tap, hold confirmation, release cancellation and leave are mutually exclusive
+ok 85 - Home tap, hold confirmation, release cancellation and leave are mutually exclusive
+  ---
+  duration_ms: 0.439625
+  type: 'test'
+  ...
+# Subtest: the retained calibrated racing mapper accepts portrait samples without an Euler shortcut
+ok 86 - the retained calibrated racing mapper accepts portrait samples without an Euler shortcut
+  ---
+  duration_ms: 1.150667
+  type: 'test'
+  ...
+# Subtest: one tap calls both permission APIs synchronously and tolerates rejection or missing APIs
+ok 87 - one tap calls both permission APIs synchronously and tolerates rejection or missing APIs
+  ---
+  duration_ms: 0.224292
+  type: 'test'
+  ...
+# Subtest: capability probe falls back within two seconds for absent, stale, null, and denied sensors
+ok 88 - capability probe falls back within two seconds for absent, stale, null, and denied sensors
+  ---
+  duration_ms: 0.792416
+  type: 'test'
+  ...
+# Subtest: fresh orientation is tier A, duplicated absolute events do not inflate rate, and gyro is independently probed
+ok 89 - fresh orientation is tier A, duplicated absolute events do not inflate rate, and gyro is independently probed
+  ---
+  duration_ms: 0.332125
+  type: 'test'
+  ...
+# Subtest: Generic Sensor fallback starts at 1.5 seconds and accepts only a fresh normalized quaternion stream
+ok 90 - Generic Sensor fallback starts at 1.5 seconds and accepts only a fresh normalized quaternion stream
+  ---
+  duration_ms: 0.166625
+  type: 'test'
+  ...
+# Subtest: device reports are bounded, contain only supported fields, and identify coached browsers without inventing haptics
+ok 91 - device reports are bounded, contain only supported fields, and identify coached browsers without inventing haptics
+  ---
+  duration_ms: 0.281708
+  type: 'test'
+  ...
+# Subtest: phone pointer keeps a separate validated raw stream and preserves rotation-rate axis order
+ok 92 - phone pointer keeps a separate validated raw stream and preserves rotation-rate axis order
+  ---
+  duration_ms: 0.204958
+  type: 'test'
+  ...
+# Subtest: phone pointer honors mode, transport backpressure, sample age and 8ms floor without losing the final touch
+ok 93 - phone pointer honors mode, transport backpressure, sample age and 8ms floor without losing the final touch
+  ---
+  duration_ms: 0.110167
+  type: 'test'
+  ...
+# Subtest: retained Pointer maps touch party samples and mouse positions in the same downward-positive viewport
+ok 94 - retained Pointer maps touch party samples and mouse positions in the same downward-positive viewport
+  ---
+  duration_ms: 0.334875
+  type: 'test'
+  ...
+# Subtest: Kart party confirmation never presents a second Start button during countdown
+ok 95 - Kart party confirmation never presents a second Start button during countdown
+  ---
+  duration_ms: 0.0485
+  type: 'test'
+  ...
+# Subtest: remote feedback ports distinct click, swoosh and thud cues without creating audio before the gate
+ok 96 - remote feedback ports distinct click, swoosh and thud cues without creating audio before the gate
+  ---
+  duration_ms: 0.722334
+  type: 'test'
+  ...
+# Subtest: wake lock requests are shared, reacquired after system release, and cannot leak after hiding
+ok 97 - wake lock requests are shared, reacquired after system release, and cannot leak after hiding
+  ---
+  duration_ms: 0.419667
+  type: 'test'
+  ...
+# Subtest: wake lock can retry after a synchronous platform error
+ok 98 - wake lock can retry after a synchronous platform error
+  ---
+  duration_ms: 0.130166
+  type: 'test'
+  ...
+# Subtest: pausing, switching phase or losing a seat releases held controls without waiting for disabled pointerup
+ok 99 - pausing, switching phase or losing a seat releases held controls without waiting for disabled pointerup
+  ---
+  duration_ms: 0.123208
+  type: 'test'
+  ...
+# Subtest: orientation follows shell and racing posture changes without repeating locks on every render
+ok 100 - orientation follows shell and racing posture changes without repeating locks on every render
+  ---
+  duration_ms: 0.238459
+  type: 'test'
+  ...
+# Subtest: late orientation locks reconcile to the current posture and cannot lock a hidden or departed phone
+ok 101 - late orientation locks reconcile to the current posture and cannot lock a hidden or departed phone
+  ---
+  duration_ms: 0.086958
+  type: 'test'
+  ...
+# Subtest: unsupported, throwing and rejected orientation APIs never block the remote
+ok 102 - unsupported, throwing and rejected orientation APIs never block the remote
+  ---
+  duration_ms: 0.135625
+  type: 'test'
+  ...
+# Subtest: body, selection, legends and inactive captions meet contrast
+ok 103 - body, selection, legends and inactive captions meet contrast
+  ---
+  duration_ms: 0.649792
+  type: 'test'
+  ...
+# Subtest: focus uses both light and dark outlines instead of low-contrast orange
+ok 104 - focus uses both light and dark outlines instead of low-contrast orange
+  ---
+  duration_ms: 0.963709
+  type: 'test'
+  ...
+# Subtest: Classic and Taxi text pairs preserve contrast across optional skins
+ok 105 - Classic and Taxi text pairs preserve contrast across optional skins
+  ---
+  duration_ms: 2.052
+  type: 'test'
+  ...
+# Subtest: the approved five pets and four fixed seat avatars are complete, with no combat sheets
+ok 106 - the approved five pets and four fixed seat avatars are complete, with no combat sheets
+  ---
+  duration_ms: 0.911875
+  type: 'test'
+  ...
+# Subtest: every shipped sheet is byte-identical to its approved source member, with valid measured frames
+ok 107 - every shipped sheet is byte-identical to its approved source member, with valid measured frames
+  ---
+  duration_ms: 12.172334
+  type: 'test'
+  ...
+# Subtest: each used pack and sheet has unmodified provenance, and all CraftPix media stays lazy
+ok 108 - each used pack and sheet has unmodified provenance, and all CraftPix media stays lazy
+  ---
+  duration_ms: 1.438458
+  type: 'test'
+  ...
+# (node:88230) ExperimentalWarning: The MockTimers API is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: independent local views exclude only assigned remote screens and keep their original seat indices
+ok 109 - independent local views exclude only assigned remote screens and keep their original seat indices
+  ---
+  duration_ms: 1.705375
+  type: 'test'
+  ...
+# Subtest: round URLs preserve the established game authority contract and include local pixel-budget count
+ok 110 - round URLs preserve the established game authority contract and include local pixel-budget count
+  ---
+  duration_ms: 0.81975
+  type: 'test'
+  ...
+# Subtest: iframe messages need same origin, a current frame source, and a known message type
+ok 111 - iframe messages need same origin, a current frame source, and a known message type
+  ---
+  duration_ms: 0.167042
+  type: 'test'
+  ...
+# Subtest: Results preserves ranks, outcomes, stat values and server verification while formatting golf units
+ok 112 - Results preserves ranks, outcomes, stat values and server verification while formatting golf units
+  ---
+  duration_ms: 0.7285
+  type: 'test'
+  ...
+# Subtest: round lifecycle opens one surface, forwards frames, opens Results once and records completed rounds
+ok 113 - round lifecycle opens one surface, forwards frames, opens Results once and records completed rounds
+  ---
+  duration_ms: 1.588792
+  type: 'test'
+  ...
+# Subtest: home opens Pause without ending the round; End is a separate confirmed session action
+ok 114 - home opens Pause without ending the round; End is a separate confirmed session action
+  ---
+  duration_ms: 0.701917
+  type: 'test'
+  ...
+# Subtest: loading offers recovery after 20 seconds and Retry delegates to the current surface
+ok 115 - loading offers recovery after 20 seconds and Retry delegates to the current surface
+  ---
+  duration_ms: 0.774417
+  type: 'test'
+  ...
+# Subtest: solo forfeits and no-contests are neutral; legacy demo results remain readable
+ok 116 - solo forfeits and no-contests are neutral; legacy demo results remain readable
+  ---
+  duration_ms: 0.228833
+  type: 'test'
+  ...
+# Subtest: stored last score preserves server order for lower-scoring games and ignores unfinished winners
+ok 117 - stored last score preserves server order for lower-scoring games and ignores unfinished winners
+  ---
+  duration_ms: 0.707584
+  type: 'test'
+  ...
+# Subtest: kiosk selects OS browser candidates and isolates a fresh profile without bypassing TLS
+ok 118 - kiosk selects OS browser candidates and isolates a fresh profile without bypassing TLS
+  ---
+  duration_ms: 1.899375
+  type: 'test'
+  ...
+# Subtest: kiosk URL and executable validation never interprets a shell command
+ok 119 - kiosk URL and executable validation never interprets a shell command
+  ---
+  duration_ms: 0.538208
+  type: 'test'
+  ...
+# Subtest: Kart Rush: properties cover every schema field once, retain choice order and match defaults
+ok 120 - Kart Rush: properties cover every schema field once, retain choice order and match defaults
+  ---
+  duration_ms: 2.135166
+  type: 'test'
+  ...
+# Subtest: Pocket Greens: properties cover every schema field once, retain choice order and match defaults
+ok 121 - Pocket Greens: properties cover every schema field once, retain choice order and match defaults
+  ---
+  duration_ms: 0.567084
+  type: 'test'
+  ...
+# Subtest: Slice Dojo: properties cover every schema field once, retain choice order and match defaults
+ok 122 - Slice Dojo: properties cover every schema field once, retain choice order and match defaults
+  ---
+  duration_ms: 0.11025
+  type: 'test'
+  ...
+# Subtest: Star Catch: properties cover every schema field once, retain choice order and match defaults
+ok 123 - Star Catch: properties cover every schema field once, retain choice order and match defaults
+  ---
+  duration_ms: 0.061333
+  type: 'test'
+  ...
+# Subtest: Neon Drift: properties cover every schema field once, retain choice order and match defaults
+ok 124 - Neon Drift: properties cover every schema field once, retain choice order and match defaults
+  ---
+  duration_ms: 0.132208
+  type: 'test'
+  ...
+# Subtest: Bubble Burst: properties cover every schema field once, retain choice order and match defaults
+ok 125 - Bubble Burst: properties cover every schema field once, retain choice order and match defaults
+  ---
+  duration_ms: 0.051625
+  type: 'test'
+  ...
+# Subtest: Table Tennis: properties cover every schema field once, retain choice order and match defaults
+ok 126 - Table Tennis: properties cover every schema field once, retain choice order and match defaults
+  ---
+  duration_ms: 0.125792
+  type: 'test'
+  ...
+# Subtest: Foam Fencers: properties cover every schema field once, retain choice order and match defaults
+ok 127 - Foam Fencers: properties cover every schema field once, retain choice order and match defaults
+  ---
+  duration_ms: 0.052375
+  type: 'test'
+  ...
+# Subtest: Time Trial: properties cover every schema field once, retain choice order and match defaults
+ok 128 - Time Trial: properties cover every schema field once, retain choice order and match defaults
+  ---
+  duration_ms: 0.214666
+  type: 'test'
+  ...
+# Subtest: Cloud Cruise: properties cover every schema field once, retain choice order and match defaults
+ok 129 - Cloud Cruise: properties cover every schema field once, retain choice order and match defaults
+  ---
+  duration_ms: 0.264042
+  type: 'test'
+  ...
+# Subtest: Shooting Range: properties cover every schema field once, retain choice order and match defaults
+ok 130 - Shooting Range: properties cover every schema field once, retain choice order and match defaults
+  ---
+  duration_ms: 0.104
+  type: 'test'
+  ...
+# Subtest: Alien Attack: properties cover every schema field once, retain choice order and match defaults
+ok 131 - Alien Attack: properties cover every schema field once, retain choice order and match defaults
+  ---
+  duration_ms: 0.059625
+  type: 'test'
+  ...
+# Subtest: Drawing: properties cover every schema field once, retain choice order and match defaults
+ok 132 - Drawing: properties cover every schema field once, retain choice order and match defaults
+  ---
+  duration_ms: 0.069417
+  type: 'test'
+  ...
+# Subtest: schema fallbacks stay visible in Advanced with their provided value
+ok 133 - schema fallbacks stay visible in Advanced with their provided value
+  ---
+  duration_ms: 0.060292
+  type: 'test'
+  ...
+# Subtest: wire coercion keeps auto intent, numeric choices and real booleans
+ok 134 - wire coercion keeps auto intent, numeric choices and real booleans
+  ---
+  duration_ms: 0.178875
+  type: 'test'
+  ...
+# Subtest: dependencies distinguish shared helpers, golf skill and the optional ready-player pair
+ok 135 - dependencies distinguish shared helpers, golf skill and the optional ready-player pair
+  ---
+  duration_ms: 0.204083
+  type: 'test'
+  ...
+# Subtest: empty tabs and preset rows are omitted while Advanced remains for records
+ok 136 - empty tabs and preset rows are omitted while Advanced remains for records
+  ---
+  duration_ms: 0.12975
+  type: 'test'
+  ...
+# Subtest: server readiness text is preserved verbatim and all local Start restrictions are explicit
+ok 137 - server readiness text is preserved verbatim and all local Start restrictions are explicit
+  ---
+  duration_ms: 0.212458
+  type: 'test'
+  ...
+# Subtest: a burst is one 150 ms full-object setup; Cancel restores the opening snapshot and retains selected game
+ok 138 - a burst is one 150 ms full-object setup; Cancel restores the opening snapshot and retains selected game
+  ---
+  duration_ms: 0.388417
+  type: 'test'
+  ...
+# Subtest: Cancel clears unflushed edits, and a round transition never restores obsolete setup
+ok 139 - Cancel clears unflushed edits, and a round transition never restores obsolete setup
+  ---
+  duration_ms: 0.075208
+  type: 'test'
+  ...
+# Subtest: new edits arriving during an acknowledged setup remain visible and serialize in full
+ok 140 - new edits arriving during an acknowledged setup remain visible and serialize in full
+  ---
+  duration_ms: 0.093333
+  type: 'test'
+  ...
+# Subtest: a failed in-flight setup prevents Start and does not save preferences
+ok 141 - a failed in-flight setup prevents Start and does not save preferences
+  ---
+  duration_ms: 0.13775
+  type: 'test'
+  ...
+# Subtest: Start flushes options, checks the latest selected game and saves My settings only on success
+ok 142 - Start flushes options, checks the latest selected game and saves My settings only on success
+  ---
+  duration_ms: 0.189041
+  type: 'test'
+  ...
+# Subtest: preset patches preserve unrelated settings and selecting pairs starts with two ready seats
+ok 143 - preset patches preserve unrelated settings and selecting pairs starts with two ready seats
+  ---
+  duration_ms: 0.076292
+  type: 'test'
+  ...
+# Subtest: arena art, stroke and combo units scale together while canvas backing stays bounded
+ok 144 - arena art, stroke and combo units scale together while canvas backing stays bounded
+  ---
+  duration_ms: 8.250584
+  type: 'test'
+  ...
+# Subtest: session creates an arcade room, replaces room state, pairs and preserves the legacy credential shape
+ok 145 - session creates an arcade room, replaces room state, pairs and preserves the legacy credential shape
+  ---
+  duration_ms: 18.635792
+  type: 'test'
+  ...
+# Subtest: a refreshed shell reclaims its saved room and an expired saved room retries only once
+ok 146 - a refreshed shell reclaims its saved room and an expired saved room retries only once
+  ---
+  duration_ms: 28.383583
+  type: 'test'
+  ...
+# Subtest: stale build responses request an update without creating rooms or destroying reclaim credentials
+ok 147 - stale build responses request an update without creating rooms or destroying reclaim credentials
+  ---
+  duration_ms: 2.061334
+  type: 'test'
+  ...
+# Subtest: setup sends all options and host commands serialize monotonic sequences with a bounded rate-limit retry
+ok 148 - setup sends all options and host commands serialize monotonic sequences with a bounded rate-limit retry
+  ---
+  duration_ms: 24.470333
+  type: 'test'
+  ...
+# Subtest: active-round option changes are blocked and destructive actions require confirmation
+ok 149 - active-round option changes are blocked and destructive actions require confirmation
+  ---
+  duration_ms: 15.240834
+  type: 'test'
+  ...
+# Subtest: pairing retries visibly and keeps the typed room code available
+ok 150 - pairing retries visibly and keeps the typed room code available
+  ---
+  duration_ms: 17.073084
+  type: 'test'
+  ...
+# Subtest: room expiry clears stored credentials and exposes an explicit new-party action
+ok 151 - room expiry clears stored credentials and exposes an explicit new-party action
+  ---
+  duration_ms: 2.4975
+  type: 'test'
+  ...
+# Subtest: late pairing responses cannot update a destroyed session
+ok 152 - late pairing responses cannot update a destroyed session
+  ---
+  duration_ms: 1.233459
+  type: 'test'
+  ...
+# Subtest: a queued rate-limit retry cannot execute against a replacement room
+ok 153 - a queued rate-limit retry cannot execute against a replacement room
+  ---
+  duration_ms: 3.152959
+  type: 'test'
+  ...
+# Subtest: Properties Cancel replaces the opening setup after a live server normalized an edit
+ok 154 - Properties Cancel replaces the opening setup after a live server normalized an edit
+  ---
+  duration_ms: 2.068167
+  type: 'test'
+  ...
+# Subtest: Next player confirms once, ends the solo turn, rotates three seats and skips disconnected players
+ok 155 - Next player confirms once, ends the solo turn, rotates three seats and skips disconnected players
+  ---
+  duration_ms: 119.101375
+  type: 'test'
+  ...
+# Subtest: all manifest asset roles resolve locally, including all lazy sounds and mascot sheets
+ok 156 - all manifest asset roles resolve locally, including all lazy sounds and mascot sheets
+  ---
+  duration_ms: 2.253542
+  type: 'test'
+  ...
+# Subtest: base atlas crops stay inside the sheet without overlapping; expanded states exist
+ok 157 - base atlas crops stay inside the sheet without overlapping; expanded states exist
+  ---
+  duration_ms: 2.205917
+  type: 'test'
+  ...
+# Subtest: size budgets are enforced against current files, not a stale total
+ok 158 - size budgets are enforced against current files, not a stale total
+  ---
+  duration_ms: 6.453791
+  type: 'test'
+  ...
+# Subtest: font gaps are measured and every generated media asset has provenance
+ok 159 - font gaps are measured and every generated media asset has provenance
+  ---
+  duration_ms: 1.445833
+  type: 'test'
+  ...
+# Subtest: sprite variables use root URLs so consuming stylesheets can live outside the asset folder
+ok 160 - sprite variables use root URLs so consuming stylesheets can live outside the asset folder
+  ---
+  duration_ms: 0.824375
+  type: 'test'
+  ...
+# Subtest: optional glove is a small transparent 128px export with the retained source and fingertip anchor
+ok 161 - optional glove is a small transparent 128px export with the retained source and fingertip anchor
+  ---
+  duration_ms: 2.236
+  type: 'test'
+  ...
+# Subtest: Players reflects grants and dispatches only the selected seat actions
+ok 162 - Players reflects grants and dispatches only the selected seat actions
+  ---
+  duration_ms: 2.192292
+  type: 'test'
+  ...
+# Subtest: Invite hides unadvertised remote controls, encodes the display invitation and retries only this room
+ok 163 - Invite hides unadvertised remote controls, encodes the display invitation and retries only this room
+  ---
+  duration_ms: 1.006792
+  type: 'test'
+  ...
+# Subtest: Settings applies view preferences and confirms a six-digit PIN replacement without persisting it
+ok 164 - Settings applies view preferences and confirms a six-digit PIN replacement without persisting it
+  ---
+  duration_ms: 1.420541
+  type: 'test'
+  ...
+# Subtest: Run playlist awaits setup before select/open and stops when the server rejects it
+ok 165 - Run playlist awaits setup before select/open and stops when the server rejects it
+  ---
+  duration_ms: 0.390208
+  type: 'test'
+  ...
+# Subtest: Recycle Bin paginates large removals, confirms restore, and never restores into an occupied seat
+ok 166 - Recycle Bin paginates large removals, confirms restore, and never restores into an occupied seat
+  ---
+  duration_ms: 0.765583
+  type: 'test'
+  ...
+# Subtest: all utility windows keep fewer than forty available targets and safely render hostile labels
+ok 167 - all utility windows keep fewer than forty available targets and safely render hostile labels
+  ---
+  duration_ms: 3.47625
+  type: 'test'
+  ...
+# Subtest: utility actions recover after async completion and Staff uses the shared lifecycle
+ok 168 - utility actions recover after async completion and Staff uses the shared lifecycle
+  ---
+  duration_ms: 0.764917
+  type: 'test'
+  ...
+1..168
+# tests 168
+# suites 0
+# pass 168
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 436.400125
+
+> funcaster@0.2.0 web3:test
+> node --test tests/web3/*.test.mjs
+
+TAP version 13
+# Subtest: EURC requires its own confirmation; a USDC approval cannot switch assets
+ok 1 - EURC requires its own confirmation; a USDC approval cannot switch assets
+  ---
+  duration_ms: 7.528875
+  type: 'test'
+  ...
+# Subtest: Arc owner probe defaults to reads and requires exact network confirmation
+ok 2 - Arc owner probe defaults to reads and requires exact network confirmation
+  ---
+  duration_ms: 1.908375
+  type: 'test'
+  ...
+# Subtest: Arc top-up retains 0.05 test USDC and does not overfund a resumed probe
+ok 3 - Arc top-up retains 0.05 test USDC and does not overfund a resumed probe
+  ---
+  duration_ms: 0.210291
+  type: 'test'
+  ...
+# Subtest: off defaults and explicitly gated features
+ok 4 - off defaults and explicitly gated features
+  ---
+  duration_ms: 1.204333
+  type: 'test'
+  ...
+# Subtest: names-only template covers every specified variable
+ok 5 - names-only template covers every specified variable
+  ---
+  duration_ms: 0.778708
+  type: 'test'
+  ...
+# Subtest: bad config fails without echoing input values
+ok 6 - bad config fails without echoing input values
+  ---
+  duration_ms: 1.527167
+  type: 'test'
+  ...
+# Subtest: per-partner on rejects bypasses and any global real/mock mixture
+ok 7 - per-partner on rejects bypasses and any global real/mock mixture
+  ---
+  duration_ms: 1.176166
+  type: 'test'
+  ...
+# Subtest: secrets cannot cross process boundaries or serialize
+ok 8 - secrets cannot cross process boundaries or serialize
+  ---
+  duration_ms: 1.364042
+  type: 'test'
+  ...
+# Subtest: creator and streamer validation activates only with feature
+ok 9 - creator and streamer validation activates only with feature
+  ---
+  duration_ms: 0.900958
+  type: 'test'
+  ...
+# Subtest: mock preflight performs no network and real mode cannot give a false pass
+ok 10 - mock preflight performs no network and real mode cannot give a false pass
+  ---
+  duration_ms: 1.095375
+  type: 'test'
+  ...
+# Subtest: host grants are scoped, idempotent, revoked on release and cannot be restored by stale jobs
+ok 11 - host grants are scoped, idempotent, revoked on release and cannot be restored by stale jobs
+  ---
+  duration_ms: 509.455583
+  type: 'test'
+  ...
+# Subtest: host grant reconciles a crash after :kick
+ok 12 - host grant reconciles a crash after :kick
+  ---
+  duration_ms: 355.587625
+  type: 'test'
+  ...
+# Subtest: host grant reconciles a crash after :control
+ok 13 - host grant reconciles a crash after :control
+  ---
+  duration_ms: 311.53875
+  type: 'test'
+  ...
+# Subtest: host grant reconciles a crash after :record
+ok 14 - host grant reconciles a crash after :record
+  ---
+  duration_ms: 288.340625
+  type: 'test'
+  ...
+# Subtest: host transfer requires revoke first; early revoke tombstones a delayed grant
+ok 15 - host transfer requires revoke first; early revoke tombstones a delayed grant
+  ---
+  duration_ms: 296.388083
+  type: 'test'
+  ...
+# Subtest: a resumed host grant refuses a seat externally revoked during the crash
+ok 16 - a resumed host grant refuses a seat externally revoked during the crash
+  ---
+  duration_ms: 120.659625
+  type: 'test'
+  ...
+# Subtest: role cache expires within five seconds and a watched event invalidates it sooner
+ok 17 - role cache expires within five seconds and a watched event invalidates it sooner
+  ---
+  duration_ms: 145.007333
+  type: 'test'
+  ...
+# Subtest: soft mode permits only RPC unavailability, never a denial or invalidated proof
+ok 18 - soft mode permits only RPC unavailability, never a denial or invalidated proof
+  ---
+  duration_ms: 133.029667
+  type: 'test'
+  ...
+# Subtest: record changes enforce allowed keys, immutable payloads and bounded bundles
+ok 19 - record changes enforce allowed keys, immutable payloads and bounded bundles
+  ---
+  duration_ms: 141.196458
+  type: 'test'
+  ...
+# Subtest: relay closes revoked host controls and a later outage cannot resurrect them
+ok 20 - relay closes revoked host controls and a later outage cannot resurrect them
+  ---
+  duration_ms: 2.962667
+  type: 'test'
+  ...
+# Subtest: bootstrap defaults to read-only and refuses malformed apply commands
+ok 21 - bootstrap defaults to read-only and refuses malformed apply commands
+  ---
+  duration_ms: 1.366917
+  type: 'test'
+  ...
+# Subtest: bootstrap refuses overwriting an unrelated ENS subtree
+ok 22 - bootstrap refuses overwriting an unrelated ENS subtree
+  ---
+  duration_ms: 0.141541
+  type: 'test'
+  ...
+# Subtest: bootstrap bounds total maximum transaction gas cost
+ok 23 - bootstrap bounds total maximum transaction gas cost
+  ---
+  duration_ms: 0.085834
+  type: 'test'
+  ...
+# Subtest: ENS walk uses one block, chain expiry, label IDs and discovered addresses
+ok 24 - ENS walk uses one block, chain expiry, label IDs and discovered addresses
+  ---
+  duration_ms: 6.621584
+  type: 'test'
+  ...
+# Subtest: ENS rejects wrong chain
+ok 25 - ENS rejects wrong chain
+  ---
+  duration_ms: 0.227125
+  type: 'test'
+  ...
+# Subtest: ENS rejects stale head
+ok 26 - ENS rejects stale head
+  ---
+  duration_ms: 0.110083
+  type: 'test'
+  ...
+# Subtest: ENS rejects future head
+ok 27 - ENS rejects future head
+  ---
+  duration_ms: 0.055917
+  type: 'test'
+  ...
+# Subtest: ENS rejects missing block hash
+ok 28 - ENS rejects missing block hash
+  ---
+  duration_ms: 0.076417
+  type: 'test'
+  ...
+# Subtest: ENS rejects reorg
+ok 29 - ENS rejects reorg
+  ---
+  duration_ms: 0.365125
+  type: 'test'
+  ...
+# Subtest: ENS rejects EOA subregistry
+ok 30 - ENS rejects EOA subregistry
+  ---
+  duration_ms: 0.133167
+  type: 'test'
+  ...
+# Subtest: ENS rejects fake registry
+ok 31 - ENS rejects fake registry
+  ---
+  duration_ms: 0.160083
+  type: 'test'
+  ...
+# Subtest: ENS rejects fake resolver
+ok 32 - ENS rejects fake resolver
+  ---
+  duration_ms: 0.358583
+  type: 'test'
+  ...
+# Subtest: ENS rejects canonical alias
+ok 33 - ENS rejects canonical alias
+  ---
+  duration_ms: 0.405208
+  type: 'test'
+  ...
+# Subtest: ENS rejects wrong parent
+ok 34 - ENS rejects wrong parent
+  ---
+  duration_ms: 0.530166
+  type: 'test'
+  ...
+# Subtest: ENS rejects wrong canonical label
+ok 35 - ENS rejects wrong canonical label
+  ---
+  duration_ms: 0.158958
+  type: 'test'
+  ...
+# Subtest: ENS rejects root drift
+ok 36 - ENS rejects root drift
+  ---
+  duration_ms: 0.055125
+  type: 'test'
+  ...
+# Subtest: ENS rejects helper drift
+ok 37 - ENS rejects helper drift
+  ---
+  duration_ms: 0.050792
+  type: 'test'
+  ...
+# Subtest: ENS rejects absent intermediate registry
+ok 38 - ENS rejects absent intermediate registry
+  ---
+  duration_ms: 0.071334
+  type: 'test'
+  ...
+# Subtest: ENS rejects parent owner changed
+ok 39 - ENS rejects parent owner changed
+  ---
+  duration_ms: 0.07375
+  type: 'test'
+  ...
+# Subtest: ENS rejects expiry despite retained owner
+ok 40 - ENS rejects expiry despite retained owner
+  ---
+  duration_ms: 0.073625
+  type: 'test'
+  ...
+# Subtest: ENS rejects reserved name
+ok 41 - ENS rejects reserved name
+  ---
+  duration_ms: 0.0635
+  type: 'test'
+  ...
+# Subtest: ENS rejects missing explicit resolver
+ok 42 - ENS rejects missing explicit resolver
+  ---
+  duration_ms: 0.107334
+  type: 'test'
+  ...
+# Subtest: RPC errors remain unavailable; deterministic denials never become outage fallback
+ok 43 - RPC errors remain unavailable; deterministic denials never become outage fallback
+  ---
+  duration_ms: 0.198833
+  type: 'test'
+  ...
+# Subtest: invalid or outside names are rejected before any RPC
+ok 44 - invalid or outside names are rejected before any RPC
+  ---
+  duration_ms: 0.239792
+  type: 'test'
+  ...
+# Subtest: every walk re-reads links and state, even after token regeneration
+ok 45 - every walk re-reads links and state, even after token regeneration
+  ---
+  duration_ms: 0.168667
+  type: 'test'
+  ...
+# Subtest: official docs comparison is Sepolia-scoped and detects drift/missing/duplicate rows
+ok 46 - official docs comparison is Sepolia-scoped and detects drift/missing/duplicate rows
+  ---
+  duration_ms: 0.440542
+  type: 'test'
+  ...
+# Subtest: preflight checks registrar admin roles and reports only namespace prerequisites
+ok 47 - preflight checks registrar admin roles and reports only namespace prerequisites
+  ---
+  duration_ms: 1.103542
+  type: 'test'
+  ...
+# Subtest: preflight stops on published address drift before making RPC calls
+ok 48 - preflight stops on published address drift before making RPC calls
+  ---
+  duration_ms: 0.099417
+  type: 'test'
+  ...
+# Subtest: preflight refuses missing registrar and missing admin roles
+ok 49 - preflight refuses missing registrar and missing admin roles
+  ---
+  duration_ms: 0.251917
+  type: 'test'
+  ...
+# Subtest: read-only transport rejects broadcast/signing/debug RPC before network access
+ok 50 - read-only transport rejects broadcast/signing/debug RPC before network access
+  ---
+  duration_ms: 1.549291
+  type: 'test'
+  ...
+# Subtest: real lifecycle crosses the outbox/worker boundary and returns validated receipt metadata
+ok 51 - real lifecycle crosses the outbox/worker boundary and returns validated receipt metadata
+  ---
+  duration_ms: 841.2385
+  type: 'test'
+  ...
+# Subtest: post-effect worker crash resumes the lifecycle without duplicate chain effects
+ok 52 - post-effect worker crash resumes the lifecycle without duplicate chain effects
+  ---
+  duration_ms: 342.2
+  type: 'test'
+  ...
+# Subtest: mock provider satisfies lifecycle receipt contract without fake transaction hashes
+ok 53 - mock provider satisfies lifecycle receipt contract without fake transaction hashes
+  ---
+  duration_ms: 93.668708
+  type: 'test'
+  ...
+# Subtest: receipt schema strips arbitrary provider data and refuses a different seat/address
+ok 54 - receipt schema strips arbitrary provider data and refuses a different seat/address
+  ---
+  duration_ms: 1.088417
+  type: 'test'
+  ...
+# Subtest: relay ignores stale seat receipts after replacement and never exposes tokens/full addresses
+ok 55 - relay ignores stale seat receipts after replacement and never exposes tokens/full addresses
+  ---
+  duration_ms: 2.016166
+  type: 'test'
+  ...
+# Subtest: an on-mode relay cannot present a mock provider receipt as a live ENS name
+ok 56 - an on-mode relay cannot present a mock provider receipt as a live ENS name
+  ---
+  duration_ms: 0.422042
+  type: 'test'
+  ...
+# Subtest: warm pool reserves unique pairs, refills, opens three transactions and reopens with zero writes
+ok 57 - warm pool reserves unique pairs, refills, opens three transactions and reopens with zero writes
+  ---
+  duration_ms: 456.868333
+  type: 'test'
+  ...
+# Subtest: cold open works at zero pool size and serializes concurrent callers
+ok 58 - cold open works at zero pool size and serializes concurrent callers
+  ---
+  duration_ms: 228.387167
+  type: 'test'
+  ...
+# Subtest: second process cannot share the ENS lifecycle store
+ok 59 - second process cannot share the ENS lifecycle store
+  ---
+  duration_ms: 59.859042
+  type: 'test'
+  ...
+# Subtest: invalid protocol configuration does not strand a process lock
+ok 60 - invalid protocol configuration does not strand a process lock
+  ---
+  duration_ms: 217.386333
+  type: 'test'
+  ...
+# Subtest: party collision picks another label without replacing an existing name
+ok 61 - party collision picks another label without replacing an existing name
+  ---
+  duration_ms: 199.621833
+  type: 'test'
+  ...
+# Subtest: changed idempotency payload is rejected without a write
+ok 62 - changed idempotency payload is rejected without a write
+  ---
+  duration_ms: 177.299667
+  type: 'test'
+  ...
+# Subtest: restart reconciles party crash after :registry without repeated effects
+ok 63 - restart reconciles party crash after :registry without repeated effects
+  ---
+  duration_ms: 154.5265
+  type: 'test'
+  ...
+# Subtest: restart reconciles party crash after :resolver without repeated effects
+ok 64 - restart reconciles party crash after :resolver without repeated effects
+  ---
+  duration_ms: 151.217333
+  type: 'test'
+  ...
+# Subtest: restart reconciles party crash after :parent without repeated effects
+ok 65 - restart reconciles party crash after :parent without repeated effects
+  ---
+  duration_ms: 107.095375
+  type: 'test'
+  ...
+# Subtest: restart reconciles party crash after :records without repeated effects
+ok 66 - restart reconciles party crash after :records without repeated effects
+  ---
+  duration_ms: 77.412792
+  type: 'test'
+  ...
+# Subtest: restart reconciles party crash after :register without repeated effects
+ok 67 - restart reconciles party crash after :register without repeated effects
+  ---
+  duration_ms: 82.698209
+  type: 'test'
+  ...
+# Subtest: a mismatched proxy is rejected instead of reinitialized
+ok 68 - a mismatched proxy is rejected instead of reinitialized
+  ---
+  duration_ms: 108.90525
+  type: 'test'
+  ...
+# Subtest: seat mint is soulbound, bounded by party expiry and idempotent
+ok 69 - seat mint is soulbound, bounded by party expiry and idempotent
+  ---
+  duration_ms: 123.339292
+  type: 'test'
+  ...
+# Subtest: seat collisions, shared keys and occupied slots cannot overwrite another seat
+ok 70 - seat collisions, shared keys and occupied slots cannot overwrite another seat
+  ---
+  duration_ms: 109.104125
+  type: 'test'
+  ...
+# Subtest: seat release is idempotent and a new binding may reuse the label
+ok 71 - seat release is idempotent and a new binding may reuse the label
+  ---
+  duration_ms: 116.577916
+  type: 'test'
+  ...
+# Subtest: seat release resumes after :clear without duplicate effects or stale address records
+ok 72 - seat release resumes after :clear without duplicate effects or stale address records
+  ---
+  duration_ms: 82.413084
+  type: 'test'
+  ...
+# Subtest: seat release resumes after :release without duplicate effects or stale address records
+ok 73 - seat release resumes after :release without duplicate effects or stale address records
+  ---
+  duration_ms: 87.303167
+  type: 'test'
+  ...
+# Subtest: a partially minted seat must reconcile its registration before release
+ok 74 - a partially minted seat must reconcile its registration before release
+  ---
+  duration_ms: 73.809125
+  type: 'test'
+  ...
+# Subtest: registrar cannot be a soulbound phone seat
+ok 75 - registrar cannot be a soulbound phone seat
+  ---
+  duration_ms: 47.378791
+  type: 'test'
+  ...
+# Subtest: host-side unregister still clears the released seat's wildcard address
+ok 76 - host-side unregister still clears the released seat's wildcard address
+  ---
+  duration_ms: 78.274333
+  type: 'test'
+  ...
+# Subtest: a lifecycle store cannot silently change its namespace, signer or origin
+ok 77 - a lifecycle store cannot silently change its namespace, signer or origin
+  ---
+  duration_ms: 54.678791
+  type: 'test'
+  ...
+# Subtest: a revoked seat is not silently reminted and a new registration is not released
+ok 78 - a revoked seat is not silently reminted and a new registration is not released
+  ---
+  duration_ms: 68.224792
+  type: 'test'
+  ...
+# Subtest: seat mint survives a post-send crash after :register
+ok 79 - seat mint survives a post-send crash after :register
+  ---
+  duration_ms: 69.271917
+  type: 'test'
+  ...
+# Subtest: seat mint survives a post-send crash after :records
+ok 80 - seat mint survives a post-send crash after :records
+  ---
+  duration_ms: 73.916208
+  type: 'test'
+  ...
+# Subtest: end is idempotent, never recycles a used resolver and prevents reopening
+ok 81 - end is idempotent, never recycles a used resolver and prevents reopening
+  ---
+  duration_ms: 100.029209
+  type: 'test'
+  ...
+# Subtest: expiry uses chain time, refuses new seats and ends without another transaction
+ok 82 - expiry uses chain time, refuses new seats and ends without another transaction
+  ---
+  duration_ms: 63.340042
+  type: 'test'
+  ...
+# Subtest: party end reconciles a crash after unregister without a second effect
+ok 83 - party end reconciles a crash after unregister without a second effect
+  ---
+  duration_ms: 60.92325
+  type: 'test'
+  ...
+# Subtest: 200 hostile nicknames deterministically produce safe non-reserved seat labels
+ok 84 - 200 hostile nicknames deterministically produce safe non-reserved seat labels
+  ---
+  duration_ms: 0.95175
+  type: 'test'
+  ...
+# Subtest: live ENS caps are explicit, positive and preserve decimal units
+ok 85 - live ENS caps are explicit, positive and preserve decimal units
+  ---
+  duration_ms: 1.808125
+  type: 'test'
+  ...
+# Subtest: the live provider refuses mock mode before loading a key or making an RPC call
+ok 86 - the live provider refuses mock mode before loading a key or making an RPC call
+  ---
+  duration_ms: 0.165459
+  type: 'test'
+  ...
+# Subtest: join reads the canonical table's code and HTTPS origin at one block
+ok 87 - join reads the canonical table's code and HTTPS origin at one block
+  ---
+  duration_ms: 304.323584
+  type: 'test'
+  ...
+# Subtest: join refuses a chain denial and a changed canonical block without a stale fallback
+ok 88 - join refuses a chain denial and a changed canonical block without a stale fallback
+  ---
+  duration_ms: 354.198833
+  type: 'test'
+  ...
+# Subtest: pot roster resolves every seat at one block and rejects duplicates and address mismatches
+ok 89 - pot roster resolves every seat at one block and rejects duplicates and address mismatches
+  ---
+  duration_ms: 359.087708
+  type: 'test'
+  ...
+# Subtest: history uses the creation transaction after a table ends, with bounded 10-block log pages
+ok 90 - history uses the creation transaction after a table ends, with bounded 10-block log pages
+  ---
+  duration_ms: 376.908417
+  type: 'test'
+  ...
+# Subtest: history rejects unrelated transactions, forged receipts, missing events and oversized log results
+ok 91 - history rejects unrelated transactions, forged receipts, missing events and oversized log results
+  ---
+  duration_ms: 264.564542
+  type: 'test'
+  ...
+# (node:88266) ExperimentalWarning: The MockTimers API is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: record updates coalesce for two seconds, preserve every result and flush before a seat is released
+ok 92 - record updates coalesce for two seconds, preserve every result and flush before a seat is released
+  ---
+  duration_ms: 5.531666
+  type: 'test'
+  ...
+# Subtest: a replacement player never receives the previous player's last-match record
+ok 93 - a replacement player never receives the previous player's last-match record
+  ---
+  duration_ms: 0.74375
+  type: 'test'
+  ...
+# Subtest: ENS operator registration refuses mainnet, unapproved names, pointer changes and unsafe caps
+ok 94 - ENS operator registration refuses mainnet, unapproved names, pointer changes and unsafe caps
+  ---
+  duration_ms: 4.490292
+  type: 'test'
+  ...
+# Subtest: registration permissions are derived from selected pinned source constants, not every registry role
+ok 95 - registration permissions are derived from selected pinned source constants, not every registry role
+  ---
+  duration_ms: 0.3325
+  type: 'test'
+  ...
+# Subtest: room and hourly caps survive restart and count warm-pool transactions
+ok 96 - room and hourly caps survive restart and count warm-pool transactions
+  ---
+  duration_ms: 500.5985
+  type: 'test'
+  ...
+# Subtest: transaction admissions persist hashes first, reconcile receipts and never repeat an ID
+ok 97 - transaction admissions persist hashes first, reconcile receipts and never repeat an ID
+  ---
+  duration_ms: 169.327375
+  type: 'test'
+  ...
+# Subtest: post-broadcast timeout reconciles a mined receipt without resending
+ok 98 - post-broadcast timeout reconciles a mined receipt without resending
+  ---
+  duration_ms: 113.397334
+  type: 'test'
+  ...
+# Subtest: uncertain or never-broadcast prepared hash stops all subsequent sends
+ok 99 - uncertain or never-broadcast prepared hash stops all subsequent sends
+  ---
+  duration_ms: 75.8915
+  type: 'test'
+  ...
+# Subtest: changed payload under an existing ID is rejected
+ok 100 - changed payload under an existing ID is rejected
+  ---
+  duration_ms: 98.614167
+  type: 'test'
+  ...
+# Subtest: gas reservation and transaction-count limits reject before signing
+ok 101 - gas reservation and transaction-count limits reject before signing
+  ---
+  duration_ms: 201.979667
+  type: 'test'
+  ...
+# Subtest: canonical receipt costs count toward the aggregate ceiling
+ok 102 - canonical receipt costs count toward the aggregate ceiling
+  ---
+  duration_ms: 101.207542
+  type: 'test'
+  ...
+# Subtest: receipt tampering and reverted transactions cannot unlock another send
+ok 103 - receipt tampering and reverted transactions cannot unlock another send
+  ---
+  duration_ms: 169.193125
+  type: 'test'
+  ...
+# Subtest: outside nonce movement and chain mismatch stop signing
+ok 104 - outside nonce movement and chain mismatch stop signing
+  ---
+  duration_ms: 52.749917
+  type: 'test'
+  ...
+# Subtest: wrong signed intent never reaches the network
+ok 105 - wrong signed intent never reaches the network
+  ---
+  duration_ms: 21.942125
+  type: 'test'
+  ...
+# Subtest: kill switch before and after admission never broadcasts
+ok 106 - kill switch before and after admission never broadcasts
+  ---
+  duration_ms: 46.446166
+  type: 'test'
+  ...
+# Subtest: G0 mutations require a disposable local Anvil, never a public chain
+ok 107 - G0 mutations require a disposable local Anvil, never a public chain
+  ---
+  duration_ms: 0.545291
+  type: 'test'
+  ...
+# Subtest: fresh role keys, restrictive permissions, separated environments and no overwrite
+ok 108 - fresh role keys, restrictive permissions, separated environments and no overwrite
+  ---
+  duration_ms: 183.112334
+  type: 'test'
+  ...
+# Subtest: an existing secret file prevents any generated file from being written
+ok 109 - an existing secret file prevents any generated file from being written
+  ---
+  duration_ms: 32.1215
+  type: 'test'
+  ...
+# Subtest: atomic 0600 jobs, deferred hot-path I/O, mock round trip and receipt tailing
+ok 110 - atomic 0600 jobs, deferred hot-path I/O, mock round trip and receipt tailing
+  ---
+  duration_ms: 214.051375
+  type: 'test'
+  ...
+# Subtest: crash after external effect is recovered by provider lookup, then duplicate is a no-op
+ok 111 - crash after external effect is recovered by provider lookup, then duplicate is a no-op
+  ---
+  duration_ms: 321.085084
+  type: 'test'
+  ...
+# Subtest: retry backoff is bounded, a signer queue preserves order and another partner continues
+ok 112 - retry backoff is bounded, a signer queue preserves order and another partner continues
+  ---
+  duration_ms: 525.764459
+  type: 'test'
+  ...
+# Subtest: kill file and env stop sending; lock excludes a second worker
+ok 113 - kill file and env stop sending; lock excludes a second worker
+  ---
+  duration_ms: 174.767334
+  type: 'test'
+  ...
+# Subtest: payloads cannot put secrets or platform currency into the outbox
+ok 114 - payloads cannot put secrets or platform currency into the outbox
+  ---
+  duration_ms: 14.396458
+  type: 'test'
+  ...
+# Subtest: same-clock jobs keep enqueue order
+ok 115 - same-clock jobs keep enqueue order
+  ---
+  duration_ms: 80.637833
+  type: 'test'
+  ...
+# Subtest: ENS HTTP reads are bounded, return plain failures and never reflect RPC details
+ok 116 - ENS HTTP reads are bounded, return plain failures and never reflect RPC details
+  ---
+  duration_ms: 39.247375
+  type: 'test'
+  ...
+# Subtest: canonical result endpoint preserves hash, exposes no identities, and health has no private config
+ok 117 - canonical result endpoint preserves hash, exposes no identities, and health has no private config
+  ---
+  duration_ms: 230.51575
+  type: 'test'
+  ...
+# Subtest: own JSON parser enforces 16 KB and never reflects submitted content
+ok 118 - own JSON parser enforces 16 KB and never reflects submitted content
+  ---
+  duration_ms: 10.669625
+  type: 'test'
+  ...
+# Subtest: live pot reads fail explicitly; real Studio dist is served only when it exists
+ok 119 - live pot reads fail explicitly; real Studio dist is served only when it exists
+  ---
+  duration_ms: 51.218041
+  type: 'test'
+  ...
+# Subtest: committed browser signer equals source and fits the 120 KB gzip budget
+ok 120 - committed browser signer equals source and fits the 120 KB gzip budget
+  ---
+  duration_ms: 61.705333
+  type: 'test'
+  ...
+# Subtest: session key is separate from seat storage and persists without rotation
+ok 121 - session key is separate from seat storage and persists without rotation
+  ---
+  duration_ms: 46.099125
+  type: 'test'
+  ...
+# Subtest: phone permission handler remains synchronous and separate from web3 lazy loading
+ok 122 - phone permission handler remains synchronous and separate from web3 lazy loading
+  ---
+  duration_ms: 1.184959
+  type: 'test'
+  ...
+# Subtest: SIGKILL after an external mock effect recovers the stale lease and executes only once
+ok 123 - SIGKILL after an external mock effect recovers the stale lease and executes only once
+  ---
+  duration_ms: 266.13825
+  type: 'test'
+  ...
+1..123
+# tests 123
+# suites 0
+# pass 123
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3738.472417
